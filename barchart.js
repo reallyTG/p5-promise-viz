@@ -22,10 +22,11 @@ class BarChart {
 
             // Extra information out of our data
             // The data that we are extracting from is a promiseData object.
-            var entityX = this.x+2//norm(this.x + data[i].startTime,0,100);
+            var entityX = this.x + (data[i].startTime/ 100000000000);
+            print(data[i].startTime / 1000000000000)
 
             var entityY = this.h + this.y - (i*entityHeight);
-            var entityW = norm(this.data[i].endTime - this.data[i].startTime,0,20);
+            var entityW = (this.data[i].elapsedTime/100000000);
             var entityH = entityHeight;
 
             // Create a new barchart entity from our data
