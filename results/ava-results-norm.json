@@ -1,0 +1,1704 @@
+{
+    "promises": {
+        "0": {
+            "source": "(ava/node_modules/tsd/dist/cli.js:5:12:5:12)",
+            "startTime": "14983541102697",
+            "endTime": "14986534564283",
+            "elapsedTime": "2993461586",
+            "asyncId": 6,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "1": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:4:12:4:12)",
+            "startTime": "14983825094499",
+            "endTime": "14986534134604",
+            "elapsedTime": "2709040105",
+            "asyncId": 20,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "2": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:47:29:47:29)",
+            "startTime": "14983825745058",
+            "endTime": "14983853511436",
+            "elapsedTime": "27766378",
+            "asyncId": 21,
+            "triggerAsyncId": 1,
+            "io": true,
+            "userCode": false
+        },
+        "3": {
+            "source": "(ava/node_modules/tsd/node_modules/read-pkg-up/index.js:7:25:7:25)",
+            "startTime": "14983826200216",
+            "endTime": "14983846845625",
+            "elapsedTime": "20645409",
+            "asyncId": 22,
+            "triggerAsyncId": 1,
+            "io": true,
+            "userCode": false
+        },
+        "4": {
+            "source": "(ava/node_modules/find-up/index.js:29:27:29:27)",
+            "startTime": "14983826631269",
+            "endTime": "14983846571795",
+            "elapsedTime": "19940526",
+            "asyncId": 23,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "5": {
+            "source": "(ava/node_modules/find-up/index.js:15:11:15:11)",
+            "startTime": "14983827040156",
+            "endTime": "14983846300537",
+            "elapsedTime": "19260381",
+            "asyncId": 24,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "6": {
+            "source": "(ava/node_modules/locate-path/index.js:35:9:35:9)",
+            "startTime": "14983827480724",
+            "endTime": "14983846033211",
+            "elapsedTime": "18552487",
+            "asyncId": 25,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "7": {
+            "source": "(ava/node_modules/p-limit/index.js:38:37:38:37)",
+            "startTime": "14983828037059",
+            "endTime": "14983844211465",
+            "elapsedTime": "16174406",
+            "asyncId": 26,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "8": {
+            "source": "(ava/node_modules/p-try/index.js:3:37:3:37)",
+            "startTime": "14983828523532",
+            "endTime": "14983843715210",
+            "elapsedTime": "15191678",
+            "asyncId": 27,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "9": {
+            "source": "(ava/node_modules/p-try/index.js:4:10:4:10)",
+            "startTime": "14983828972918",
+            "endTime": "14983843367531",
+            "elapsedTime": "14394613",
+            "asyncId": 28,
+            "triggerAsyncId": 1,
+            "io": true,
+            "userCode": false
+        },
+        "10": {
+            "source": "(ava/node_modules/p-try/index.js:4:10:4:10)",
+            "startTime": "14983829459035",
+            "endTime": "14983830087278",
+            "elapsedTime": "628243",
+            "asyncId": 29,
+            "triggerAsyncId": 28,
+            "io": true,
+            "userCode": false
+        },
+        "11": {
+            "source": "(ava/node_modules/p-try/index.js:4:10:4:10)",
+            "startTime": "14983829833559",
+            "endTime": "14983840562794",
+            "elapsedTime": "10729235",
+            "asyncId": 30,
+            "triggerAsyncId": 29,
+            "io": true,
+            "userCode": false
+        },
+        "12": {
+            "source": "(ava/node_modules/p-limit/index.js:27:10:27:10)",
+            "startTime": "14983830861595",
+            "endTime": "14983844043566",
+            "elapsedTime": "13181971",
+            "asyncId": 31,
+            "triggerAsyncId": 27,
+            "io": false,
+            "userCode": false
+        },
+        "13": {
+            "source": "(ava/node_modules/p-limit/index.js:38:37:38:37)",
+            "startTime": "14983831291409",
+            "endTime": "14983845453186",
+            "elapsedTime": "14161777",
+            "asyncId": 32,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "14": {
+            "source": "(ava/node_modules/p-try/index.js:3:37:3:37)",
+            "startTime": "14983831670077",
+            "endTime": "14983845046916",
+            "elapsedTime": "13376839",
+            "asyncId": 33,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "15": {
+            "source": "(ava/node_modules/p-try/index.js:4:10:4:10)",
+            "startTime": "14983832237674",
+            "endTime": "14983844774234",
+            "elapsedTime": "12536560",
+            "asyncId": 34,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "16": {
+            "source": "(ava/node_modules/p-locate/index.js:16:31:16:31)",
+            "startTime": "14983832631238",
+            "endTime": "14983844468825",
+            "elapsedTime": "11837587",
+            "asyncId": 35,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "17": {
+            "source": "(ava/node_modules/p-locate/index.js:16:31:16:31)",
+            "startTime": "14983833026031",
+            "endTime": "14983833235691",
+            "elapsedTime": "209660",
+            "asyncId": 36,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "18": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983833687916",
+            "endTime": "14983841337350",
+            "elapsedTime": "7649434",
+            "asyncId": 37,
+            "triggerAsyncId": 36,
+            "io": "",
+            "userCode": ""
+        },
+        "19": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983834167217",
+            "endTime": "14983844570636",
+            "elapsedTime": "10403419",
+            "asyncId": 38,
+            "triggerAsyncId": 26,
+            "io": "",
+            "userCode": ""
+        },
+        "20": {
+            "source": "(ava/node_modules/p-try/index.js:4:10:4:10)",
+            "startTime": "14983834570107",
+            "endTime": "14983844877899",
+            "elapsedTime": "10307792",
+            "asyncId": 39,
+            "triggerAsyncId": 35,
+            "io": "",
+            "userCode": false
+        },
+        "21": {
+            "source": "(ava/node_modules/p-limit/index.js:27:10:27:10)",
+            "startTime": "14983835470149",
+            "endTime": "14983845346939",
+            "elapsedTime": "9876790",
+            "asyncId": 40,
+            "triggerAsyncId": 33,
+            "io": false,
+            "userCode": false
+        },
+        "22": {
+            "source": "(ava/node_modules/p-locate/index.js:40:17:40:17)",
+            "startTime": "14983835835280",
+            "endTime": "14983845723912",
+            "elapsedTime": "9888632",
+            "asyncId": 41,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "23": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983836192848",
+            "endTime": "14983845922032",
+            "elapsedTime": "9729184",
+            "asyncId": 42,
+            "triggerAsyncId": 32,
+            "io": "",
+            "userCode": ""
+        },
+        "24": {
+            "source": "(ava/node_modules/locate-path/index.js:35:9:35:9)",
+            "startTime": "14983836532894",
+            "endTime": "14983846195873",
+            "elapsedTime": "9662979",
+            "asyncId": 43,
+            "triggerAsyncId": 41,
+            "io": false,
+            "userCode": false
+        },
+        "25": {
+            "source": "(ava/node_modules/tsd/node_modules/read-pkg-up/index.js:7:25:7:25)",
+            "startTime": "14983837252507",
+            "endTime": "14983847046074",
+            "elapsedTime": "9793567",
+            "asyncId": 44,
+            "triggerAsyncId": 23,
+            "io": false,
+            "userCode": false
+        },
+        "26": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:47:29:47:29)",
+            "startTime": "14983837680615",
+            "endTime": "14983848642090",
+            "elapsedTime": "10961475",
+            "asyncId": 45,
+            "triggerAsyncId": 22,
+            "io": true,
+            "userCode": false
+        },
+        "27": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983838093978",
+            "endTime": "14983898584836",
+            "elapsedTime": "60490858",
+            "asyncId": 46,
+            "triggerAsyncId": 21,
+            "io": true,
+            "userCode": false
+        },
+        "28": {
+            "source": "(ava/node_modules/tsd/dist/cli.js:8:91:8:91)",
+            "startTime": "14983838449947",
+            "endTime": "14986534811687",
+            "elapsedTime": "2696361740",
+            "asyncId": 47,
+            "triggerAsyncId": 20,
+            "io": false,
+            "userCode": false
+        },
+        "29": {
+            "source": "(ava/node_modules/p-locate/index.js:12:48:12:48)",
+            "startTime": "14983839362436",
+            "endTime": "14983843002341",
+            "elapsedTime": "3639905",
+            "asyncId": 48,
+            "triggerAsyncId": 30,
+            "io": false,
+            "userCode": false
+        },
+        "30": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983839679340",
+            "endTime": "14983842863653",
+            "elapsedTime": "3184313",
+            "asyncId": 49,
+            "triggerAsyncId": 30,
+            "io": true,
+            "userCode": false
+        },
+        "31": {
+            "source": "(ava/node_modules/p-locate/index.js:12:48:12:48)",
+            "startTime": "14983840205784",
+            "endTime": "14983843221963",
+            "elapsedTime": "3016179",
+            "asyncId": 51,
+            "triggerAsyncId": 49,
+            "io": false,
+            "userCode": false
+        },
+        "32": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983840872866",
+            "endTime": "14983843879277",
+            "elapsedTime": "3006411",
+            "asyncId": 52,
+            "triggerAsyncId": 28,
+            "io": false,
+            "userCode": false
+        },
+        "33": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983841102716",
+            "endTime": "14983844316276",
+            "elapsedTime": "3213560",
+            "asyncId": 53,
+            "triggerAsyncId": 27,
+            "io": false,
+            "userCode": false
+        },
+        "34": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983841557286",
+            "endTime": "14983845148267",
+            "elapsedTime": "3590981",
+            "asyncId": 54,
+            "triggerAsyncId": 34,
+            "io": false,
+            "userCode": false
+        },
+        "35": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983841754427",
+            "endTime": "14983845617054",
+            "elapsedTime": "3862627",
+            "asyncId": 55,
+            "triggerAsyncId": 33,
+            "io": false,
+            "userCode": false
+        },
+        "36": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983841934200",
+            "endTime": "14983846466609",
+            "elapsedTime": "4532409",
+            "asyncId": 56,
+            "triggerAsyncId": 25,
+            "io": false,
+            "userCode": false
+        },
+        "37": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983842138620",
+            "endTime": "14983846736250",
+            "elapsedTime": "4597630",
+            "asyncId": 57,
+            "triggerAsyncId": 24,
+            "io": false,
+            "userCode": false
+        },
+        "38": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "14983842342062",
+            "endTime": "14983843588675",
+            "elapsedTime": "1246613",
+            "asyncId": 58,
+            "triggerAsyncId": 48,
+            "io": false,
+            "userCode": false
+        },
+        "39": {
+            "source": "(ava/node_modules/tsd/node_modules/read-pkg-up/index.js:14:22:14:22)",
+            "startTime": "14983847384048",
+            "endTime": "14983853264534",
+            "elapsedTime": "5880486",
+            "asyncId": 59,
+            "triggerAsyncId": 45,
+            "io": false,
+            "userCode": false
+        },
+        "40": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983847599620",
+            "endTime": "14983849631732",
+            "elapsedTime": "2032112",
+            "asyncId": 60,
+            "triggerAsyncId": 45,
+            "io": true,
+            "userCode": false
+        },
+        "41": {
+            "source": "(ava/node_modules/tsd/node_modules/read-pkg-up/index.js:14:22:14:22)",
+            "startTime": "14983848141669",
+            "endTime": "14983853392780",
+            "elapsedTime": "5251111",
+            "asyncId": 62,
+            "triggerAsyncId": 60,
+            "io": false,
+            "userCode": false
+        },
+        "42": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:4:12:4:12)",
+            "startTime": "14983896849743",
+            "endTime": "14983899340280",
+            "elapsedTime": "2490537",
+            "asyncId": 67,
+            "triggerAsyncId": 46,
+            "io": true,
+            "userCode": false
+        },
+        "43": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:21:32:21:32)",
+            "startTime": "14983897287235",
+            "endTime": "14983898999378",
+            "elapsedTime": "1712143",
+            "asyncId": 68,
+            "triggerAsyncId": 46,
+            "io": "",
+            "userCode": false
+        },
+        "44": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983897552729",
+            "endTime": "14983898778502",
+            "elapsedTime": "1225773",
+            "asyncId": 69,
+            "triggerAsyncId": 46,
+            "io": false,
+            "userCode": false
+        },
+        "45": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:21:32:21:32)",
+            "startTime": "14983898021922",
+            "endTime": "14983899190238",
+            "elapsedTime": "1168316",
+            "asyncId": 71,
+            "triggerAsyncId": 69,
+            "io": "",
+            "userCode": false
+        },
+        "46": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983898259139",
+            "endTime": "14983899579855",
+            "elapsedTime": "1320716",
+            "asyncId": 72,
+            "triggerAsyncId": 68,
+            "io": false,
+            "userCode": false
+        },
+        "47": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983898455970",
+            "endTime": "14983912598324",
+            "elapsedTime": "14142354",
+            "asyncId": 73,
+            "triggerAsyncId": 67,
+            "io": true,
+            "userCode": false
+        },
+        "48": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:4:12:4:12)",
+            "startTime": "14983899977010",
+            "endTime": "14983969922159",
+            "elapsedTime": "69945149",
+            "asyncId": 74,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "49": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:31:27:31:27)",
+            "startTime": "14983900604646",
+            "endTime": "14983941608389",
+            "elapsedTime": "41003743",
+            "asyncId": 75,
+            "triggerAsyncId": 73,
+            "io": true,
+            "userCode": false
+        },
+        "50": {
+            "source": "(ava/node_modules/globby/index.js:132:45:132:45)",
+            "startTime": "14983901354666",
+            "endTime": "14983901498529",
+            "elapsedTime": "143863",
+            "asyncId": 76,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "51": {
+            "source": "(ava/node_modules/globby/index.js:132:58:132:58)",
+            "startTime": "14983901835889",
+            "endTime": "14983922133389",
+            "elapsedTime": "20297500",
+            "asyncId": 77,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "52": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983902168738",
+            "endTime": "14983916864409",
+            "elapsedTime": "14695671",
+            "asyncId": 78,
+            "triggerAsyncId": 73,
+            "io": "",
+            "userCode": ""
+        },
+        "53": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983902630969",
+            "endTime": "14983914286773",
+            "elapsedTime": "11655804",
+            "asyncId": 79,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "54": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983902998488",
+            "endTime": "14983913623938",
+            "elapsedTime": "10625450",
+            "asyncId": 80,
+            "triggerAsyncId": 73,
+            "io": "",
+            "userCode": ""
+        },
+        "55": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983905061156",
+            "endTime": "14983913284965",
+            "elapsedTime": "8223809",
+            "asyncId": 81,
+            "triggerAsyncId": 73,
+            "io": "",
+            "userCode": false
+        },
+        "56": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983905597980",
+            "endTime": "14983913077197",
+            "elapsedTime": "7479217",
+            "asyncId": 82,
+            "triggerAsyncId": 73,
+            "io": true,
+            "userCode": false
+        },
+        "57": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983906033656",
+            "endTime": "14983913416814",
+            "elapsedTime": "7383158",
+            "asyncId": 84,
+            "triggerAsyncId": 82,
+            "io": "",
+            "userCode": false
+        },
+        "58": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983906301189",
+            "endTime": "14983913753295",
+            "elapsedTime": "7452106",
+            "asyncId": 85,
+            "triggerAsyncId": 81,
+            "io": "",
+            "userCode": ""
+        },
+        "59": {
+            "source": "(ava/node_modules/dir-glob/index.js:54:30:54:30)",
+            "startTime": "14983906557182",
+            "endTime": "14983913959049",
+            "elapsedTime": "7401867",
+            "asyncId": 86,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "60": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983906818743",
+            "endTime": "14983914085011",
+            "elapsedTime": "7266268",
+            "asyncId": 87,
+            "triggerAsyncId": 80,
+            "io": "",
+            "userCode": ""
+        },
+        "61": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983907063124",
+            "endTime": "14983914411398",
+            "elapsedTime": "7348274",
+            "asyncId": 88,
+            "triggerAsyncId": 86,
+            "io": false,
+            "userCode": false
+        },
+        "62": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983907294818",
+            "endTime": "14983915827909",
+            "elapsedTime": "8533091",
+            "asyncId": 89,
+            "triggerAsyncId": 79,
+            "io": "",
+            "userCode": ""
+        },
+        "63": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983907522571",
+            "endTime": "14983921366462",
+            "elapsedTime": "13843891",
+            "asyncId": 90,
+            "triggerAsyncId": 73,
+            "io": "",
+            "userCode": ""
+        },
+        "64": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983907769164",
+            "endTime": "14983918768738",
+            "elapsedTime": "10999574",
+            "asyncId": 91,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "65": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983908149931",
+            "endTime": "14983917912399",
+            "elapsedTime": "9762468",
+            "asyncId": 92,
+            "triggerAsyncId": 73,
+            "io": "",
+            "userCode": ""
+        },
+        "66": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983908439831",
+            "endTime": "14983917573001",
+            "elapsedTime": "9133170",
+            "asyncId": 93,
+            "triggerAsyncId": 73,
+            "io": "",
+            "userCode": false
+        },
+        "67": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983908740466",
+            "endTime": "14983917363484",
+            "elapsedTime": "8623018",
+            "asyncId": 94,
+            "triggerAsyncId": 73,
+            "io": true,
+            "userCode": false
+        },
+        "68": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983909034782",
+            "endTime": "14983917699086",
+            "elapsedTime": "8664304",
+            "asyncId": 96,
+            "triggerAsyncId": 94,
+            "io": "",
+            "userCode": false
+        },
+        "69": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983909286178",
+            "endTime": "14983918037922",
+            "elapsedTime": "8751744",
+            "asyncId": 97,
+            "triggerAsyncId": 93,
+            "io": "",
+            "userCode": ""
+        },
+        "70": {
+            "source": "(ava/node_modules/dir-glob/index.js:54:30:54:30)",
+            "startTime": "14983909536801",
+            "endTime": "14983918384814",
+            "elapsedTime": "8848013",
+            "asyncId": 98,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "71": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983909786568",
+            "endTime": "14983918557002",
+            "elapsedTime": "8770434",
+            "asyncId": 99,
+            "triggerAsyncId": 92,
+            "io": "",
+            "userCode": ""
+        },
+        "72": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983910029698",
+            "endTime": "14983918955480",
+            "elapsedTime": "8925782",
+            "asyncId": 100,
+            "triggerAsyncId": 98,
+            "io": false,
+            "userCode": false
+        },
+        "73": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983910298636",
+            "endTime": "14983920265106",
+            "elapsedTime": "9966470",
+            "asyncId": 101,
+            "triggerAsyncId": 91,
+            "io": "",
+            "userCode": ""
+        },
+        "74": {
+            "source": "(ava/node_modules/globby/index.js:124:31:124:31)",
+            "startTime": "14983910532806",
+            "endTime": "14983921784818",
+            "elapsedTime": "11252012",
+            "asyncId": 102,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "75": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983910764878",
+            "endTime": "14983917190774",
+            "elapsedTime": "6425896",
+            "asyncId": 103,
+            "triggerAsyncId": 78,
+            "io": "",
+            "userCode": ""
+        },
+        "76": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983910992876",
+            "endTime": "14983921906161",
+            "elapsedTime": "10913285",
+            "asyncId": 104,
+            "triggerAsyncId": 90,
+            "io": "",
+            "userCode": ""
+        },
+        "77": {
+            "source": "(ava/node_modules/globby/index.js:132:58:132:58)",
+            "startTime": "14983911210590",
+            "endTime": "14983922362421",
+            "elapsedTime": "11151831",
+            "asyncId": 105,
+            "triggerAsyncId": 102,
+            "io": false,
+            "userCode": false
+        },
+        "78": {
+            "source": "(ava/node_modules/globby/index.js:132:40:132:40)",
+            "startTime": "14983911435785",
+            "endTime": "14983922522585",
+            "elapsedTime": "11086800",
+            "asyncId": 106,
+            "triggerAsyncId": 73,
+            "io": false,
+            "userCode": false
+        },
+        "79": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983911657059",
+            "endTime": "14983912830311",
+            "elapsedTime": "1173252",
+            "asyncId": 107,
+            "triggerAsyncId": 76,
+            "io": "",
+            "userCode": ""
+        },
+        "80": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983911880188",
+            "endTime": "14983922756793",
+            "elapsedTime": "10876605",
+            "asyncId": 108,
+            "triggerAsyncId": 77,
+            "io": "",
+            "userCode": ""
+        },
+        "81": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:31:27:31:27)",
+            "startTime": "14983912088448",
+            "endTime": "14983935486197",
+            "elapsedTime": "23397749",
+            "asyncId": 109,
+            "triggerAsyncId": 106,
+            "io": "",
+            "userCode": false
+        },
+        "82": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983912301773",
+            "endTime": "14983942648883",
+            "elapsedTime": "30347110",
+            "asyncId": 110,
+            "triggerAsyncId": 75,
+            "io": true,
+            "userCode": false
+        },
+        "83": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983912478226",
+            "endTime": "14986534359075",
+            "elapsedTime": "2621880849",
+            "asyncId": 111,
+            "triggerAsyncId": 74,
+            "io": false,
+            "userCode": false
+        },
+        "84": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983914858858",
+            "endTime": "14983916031460",
+            "elapsedTime": "1172602",
+            "asyncId": 112,
+            "triggerAsyncId": 89,
+            "io": "",
+            "userCode": false
+        },
+        "85": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983915073855",
+            "endTime": "14983915277196",
+            "elapsedTime": "203341",
+            "asyncId": 113,
+            "triggerAsyncId": 89,
+            "io": "",
+            "userCode": false
+        },
+        "86": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983915500106",
+            "endTime": "14983916155681",
+            "elapsedTime": "655575",
+            "asyncId": 114,
+            "triggerAsyncId": 113,
+            "io": "",
+            "userCode": ""
+        },
+        "87": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983919225528",
+            "endTime": "14983920467839",
+            "elapsedTime": "1242311",
+            "asyncId": 116,
+            "triggerAsyncId": 101,
+            "io": "",
+            "userCode": false
+        },
+        "88": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983919441493",
+            "endTime": "14983919668002",
+            "elapsedTime": "226509",
+            "asyncId": 117,
+            "triggerAsyncId": 101,
+            "io": "",
+            "userCode": false
+        },
+        "89": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983919922633",
+            "endTime": "14983920589396",
+            "elapsedTime": "666763",
+            "asyncId": 118,
+            "triggerAsyncId": 117,
+            "io": "",
+            "userCode": ""
+        },
+        "90": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983923124329",
+            "endTime": "14983938610201",
+            "elapsedTime": "15485872",
+            "asyncId": 120,
+            "triggerAsyncId": 109,
+            "io": "",
+            "userCode": false
+        },
+        "91": {
+            "source": "(ava/node_modules/fast-glob/out/providers/async.js:14:16:14:16)",
+            "startTime": "14983928135155",
+            "endTime": "14983937792797",
+            "elapsedTime": "9657642",
+            "asyncId": 121,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "92": {
+            "source": "(ava/node_modules/fast-glob/out/readers/stream.js:48:16:48:16)",
+            "startTime": "14983929366337",
+            "endTime": "14983936136247",
+            "elapsedTime": "6769910",
+            "asyncId": 122,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "93": {
+            "source": "(ava/node_modules/fast-glob/out/readers/stream.js:39:14:39:14)",
+            "startTime": "14983929852281",
+            "endTime": "14983936402215",
+            "elapsedTime": "6549934",
+            "asyncId": 124,
+            "triggerAsyncId": 122,
+            "io": false,
+            "userCode": false
+        },
+        "94": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983930105903",
+            "endTime": "14983936617926",
+            "elapsedTime": "6512023",
+            "asyncId": 125,
+            "triggerAsyncId": 124,
+            "io": "",
+            "userCode": ""
+        },
+        "95": {
+            "source": "(ava/node_modules/fast-glob/out/readers/stream.js:21:18:21:18)",
+            "startTime": "14983930338825",
+            "endTime": "14983937248378",
+            "elapsedTime": "6909553",
+            "asyncId": 126,
+            "triggerAsyncId": 125,
+            "io": false,
+            "userCode": false
+        },
+        "96": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983930573619",
+            "endTime": "14983937514563",
+            "elapsedTime": "6940944",
+            "asyncId": 127,
+            "triggerAsyncId": 126,
+            "io": "",
+            "userCode": ""
+        },
+        "97": {
+            "source": "(ava/node_modules/fast-glob/out/index.js:11:34:11:34)",
+            "startTime": "14983930932804",
+            "endTime": "14983938158054",
+            "elapsedTime": "7225250",
+            "asyncId": 129,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "98": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983931132218",
+            "endTime": "14983938422993",
+            "elapsedTime": "7290775",
+            "asyncId": 130,
+            "triggerAsyncId": 121,
+            "io": "",
+            "userCode": ""
+        },
+        "99": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983931410606",
+            "endTime": "14983938872561",
+            "elapsedTime": "7461955",
+            "asyncId": 131,
+            "triggerAsyncId": 129,
+            "io": "",
+            "userCode": false
+        },
+        "100": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983931582996",
+            "endTime": "14983940794787",
+            "elapsedTime": "9211791",
+            "asyncId": 132,
+            "triggerAsyncId": 109,
+            "io": "",
+            "userCode": false
+        },
+        "101": {
+            "source": "(ava/node_modules/fast-glob/out/providers/async.js:14:16:14:16)",
+            "startTime": "14983932405560",
+            "endTime": "14983940188982",
+            "elapsedTime": "7783422",
+            "asyncId": 133,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "102": {
+            "source": "(ava/node_modules/fast-glob/out/readers/stream.js:48:16:48:16)",
+            "startTime": "14983932723857",
+            "endTime": "14983939282086",
+            "elapsedTime": "6558229",
+            "asyncId": 134,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "103": {
+            "source": "(ava/node_modules/fast-glob/out/readers/stream.js:39:14:39:14)",
+            "startTime": "14983932987983",
+            "endTime": "14983939413838",
+            "elapsedTime": "6425855",
+            "asyncId": 136,
+            "triggerAsyncId": 134,
+            "io": false,
+            "userCode": false
+        },
+        "104": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983933229862",
+            "endTime": "14983939735273",
+            "elapsedTime": "6505411",
+            "asyncId": 137,
+            "triggerAsyncId": 136,
+            "io": "",
+            "userCode": ""
+        },
+        "105": {
+            "source": "(ava/node_modules/fast-glob/out/readers/stream.js:21:18:21:18)",
+            "startTime": "14983933462142",
+            "endTime": "14983939926709",
+            "elapsedTime": "6464567",
+            "asyncId": 138,
+            "triggerAsyncId": 137,
+            "io": false,
+            "userCode": false
+        },
+        "106": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983933693957",
+            "endTime": "14983940056758",
+            "elapsedTime": "6362801",
+            "asyncId": 139,
+            "triggerAsyncId": 138,
+            "io": "",
+            "userCode": ""
+        },
+        "107": {
+            "source": "(ava/node_modules/fast-glob/out/index.js:11:34:11:34)",
+            "startTime": "14983933955688",
+            "endTime": "14983940401011",
+            "elapsedTime": "6445323",
+            "asyncId": 141,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "108": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983934134227",
+            "endTime": "14983940529648",
+            "elapsedTime": "6395421",
+            "asyncId": 142,
+            "triggerAsyncId": 133,
+            "io": "",
+            "userCode": ""
+        },
+        "109": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983934397584",
+            "endTime": "14983940919858",
+            "elapsedTime": "6522274",
+            "asyncId": 143,
+            "triggerAsyncId": 141,
+            "io": "",
+            "userCode": false
+        },
+        "110": {
+            "source": "(ava/node_modules/globby/index.js:133:30:133:30)",
+            "startTime": "14983934592922",
+            "endTime": "14983941206772",
+            "elapsedTime": "6613850",
+            "asyncId": 144,
+            "triggerAsyncId": 109,
+            "io": false,
+            "userCode": false
+        },
+        "111": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983934776923",
+            "endTime": "14983939005442",
+            "elapsedTime": "4228519",
+            "asyncId": 145,
+            "triggerAsyncId": 120,
+            "io": "",
+            "userCode": ""
+        },
+        "112": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983934956730",
+            "endTime": "14983941333716",
+            "elapsedTime": "6376986",
+            "asyncId": 146,
+            "triggerAsyncId": 132,
+            "io": "",
+            "userCode": ""
+        },
+        "113": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:32:33:32:33)",
+            "startTime": "14983941973544",
+            "endTime": "14983943105691",
+            "elapsedTime": "1132147",
+            "asyncId": 152,
+            "triggerAsyncId": 110,
+            "io": true,
+            "userCode": false
+        },
+        "114": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983942162581",
+            "endTime": "14983942868894",
+            "elapsedTime": "706313",
+            "asyncId": 153,
+            "triggerAsyncId": 110,
+            "io": false,
+            "userCode": false
+        },
+        "115": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:32:33:32:33)",
+            "startTime": "14983942362238",
+            "endTime": "14983943212840",
+            "elapsedTime": "850602",
+            "asyncId": 155,
+            "triggerAsyncId": 153,
+            "io": "",
+            "userCode": false
+        },
+        "116": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983942544153",
+            "endTime": "14983951270973",
+            "elapsedTime": "8726820",
+            "asyncId": 156,
+            "triggerAsyncId": 152,
+            "io": true,
+            "userCode": false
+        },
+        "117": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:37:27:37:27)",
+            "startTime": "14983943718078",
+            "endTime": "14983969418157",
+            "elapsedTime": "25700079",
+            "asyncId": 157,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": false
+        },
+        "118": {
+            "source": "(ava/node_modules/globby/index.js:132:45:132:45)",
+            "startTime": "14983943993448",
+            "endTime": "14983944198631",
+            "elapsedTime": "205183",
+            "asyncId": 158,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "119": {
+            "source": "(ava/node_modules/globby/index.js:132:58:132:58)",
+            "startTime": "14983944394675",
+            "endTime": "14983958678797",
+            "elapsedTime": "14284122",
+            "asyncId": 159,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "120": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983944620228",
+            "endTime": "14983954996755",
+            "elapsedTime": "10376527",
+            "asyncId": 160,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": ""
+        },
+        "121": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983944957443",
+            "endTime": "14983952773772",
+            "elapsedTime": "7816329",
+            "asyncId": 161,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "122": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983945168717",
+            "endTime": "14983952147945",
+            "elapsedTime": "6979228",
+            "asyncId": 162,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": ""
+        },
+        "123": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983945382754",
+            "endTime": "14983951815997",
+            "elapsedTime": "6433243",
+            "asyncId": 163,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": false
+        },
+        "124": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983945623949",
+            "endTime": "14983951697633",
+            "elapsedTime": "6073684",
+            "asyncId": 164,
+            "triggerAsyncId": 156,
+            "io": true,
+            "userCode": false
+        },
+        "125": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983945848709",
+            "endTime": "14983952036091",
+            "elapsedTime": "6187382",
+            "asyncId": 166,
+            "triggerAsyncId": 164,
+            "io": "",
+            "userCode": false
+        },
+        "126": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983946047465",
+            "endTime": "14983952343463",
+            "elapsedTime": "6295998",
+            "asyncId": 167,
+            "triggerAsyncId": 163,
+            "io": "",
+            "userCode": ""
+        },
+        "127": {
+            "source": "(ava/node_modules/dir-glob/index.js:54:30:54:30)",
+            "startTime": "14983946235179",
+            "endTime": "14983952447321",
+            "elapsedTime": "6212142",
+            "asyncId": 168,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "128": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983946432234",
+            "endTime": "14983952667365",
+            "elapsedTime": "6235131",
+            "asyncId": 169,
+            "triggerAsyncId": 162,
+            "io": "",
+            "userCode": ""
+        },
+        "129": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983946716197",
+            "endTime": "14983952872699",
+            "elapsedTime": "6156502",
+            "asyncId": 170,
+            "triggerAsyncId": 168,
+            "io": false,
+            "userCode": false
+        },
+        "130": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983946887888",
+            "endTime": "14983954201812",
+            "elapsedTime": "7313924",
+            "asyncId": 171,
+            "triggerAsyncId": 161,
+            "io": "",
+            "userCode": ""
+        },
+        "131": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983947102524",
+            "endTime": "14983958026265",
+            "elapsedTime": "10923741",
+            "asyncId": 172,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": ""
+        },
+        "132": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983947327946",
+            "endTime": "14983956290473",
+            "elapsedTime": "8962527",
+            "asyncId": 173,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "133": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983947555382",
+            "endTime": "14983955894780",
+            "elapsedTime": "8339398",
+            "asyncId": 174,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": ""
+        },
+        "134": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983947774189",
+            "endTime": "14983955591409",
+            "elapsedTime": "7817220",
+            "asyncId": 175,
+            "triggerAsyncId": 156,
+            "io": "",
+            "userCode": false
+        },
+        "135": {
+            "source": "(internal/util.js:296:12:296:12)",
+            "startTime": "14983948026120",
+            "endTime": "14983955419834",
+            "elapsedTime": "7393714",
+            "asyncId": 176,
+            "triggerAsyncId": 156,
+            "io": true,
+            "userCode": false
+        },
+        "136": {
+            "source": "(ava/node_modules/dir-glob/index.js:55:38:55:38)",
+            "startTime": "14983948265674",
+            "endTime": "14983955786028",
+            "elapsedTime": "7520354",
+            "asyncId": 178,
+            "triggerAsyncId": 176,
+            "io": "",
+            "userCode": false
+        },
+        "137": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983948468842",
+            "endTime": "14983955990436",
+            "elapsedTime": "7521594",
+            "asyncId": 179,
+            "triggerAsyncId": 175,
+            "io": "",
+            "userCode": ""
+        },
+        "138": {
+            "source": "(ava/node_modules/dir-glob/index.js:54:30:54:30)",
+            "startTime": "14983948669603",
+            "endTime": "14983956090603",
+            "elapsedTime": "7421000",
+            "asyncId": 180,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "139": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983948873861",
+            "endTime": "14983956185715",
+            "elapsedTime": "7311854",
+            "asyncId": 181,
+            "triggerAsyncId": 174,
+            "io": "",
+            "userCode": ""
+        },
+        "140": {
+            "source": "(ava/node_modules/globby/index.js:91:9:91:9)",
+            "startTime": "14983949067792",
+            "endTime": "14983956384321",
+            "elapsedTime": "7316529",
+            "asyncId": 182,
+            "triggerAsyncId": 180,
+            "io": false,
+            "userCode": false
+        },
+        "141": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983949274270",
+            "endTime": "14983957334750",
+            "elapsedTime": "8060480",
+            "asyncId": 183,
+            "triggerAsyncId": 173,
+            "io": "",
+            "userCode": ""
+        },
+        "142": {
+            "source": "(ava/node_modules/globby/index.js:124:31:124:31)",
+            "startTime": "14983949471648",
+            "endTime": "14983958360642",
+            "elapsedTime": "8888994",
+            "asyncId": 184,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "143": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983949658974",
+            "endTime": "14983955291865",
+            "elapsedTime": "5632891",
+            "asyncId": 185,
+            "triggerAsyncId": 160,
+            "io": "",
+            "userCode": ""
+        },
+        "144": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983949833991",
+            "endTime": "14983958557274",
+            "elapsedTime": "8723283",
+            "asyncId": 186,
+            "triggerAsyncId": 172,
+            "io": "",
+            "userCode": ""
+        },
+        "145": {
+            "source": "(ava/node_modules/globby/index.js:132:58:132:58)",
+            "startTime": "14983950049514",
+            "endTime": "14983958901516",
+            "elapsedTime": "8852002",
+            "asyncId": 187,
+            "triggerAsyncId": 184,
+            "io": false,
+            "userCode": false
+        },
+        "146": {
+            "source": "(ava/node_modules/globby/index.js:132:40:132:40)",
+            "startTime": "14983950223823",
+            "endTime": "14983959007189",
+            "elapsedTime": "8783366",
+            "asyncId": 188,
+            "triggerAsyncId": 156,
+            "io": false,
+            "userCode": false
+        },
+        "147": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983950415923",
+            "endTime": "14983951428288",
+            "elapsedTime": "1012365",
+            "asyncId": 189,
+            "triggerAsyncId": 158,
+            "io": "",
+            "userCode": ""
+        },
+        "148": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983950588720",
+            "endTime": "14983959101868",
+            "elapsedTime": "8513148",
+            "asyncId": 190,
+            "triggerAsyncId": 159,
+            "io": "",
+            "userCode": ""
+        },
+        "149": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:37:27:37:27)",
+            "startTime": "14983950855633",
+            "endTime": "14983965051229",
+            "elapsedTime": "14195596",
+            "asyncId": 191,
+            "triggerAsyncId": 188,
+            "io": "",
+            "userCode": false
+        },
+        "150": {
+            "source": "(ava/node_modules/tsd/dist/lib/index.js:7:91:7:91)",
+            "startTime": "14983951042482",
+            "endTime": "14983970033373",
+            "elapsedTime": "18990891",
+            "asyncId": 192,
+            "triggerAsyncId": 157,
+            "io": false,
+            "userCode": false
+        },
+        "151": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983953487974",
+            "endTime": "14983954308128",
+            "elapsedTime": "820154",
+            "asyncId": 193,
+            "triggerAsyncId": 171,
+            "io": "",
+            "userCode": false
+        },
+        "152": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983953681462",
+            "endTime": "14983953794012",
+            "elapsedTime": "112550",
+            "asyncId": 194,
+            "triggerAsyncId": 171,
+            "io": "",
+            "userCode": false
+        },
+        "153": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983953990834",
+            "endTime": "14983954519949",
+            "elapsedTime": "529115",
+            "asyncId": 195,
+            "triggerAsyncId": 194,
+            "io": "",
+            "userCode": ""
+        },
+        "154": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983956580949",
+            "endTime": "14983957436655",
+            "elapsedTime": "855706",
+            "asyncId": 197,
+            "triggerAsyncId": 183,
+            "io": "",
+            "userCode": false
+        },
+        "155": {
+            "source": "(ava/node_modules/globby/index.js:126:19:126:19)",
+            "startTime": "14983956771713",
+            "endTime": "14983956873980",
+            "elapsedTime": "102267",
+            "asyncId": 198,
+            "triggerAsyncId": 183,
+            "io": "",
+            "userCode": false
+        },
+        "156": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983957036923",
+            "endTime": "14983957531142",
+            "elapsedTime": "494219",
+            "asyncId": 199,
+            "triggerAsyncId": 198,
+            "io": "",
+            "userCode": ""
+        },
+        "157": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983959276125",
+            "endTime": "14983967520116",
+            "elapsedTime": "8243991",
+            "asyncId": 201,
+            "triggerAsyncId": 191,
+            "io": "",
+            "userCode": false
+        },
+        "158": {
+            "source": "(ava/node_modules/fast-glob/out/providers/async.js:14:16:14:16)",
+            "startTime": "14983960715863",
+            "endTime": "14983967103055",
+            "elapsedTime": "6387192",
+            "asyncId": 202,
+            "triggerAsyncId": 191,
+            "io": false,
+            "userCode": false
+        },
+        "159": {
+            "source": "(ava/node_modules/fast-glob/out/index.js:11:34:11:34)",
+            "startTime": "14983961984198",
+            "endTime": "14983967300669",
+            "elapsedTime": "5316471",
+            "asyncId": 205,
+            "triggerAsyncId": 191,
+            "io": false,
+            "userCode": false
+        },
+        "160": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983962167866",
+            "endTime": "14983967405207",
+            "elapsedTime": "5237341",
+            "asyncId": 206,
+            "triggerAsyncId": 202,
+            "io": "",
+            "userCode": ""
+        },
+        "161": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983962326088",
+            "endTime": "14983967618649",
+            "elapsedTime": "5292561",
+            "asyncId": 207,
+            "triggerAsyncId": 205,
+            "io": "",
+            "userCode": false
+        },
+        "162": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983962561630",
+            "endTime": "14983968754372",
+            "elapsedTime": "6192742",
+            "asyncId": 208,
+            "triggerAsyncId": 191,
+            "io": "",
+            "userCode": false
+        },
+        "163": {
+            "source": "(ava/node_modules/fast-glob/out/providers/async.js:14:16:14:16)",
+            "startTime": "14983963151396",
+            "endTime": "14983968105053",
+            "elapsedTime": "4953657",
+            "asyncId": 209,
+            "triggerAsyncId": 191,
+            "io": false,
+            "userCode": false
+        },
+        "164": {
+            "source": "(ava/node_modules/fast-glob/out/index.js:11:34:11:34)",
+            "startTime": "14983963555321",
+            "endTime": "14983968365306",
+            "elapsedTime": "4809985",
+            "asyncId": 212,
+            "triggerAsyncId": 191,
+            "io": false,
+            "userCode": false
+        },
+        "165": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983963728256",
+            "endTime": "14983968489899",
+            "elapsedTime": "4761643",
+            "asyncId": 213,
+            "triggerAsyncId": 209,
+            "io": "",
+            "userCode": ""
+        },
+        "166": {
+            "source": "(ava/node_modules/globby/index.js:133:52:133:52)",
+            "startTime": "14983963935358",
+            "endTime": "14983968879148",
+            "elapsedTime": "4943790",
+            "asyncId": 214,
+            "triggerAsyncId": 212,
+            "io": "",
+            "userCode": false
+        },
+        "167": {
+            "source": "(ava/node_modules/globby/index.js:133:30:133:30)",
+            "startTime": "14983964117795",
+            "endTime": "14983969090343",
+            "elapsedTime": "4972548",
+            "asyncId": 215,
+            "triggerAsyncId": 191,
+            "io": false,
+            "userCode": false
+        },
+        "168": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983964358708",
+            "endTime": "14983967719784",
+            "elapsedTime": "3361076",
+            "asyncId": 216,
+            "triggerAsyncId": 201,
+            "io": "",
+            "userCode": ""
+        },
+        "169": {
+            "source": "(:0:0:0:0)",
+            "startTime": "14983964534886",
+            "endTime": "14983969221283",
+            "elapsedTime": "4686397",
+            "asyncId": 217,
+            "triggerAsyncId": 208,
+            "io": "",
+            "userCode": ""
+        }
+    }
+}

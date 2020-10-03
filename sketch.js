@@ -4,6 +4,9 @@ let promises = [];
 // Data set
 let dataset = [];
 
+// Global Array for data promises
+let g_promiseData = {};
+
 // Scale of how zoomed in we are in our visualization
 let g_scale = 1;
 // Offset
@@ -74,70 +77,23 @@ class View {
   }
 }
 
-///////////////////////////////////////////////
-//
-///////////////////////////////////////////////
-class BarChart {
-  constructor(x, y, w, h, data) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    this.data = data;
-
-    this.entities = [];
-    var entityHeight = 2;
-    // Set the height of the bar chart
-    this.h = this.data.length * entityHeight;
-
-    // Create the entities from the data
-    for (var i = 0; i < this.data.length; i++) {
-      this.w = max(this.w, this.data[i][0]);
-
-
-      var temp = new entity(this.x + this.data[i][0],
-        this.h + this.y - (i * entityHeight),
-        this.data[i][1] - this.data[i][0],
-        entityHeight);
-      this.entities.push(temp);
+/////////////////////////////////////////////////
+//                   Promise                   //
+//            Holds data for a promise         //
+/////////////////////////////////////////////////
+class promiseData{
+    constructor(source,startTime,endTime,elapsedTime,asyncID,triggerAsyncID,io,userCode) {
+        this.source = entity.s_uniqueid;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.elapsedTime = elapsedTime;
+        this.asyncID = asyncID;
+        this.triggerAsyncID = triggerAsyncID;
+        this.io = io;
+        this.userCode = userCode;
     }
-    // Extend the width of the bar chart to our last data point
-    this.w *= 2;
-  }
-
-  // startRange and endRange are
-  // the values along the x-axis for which we want to show data
-  display(startRange, endRange) {
-    // Background
-    fill(192, 128);
-    stroke(192);
-    rect(this.x, this.y, this.w/2, this.h);
-    // x-axis
-    this.xaxis(1);
-    // y-axis
-    this.yaxis(1);
-    // Render the data
-    for (var i = 0; i < this.entities.length; i++) {
-      this.entities[i].display();
-      this.entities[i].hover();
-    }
-  }
-
-  xaxis(border, maxheight) {
-    fill(255, 0, 0, 128);
-    stroke(255, 0, 0);
-    rect(this.x, this.y + this.h, this.w, border);
-  }
-
-  yaxis(border, maxlength) {
-    fill(255, 0, 0, 128);
-    stroke(255, 0, 0);
-    rect(this.x, this.y, border, this.h);
-  }
-
-  addData(_entity) {}
-
 }
+
 
 /////////////////////////////////////////////////
 //                Entity class                 //
@@ -210,13 +166,26 @@ class entity {
 entity.s_uniqueid = 0;
 
 
+// Helper function for loading data
+function loadDataSet(path){
+    print("Loading data from: "+path);
+
+  // Load a JSON Data file
+  g_promiseData = loadJSON("./results/ava-results-norm.json");
+  // Populate our data structure for the barchart
+  // with JSON Data
+  for(let [key,value] of Object.entries(g_promiseData)){
+    print(key+ " "+value);
+  }
+
+}
 
 //////////////////////////////////////////////
 //       Processing setup function          //
 //////////////////////////////////////////////
 function setup() {
   // Canvas size
-    // 
+  // The size of the canvas that will 
   createCanvas(1200, 700);
 
   // Load data
@@ -240,6 +209,8 @@ function setup() {
     length = end - start;
   }
 
+  loadDataSet("./results/ava-results-big.json"); 
+
   // Create a bar chart
   bar = new BarChart(50, 100, 200, 100, dataset);
 
@@ -252,7 +223,12 @@ function setup() {
 
 
 function mouseWheel(event) {
-  print(event.delta);
+  // Avoid updating sketch if mouse is out of
+  // bounds
+  if (mouseX > width || mouseX < 0 || mouseY > height){
+    return;
+  }
+    print(event.delta);
   print(g_scale);
   //move the square according to the vertical scroll amount
   g_scale -= (event.delta*.001);
