@@ -2,31 +2,43 @@
 //
 ///////////////////////////////////////////////
 class BarChart {
-  constructor(x, y, w, h, data) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    this.data = data;
+    constructor(x, y, w, h, data) {
+        print("Constructing BarChart");
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.data = data;
 
-    this.entities = [];
-    var entityHeight = 2;
-    // Set the height of the bar chart
-    this.h = this.data.length * entityHeight;
+        this.entities = [];
+        var entityHeight = 1;
+        var xScaleOfeachEntity = 1;
 
-    // Create the entities from the data
-    for (var i = 0; i < this.data.length; i++) {
-      this.w = max(this.w, this.data[i][0]);
 
-      var temp = new entity(this.x + this.data[i][0],
-        this.h + this.y - (i * entityHeight),
-        this.data[i][1] - this.data[i][0],
-        entityHeight);
-      this.entities.push(temp);
+        // Create the entities from the data
+        for (var i = 0; i < this.data.length; i++) {
+            // Set the width of our barchart visualization
+            this.w = max(this.w, this.data[i].startTime);
+
+            // Extra information out of our data
+            // The data that we are extracting from is a promiseData object.
+            var entityX = this.x+2//norm(this.x + data[i].startTime,0,100);
+
+            var entityY = this.h + this.y - (i*entityHeight);
+            var entityW = norm(this.data[i].endTime - this.data[i].startTime,0,20);
+            var entityH = entityHeight;
+
+            // Create a new barchart entity from our data
+            var temp = new entity(entityX,entityY,entityW,entityH,data[i]);
+                                    
+            this.entities.push(temp);
+        }
+
+        // Set the height of the bar chart
+        this.h = this.data.length * entityHeight;
+        // Extend the width of the bar chart to our last data point
+        this.w *= 2;
     }
-    // Extend the width of the bar chart to our last data point
-    this.w *= 2;
-  }
 
   // startRange and endRange are
   // the values along the x-axis for which we want to show data

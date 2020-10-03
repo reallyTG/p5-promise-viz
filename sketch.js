@@ -5,7 +5,9 @@ let promises = [];
 let dataset = [];
 
 // Global Array for data promises
-let g_promiseData = {};
+// This is the raw data loaded
+// from a JSON file
+let g_rawPromiseData = {};
 
 // Scale of how zoomed in we are in our visualization
 let g_scale = 1;
@@ -17,7 +19,7 @@ let offsetY = 0;
 // let zoomSlider, gSlider, bSlider;
 
 // Details string
-let details = '';
+let g_details = '';
 
 ///////////////////////////////////////////////
 // User interface
@@ -50,17 +52,23 @@ function UI() {
   fill(255);
 
   // Details Panel
-  text("Details:" + details, 300, height - 45);
+  text("Details:" + g_details, 300, height - 45);
 }
 
 ///////////////////////////////////////////////
 // Controls
 ///////////////////////////////////////////////
 function Controls() {
-  if (mouseIsPressed) {
-    offsetY -= pmouseY - mouseY;
-    offsetX -= pmouseX - mouseX;
-  } else {}
+    // Avoid updating sketch if mouse is out of bounds
+    if (mouseX > width || mouseX < 0 || mouseY > height){
+        return;
+    }
+    if (mouseIsPressed) {
+        offsetY -= pmouseY - mouseY;
+        offsetX -= pmouseX - mouseX;
+    } else {
+        //
+    }
 }
 
 
@@ -81,6 +89,8 @@ class View {
 //                   Promise                   //
 //            Holds data for a promise         //
 /////////////////////////////////////////////////
+
+// The data that we want to hold
 class promiseData{
     constructor(source,startTime,endTime,elapsedTime,asyncID,triggerAsyncID,io,userCode) {
         this.source = entity.s_uniqueid;
@@ -101,48 +111,46 @@ class promiseData{
 /////////////////////////////////////////////////
 class entity {
 
-  // 'x' and 'y' values should be relative to 
-  // whichever view the entity falls in
-  constructor(x, y, w, h, datum) {
-    this.id = entity.s_uniqueid;
-    // Increment the static variable after each
-    // call to the constructor to ensure we keep
-    // a count of unique values
-    entity.s_uniqueid += 1;
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    // Attributes for interation
-    this.selected = false;
+    // 'x' and 'y' values should be relative to 
+    // whichever view the entity falls in
+    constructor(x, y, w, h, datum) {
+        this.id = entity.s_uniqueid;
+        // Increment the static variable after each
+        // call to the constructor to ensure we keep
+        // a count of unique values
+        entity.s_uniqueid += 1;
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        // Attributes for interation
+        this.selected = false;
 
-    // Color of box
-    this.stroke = 255;
-    this.fill = 0;
-  }
-
-  display(scale) {
-    this.render();
-  }
-
-  hover() {
-    if (mouseX >= offsetX + (this.x * g_scale) && mouseX <= offsetX + ((this.x + this.w) * g_scale)) {
-      if (mouseY >= offsetY + (this.y * g_scale) && mouseY <= offsetY + ((this.y + this.h) * g_scale)) {
-        // Toggle selection of entity
-        if (mouseIsPressed) {
-          this.selected = !this.selected;
-        }
-        // Invert fill and stroke
-        fill(this.stroke);
-        stroke(this.fill);
-        rect((this.x), this.y, this.w, this.h);
-        details = this.id;
-
-
-      }
+        // Color of box
+        this.stroke = 255;
+        this.fill = 0;
     }
 
-  }
+    display(scale) {
+        this.render();
+    }
+
+    hover() {
+        if (mouseX >= offsetX + (this.x * g_scale) && mouseX <= offsetX + ((this.x + this.w) * g_scale)) {
+              if (mouseY >= offsetY + (this.y * g_scale) && mouseY <= offsetY + ((this.y + this.h) * g_scale)) {
+                    // Toggle selection of entity
+                    if (mouseIsPressed) {
+                        this.selected = !this.selected;
+                    }
+                    // Invert fill and stroke
+                    fill(this.stroke);
+                    stroke(this.fill);
+                    rect((this.x), this.y, this.w, this.h);
+                    g_details = this.id;
+          }
+    }
+
+}
 
   // How to render the entity
   render() {
@@ -169,15 +177,21 @@ entity.s_uniqueid = 0;
 // Helper function for loading data
 function loadDataSet(path){
     print("Loading data from: "+path);
+    // Load a JSON Data file
+    g_rawPromiseData = loadJSON(path);
+}
 
-  // Load a JSON Data file
-  g_promiseData = loadJSON("./results/ava-results-norm.json");
-  // Populate our data structure for the barchart
-  // with JSON Data
-  for(let [key,value] of Object.entries(g_promiseData)){
-    print(key+ " "+value);
-  }
 
+//////////////////////////////////////////////
+//      Processing preload function         //
+//////////////////////////////////////////////
+
+// Because loading of data happens asynchronously
+// We have to structure our project to load
+// all of the data first before populating the visualization.
+function preload(){
+    loadDataSet("./results/ava-results-norm.json"); 
+    print("Finished loading data")
 }
 
 //////////////////////////////////////////////
@@ -197,43 +211,54 @@ function setup() {
     }
   }
 
-  // Another dataset
-  var start = 0;
-  var end = start + random(100);
-  var length = end - start;
-  for (var z = 0; z < 500; z++) {
-    // Simulate a start and end time
-    dataset.push([start, end]);
-    start = start+(random(length)); // TODO: Generate airplane pattern by default
-    end = start + random(100);
-    length = end - start;
-  }
 
-  loadDataSet("./results/ava-results-big.json"); 
+    // Populate our data structure for the barchart
+    // with JSON Data
+    var elements = g_rawPromiseData.promises;
+    for(var key in elements){
+        // Push the actual element into the data set
+        var temp = new promiseData(
+                                    elements[key].source,
+                                    elements[key].startTime,
+                                    elements[key].endtTime,
+                                    elements[key].elapsedTime,
+                                    elements[key].asyncID,
+                                    elements[key].triggerAsyncID,
+                                    elements[key].io,
+                                    elements[key].userCode
+                                  );
+        dataset.push(temp);
+    }
 
-  // Create a bar chart
-  bar = new BarChart(50, 100, 200, 100, dataset);
+    // Create a bar chart
+    g_bar = new BarChart(50, 100, 200, 100, dataset);
 
-  // Performance Tuning
-  // TODO: Disable p5.disableFriendlyErrors = true; // disables FES
+    // Performance Tuning
+    // TODO: Disable p5.disableFriendlyErrors = true; // disables FES
 
-  // setup UI Widgets
-  zoomSlider = createSlider(1, 100, 1);
+    // setup UI Widgets
+    zoomSlider = createSlider(1, 100, 1);
 }
 
 
 function mouseWheel(event) {
-  // Avoid updating sketch if mouse is out of
-  // bounds
-  if (mouseX > width || mouseX < 0 || mouseY > height){
-    return;
-  }
-    print(event.delta);
-  print(g_scale);
-  //move the square according to the vertical scroll amount
-  g_scale -= (event.delta*.001);
-  //uncomment to block page scrolling
-  //return false;
+    // Avoid updating sketch if mouse is out of bounds
+    if (mouseX > width || mouseX < 0 || mouseY > height){
+        return;
+    }
+
+    //move the square according to the vertical scroll amount
+    // TODO:    This scale is completely arbitrary as of now
+    //          Ideally you could have an infinite zoom in either 
+    //          direction.
+    if(g_scale >= 0.01){
+        g_scale -= (event.delta*.0005);
+    }
+    else{
+        g_scale = 0.01;
+    }
+    //uncomment to block page scrolling
+    //return false;
 }
 
 //////////////////////////////////////////////
@@ -245,15 +270,8 @@ function draw() {
   // Allow pan and zoom of visual components
   translate(offsetX, offsetY);
   scale(g_scale);
-
-  //
-  for (var i = 0; i < promises.length; i++) {
-    //promises[i].display(scale);
-    //promises[i].hover(scale);
-  }
-
-  bar.display(0, 500);
-
+   
+    g_bar.display(0, 500);
 
   // Handle user interaction
   // Resetting the matrix removes any further panning and
