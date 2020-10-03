@@ -5,13 +5,13 @@ let promises = [];
 let dataset = [];
 
 // Scale of how zoomed in we are in our visualization
-let thescale = 1;
+let g_scale = 1;
 // Offset
 let offsetX = 0;
 let offsetY = 0;
 
 // UI Widgets
-let zoomSlider, gSlider, bSlider;
+// let zoomSlider, gSlider, bSlider;
 
 // Details string
 let details = '';
@@ -33,9 +33,7 @@ function UI() {
   text("FPS:" + int(rate), 2, height - 45);
 
   // Zoom
-  text("zoom", 2, height - 20);
-  zoomSlider.position(40, height - 40);
-  //thescale = zoomSlider.value();
+  text("zoom scale: "+g_scale, 2, height - 20);
 
   // Offset
   fill(255);
@@ -113,7 +111,7 @@ class BarChart {
     // Background
     fill(192, 128);
     stroke(192);
-    rect(this.x, this.y, this.w, this.h);
+    rect(this.x, this.y, this.w/2, this.h);
     // x-axis
     this.xaxis(1);
     // y-axis
@@ -172,8 +170,8 @@ class entity {
   }
 
   hover() {
-    if (mouseX >= offsetX + (this.x * thescale) && mouseX <= offsetX + ((this.x + this.w) * thescale)) {
-      if (mouseY >= offsetY + (this.y * thescale) && mouseY <= offsetY + ((this.y + this.h) * thescale)) {
+    if (mouseX >= offsetX + (this.x * g_scale) && mouseX <= offsetX + ((this.x + this.w) * g_scale)) {
+      if (mouseY >= offsetY + (this.y * g_scale) && mouseY <= offsetY + ((this.y + this.h) * g_scale)) {
         // Toggle selection of entity
         if (mouseIsPressed) {
           this.selected = !this.selected;
@@ -218,7 +216,8 @@ entity.s_uniqueid = 0;
 //////////////////////////////////////////////
 function setup() {
   // Canvas size
-  createCanvas(700, 700);
+    // 
+  createCanvas(1200, 700);
 
   // Load data
   var gridSize = 280;
@@ -254,9 +253,9 @@ function setup() {
 
 function mouseWheel(event) {
   print(event.delta);
-  print(thescale);
+  print(g_scale);
   //move the square according to the vertical scroll amount
-  thescale -= (event.delta*.001);
+  g_scale -= (event.delta*.001);
   //uncomment to block page scrolling
   //return false;
 }
@@ -269,7 +268,7 @@ function draw() {
 
   // Allow pan and zoom of visual components
   translate(offsetX, offsetY);
-  scale(thescale);
+  scale(g_scale);
 
   //
   for (var i = 0; i < promises.length; i++) {
