@@ -11,7 +11,7 @@ class BarChart {
         this.data = data;
 
         this.entities = [];
-        var entityHeight = 1;
+        var entityHeight = 4;
         var xScaleOfeachEntity = 1;
 
         // Iterate through data and find the min and max
@@ -20,31 +20,56 @@ class BarChart {
         // gaureentee that data is recorded in order.
         var minRange = 9999999999999999999;
         var maxRange = -minRange;
+        var minElapsedTime =0;
+        var maxElapsedTime =0;
         for (var i = 0; i < this.data.length; i++) {
             // Update minRange
              minRange = min(this.data[i].startTime,minRange)
             // Update maxRange
              maxRange = max(this.data[i].endTime,maxRange)
+            // Update minElapsedTime
+            minElapsedTime = min(this.data[i].elapsedTime,minElapsedTime);
+            // Update maxElapsedTime
+            maxElapsedTime = max(this.data[i].elapsedTime,maxElapsedTime);
         }
+
+        // Convert to seconds from nanoseconds
+        var nanosecondsToSeconds = 1000000000;
+        var microsecondsToSeconds = 1000000;
+        var units = microsecondsToSeconds;        
+        var firstEntry = minRange;
+        var lastEntry = maxRange;
+
+        minRange = minRange / units;
+        maxRange = maxRange / units;
+
+        maxRange -= minRange;
+        minRange = 0;
+        // total duration of program
+        var range = maxRange - minRange;       
+ 
+        print("minRange: "+minRange);
+        print("maxRange: "+maxRange);
+        print("range: "+range);
 
         // Create the entities from the data
         for (var i = 0; i < this.data.length; i++) {
             // Set the width of our barchart visualization
             this.w = max(this.w, this.data[i].startTime);
-
             // Extra information out of our data
             // The data that we are extracting from is a promiseData object.
-            var entityX = this.x + map(this.data[i].startTime,minRange,maxRange,0,10);
-            print("entityX:"+entityX)
-
-            var entityY = this.h + this.y - (i*entityHeight);
-            var entityW = 1;
-            print("entityW:"+map(this.data[i].elapsedTime,minRange,maxRange,0,10));
+            var entityX = this.x + map(this.data[i].startTime,firstEntry,lastEntry,0,range);
+            var entityY = this.y - (i*entityHeight) + this.data.length*entityHeight-entityHeight;
+            var entityW = map(this.data[i].elapsedTime,minElapsedTime,maxElapsedTime,0,range);
             var entityH = entityHeight;
 
             // Create a new barchart entity from our data
             var temp = new entity(entityX,entityY,entityW,entityH,data[i]);
-                                    
+            if(i<2){
+                print("entityX:"+entityX)
+                print("entityW:"+entityW)
+            }
+               
             this.entities.push(temp);
         }
 

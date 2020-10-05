@@ -188,6 +188,7 @@ function loadDataSet(path){
 // all of the data first before populating the visualization.
 function preload(){
     loadDataSet("./results/ava-results-norm.json"); 
+    //loadDataSet("./results/ava-results-big.json"); 
     print("Finished loading data")
 }
 
