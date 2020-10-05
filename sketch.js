@@ -1,6 +1,3 @@
-// Global array for our promises
-let promises = [];
-
 // Data set
 let dataset = [];
 
@@ -198,19 +195,9 @@ function preload(){
 //       Processing setup function          //
 //////////////////////////////////////////////
 function setup() {
-  // Canvas size
-  // The size of the canvas that will 
-  createCanvas(1200, 700);
-
-  // Load data
-  var gridSize = 280;
-  for (var x = 0; x < gridSize; x++) {
-    for (var y = 0; y < gridSize; y++) {
-      newPromise = new entity(x * 8, y * 8, 6, 6, "Some collection of data");
-      promises.push(newPromise);
-    }
-  }
-
+    // Canvas size
+    // The size of the canvas that will 
+    createCanvas(1200, 700);
 
     // Populate our data structure for the barchart
     // with JSON Data
@@ -220,7 +207,7 @@ function setup() {
         var temp = new promiseData(
                                     elements[key].source,
                                     elements[key].startTime,
-                                    elements[key].endtTime,
+                                    elements[key].endTime,
                                     elements[key].elapsedTime,
                                     elements[key].asyncID,
                                     elements[key].triggerAsyncID,

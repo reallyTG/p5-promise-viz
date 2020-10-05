@@ -14,6 +14,18 @@ class BarChart {
         var entityHeight = 1;
         var xScaleOfeachEntity = 1;
 
+        // Iterate through data and find the min and max
+        // values of start time.
+        // I iterate through each value since there is no
+        // gaureentee that data is recorded in order.
+        var minRange = 9999999999999999999;
+        var maxRange = -minRange;
+        for (var i = 0; i < this.data.length; i++) {
+            // Update minRange
+             minRange = min(this.data[i].startTime,minRange)
+            // Update maxRange
+             maxRange = max(this.data[i].endTime,maxRange)
+        }
 
         // Create the entities from the data
         for (var i = 0; i < this.data.length; i++) {
@@ -22,11 +34,12 @@ class BarChart {
 
             // Extra information out of our data
             // The data that we are extracting from is a promiseData object.
-            var entityX = this.x + (data[i].startTime/ 100000000000);
-            print(data[i].startTime / 1000000000000)
+            var entityX = this.x + map(this.data[i].startTime,minRange,maxRange,0,10);
+            print("entityX:"+entityX)
 
             var entityY = this.h + this.y - (i*entityHeight);
-            var entityW = (this.data[i].elapsedTime/100000000);
+            var entityW = 1;
+            print("entityW:"+map(this.data[i].elapsedTime,minRange,maxRange,0,10));
             var entityH = entityHeight;
 
             // Create a new barchart entity from our data
