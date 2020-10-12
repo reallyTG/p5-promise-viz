@@ -10,6 +10,11 @@ let offsetY = 0;
 // Details string
 let g_details = '';
 
+function setUIOffset(x, y){
+    offsetX = x;
+    offsetY = y;
+}
+
 ///////////////////////////////////////////////
 // User interface
 // User interface will stay locked to screen
@@ -58,6 +63,17 @@ function Controls() {
     } else {
         //
     }
+
+
+}
+
+function keyPressed() {
+    // Rest the view
+    if (keyCode === 82) {
+        offsetX=0;
+        offsetY=0;
+        g_scale=1;
+    }
 }
 
 function mouseWheel(event) {
@@ -65,21 +81,26 @@ function mouseWheel(event) {
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
-
-    //move the square according to the vertical scroll amount
-    // TODO:    This scale is completely arbitrary as of now
-    //          Ideally you could have an infinite zoom in either 
-    //          direction.
-    if(g_scale >= 0.01){
-        g_scale -= (event.delta*.0005);
-    }
-    else{
-        g_scale = 0.01;
-    }
-    //uncomment to block page scrolling
-    //return false;
+/*
+    if (event.deltaY > 0)
+        g_scale *= .95;
+    else
+        g_scale *= 1.05;
+*/
 }
 
+window.addEventListener("wheel", function(e) {
+    // Avoid updating sketch if mouse is out of bounds
+    if (mouseX > width || mouseX < 0 || mouseY > height){
+        return;
+    }
+
+    if (e.deltaY > 0)
+        g_scale *= .95;
+    else
+        g_scale *= 1.1;
+
+  });
 
 ///////////////////////////////////////////////
 //

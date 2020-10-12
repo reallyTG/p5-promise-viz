@@ -90,26 +90,30 @@ class BarChart {
     this.xaxis(1);
     // y-axis
     this.yaxis(1);
-    // Render the data
+    // Render all of the entities in our collection
     for (var i = 0; i < this.entities.length; i++) {
       this.entities[i].display();
       this.entities[i].hover();
     }
   }
 
-  // Draw the x-axis
+  // Helper function to draw the x-axis
   xaxis(border, maxheight) {
     fill(255, 0, 0, 128);
     stroke(255, 0, 0);
     rect(this.x, this.y + this.h, this.w, border);
   }
 
-  // Draw the y-axis
+  // Helper function to draw the y-axis
   yaxis(border, maxlength) {
     fill(255, 0, 0, 128);
     stroke(255, 0, 0);
     rect(this.x, this.y, border, this.h);
   }
+
+  getOriginYOffsetInPixels(){
+    return this.entities.length*4; // TODO Replace entity height
+  }  
 
   addData(_entity) {}
 

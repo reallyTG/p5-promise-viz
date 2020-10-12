@@ -1,3 +1,7 @@
+// TODO:
+// - Zoom to cursor
+// - Show information in Dialog
+// - Show source code
 // Data set
 let dataset = [];
 
@@ -25,7 +29,8 @@ function loadDataSet(path){
 // all of the data first before populating the visualization.
 function preload(){
     loadDataSet("./results/ava-results-norm.json"); 
-    //loadDataSet("./results/ava-results-big.json"); 
+    //loadDataSet("./results/ava-results-big.json");
+    //loadDataSet("./results/apex-charts-results-1602517085490.json"); 
     print("Finished loading data")
 }
 
@@ -35,7 +40,7 @@ function preload(){
 function setup() {
     // Canvas size
     // The size of the canvas that will 
-    createCanvas(1200, 700);
+    createCanvas(1600, 900);
 
     // Populate our data structure for the barchart
     // with JSON Data
@@ -60,6 +65,9 @@ function setup() {
 
     // Performance Tuning
     // TODO: Disable p5.disableFriendlyErrors = true; // disables FES
+    //
+    
+    setUIOffset(offsetX, offsetY);
 
     // setup UI Widgets
     zoomSlider = createSlider(1, 100, 1);
@@ -72,10 +80,16 @@ function setup() {
 function draw() {
   background(220);
 
+  mx = mouseX;
+  my = mouseY;
+  //popMatrix();
   // Allow pan and zoom of visual components
-  translate(offsetX, offsetY);
+  push();
+  translate(mx,my);
   scale(g_scale);
-   
+  translate(-mx,-my);
+  translate(offsetX, offsetY);
+  
   g_bar.display(0, 500);
 
   // Handle user interaction

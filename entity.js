@@ -29,17 +29,19 @@ class entity {
     }
 
     hover() {
-        if (mouseX >= offsetX + (this.x * g_scale) && mouseX <= offsetX + ((this.x + this.w) * g_scale)) {
-              if (mouseY >= offsetY + (this.y * g_scale) && mouseY <= offsetY + ((this.y + this.h) * g_scale)) {
-                    // Toggle selection of entity
-                    if (mouseIsPressed) {
-                        this.selected = !this.selected;
-                    }
+        if (mouseX >= offsetX + (this.x ) && mouseX <= offsetX + ((this.x + this.w) )) {
+              if (mouseY >= offsetY + (this.y ) && mouseY <= offsetY + ((this.y + this.h) )) {
                     // Invert fill and stroke
                     fill(this.stroke);
                     stroke(this.fill);
                     rect((this.x), this.y, this.w, this.h);
                     g_details = this.id;
+                    // Toggle selection of entity
+                    if (mouseIsPressed && this.selected == false) {
+                        this.selected = true;
+                    }else if(mouseIsPressed && this.selected == true){
+                        this.selected = false;
+                    }
           }
     }
 
