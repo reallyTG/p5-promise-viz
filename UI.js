@@ -20,6 +20,8 @@ let mouseBeforeDownX=0;
 let mouseBeforeDownY=0;
 
 
+
+
 function menubar(){
     // Menubar
     // X,Y position -- Offset
@@ -47,44 +49,56 @@ function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){
         text(g_details, x+2, y+textSize());
 }
 
-function queriesPanel(x,y,detailPanelWidth,detailPanelHeight){
+function queriesPanel(x,y,panelWidth,panelHeight){
     // Queries Panel
     fill(0,0,128,125);
-    rect(x, y-textSize(), detailPanelWidth, textSize());
+    rect(x, y-textSize(), panelWidth, textSize());
     fill(255,255,255,255);
     text("Queries:", x+2, y-padding/2);
     fill(0,125);
-    rect(x, y, detailPanelWidth, detailPanelHeight);
+    rect(x, y, panelWidth, panelHeight);
+    /*
     // Buttons
     fill(0);
-    rect(x,y,detailPanelWidth,textSize());
+    rect(x,y,panelWidth,textSize());
     fill(255); 
     text("Save Selection", x+2, y+textSize());
     // Buttons
     fill(0);
-    rect(x,y+textSize(),detailPanelWidth,textSize());
+    rect(x,y+textSize(),panelWidth,textSize());
     fill(255);
     text("Hide Selected", x+2, y+textSize()*2);
     // Buttons
     fill(0);
-    rect(x,y+textSize()*2,detailPanelWidth,textSize());
+    rect(x,y+textSize()*2,panelWidth,textSize());
     fill(255);
-    text("Hide Non-Selected", x+2, y+textSize()*3);         
+    text("Hide Non-Selected", x+2, y+textSize()*3);  
+    */
+   var callSelectAll = function (){g_bar.selectState(1)};
+   var selectState = new Button("Select All",x,y+textSize()*2,panelWidth,textSize(),callSelectAll);
+   selectState.render();
+
+    // Buttons
+    var callSelectIO = function (){g_bar.selectIO(1)};
+    var selectIO = new Button("Select All IO",x,y+textSize()*3,panelWidth,textSize(),callSelectIO);
+    selectIO.render();
+
+    var callSelectUserCode = function (){g_bar.selectUserCode(1)};
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*4,panelWidth,textSize(),callSelectUserCode);
+    selectUserCode.render();
+
+    /*
     // Buttons
     fill(0);
-    rect(x,y+textSize()*3,detailPanelWidth,textSize());
-    fill(255);
-    text("Select all io", x+2, y+textSize()*4);
-    // Buttons
-    fill(0);
-    rect(x,y+textSize()*4,detailPanelWidth,textSize());
+    rect(x,y+textSize()*4,panelWidth,textSize());
     fill(255);
     text("Select all userCode", x+2, y+textSize()*5);  
     // Buttons
     fill(0);
-    rect(x,y+textSize()*5,detailPanelWidth,textSize());
+    rect(x,y+textSize()*5,panelWidth,textSize());
     fill(255);
     text("Invert Selection vs Select Range vs Unselect Range", x+2, y+textSize()*6);       
+    */
 }
 
 ///////////////////////////////////////////////

@@ -111,6 +111,38 @@ class BarChart {
       }
   }
 
+
+  // Helper function which allows the selection or deselection
+  // of a series of nodes.
+  // Selects all IO nodes
+  selectState(selectedState){
+    for (var i = 0; i < this.entities.length; i++) {
+          this.entities[i].selected = selectedState;
+    }
+  }
+
+  // Helper function which allows the selection or deselection
+  // of a series of nodes.
+  // Selects all IO nodes
+  selectIO(selectedState){
+    for (var i = 0; i < this.entities.length; i++) {
+        if(this.entities[i].datum.io){
+            this.entities[i].selected = selectedState;
+        }
+    }
+  }
+
+  // Helper function which allows the selection or deselection
+  // of a series of nodes.
+  // Selects all IO nodes
+  selectUserCode(selectedState){
+    for (var i = 0; i < this.entities.length; i++) {
+        if(this.entities[i].datum.userCode){
+            this.entities[i].selected = selectedState;
+        }
+    }
+  }
+
   // Helper function to draw the x-axis
   xaxis(border, maxheight) {
     fill(255, 0, 0, 128);
