@@ -4,8 +4,7 @@ let g_scale = 1;
 let offsetX = 0;
 let offsetY = 0;
 
-// UI Widgets
-// let zoomSlider, gSlider, bSlider;
+let padding = 8;  
 
 // Details string
 let g_details = '';
@@ -20,38 +19,85 @@ let mouseIsCurrentlyDown = 0;
 let mouseBeforeDownX=0;
 let mouseBeforeDownY=0;
 
+
+function menubar(){
+    // Menubar
+    // X,Y position -- Offset
+    fill(0);
+    rect(0, 0 , width, textSize()+padding);
+    fill(255);
+    stroke(192);
+    text("Pan Offset: (" + offsetX + "," + offsetY + ")", 160, textSize());
+    // Render framerate
+    var rate = frameRate();
+    text("FPS:" + int(rate), 2, textSize());
+    // Zoom
+    text("zoom scale: "+g_scale, 500, textSize());
+}
+
+function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){
+        // Details Panel
+        fill(0,0,128,125);
+        rect(x, y-textSize(), detailPanelWidth, textSize());
+        fill(255,255,255,255);
+        text("Details:", x+2, y-padding/2);
+        fill(0,125);
+        rect(x, y, detailPanelWidth, detailPanelHeight);
+        fill(255);
+        text(g_details, x+2, y+textSize());
+}
+
+function queriesPanel(x,y,detailPanelWidth,detailPanelHeight){
+    // Queries Panel
+    fill(0,0,128,125);
+    rect(x, y-textSize(), detailPanelWidth, textSize());
+    fill(255,255,255,255);
+    text("Queries:", x+2, y-padding/2);
+    fill(0,125);
+    rect(x, y, detailPanelWidth, detailPanelHeight);
+    // Buttons
+    fill(0);
+    rect(x,y,detailPanelWidth,textSize());
+    fill(255); 
+    text("Save Selection", x+2, y+textSize());
+    // Buttons
+    fill(0);
+    rect(x,y+textSize(),detailPanelWidth,textSize());
+    fill(255);
+    text("Hide Selected", x+2, y+textSize()*2);
+    // Buttons
+    fill(0);
+    rect(x,y+textSize()*2,detailPanelWidth,textSize());
+    fill(255);
+    text("Hide Non-Selected", x+2, y+textSize()*3);         
+    // Buttons
+    fill(0);
+    rect(x,y+textSize()*3,detailPanelWidth,textSize());
+    fill(255);
+    text("Select all io", x+2, y+textSize()*4);
+    // Buttons
+    fill(0);
+    rect(x,y+textSize()*4,detailPanelWidth,textSize());
+    fill(255);
+    text("Select all userCode", x+2, y+textSize()*5);    
+}
+
 ///////////////////////////////////////////////
 // User interface
 // User interface will stay locked to screen
 ///////////////////////////////////////////////
 function UI() {
-  // UI Box
-  fill(0);
-  rect(0, height - 60, 200, 60);
+    // Configuration of UI
+    textSize(28);
 
-  // Render framerate
-  textSize(14);
-  fill(255);
-  stroke(192);
-  var rate = frameRate();
-  text("FPS:" + int(rate), 2, height - 45);
 
-  // Zoom
-  text("zoom scale: "+g_scale, 2, height - 20);
+    menubar();
 
-  // Offset
-  fill(255);
-  stroke(0);
-  text("Pan Offset: (" + offsetX + "," + offsetY + ")", 60, height - 40);
+    var detailsHeight = 320; // Set height of details panel
+    detailsPanel(0,height - detailsHeight,width/2,detailsHeight);
 
-  // Details Panel
-  fill(0);
-  rect(300, height - 60, 200, 60);
-  textSize(12);
-  fill(255);
-
-  // Details Panel
-  text("Details:" + g_details, 300, height - 45);
+    var queriesHeight = 320; // Set height of details panel
+    queriesPanel(width/2,height - detailsHeight,width/2,detailsHeight);
 }
 
 ///////////////////////////////////////////////

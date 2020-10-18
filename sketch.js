@@ -40,7 +40,7 @@ function preload(){
 function setup() {
     // Canvas size
     // The size of the canvas that will 
-    createCanvas(1600, 900);
+    createCanvas(1600, 1200);
 
     // Populate our data structure for the barchart
     // with JSON Data
@@ -68,9 +68,6 @@ function setup() {
     //
     
     setUIOffset(offsetX, offsetY);
-
-    // setup UI Widgets
-    zoomSlider = createSlider(1, 100, 1);
 }
 
 
