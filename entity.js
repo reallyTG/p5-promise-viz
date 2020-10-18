@@ -30,8 +30,8 @@ class entity {
     }
 
     hover() {
-        if (mouseX >= offsetX + (this.x ) && mouseX <= offsetX + ((this.x + this.w) )) {
-              if (mouseY >= offsetY + (this.y ) && mouseY <= offsetY + ((this.y + this.h) )) {
+        if (mouseX >= offsetX + (this.x*g_scale ) && mouseX <= offsetX + ((this.x + this.w)*g_scale )) {
+              if (mouseY >= offsetY + (this.y*g_scale ) && mouseY <= offsetY + ((this.y + this.h)*g_scale )) {
                     // Invert fill and stroke
                     fill(this.stroke);
                     stroke(this.fill);
@@ -44,27 +44,28 @@ class entity {
                     }else if(mouseIsPressed && this.selected == true){
                         this.selected = false;
                     }
+                }
           }
-    }
 
-}
+    } 
+
 
   // How to render the entity
-  render() {
-    if (this.selected) {
-      strokeWeight(2);
-      // Invert fill and stroke
-      fill(this.stroke);
-      stroke(this.fill);
+    render() {
+        if (this.selected) {
+          strokeWeight(2);
+          // Invert fill and stroke
+          fill(this.stroke);
+          stroke(this.fill);
+          rect((this.x), this.y, this.w, this.h);
+        } else {
+          fill(this.fill);
+          stroke(this.stroke);
+          noStroke();
+        }
+      // Render the rectangle
       rect((this.x), this.y, this.w, this.h);
-    } else {
-      fill(this.fill);
-      stroke(this.stroke);
-      noStroke();
     }
-    
-    rect((this.x), this.y, this.w, this.h);
-  }
 }
 // Static Variables for the entity class
 // Prefix of 's_' indicates static

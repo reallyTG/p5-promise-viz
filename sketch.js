@@ -82,9 +82,8 @@ function draw() {
     translate(offsetX, offsetY);
     //popMatrix();
     // Allow pan and zoom of visual components
-    translate(-mx*g_scale,-my*g_scale);
+    //translate(-mx*g_scale,-my*g_scale);
     scale(g_scale);
-    translate(mx,my);
    
     g_bar.display(0, 500);
     // Handle user interaction

@@ -79,7 +79,12 @@ function queriesPanel(x,y,detailPanelWidth,detailPanelHeight){
     fill(0);
     rect(x,y+textSize()*4,detailPanelWidth,textSize());
     fill(255);
-    text("Select all userCode", x+2, y+textSize()*5);    
+    text("Select all userCode", x+2, y+textSize()*5);  
+    // Buttons
+    fill(0);
+    rect(x,y+textSize()*5,detailPanelWidth,textSize());
+    fill(255);
+    text("Invert Selection vs Select Range vs Unselect Range", x+2, y+textSize()*6);       
 }
 
 ///////////////////////////////////////////////
@@ -90,12 +95,14 @@ function UI() {
     // Configuration of UI
     textSize(28);
 
-
+    // Render the menubar
     menubar();
 
+    // Render the details pane
     var detailsHeight = 320; // Set height of details panel
     detailsPanel(0,height - detailsHeight,width/2,detailsHeight);
 
+    // Render the queries pane
     var queriesHeight = 320; // Set height of details panel
     queriesPanel(width/2,height - detailsHeight,width/2,detailsHeight);
 }
@@ -109,25 +116,36 @@ function Controls() {
         return;
     }
 
+    // Handle Panning
     if (mouseIsPressed && mouseButton === CENTER) {
         offsetY -= pmouseY - mouseY;
         offsetX -= pmouseX - mouseX;
     }
 
+   // Draw a selection region
+   if(mouseIsCurrentlyDown){
+    stroke(0);
+    fill(128,128,128,128);
+    rect(mouseBeforeDownX,mouseBeforeDownY,mouseX-mouseBeforeDownX,mouseY-mouseBeforeDownY);
+}
+
+    // Handle ranged selection
     if(mouseIsPressed && mouseButton === LEFT){ 
         mouseIsCurrentlyDown = 1
-    }else {
+    }else  {
         mouseIsCurrentlyDown = 0;
         mouseBeforeDownX=mouseX;
         mouseBeforeDownY=mouseY;
    }
+}
 
-   // Draw a selection region
-   if(mouseIsCurrentlyDown){
-        stroke(0);
-        fill(128,128,128,128);
-        rect(mouseBeforeDownX,mouseBeforeDownY,mouseX-mouseBeforeDownX,mouseY-mouseBeforeDownY);
-   }
+function mouseReleased(){
+    if(mouseIsCurrentlyDown){
+        startY = min(mouseBeforeDownY,mouseY);
+        endY = max(mouseBeforeDownY,mouseY);
+
+        g_bar.inverteSelectedRange(startY,endY);
+    }
 }
 
 function mouseWheel(event) {

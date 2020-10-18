@@ -97,6 +97,20 @@ class BarChart {
     }
   }
 
+  // Helper function which allows the selection or deselection
+  // of a series of nodes.
+  // Note, only the y-axis is used
+  inverteSelectedRange(startY, endY){
+      for (var i = 0; i < this.entities.length; i++) {
+          if(startY < offsetY +(this.entities[i].y*g_scale) && 
+            endY > offsetY + (this.entities[i].y*g_scale+this.entities[i].h*g_scale)){
+            // Currently inverts the selected range
+            // TODO: Will likely want more controls over this.
+              this.entities[i].selected = !this.entities[i].selected;
+          }
+      }
+  }
+
   // Helper function to draw the x-axis
   xaxis(border, maxheight) {
     fill(255, 0, 0, 128);
