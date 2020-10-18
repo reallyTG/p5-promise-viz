@@ -9,18 +9,21 @@ let padding = 8;
 // Details string
 let g_details = '';
 
-function setUIOffset(x, y){
-    offsetX = x;
-    offsetY = y;
-}
+// Query String
+// Keeps track of what happened in latest action.
+let g_querySummary = '';
 
 
+// Used in range selection
 let mouseIsCurrentlyDown = 0;
 let mouseBeforeDownX=0;
 let mouseBeforeDownY=0;
 
 
-
+function setUIOffset(x, y){
+    offsetX = x;
+    offsetY = y;
+}
 
 function menubar(){
     // Menubar
@@ -118,7 +121,11 @@ function UI() {
 
     // Render the queries pane
     var queriesHeight = 320; // Set height of details panel
-    queriesPanel(width/2,height - detailsHeight,width/2,detailsHeight);
+    queriesPanel(width/2,height - queriesHeight,width/2,queriesHeight);
+
+    stroke(0);
+    fill(0);
+    text("last action:"+g_querySummary,width/2+2,height-4);
 }
 
 ///////////////////////////////////////////////

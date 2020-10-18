@@ -8,27 +8,24 @@
     <script src="UI.js"></script>
     <script src="sketch.js"></script>
 
+    <!-- Third party libraries -->
+    <script src="./thirdparty/prism.js"></script>
+    <link href="./thirdparty/prism.css" rel="stylesheet" />
 
 		<script>
-      function startRead()
-      {
+      function startRead(){
         // obtain input element through DOM 
-        
         var file = document.getElementById('file').files[0];
-        if(file)
-        {
+        if(file){
           getAsText(file);
         }
       }
       
-      function getAsText(readFile)
-      {
+      function getAsText(readFile){
         var reader;
-        try
-        {
+        try{
           reader = new FileReader();
-        }catch(e)
-        {
+        }catch(e){
           document.getElementById('output').innerHTML = 
             "Error: seems File API is not supported on your browser";
           return;
@@ -43,14 +40,11 @@
         reader.onerror = errorHandler;
       }
       
-      function updateProgress(evt)
-      {
-        if (evt.lengthComputable)
-        {
+      function updateProgress(evt){
+        if (evt.lengthComputable){
           // evt.loaded and evt.total are ProgressEvent properties
           var loaded = (evt.loaded / evt.total);
-          if (loaded < 1)
-          {
+          if (loaded < 1){
             // Increase the prog bar length
             // style.width = (loaded * 200) + "px";
             document.getElementById("bar").style.width = (loaded*100) + "%";
@@ -58,23 +52,23 @@
         }
       }
       
-      function loaded(evt)
-      {
+      function loaded(evt){
         // Obtain the read file data    
         var fileString = evt.target.result;
         document.getElementById('output').innerHTML = fileString;
         document.getElementById("bar").style.width = 100 + "%";
+        // Calling this function will force a highlight of
+        // the file.
+        Prism.highlightAll();
       }
       
-      function errorHandler(evt)
-      {
-        if(evt.target.error.code == evt.target.error.NOT_READABLE_ERR)
-        {
+      function errorHandler(evt){
+        if(evt.target.error.code == evt.target.error.NOT_READABLE_ERR){
           // The file could not be read
           document.getElementById('output').innerHTML = "Error reading file..."
         }
       }
-          </script>
+      </script>
 
 
   </head>
@@ -123,7 +117,9 @@
             <li>Ranged Selection by clicking and dragging and releasing</li>
             <li>Export or filter selection by View</li>
             <li>Select different color schemes</li>
-
+            <li>Ignore events(i.e. mouse scrolling) if it doesn't happen over canvas</li>
+            <li>Need to frame view to fit selection</li>
+            <li>Need ability to filter or collapse nodes</li>
           </ul>
         </div>
       </td>
@@ -141,11 +137,12 @@
 		<div id="bar" style="background-color:#45F;width:0px;height:20px;"></div>
 		</div>
 		<h3>File contents:</h3>
-		<pre>
-			<code id="output">
-			</code>
-		</pre>
+      <pre data-line="1-20">
+        <code id="output" class="language-javascript">// .js code will show up here, correct lines not yet highlighted</code>
+      </pre>
+
   </p>
+
 
 
 

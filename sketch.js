@@ -28,8 +28,8 @@ function loadDataSet(path){
 // We have to structure our project to load
 // all of the data first before populating the visualization.
 function preload(){
-    loadDataSet("./results/ava-results-norm.json"); 
-    //loadDataSet("./results/ava-results-big.json");
+    //loadDataSet("./results/ava-results-norm.json"); 
+    loadDataSet("./results/ava-results-big.json");
     //loadDataSet("./results/apex-charts-results-1602517085490.json"); 
     print("Finished loading data")
 }

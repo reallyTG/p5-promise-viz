@@ -101,14 +101,19 @@ class BarChart {
   // of a series of nodes.
   // Note, only the y-axis is used
   inverteSelectedRange(startY, endY){
+      var itemsSelected=0;
+
       for (var i = 0; i < this.entities.length; i++) {
           if(startY < offsetY +(this.entities[i].y*g_scale) && 
             endY > offsetY + (this.entities[i].y*g_scale+this.entities[i].h*g_scale)){
             // Currently inverts the selected range
             // TODO: Will likely want more controls over this.
               this.entities[i].selected = !this.entities[i].selected;
+              itemsSelected++;
           }
       }
+
+      g_querySummary = itemsSelected;
   }
 
 
@@ -116,31 +121,45 @@ class BarChart {
   // of a series of nodes.
   // Selects all IO nodes
   selectState(selectedState){
+    var itemsSelected=0;
+
     for (var i = 0; i < this.entities.length; i++) {
           this.entities[i].selected = selectedState;
+          itemsSelected++;
     }
+
+    g_querySummary = itemsSelected;
   }
 
   // Helper function which allows the selection or deselection
   // of a series of nodes.
   // Selects all IO nodes
   selectIO(selectedState){
+    var itemsSelected=0;
     for (var i = 0; i < this.entities.length; i++) {
         if(this.entities[i].datum.io){
             this.entities[i].selected = selectedState;
+            itemsSelected++;
         }
     }
+        
+    g_querySummary = itemsSelected;
   }
 
   // Helper function which allows the selection or deselection
   // of a series of nodes.
   // Selects all IO nodes
   selectUserCode(selectedState){
+    var itemsSelected=0;
+
     for (var i = 0; i < this.entities.length; i++) {
         if(this.entities[i].datum.userCode){
             this.entities[i].selected = selectedState;
+            itemsSelected++;
         }
     }
+        
+    g_querySummary = itemsSelected;
   }
 
   // Helper function to draw the x-axis
