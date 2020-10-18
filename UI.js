@@ -15,6 +15,11 @@ function setUIOffset(x, y){
     offsetY = y;
 }
 
+
+let mouseIsCurrentlyDown = 0;
+let mouseBeforeDownX=0;
+let mouseBeforeDownY=0;
+
 ///////////////////////////////////////////////
 // User interface
 // User interface will stay locked to screen
@@ -57,23 +62,26 @@ function Controls() {
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
-    if (mouseIsPressed) {
+
+    if (mouseIsPressed && mouseButton === CENTER) {
         offsetY -= pmouseY - mouseY;
         offsetX -= pmouseX - mouseX;
-    } else {
-        //
     }
 
+    if(mouseIsPressed && mouseButton === LEFT){ 
+        mouseIsCurrentlyDown = 1
+    }else {
+        mouseIsCurrentlyDown = 0;
+        mouseBeforeDownX=mouseX;
+        mouseBeforeDownY=mouseY;
+   }
 
-}
-
-function keyPressed() {
-    // Rest the view
-    if (keyCode === 82) {
-        offsetX=0;
-        offsetY=0;
-        g_scale=1;
-    }
+   // Draw a selection region
+   if(mouseIsCurrentlyDown){
+        stroke(0);
+        fill(128,128,128,128);
+        rect(mouseBeforeDownX,mouseBeforeDownY,mouseX-mouseBeforeDownX,mouseY-mouseBeforeDownY);
+   }
 }
 
 function mouseWheel(event) {
@@ -95,10 +103,14 @@ window.addEventListener("wheel", function(e) {
         return;
     }
 
-    if (e.deltaY > 0)
-        g_scale *= .95;
-    else
-        g_scale *= 1.1;
+    if (!mouseIsPressed) {
+        if (e.deltaY > 0){
+            g_scale *= .95;
+        }
+        else{
+            g_scale *= 1.1;
+        }
+    }
 
   });
 

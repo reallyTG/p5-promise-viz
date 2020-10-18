@@ -16,6 +16,7 @@ class entity {
         this.y = y;
         this.w = w;
         this.h = h;
+        this.datum = datum;
         // Attributes for interation
         this.selected = false;
 
@@ -35,7 +36,8 @@ class entity {
                     fill(this.stroke);
                     stroke(this.fill);
                     rect((this.x), this.y, this.w, this.h);
-                    g_details = this.id;
+                    g_details = this.datum.print();
+
                     // Toggle selection of entity
                     if (mouseIsPressed && this.selected == false) {
                         this.selected = true;

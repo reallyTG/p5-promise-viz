@@ -64,7 +64,7 @@ class BarChart {
             var entityH = entityHeight;
 
             // Create a new barchart entity from our data
-            var temp = new entity(entityX,entityY,entityW,entityH,data[i]);
+            var temp = new entity(entityX,entityY,entityW,entityH,this.data[i]);
             if(i<2){
                 print("entityX:"+entityX)
                 print("entityW:"+entityW)

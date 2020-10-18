@@ -52,8 +52,8 @@ function setup() {
                                     elements[key].startTime,
                                     elements[key].endTime,
                                     elements[key].elapsedTime,
-                                    elements[key].asyncID,
-                                    elements[key].triggerAsyncID,
+                                    elements[key].asyncId,
+                                    elements[key].triggerAsyncId,
                                     elements[key].io,
                                     elements[key].userCode
                                   );
@@ -78,25 +78,26 @@ function setup() {
 //            Main draw function            //
 //////////////////////////////////////////////
 function draw() {
-  background(220);
+    background(220);
 
-  mx = mouseX;
-  my = mouseY;
-  //popMatrix();
-  // Allow pan and zoom of visual components
-  push();
-  translate(mx,my);
-  scale(g_scale);
-  translate(-mx,-my);
-  translate(offsetX, offsetY);
-  
-  g_bar.display(0, 500);
-
-  // Handle user interaction
-  // Resetting the matrix removes any further panning and
-  // zooming transformations
-  Controls();
-  resetMatrix();
-  UI();
+    mx = mouseX;
+    my = mouseY;
+    translate(offsetX, offsetY);
+    //popMatrix();
+    // Allow pan and zoom of visual components
+    translate(-mx*g_scale,-my*g_scale);
+    scale(g_scale);
+    translate(mx,my);
+   
+    g_bar.display(0, 500);
+    // Handle user interaction
+    // Resetting the matrix removes any further panning and
+    // zooming transformations
+    resetMatrix();
+    Controls();
+    // Note: The UI should be drawn only
+    //       after we reset the matrix
+    //       otherwise the scale will be
+    //       thrown off.
+    UI();
 }
-
