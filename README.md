@@ -13,3 +13,4 @@ P5 for promise visualization.
 	- Using Python2
 		- e.g. `python -m SimpleHTTPServer 1024` from the directory where index.html resides
 3. Start webbrowser at local http address (e.g. `localhost:1024` in the browser bar)
+4. Note: Sometimes visualization gets cached, try opening incognito if the visualization has not changed.
