@@ -13,7 +13,6 @@ let g_details = '';
 // Keeps track of what happened in latest action.
 let g_querySummary = '';
 
-
 // Used in range selection
 let mouseIsCurrentlyDown = 0;
 let mouseBeforeDownX=0;
@@ -77,6 +76,7 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     fill(255);
     text("Hide Non-Selected", x+2, y+textSize()*3);  
     */
+   
    var callSelectAll = function (){g_bar.selectState(1)};
    var selectState = new Button("Select All",x,y+textSize()*2,panelWidth,textSize(),callSelectAll);
    selectState.render();
