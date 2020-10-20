@@ -134,7 +134,6 @@ class BarChart {
         g_querySummary = itemsSelected;
     }
 
-
     // Only show selected nodes
     filterShow(state){
       var itemsSelected=0;

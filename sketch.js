@@ -10,6 +10,9 @@ let dataset = [];
 // from a JSON file
 let g_rawPromiseData = {};
 
+// Improves the performance of the visualization
+let g_disableFriendlyErrors = false;
+
 // Helper function for loading data
 function loadDataSet(path){
     print("Loading data from: "+path);
@@ -25,8 +28,8 @@ function loadDataSet(path){
 // We have to structure our project to load
 // all of the data first before populating the visualization.
 function preload(){
-    loadDataSet("./results/ava-results-norm.json"); 
-    //loadDataSet("./results/ava-results-big.json");
+    //loadDataSet("./results/ava-results-norm.json"); 
+    loadDataSet("./results/ava-results-big.json");
     //loadDataSet("./results/apex-charts-results-1602517085490.json"); 
     print("Finished loading data")
 }
@@ -63,10 +66,20 @@ function setup() {
     // Performance Tuning
     // TODO: Disable p5.disableFriendlyErrors = true; // disables FES
     //
-    
+
+    button = createButton('Toggle Debug Mode: '+(!g_disableFriendlyErrors));
+    button.mousePressed(changeDebugMode);
+
+
     setUIOffset(offsetX, offsetY);
 }
 
+//
+function changeDebugMode() {
+  g_disableFriendlyErrors = !g_disableFriendlyErrors;
+  p5.disableFriendlyErrors = g_disableFriendlyErrors;
+  button.html('Toggle Debug Mode: '+(!g_disableFriendlyErrors))
+}
 
 /*
 // Constants
@@ -104,7 +117,7 @@ let value = 0;
 //////////////////////////////////////////////
 function draw() {
     background(220);
-    
+
     /*
     // Define colors
     b1 = color(255);

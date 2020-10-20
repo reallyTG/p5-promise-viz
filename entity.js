@@ -49,12 +49,18 @@ class entity {
                     // Toggle selection of entity
                     if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
                         this.selected = true;
+                        this.loadContents();
                     }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
                         this.selected = false;
                     }
               }
        //   }
-    } 
+    }
+    
+    loadContents(){
+      let promiseContents = loadStrings('./barchart.js');
+      text(promiseContents,0,0);
+    }
 
   // How to render the entity
     render() {
