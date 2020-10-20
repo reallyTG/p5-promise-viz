@@ -58,8 +58,8 @@ class entity {
     }
     
     loadContents(){
-      let promiseContents = loadStrings('./barchart.js');
-      text(promiseContents,0,0);
+      g_txt = g_sourceFilesMap[this.datum.source];
+      getFile(parseStringAsFileName(this.datum.source));
     }
 
   // How to render the entity

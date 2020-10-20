@@ -39,6 +39,24 @@
         reader.onload = loaded;
         reader.onerror = errorHandler;
       }
+
+      function getFile(fileName){
+        var output = document.getElementById('output');
+        let line = '';
+        console.log(fileName);
+        //g_txt = loadStrings(fileName);
+        //g_txt = loadStrings(fileName);
+        if(g_txt){
+          for(var i=0; i < g_txt.length; i++){
+            line+= g_txt[i]+'\n';
+          }
+          output.innerHTML = line;
+          Prism.highlightAll();
+        }else{
+          console.log("Could not find file: "+fileName)
+        }
+
+      }
       
       function updateProgress(evt){
         if (evt.lengthComputable){
