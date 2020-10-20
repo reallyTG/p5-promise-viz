@@ -11,8 +11,8 @@ class Button{
 
     // Function to print data about a promise in a string
     render(){
-        fill(0,0,0,192);
-        stroke(0,0,0,192);
+        fill(192,0,0,222);
+        stroke(192,0,0,255);
         rect(this.x,this.y,this.w,textSize());
         stroke(0);
         fill(0);
@@ -22,10 +22,10 @@ class Button{
         if(mouseX > this.x && mouseX < this.x+this.w){
             if(mouseY > this.y && mouseY < this.y+this.h){
                 fill(255);
-                stroke(255,255,0,192);
-                rect(this.x,this.y,this.w,textSize());
                 stroke(255);
-                fill(255);
+                rect(this.x,this.y,this.w,textSize());
+                stroke(0);
+                fill(0);
                 text(this.text, this.x+2, this.y+textSize());
                 if(mouseIsPressed){
                     fill(64,192);

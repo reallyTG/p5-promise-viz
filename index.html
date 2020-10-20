@@ -76,17 +76,39 @@
 
   
   <body>
-  <!--  
-        Note that main is at the top of
-        the screen because it makes it easy to 
-        check the bounds of the mouse and ignore
-        mouse events that happen outside of the
-        visualization
 
-        Start p5 Sketch
-  -->
-  <main>
-  </main>
+  <table>
+      <tr>
+          <td valign="top">
+              <!--  
+                    Note that main is at the top of
+                    the screen because it makes it easy to 
+                    check the bounds of the mouse and ignore
+                    mouse events that happen outside of the
+                    visualization
+
+                    Start p5 Sketch
+              -->
+              <main>
+              </main>
+          </td>
+          <td valign="top">
+              <p>
+                <input id="file" type="file" multiple onchange="startRead()">
+                <h3>Progress:</h3>
+                <div style="width:100px;height:20px;border:1px solid black;">
+                <div id="bar" style="background-color:#45F;width:0px;height:20px;"></div>
+                </div>
+                <h3>File contents:</h3>
+                  <pre data-line="1-20">
+                    <code id="output" class="language-javascript">// .js code will show up here, correct lines not yet highlighted</code>
+                  </pre>
+            
+              </p>
+          </td>
+      </tr>
+  </table>
+
 
   <!-- Other information 
   -->
@@ -130,18 +152,7 @@
 
     Patterns: testrunner(one long running promise with many smaller promises), airplane, sequential (completely sequential)
 
-    <p>
-		<input id="file" type="file" multiple onchange="startRead()">
-		<h3>Progress:</h3>
-		<div style="width:100px;height:20px;border:1px solid black;">
-		<div id="bar" style="background-color:#45F;width:0px;height:20px;"></div>
-		</div>
-		<h3>File contents:</h3>
-      <pre data-line="1-20">
-        <code id="output" class="language-javascript">// .js code will show up here, correct lines not yet highlighted</code>
-      </pre>
 
-  </p>
 
 
 

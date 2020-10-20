@@ -2,23 +2,29 @@
 //                Entity class                 //
 // A general entity that we  want to render    //
 /////////////////////////////////////////////////
+// Static Variables for the entity class
+// Prefix of 's_' indicates static
+let g_uniqueid = 0;
+
+
 class entity {
 
     // 'x' and 'y' values should be relative to 
     // whichever view the entity falls in
     constructor(x, y, w, h, datum) {
-        this.id = entity.s_uniqueid;
+        this.entityid = g_uniqueid;
         // Increment the static variable after each
         // call to the constructor to ensure we keep
         // a count of unique values
-        entity.s_uniqueid += 1;
+        g_uniqueid+=1;
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.datum = datum;
         // Attributes for interation
-        this.selected = false;
+        this.selected = false;  // Nothing selected by default
+        this.show = true;       // Show all entities by default
 
         // Color of box
         this.stroke = 255;
@@ -30,25 +36,25 @@ class entity {
     }
 
     hover() {
-        if (mouseX >= offsetX + (this.x*g_scale ) && mouseX <= offsetX + ((this.x + this.w)*g_scale )) {
+        //if (mouseX >= offsetX + (this.x*g_scale ) && mouseX <= offsetX + ((this.x + this.w)*g_scale )) {
               if (mouseY >= offsetY + (this.y*g_scale ) && mouseY <= offsetY + ((this.y + this.h)*g_scale )) {
                     // Invert fill and stroke
                     fill(this.stroke);
                     stroke(this.fill);
                     rect((this.x), this.y, this.w, this.h);
+                    // Set UI details to currently hovered node
                     g_details = this.datum.print();
-
+                    // Currently hovered id
+                    g_hoveredID = this.entityid;
                     // Toggle selection of entity
-                    if (mouseIsPressed && this.selected == false) {
+                    if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
                         this.selected = true;
-                    }else if(mouseIsPressed && this.selected == true){
+                    }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
                         this.selected = false;
                     }
-                }
-          }
-
+              }
+       //   }
     } 
-
 
   // How to render the entity
     render() {
@@ -67,6 +73,4 @@ class entity {
       rect((this.x), this.y, this.w, this.h);
     }
 }
-// Static Variables for the entity class
-// Prefix of 's_' indicates static
-entity.s_uniqueid = 0;
+

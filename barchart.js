@@ -92,10 +92,78 @@ class BarChart {
     this.yaxis(1);
     // Render all of the entities in our collection
     for (var i = 0; i < this.entities.length; i++) {
-      this.entities[i].display();
-      this.entities[i].hover();
+        if(this.entities[i].show==true){
+            this.entities[i].display();
+            this.entities[i].hover();
+        }
     }
   }
+
+
+    // Points any selected node to its trigger id.
+    pointToAllTriggers(node){
+      var itemsSelected=0;
+
+        for (var i = 0; i < this.entities.length; i++) {
+          pointToTrigger(i);
+        }
+
+        g_querySummary = itemsSelected;
+    }
+
+    // Points any selected node to its trigger id.
+    pointToTrigger(nodeID){
+      var itemsSelected=0;
+        if(nodeID<0 || nodeID > this.entities.length){
+          return;
+        }
+        
+        // trigger ID
+        if(this.entities[nodeID].datum.triggerAsyncId>0 && this.entities[nodeID].datum.triggerAsyncId < this.entities.length){
+            var triggerIndex = this.entities[nodeID].datum.triggerAsyncId;
+            stroke(255,0,0,100);
+            fill(255,0,0,100);
+            line(this.entities[nodeID].x,
+                  this.entities[nodeID].y,
+                  this.entities[triggerIndex].x+this.entities[triggerIndex].w/2,
+                  this.entities[triggerIndex].y);
+            itemsSelected++;
+        }
+        
+
+        g_querySummary = itemsSelected;
+    }
+
+
+    // Only show selected nodes
+    filterShow(state){
+      var itemsSelected=0;
+
+      for (var i = 0; i < this.entities.length; i++) {
+            this.entities[i].show=state;
+            itemsSelected++;
+      }
+
+      g_querySummary = itemsSelected;
+    }
+
+    // Only show selected nodes
+    filterShowSelected(state){
+      var itemsSelected=0;
+
+      for (var i = 0; i < this.entities.length; i++) {
+        if(this.entities[i].selected==true){
+            this.entities[i].show=state;
+            itemsSelected++;
+
+        }else{
+          this.entities[i].show=!state;
+        }
+      }
+
+      g_querySummary = itemsSelected;
+
+    }
 
   // Helper function which allows the selection or deselection
   // of a series of nodes.
@@ -140,6 +208,8 @@ class BarChart {
         if(this.entities[i].datum.io){
             this.entities[i].selected = selectedState;
             itemsSelected++;
+        }else{
+          this.entities[i].selected = !selectedState;
         }
     }
         
@@ -156,6 +226,8 @@ class BarChart {
         if(this.entities[i].datum.userCode){
             this.entities[i].selected = selectedState;
             itemsSelected++;
+        }else{
+          this.entities[i].selected = !selectedState;
         }
     }
         
@@ -175,6 +247,21 @@ class BarChart {
     stroke(255, 0, 0);
     rect(this.x, this.y, border, this.h);
   }
+
+  // Popup the currently hovered item
+    // Helpful popup window identifying the promise
+    popup(){
+      text("test",70,70);
+      if(g_hoveredID>=0 && g_hoveredID<this.entities.length){
+        fill(255,192);
+        stroke(255);
+        rect(mouseX, mouseY-textSize(), width/2, 400);
+        fill(0);
+        stroke(0);
+        text(this.entities[g_hoveredID].datum.print(),mouseX,mouseY);
+      }
+    }
+
 
   getOriginYOffsetInPixels(){
     return this.entities.length*4; // TODO Replace entity height

@@ -8,15 +8,17 @@ let padding = 8;
 
 // Details string
 let g_details = '';
+// Currently hovered element
+let g_hoveredID = -1;
 
 // Query String
 // Keeps track of what happened in latest action.
 let g_querySummary = '';
 
 // Used in range selection
-let mouseIsCurrentlyDown = 0;
-let mouseBeforeDownX=0;
-let mouseBeforeDownY=0;
+let g_mouseIsCurrentlyDown = 0;
+let g_mouseBeforeDownX=0;
+let g_mouseBeforeDownY=0;
 
 
 function setUIOffset(x, y){
@@ -77,17 +79,25 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     text("Hide Non-Selected", x+2, y+textSize()*3);  
     */
    
+   var callFilterShow = function (){g_bar.filterShow(1)};
+   var showAll = new Button("Show All",x,y+textSize()*1,panelWidth,textSize(),callFilterShow);
+   showAll.render();
+
+   var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
+   var showSelected = new Button("Show Selected",x,y+textSize()*2,panelWidth,textSize(),callFilterShowSelected);
+   showSelected.render();
+
    var callSelectAll = function (){g_bar.selectState(1)};
-   var selectState = new Button("Select All",x,y+textSize()*2,panelWidth,textSize(),callSelectAll);
+   var selectState = new Button("Select All",x,y+textSize()*3,panelWidth,textSize(),callSelectAll);
    selectState.render();
 
     // Buttons
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*3,panelWidth,textSize(),callSelectIO);
+    var selectIO = new Button("Select All IO",x,y+textSize()*4,panelWidth,textSize(),callSelectIO);
     selectIO.render();
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*4,panelWidth,textSize(),callSelectUserCode);
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*5,panelWidth,textSize(),callSelectUserCode);
     selectUserCode.render();
 
     /*
@@ -110,7 +120,8 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 ///////////////////////////////////////////////
 function UI() {
     // Configuration of UI
-    textSize(28);
+    textSize(26);
+    textFont("monospace", 26);
 
     // Render the menubar
     menubar();
@@ -144,44 +155,72 @@ function Controls() {
     }
 
    // Draw a selection region
-   if(mouseIsCurrentlyDown){
+   if(g_mouseIsCurrentlyDown){
     stroke(0);
     fill(128,128,128,128);
-    rect(mouseBeforeDownX,mouseBeforeDownY,mouseX-mouseBeforeDownX,mouseY-mouseBeforeDownY);
+    rect(g_mouseBeforeDownX,g_mouseBeforeDownY,mouseX-g_mouseBeforeDownX,mouseY-g_mouseBeforeDownY);
 }
 
     // Handle ranged selection
     if(mouseIsPressed && mouseButton === LEFT){ 
-        mouseIsCurrentlyDown = 1
+        g_mouseIsCurrentlyDown = 1
     }else  {
-        mouseIsCurrentlyDown = 0;
-        mouseBeforeDownX=mouseX;
-        mouseBeforeDownY=mouseY;
+        g_mouseIsCurrentlyDown = 0;
+        g_mouseBeforeDownX=mouseX;
+        g_mouseBeforeDownY=mouseY;
    }
+
+    // Avoid updating sketch if mouse is out of bounds
+    if (mouseX > width || mouseX < 0 || mouseY > height){
+        return;
+    }
+      // Translate the camera
+      translate(offsetX,offsetY);
+      // Scale the camera
+     // translate(scrollX,scrollY);
+      scale(g_scale);
+     // translate(-scrollX,-scrollY/g_scale);
+
 }
 
 function mouseReleased(){
-    if(mouseIsCurrentlyDown){
-        startY = min(mouseBeforeDownY,mouseY);
-        endY = max(mouseBeforeDownY,mouseY);
+    if(g_mouseIsCurrentlyDown){
+        startY = min(g_mouseBeforeDownY,mouseY);
+        endY = max(g_mouseBeforeDownY,mouseY);
 
         g_bar.inverteSelectedRange(startY,endY);
     }
 }
+
+let scrollX=0;
+let scrollY=0;
+
 
 function mouseWheel(event) {
     // Avoid updating sketch if mouse is out of bounds
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
-/*
-    if (event.deltaY > 0)
-        g_scale *= .95;
-    else
-        g_scale *= 1.05;
-*/
+
+    // Scroll the mouse
+    if (!mouseIsPressed) {
+        if (event.deltaY > 0){
+            g_scale *= .95;
+        }
+        else{
+            g_scale *= 1.05;
+        }
+        
+        scrollX = mouseX/g_scale;
+        scrollY = mouseY/g_scale;
+    }else{
+        scrollX = pMouseX;
+        scrollY = pMouseY;
+    }    
+
 }
 
+/*
 window.addEventListener("wheel", function(e) {
     // Avoid updating sketch if mouse is out of bounds
     if (mouseX > width || mouseX < 0 || mouseY > height){
@@ -195,10 +234,15 @@ window.addEventListener("wheel", function(e) {
         else{
             g_scale *= 1.1;
         }
-    }
+        mx = mouseX;
+        my = mouseY;
+        translate(-mx, -my);
+
+    }    
+
 
   });
-
+*/
 ///////////////////////////////////////////////
 //
 ///////////////////////////////////////////////
