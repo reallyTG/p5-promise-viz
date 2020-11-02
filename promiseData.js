@@ -5,7 +5,7 @@
 
 // The data that we want to hold
 class promiseData{
-    constructor(source,startTime,endTime,elapsedTime,asyncId,triggerAsyncId,io,userCode) {
+    constructor(source,startTime,endTime,elapsedTime,asyncId,triggerAsyncId,io,userCode,line) {
         this.id     = 0;    // TODO: Make some key
         this.source         = source;
         this.startTime      = startTime;
@@ -15,18 +15,21 @@ class promiseData{
         this.triggerAsyncId = triggerAsyncId;
         this.io             = io;
         this.userCode       = userCode;
+        this.line           = line;
     }
 
     // Function to print data about a promise in a string
     print(){
-        return  "uniqueid :" + this.id + "\n" +
-                "source   :"+ this.source + "\n"+
-                "startTime:"+ this.startTime + "\n"+
-                "endTime  :"+ this.endTime + "\n"+
-                "elapsedTime:"+ this.elapsedTime + "\n"+
-                "asyncId       :"+ this.asyncId + "\n"+
-                "triggerAsyncId:"+ this.triggerAsyncId + "\n"+
-                "io:" + this.io + "\n"+
-                "userCode:" + this.userCode + "\n";
+        return  "uniqueid :"        + this.id           + "\n" +
+                "source   :"        + this.source       + "\n" +
+                "startTime:"        + this.startTime    + "\n" +
+                "endTime  :"        + this.endTime      + "\n" +
+                "elapsedTime:"      + this.elapsedTime  + "\n" +
+                "asyncId       :"   + this.asyncId      + "\n" +
+                "triggerAsyncId:"   + this.triggerAsyncId + "\n"+
+                "io:"               + this.io           + "\n" +
+                "userCode:"         + this.userCode     + "\n" +
+                "line:"             + this.line;
+
     }
 }

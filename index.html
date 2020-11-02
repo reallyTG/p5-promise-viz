@@ -7,10 +7,19 @@
     <script src="barchart.js"></script>
     <script src="UI.js"></script>
     <script src="sketch.js"></script>
+    <!-- Style sheet-->
+    <link rel="stylesheet" href="style.css">
 
     <!-- Third party libraries -->
     <script src="./thirdparty/prism.js"></script>
     <link href="./thirdparty/prism.css" rel="stylesheet" />
+
+    <script src="./thirdparty/jquery-3.5.1.slim.min.js"></script>
+    
+    <script type="text/javascript" src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+
+
 
 		<script>
       function startRead(){
@@ -123,6 +132,52 @@
                   </pre>
             
               </p>
+
+
+            <div id='tabs'>
+              <ul>
+                  <li><a href='#tab1'>#1</a></li>
+              </ul>
+              <div id='tab1'></div>
+          </div>
+          <button id='add-tab'>Add tab</button>
+          
+              <script type="text/javascript">//<![CDATA[
+          
+          
+                    $(document).ready(function() {
+                        $("div#tabs").tabs();
+                    
+                        $("button#add-tab").click(function() {
+                    
+                            var num_tabs = $("div#tabs ul li").length + 1;
+                    
+                            $("div#tabs ul").append(
+                                "<li><a href='#tab" + num_tabs + "'>#" + num_tabs + "</a></li>"
+                            );
+                    $("div#tabs").append(
+                                "<div id='tab" + num_tabs + "'>#" + num_tabs + "</div>"
+                            );
+                            $("div#tabs").tabs("refresh");
+                        });                    
+                    });
+                    
+                    
+                      //]]></script>
+                    
+                      <script>
+                        // tell the embed parent frame the height of the content
+                        if (window.parent && window.parent.parent){
+                          window.parent.parent.postMessage(["resultsFrame", {
+                            height: document.body.getBoundingClientRect().height,
+                            slug: "ujUu2"
+                          }], "*")
+                        }
+                    
+                        // always overwrite window.name, in case users try to set it manually
+                        window.name = "result"
+                      </script>
+
           </td>
       </tr>
   </table>

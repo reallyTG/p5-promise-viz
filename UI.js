@@ -38,19 +38,19 @@ function menubar(){
     var rate = frameRate();
     text("FPS:" + int(rate), 2, textSize());
     // Zoom
-    text("zoom scale: "+g_scale, 500, textSize());
+    text("zoom scale: "+g_scale, 600, textSize());
 }
 
-function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){
-        // Details Panel
-        fill(0,0,128,125);
-        rect(x, y-textSize(), detailPanelWidth, textSize());
-        fill(255,255,255,255);
-        text("Details:", x+2, y-padding/2);
-        fill(0,125);
-        rect(x, y, detailPanelWidth, detailPanelHeight);
-        fill(255);
-        text(g_details, x+2, y+textSize());
+function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){   
+    // Details Panel
+    fill(0,0,128,125);
+    rect(x, y-textSize(), detailPanelWidth, textSize());
+    fill(255,255,255,255);
+    text("Details:", x+2, y-padding/2);
+    fill(0,125);
+    rect(x, y, detailPanelWidth, detailPanelHeight);
+    fill(255);
+    text(g_details, x+2, y+textSize(),detailPanelWidth,detailPanelHeight);
 }
 
 function queriesPanel(x,y,panelWidth,panelHeight){
@@ -79,25 +79,33 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     text("Hide Non-Selected", x+2, y+textSize()*3);  
     */
    
+   var callFilterShowNone = function (){g_bar.filterShow(0)};
+   var showNone = new Button("Show None",x,y+textSize()*1,panelWidth,textSize(),callFilterShowNone);
+   showNone.render();
+
    var callFilterShow = function (){g_bar.filterShow(1)};
-   var showAll = new Button("Show All",x,y+textSize()*1,panelWidth,textSize(),callFilterShow);
+   var showAll = new Button("Show All",x,y+textSize()*2,panelWidth,textSize(),callFilterShow);
    showAll.render();
 
    var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-   var showSelected = new Button("Show Selected",x,y+textSize()*2,panelWidth,textSize(),callFilterShowSelected);
+   var showSelected = new Button("Show Selected",x,y+textSize()*3,panelWidth,textSize(),callFilterShowSelected);
    showSelected.render();
 
+   var callSelectAllNone = function (){g_bar.selectState(0)};
+   var selectState = new Button("Select None",x,y+textSize()*4,panelWidth,textSize(),callSelectAllNone);
+   selectState.render();
+
    var callSelectAll = function (){g_bar.selectState(1)};
-   var selectState = new Button("Select All",x,y+textSize()*3,panelWidth,textSize(),callSelectAll);
+   var selectState = new Button("Select All",x,y+textSize()*5,panelWidth,textSize(),callSelectAll);
    selectState.render();
 
     // Buttons
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*4,panelWidth,textSize(),callSelectIO);
+    var selectIO = new Button("Select All IO",x,y+textSize()*6,panelWidth,textSize(),callSelectIO);
     selectIO.render();
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*5,panelWidth,textSize(),callSelectUserCode);
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*7,panelWidth,textSize(),callSelectUserCode);
     selectUserCode.render();
 
     /*

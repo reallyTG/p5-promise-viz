@@ -74,7 +74,8 @@ function setup() {
                                     elements[key].asyncId,
                                     elements[key].triggerAsyncId,
                                     elements[key].io,
-                                    elements[key].userCode
+                                    elements[key].userCode,
+                                    elements[key].line
                                   );
         dataset.push(temp);
     }
