@@ -21,7 +21,7 @@ class entity {
         this.y = y;
         this.w = w;
         this.h = h;
-        this.datum = datum;
+        this.datum = datum; // PromiseData object
         // Attributes for interation
         this.selected = false;  // Nothing selected by default
         this.show = true;       // Show all entities by default
@@ -62,7 +62,8 @@ class entity {
     
     loadContents(){
       g_txt = g_sourceFilesMap[this.datum.source];
-      getFile(parseStringAsFileName(this.datum.source));
+      console.log(this.datum.source);
+      getFile(parseStringAsFileName(this.datum.source),'output','promisePre');
     }
 
   // How to render the entity

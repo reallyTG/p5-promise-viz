@@ -20,7 +20,6 @@ let g_mouseIsCurrentlyDown = 0;
 let g_mouseBeforeDownX=0;
 let g_mouseBeforeDownY=0;
 
-
 function setUIOffset(x, y){
     offsetX = x;
     offsetY = y;
@@ -79,34 +78,40 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     text("Hide Non-Selected", x+2, y+textSize()*3);  
     */
    
-   var callFilterShowNone = function (){g_bar.filterShow(0)};
-   var showNone = new Button("Show None",x,y+textSize()*1,panelWidth,textSize(),callFilterShowNone);
-   showNone.render();
+    var callFilterShowNone = function (){g_bar.filterShow(0)};
+    var showNone = new Button("Show None",x,y+textSize()*1,panelWidth,textSize(),callFilterShowNone);
+    showNone.render();
 
-   var callFilterShow = function (){g_bar.filterShow(1)};
-   var showAll = new Button("Show All",x,y+textSize()*2,panelWidth,textSize(),callFilterShow);
-   showAll.render();
+    var callFilterShow = function (){g_bar.filterShow(1)};
+    var showAll = new Button("Show All",x,y+textSize()*2,panelWidth,textSize(),callFilterShow);
+    showAll.render();
 
-   var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-   var showSelected = new Button("Show Selected",x,y+textSize()*3,panelWidth,textSize(),callFilterShowSelected);
-   showSelected.render();
+    var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
+    var showSelected = new Button("Show Selected",x,y+textSize()*3,panelWidth,textSize(),callFilterShowSelected);
+    showSelected.render();
 
-   var callSelectAllNone = function (){g_bar.selectState(0)};
-   var selectState = new Button("Select None",x,y+textSize()*4,panelWidth,textSize(),callSelectAllNone);
-   selectState.render();
+    var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
+    var showSelected = new Button("Show Unselected",x,y+textSize()*4,panelWidth,textSize(),callFilterShowUnSelected);
+    showSelected.render();
 
-   var callSelectAll = function (){g_bar.selectState(1)};
-   var selectState = new Button("Select All",x,y+textSize()*5,panelWidth,textSize(),callSelectAll);
-   selectState.render();
+    var callSelectAllNone = function (){g_bar.selectState(0)};
+    var selectState = new Button("Select None",x,y+textSize()*5,panelWidth,textSize(),callSelectAllNone);
+    selectState.render();
+
+    var callSelectAll = function (){g_bar.selectState(1)};
+    var selectState = new Button("Select All",x,y+textSize()*6,panelWidth,textSize(),callSelectAll);
+    selectState.render();
 
     // Buttons
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*6,panelWidth,textSize(),callSelectIO);
+    var selectIO = new Button("Select All IO",x,y+textSize()*7,panelWidth,textSize(),callSelectIO);
     selectIO.render();
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*7,panelWidth,textSize(),callSelectUserCode);
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*8,panelWidth,textSize(),callSelectUserCode);
     selectUserCode.render();
+
+
 
     /*
     // Buttons
@@ -141,6 +146,9 @@ function UI() {
     // Render the queries pane
     var queriesHeight = 320; // Set height of details panel
     queriesPanel(width/2,height - queriesHeight,width/2,queriesHeight);
+
+    // Render the panel
+    //g_Panel.render();
 
     stroke(0);
     fill(0);

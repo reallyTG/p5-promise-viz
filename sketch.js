@@ -13,6 +13,10 @@ let g_rawPromiseData = {};
 // Improves the performance of the visualization
 let g_disableFriendlyErrors = false;
 
+// UI
+//var g_Panel;
+
+
 
 let g_txt;
 let g_sourceFilesMap=new Map();
@@ -33,6 +37,7 @@ function loadDataSet(path){
 // We have to structure our project to load
 // all of the data first before populating the visualization.
 function preload(){
+    //fileName = "./ava/results-1595602620959.json"
     fileName = "./results/ava-results-norm.json"
     //filename = "./results/ava-results-big.json";
     //filename = "./results/apex-charts-results-1602517085490.json"; 
@@ -60,6 +65,9 @@ function setup() {
     // Canvas size
     // The size of the canvas that will 
     createCanvas(1600, 1200);
+
+    // Create UI
+    //g_Panel = new Panel("Queries Panel",0,0,width,320);
 
     // Populate our data structure for the barchart
     // with JSON Data

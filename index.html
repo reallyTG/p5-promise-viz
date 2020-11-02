@@ -1,7 +1,9 @@
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script src="fileLoading.js"></script>
     <script src="promiseData.js"></script>
+    <script src="panel.js"></script>
     <script src="Button.js"></script>
     <script src="entity.js"></script>
     <script src="barchart.js"></script>
@@ -19,218 +21,100 @@
     <script type="text/javascript" src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
 
-
-
-		<script>
-      function startRead(){
-        // obtain input element through DOM 
-        var file = document.getElementById('file').files[0];
-        if(file){
-          getAsText(file);
-        }
-      }
-      
-      function getAsText(readFile){
-        var reader;
-        try{
-          reader = new FileReader();
-        }catch(e){
-          document.getElementById('output').innerHTML = 
-            "Error: seems File API is not supported on your browser";
-          return;
-        }
-        
-        // Read file into memory as UTF-8      
-        reader.readAsText(readFile, "UTF-8");
-        
-        // Handle progress, success, and errors
-        reader.onprogress = updateProgress;
-        reader.onload = loaded;
-        reader.onerror = errorHandler;
-      }
-
-      function getFile(fileName){
-        var output = document.getElementById('output');
-        let line = '';
-        console.log(fileName);
-        //g_txt = loadStrings(fileName);
-        //g_txt = loadStrings(fileName);
-        if(g_txt){
-          for(var i=0; i < g_txt.length; i++){
-            line+= g_txt[i]+'\n';
-          }
-          output.innerHTML = line;
-          Prism.highlightAll();
-        }else{
-          console.log("Could not find file: "+fileName)
-        }
-
-      }
-      
-      function updateProgress(evt){
-        if (evt.lengthComputable){
-          // evt.loaded and evt.total are ProgressEvent properties
-          var loaded = (evt.loaded / evt.total);
-          if (loaded < 1){
-            // Increase the prog bar length
-            // style.width = (loaded * 200) + "px";
-            document.getElementById("bar").style.width = (loaded*100) + "%";
-          }
-        }
-      }
-      
-      function loaded(evt){
-        // Obtain the read file data    
-        var fileString = evt.target.result;
-        document.getElementById('output').innerHTML = fileString;
-        document.getElementById("bar").style.width = 100 + "%";
-        // Calling this function will force a highlight of
-        // the file.
-        Prism.highlightAll();
-      }
-      
-      function errorHandler(evt){
-        if(evt.target.error.code == evt.target.error.NOT_READABLE_ERR){
-          // The file could not be read
-          document.getElementById('output').innerHTML = "Error reading file..."
-        }
-      }
-      </script>
-
-
   </head>
-
-
   
   <body>
 
-  <table>
+    <table>
+        <tr>
+            <td valign="top">
+                <!--  
+                      Note that main is at the top of
+                      the screen because it makes it easy to 
+                      check the bounds of the mouse and ignore
+                      mouse events that happen outside of the
+                      visualization
+
+                      Start p5 Sketch
+                -->
+                <main>
+                </main>
+            </td>
+            <td valign="top">
+                <p>
+                  <!--
+                  <input id="file" type="file" multiple onchange="startRead('file','bar')">
+                  <h3>Progress:</h3>
+                  <div style="width:100px;height:20px;border:1px solid black;">
+                  <div id="bar" style="background-color:#45F;width:0px;height:20px;"></div>
+                  </div>
+                  -->
+                  <h3>Selected Promise contents:</h3>
+                    <!--<pre class="line-numbers" data-line="1-20">-->
+                    <pre id="promisePre" data-line="1-1">
+                      <code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
+                    </pre>
+                </p>
+            </td>
+            <td valign="top">
+                <p>
+                  <input id="file2" type="file" multiple onchange="startRead('file2','bar2')">
+                  <h3>Progress:</h3>
+                  <div style="width:100px;height:20px;border:1px solid black;">
+                  <div id="bar2" style="background-color:#45F;width:0px;height:20px;"></div>
+                  </div>
+                  <h3>File contents:</h3>
+                    <pre data-line="1-20">
+                      <code id="output2" class="language-javascript">// .js code will show up here if a source file exists</code>
+                    </pre>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Other information 
+    -->
+    <h1>Visualizing Promises P5.js Visualization</h1> 
+
+    <table>
       <tr>
-          <td valign="top">
-              <!--  
-                    Note that main is at the top of
-                    the screen because it makes it easy to 
-                    check the bounds of the mouse and ignore
-                    mouse events that happen outside of the
-                    visualization
-
-                    Start p5 Sketch
-              -->
-              <main>
-              </main>
-          </td>
-          <td valign="top">
-              <p>
-                <input id="file" type="file" multiple onchange="startRead()">
-                <h3>Progress:</h3>
-                <div style="width:100px;height:20px;border:1px solid black;">
-                <div id="bar" style="background-color:#45F;width:0px;height:20px;"></div>
-                </div>
-                <h3>File contents:</h3>
-                  <pre data-line="1-20">
-                    <code id="output" class="language-javascript">// .js code will show up here, correct lines not yet highlighted</code>
-                  </pre>
-            
-              </p>
-
-
-            <div id='tabs'>
-              <ul>
-                  <li><a href='#tab1'>#1</a></li>
-              </ul>
-              <div id='tab1'></div>
-          </div>
-          <button id='add-tab'>Add tab</button>
-          
-              <script type="text/javascript">//<![CDATA[
-          
-          
-                    $(document).ready(function() {
-                        $("div#tabs").tabs();
-                    
-                        $("button#add-tab").click(function() {
-                    
-                            var num_tabs = $("div#tabs ul li").length + 1;
-                    
-                            $("div#tabs ul").append(
-                                "<li><a href='#tab" + num_tabs + "'>#" + num_tabs + "</a></li>"
-                            );
-                    $("div#tabs").append(
-                                "<div id='tab" + num_tabs + "'>#" + num_tabs + "</div>"
-                            );
-                            $("div#tabs").tabs("refresh");
-                        });                    
-                    });
-                    
-                    
-                      //]]></script>
-                    
-                      <script>
-                        // tell the embed parent frame the height of the content
-                        if (window.parent && window.parent.parent){
-                          window.parent.parent.postMessage(["resultsFrame", {
-                            height: document.body.getBoundingClientRect().height,
-                            slug: "ujUu2"
-                          }], "*")
-                        }
-                    
-                        // always overwrite window.name, in case users try to set it manually
-                        window.name = "result"
-                      </script>
-
-          </td>
-      </tr>
-  </table>
-
-
-  <!-- Other information 
-  -->
-  <h1>Visualizing Promises P5.js Visualization</h1> 
-
-  <table>
-    <tr>
-      <td>
-        <div>
-          <h2>Controls:</h2>
-          <ul>
-              <li>Press 'r' to reset the view</li>
-              <li>mouse-scroll to zoom in/out</li>
-              <li>Middle-Click and hold mouse to pan</li>
-              <li>Click on nodes to highlight them.</li>
-          </ul>
-      </div>
-      </td>
-      <td>
-        <div>
-          <h2>Todo list</h2>
-          <ul>
-            <li>Zoom to cursor</li>
-            <li>Abstract UI to class</li>
-            <li>Save result to URL</li>
-            <li>Open multiple files in tabs at once</li>
-            <li>Ability to load different data sets</li>
-            <li>Ranged Selection by clicking and dragging and releasing</li>
-            <li>Export or filter selection by View</li>
-            <li>Select different color schemes</li>
-            <li>Ignore events(i.e. mouse scrolling) if it doesn't happen over canvas</li>
-            <li>Need to frame view to fit selection</li>
-            <li>Need ability to filter or collapse nodes</li>
-            <li>filter by time, filter by node_modules, filter out tests</li>
-            <li>Select source and find promise</li>
-          </ul>
+        <td>
+          <div>
+            <h2>Controls:</h2>
+            <ul>
+                <li>Press 'r' to reset the view</li>
+                <li>mouse-scroll to zoom in/out</li>
+                <li>Middle-Click and hold mouse to pan</li>
+                <li>Click on nodes to highlight them.</li>
+            </ul>
         </div>
-      </td>
-    </tr>
+        </td>
+        <td>
+          <div>
+            <h2>Todo list</h2>
+            <ul>
+              <li>Zoom to cursor</li>
+              <li>Abstract UI to class</li>
+              <li>Save result to URL</li>
+              <li>Open multiple files in tabs at once</li>
+              <li>Ability to load different data sets</li>
+              <li>Ranged Selection by clicking and dragging and releasing</li>
+              <li>Export or filter selection by View</li>
+              <li>Select different color schemes</li>
+              <li>Ignore events(i.e. mouse scrolling) if it doesn't happen over canvas</li>
+              <li>Need to frame view to fit selection</li>
+              <li>Need ability to filter or collapse nodes</li>
+              <li>filter by time, filter by node_modules, filter out tests</li>
+              <li>Select source and find promise</li>
+            </ul>
+          </div>
+        </td>
+      </tr>
 
-  </table>
-
+    </table>
 
     Patterns: testrunner(one long running promise with many smaller promises), airplane, sequential (completely sequential)
-
-
-
-
-
 
   </body>
 </html>

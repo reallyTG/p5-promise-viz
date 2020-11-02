@@ -1,4 +1,4 @@
-// The data that we want to hold
+// Button Widget
 class Button{
     constructor(text,x,y,w,h,callback) {
         this.text = text;    
@@ -9,7 +9,7 @@ class Button{
         this.callback = callback;
     }
 
-    // Function to print data about a promise in a string
+    // Render a button
     render(){
         fill(192,0,0,222);
         stroke(192,0,0,255);
