@@ -37,14 +37,14 @@ function loadDataSet(path){
 // We have to structure our project to load
 // all of the data first before populating the visualization.
 function preload(){
-    //fileName = "./ava/results-1595602620959.json"
-    fileName = "./results/ava-results-norm.json"
+    //filename = "./ava/results-1595602620959.json"
+    filename = "./results-chained-ex2.json"
     //filename = "./results/ava-results-big.json";
     //filename = "./results/apex-charts-results-1602517085490.json"; 
     
     // Load the resulting file
-    //loadDataSet(fileName); 
-    g_rawPromiseData = loadJSON(fileName);
+    //loadDataSet(filename); 
+    g_rawPromiseData = loadJSON(filename);
 
     print("Finished loading data")
 }
