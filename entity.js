@@ -66,9 +66,9 @@ class entity {
     loadContents() {
       g_txt = g_rawPromiseData.files[this.datum.file];
       if (g_txt) {
-        writeTo( 'output', 'promisePre', g_txt);
+        writeTo( 'output', 'promisePre', g_txt, this.datum.startLine, this.datum.endLine);
       } else {
-        writeTo( 'output', 'promisePre', 'No file associated with the selected promise.')
+        writeTo( 'output', 'promisePre', 'No file associated with the selected promise.', 1, 1)
       }
 
       // [11/12/2020] Old version:

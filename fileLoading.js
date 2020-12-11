@@ -24,15 +24,17 @@ function getFile(fileName,element,preElement){
 
 /*  Function to display provided <content> onto the <element>
  *  and <preElement> HTML object. <preElement> must be a prism element.
- *
- *  TODO: Get highlighting working (pass from caller).
+ *  Called from: bar objects in entity.js
  */
-function writeTo( element, preElement, content) {
+function writeTo( element, preElement, content, highlightFrom, highlightTo) {
     let output = document.getElementById( element);
     let pre = document.getElementById( preElement);
 
     output.innerHTML = content;
-    pre.setAttribute('data-line', '25-25');
+    if (highlightFrom === highlightTo)
+        pre.setAttribute('data-line', highlightFrom);
+    else
+        pre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
     Prism.highlightAll();
 }
 
