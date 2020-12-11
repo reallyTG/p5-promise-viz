@@ -1,0 +1,44 @@
+{
+    "promises": {
+        "0": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example9.js:2:13:2:13)",
+            "startTime": "17730435684077",
+            "endTime": "17730440793783",
+            "elapsedTime": "5109706",
+            "asyncId": 5,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "1": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example9.js:3:7:3:7)",
+            "startTime": "17730442780054",
+            "endTime": "17730446807041",
+            "elapsedTime": "4026987",
+            "asyncId": 6,
+            "triggerAsyncId": 5,
+            "io": false,
+            "userCode": false
+        },
+        "2": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example9.js:2:13:2:13)",
+            "startTime": "17730443306995",
+            "endTime": "17730443506546",
+            "elapsedTime": "199551",
+            "asyncId": 7,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "3": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example9.js:3:7:3:7)",
+            "startTime": "17730443881827",
+            "endTime": "17730447168827",
+            "elapsedTime": "3287000",
+            "asyncId": 8,
+            "triggerAsyncId": 7,
+            "io": false,
+            "userCode": false
+        }
+    }
+}

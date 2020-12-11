@@ -1,0 +1,48 @@
+{
+  "promises": {
+    "0": {
+      "source": "small/example2.js:2:10:2:10)",
+      "startTime": "823677471761818",
+      "endTime": "823677472085472",
+      "elapsedTime": "323654",
+      "asyncId": 5,
+      "triggerAsyncId": 1,
+      "io": "",
+      "userCode": false,
+      "line": "// promise is resolved, multiple reactions\nlet p1 = new Promise((resolve,reject) => resolve(17));\np1.then((v) => console.log(v)); // first reaction, prints 17\np1.then((v) => console.log(v*2)); // second reaction, prints 34\np1.then((v) => console.log(v*3)); // third reaction, prints 5"
+    },
+    "1": {
+      "source": "small/example2.js:3:4:3:4)",
+      "startTime": "823677473938644",
+      "endTime": "823677477393924",
+      "elapsedTime": "3455280",
+      "asyncId": 6,
+      "triggerAsyncId": 5,
+      "io": "",
+      "userCode": false,
+      "line": "// promise is resolved, multiple reactions\nlet p1 = new Promise((resolve,reject) => resolve(17));\np1.then((v) => console.log(v)); // first reaction, prints 17\np1.then((v) => console.log(v*2)); // second reaction, prints 34\np1.then((v) => console.log(v*3)); // third reaction, prints 51"
+    },
+    "2": {
+      "source": "small/example2.js:4:4:4:4)",
+      "startTime": "823677474416165",
+      "endTime": "823677477744181",
+      "elapsedTime": "3328016",
+      "asyncId": 7,
+      "triggerAsyncId": 5,
+      "io": "",
+      "userCode": false,
+      "line": "\nlet p1 = new Promise((resolve,reject) => resolve(17));\np1.then((v) => console.log(v)); // first reaction, prints 17\np1.then((v) => console.log(v*2)); // second reaction, prints 34\np1.then((v) => console.log(v*3)); // third reaction, prints 51\n"
+    },
+    "3": {
+      "source": "small/example2.js:5:4:5:4)",
+      "startTime": "823677474864557",
+      "endTime": "823677478035868",
+      "elapsedTime": "3171311",
+      "asyncId": 8,
+      "triggerAsyncId": 5,
+      "io": "",
+      "userCode": false,
+      "line": "\np1.then((v) => console.log(v)); // first reaction, prints 17\np1.then((v) => console.log(v*2)); // second reaction, prints 34\np1.then((v) => console.log(v*3)); // third reaction, prints 51\n"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "promises": {
+    "0": {
+      "source": "small/example3.js:2:10:2:10)",
+      "startTime": "823687935027012",
+      "endTime": "823687935739969",
+      "elapsedTime": "712957",
+      "asyncId": 5,
+      "triggerAsyncId": 1,
+      "io": "",
+      "userCode": false,
+      "line": "// create a promise that is resolved with 17\nlet p1 = new Promise((resolve,reject) => resolve(17));\n\n// register reaction on p1 that prints 17 and returns 34 \n// (the promise created by then is resolved with 34"
+    },
+    "1": {
+      "source": "small/example3.js:6:13:6:13)",
+      "startTime": "823687939356113",
+      "endTime": "823687947766302",
+      "elapsedTime": "8410189",
+      "asyncId": 6,
+      "triggerAsyncId": 5,
+      "io": "",
+      "userCode": false,
+      "line": "\n// register reaction on p1 that prints 17 and returns 34 \n// (the promise created by then is resolved with 34)\nlet p2 = p1.then((v) => { console.log(v); return v*2; }) \n\n// register reaction on p2 that prints 34 and returns 68\n// (the promise created by then is resolved with 68"
+    },
+    "2": {
+      "source": "small/example3.js:10:13:10:13)",
+      "startTime": "823687941211177",
+      "endTime": "823687949219544",
+      "elapsedTime": "8008367",
+      "asyncId": 7,
+      "triggerAsyncId": 6,
+      "io": "",
+      "userCode": false,
+      "line": "\n// register reaction on p2 that prints 34 and returns 68\n// (the promise created by then is resolved with 68)\nlet p3 = p2.then((v) => { console.log(v); return v*2; }) \n\n// register reaction on p3 that prints 68 and returns undefined\n// (the promise created by then is resolved with undefined"
+    },
+    "3": {
+      "source": "small/example3.js:14:13:14:13)",
+      "startTime": "823687941961794",
+      "endTime": "823687949911229",
+      "elapsedTime": "7949435",
+      "asyncId": 8,
+      "triggerAsyncId": 7,
+      "io": "",
+      "userCode": false,
+      "line": "\n// register reaction on p3 that prints 68 and returns undefined\n// (the promise created by then is resolved with undefined)\nlet p4 = p3.then((v) => console.log(v))\n\n// prints undefined (and creates another promise that is resolved with undefined)\np4.then((v) => console.log(v)"
+    },
+    "4": {
+      "source": "small/example3.js:17:4:17:4)",
+      "startTime": "823687944169211",
+      "endTime": "823687950520009",
+      "elapsedTime": "6350798",
+      "asyncId": 9,
+      "triggerAsyncId": 8,
+      "io": "",
+      "userCode": false,
+      "line": "\n\n// prints undefined (and creates another promise that is resolved with undefined)\np4.then((v) => console.log(v))"
+    }
+  }
+}

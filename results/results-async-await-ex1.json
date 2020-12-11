@@ -1,0 +1,54 @@
+{
+    "promises": {
+        "0": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex1.js:13:3:13:3)",
+            "startTime": "840128873546364",
+            "endTime": "840128907503957",
+            "elapsedTime": "33957593",
+            "asyncId": 5,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "1": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex1.js:11:11:11:11)",
+            "startTime": "840128903171450",
+            "endTime": "840128903754299",
+            "elapsedTime": "582849",
+            "asyncId": 6,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "2": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex1.js:13:3:13:3)",
+            "startTime": "840128904619479",
+            "endTime": "840128907298620",
+            "elapsedTime": "2679141",
+            "asyncId": 7,
+            "triggerAsyncId": 6,
+            "io": "",
+            "userCode": false
+        },
+        "3": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex1.js:12:11:12:11)",
+            "startTime": "840128906749445",
+            "endTime": "840128906914715",
+            "elapsedTime": "165270",
+            "asyncId": 8,
+            "triggerAsyncId": 7,
+            "io": "",
+            "userCode": false
+        },
+        "4": {
+            "source": "(internal/process/task_queues.js:97:5:97:5)",
+            "startTime": "840128907105472",
+            "endTime": "840128907642731",
+            "elapsedTime": "537259",
+            "asyncId": 9,
+            "triggerAsyncId": 8,
+            "io": false,
+            "userCode": false
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "promises": {
+    "0": {
+      "source": "small/example1.js:2:10:2:10)",
+      "startTime": "823665576915753",
+      "endTime": "823665601227140",
+      "elapsedTime": "24311387",
+      "asyncId": 5,
+      "triggerAsyncId": 1,
+      "io": "",
+      "userCode": false,
+      "line": "// promise is resolved, one reaction\nlet p1 = new Promise((resolve,reject) => resolve(17));\np1.then((v) => console.log(v));"
+    },
+    "1": {
+      "source": "small/example1.js:3:4:3:4)",
+      "startTime": "823665601860949",
+      "endTime": "823665604076207",
+      "elapsedTime": "2215258",
+      "asyncId": 6,
+      "triggerAsyncId": 5,
+      "io": "",
+      "userCode": false,
+      "line": "// promise is resolved, one reaction\nlet p1 = new Promise((resolve,reject) => resolve(17));\np1.then((v) => console.log(v));"
+    }
+  }
+}

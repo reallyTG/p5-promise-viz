@@ -1,0 +1,24 @@
+{
+    "promises": {
+        "0": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example5.js:2:10:2:10)",
+            "startTime": "16816671496741",
+            "endTime": "16816672597132",
+            "elapsedTime": "1100391",
+            "asyncId": 5,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "1": {
+            "source": "(:0:0:0:0)",
+            "startTime": "16816674101596",
+            "endTime": "16816677384003",
+            "elapsedTime": "3282407",
+            "asyncId": 6,
+            "triggerAsyncId": 5,
+            "io": "",
+            "userCode": ""
+        }
+    }
+}

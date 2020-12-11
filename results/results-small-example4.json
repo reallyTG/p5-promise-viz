@@ -1,0 +1,24 @@
+{
+    "promises": {
+        "0": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example4.js:2:18:2:18)",
+            "startTime": "826393020893875",
+            "endTime": "826393051272994",
+            "elapsedTime": "30379119",
+            "asyncId": 5,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "1": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/small/example4.js:3:4:3:4)",
+            "startTime": "826393052440231",
+            "endTime": "826393059050268",
+            "elapsedTime": "6610037",
+            "asyncId": 6,
+            "triggerAsyncId": 5,
+            "io": "",
+            "userCode": false
+        }
+    }
+}

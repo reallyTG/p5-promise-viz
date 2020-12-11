@@ -1,0 +1,154 @@
+{
+    "promises": {
+        "0": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex3.js:14:3:14:3)",
+            "startTime": "841924983922975",
+            "endTime": "841924997059495",
+            "elapsedTime": "13136520",
+            "asyncId": 5,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "1": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924985817625",
+            "endTime": "841924995202395",
+            "elapsedTime": "9384770",
+            "asyncId": 6,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": ""
+        },
+        "2": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex3.js:7:23:7:23)",
+            "startTime": "841924986338813",
+            "endTime": "841924986763371",
+            "elapsedTime": "424558",
+            "asyncId": 7,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "3": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924987276176",
+            "endTime": "841924995380153",
+            "elapsedTime": "8103977",
+            "asyncId": 8,
+            "triggerAsyncId": 7,
+            "io": "",
+            "userCode": ""
+        },
+        "4": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924987747715",
+            "endTime": "841924995615529",
+            "elapsedTime": "7867814",
+            "asyncId": 9,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": ""
+        },
+        "5": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex3.js:7:23:7:23)",
+            "startTime": "841924988100579",
+            "endTime": "841924988320796",
+            "elapsedTime": "220217",
+            "asyncId": 10,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "6": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924988634049",
+            "endTime": "841924995804227",
+            "elapsedTime": "7170178",
+            "asyncId": 11,
+            "triggerAsyncId": 10,
+            "io": "",
+            "userCode": ""
+        },
+        "7": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924988935235",
+            "endTime": "841924995966326",
+            "elapsedTime": "7031091",
+            "asyncId": 12,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": ""
+        },
+        "8": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex3.js:7:23:7:23)",
+            "startTime": "841924989239844",
+            "endTime": "841924989511821",
+            "elapsedTime": "271977",
+            "asyncId": 13,
+            "triggerAsyncId": 1,
+            "io": false,
+            "userCode": false
+        },
+        "9": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924989996420",
+            "endTime": "841924996181467",
+            "elapsedTime": "6185047",
+            "asyncId": 14,
+            "triggerAsyncId": 13,
+            "io": "",
+            "userCode": ""
+        },
+        "10": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex3.js:13:23:13:23)",
+            "startTime": "841924990414593",
+            "endTime": "841924996728162",
+            "elapsedTime": "6313569",
+            "asyncId": 15,
+            "triggerAsyncId": 1,
+            "io": "",
+            "userCode": false
+        },
+        "11": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924990974559",
+            "endTime": "841924996390539",
+            "elapsedTime": "5415980",
+            "asyncId": 16,
+            "triggerAsyncId": 6,
+            "io": "",
+            "userCode": ""
+        },
+        "12": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924991480011",
+            "endTime": "841924996582748",
+            "elapsedTime": "5102737",
+            "asyncId": 17,
+            "triggerAsyncId": 9,
+            "io": "",
+            "userCode": ""
+        },
+        "13": {
+            "source": "(:0:0:0:0)",
+            "startTime": "841924992091251",
+            "endTime": "841924996920425",
+            "elapsedTime": "4829174",
+            "asyncId": 18,
+            "triggerAsyncId": 12,
+            "io": "",
+            "userCode": ""
+        },
+        "14": {
+            "source": "(/Users/Alexi/Documents/Projects/ProfilingPromisesExamples/async-await/ex3.js:14:3:14:3)",
+            "startTime": "841924992515266",
+            "endTime": "841924997252424",
+            "elapsedTime": "4737158",
+            "asyncId": 19,
+            "triggerAsyncId": 15,
+            "io": "",
+            "userCode": false
+        }
+    }
+}
