@@ -60,10 +60,21 @@ class entity {
        //   }
     }
     
-    loadContents(){
-      g_txt = g_sourceFilesMap[this.datum.source];
-      console.log(this.datum.source);
-      getFile(parseStringAsFileName(this.datum.source),'output','promisePre');
+    /*  Function fired when a box is clicked on. This will load the sources for the promise,
+     *  and display it in the promisePre HTML object.
+     */
+    loadContents() {
+      g_txt = g_rawPromiseData.files[this.datum.file];
+      if (g_txt) {
+        writeTo( 'output', 'promisePre', g_txt, this.datum.startLine, this.datum.endLine);
+      } else {
+        writeTo( 'output', 'promisePre', 'No file associated with the selected promise.', 1, 1)
+      }
+
+      // [11/12/2020] Old version:
+      // g_txt = g_sourceFilesMap[this.datum.source];
+      // console.log(this.datum.source);
+      // getFile(parseStringAsFileName(this.datum.source),'output','promisePre');
     }
 
   // How to render the entity

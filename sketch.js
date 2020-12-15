@@ -39,7 +39,7 @@ function preload(){
     //filename = "./results-chained-ex2.json"
     //filename = "./results/ava-results-big.json";
     //filename = "./results/apex-charts-results-1602517085490.json"; 
-    filename = "./results/results-small-example5-again.json";
+    filename = "./results/processed-results-async-await-ex3.json";
     
     // Load the resulting file
     //loadDataSet(filename); 
@@ -82,7 +82,12 @@ function setup() {
                                     elements[key].triggerAsyncId,
                                     elements[key].io,
                                     elements[key].userCode,
-                                    elements[key].line
+                                    elements[key].line,
+                                    elements[key].startLine,
+                                    elements[key].startCol,
+                                    elements[key].endLine,
+                                    elements[key].endCol,
+                                    elements[key].file
                                   );
         dataset.push(temp);
     }
