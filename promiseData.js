@@ -5,9 +5,9 @@
 
 // The data that we want to hold
 class promiseData{
-    constructor(source,startTime,endTime,elapsedTime,asyncId,triggerAsyncId,io,userCode,line,
+    constructor(uniqueid,source,startTime,endTime,elapsedTime,asyncId,triggerAsyncId,io,userCode,line,
                 startLine, startCol, endLine, endCol, file) {
-        this.id     = 0;    // TODO: Make some key
+        this.id             = uniqueid;
         this.source         = source;
         this.startTime      = startTime;
         this.endTime        = endTime;

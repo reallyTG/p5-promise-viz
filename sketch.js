@@ -74,6 +74,7 @@ function setup() {
     for(var key in elements){
         // Push the actual element into the data set
         var temp = new promiseData(
+                                    elements[key].uniqueid,
                                     elements[key].source,
                                     elements[key].startTime,
                                     elements[key].endTime,
