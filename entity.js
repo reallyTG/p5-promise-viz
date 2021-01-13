@@ -71,6 +71,32 @@ class entity {
         writeTo( 'output', 'promisePre', 'No file associated with the selected promise.', 1, 1)
       }
 
+      // Spit out related promises onto console?
+      let asyncIDs = [this.datum.asyncId];
+      let promisesTriggered = [this.datum];
+
+      for (let i = 0; i < Object.keys(g_rawPromiseData.promises).length; i++) {
+        let cProm = g_rawPromiseData.promises[i];
+
+        // If cProm is triggered by one of the asyncIDs we care about...
+        if (asyncIDs.indexOf(cProm.triggerAsyncId) != -1) {
+          // Collect it to display it later.
+          promisesTriggered.push(cProm);
+          // Add it's asyncID to the list we care about.
+          asyncIDs.push(cProm.asyncId);
+        }
+      }
+
+      console.log(promisesTriggered);
+      
+      for (let i = 0; i < g_bar.entities.length; i++) {
+        if (asyncIDs.indexOf(g_bar.entities[i].datum.asyncId) == -1) {
+          g_bar.entities[i].show = false;
+        } else {
+          g_bar.entities[i].show = true;
+        }
+      }
+
       // [11/12/2020] Old version:
       // g_txt = g_sourceFilesMap[this.datum.source];
       // console.log(this.datum.source);
