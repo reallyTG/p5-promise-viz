@@ -1,7 +1,5 @@
-// TODO:
-// - Zoom to cursor
-// - Show information in Dialog
-// - Show source code
+
+
 // Data set
 let dataset = [];
 
@@ -11,7 +9,8 @@ let dataset = [];
 let g_rawPromiseData = {};
 
 // Improves the performance of the visualization
-let g_disableFriendlyErrors = false;
+// When set to 'true' performance will be improved.
+let g_disableFriendlyErrors = true;
 
 // UI
 //var g_Panel;
@@ -162,6 +161,7 @@ let value = 0;
 //////////////////////////////////////////////
 function draw() {
     background(220);
+    drawGrid();
 
     /*
     // Define colors
@@ -208,5 +208,9 @@ function draw() {
     //       after we reset the matrix
     //       otherwise the scale will be
     //       thrown off.
+    g_bar.minidisplay(0,height-g_miniMapY,g_miniMapY);
     UI();
+
+
+
 }
