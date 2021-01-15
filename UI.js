@@ -167,9 +167,9 @@ function UI() {
     // Render the panel
     //g_Panel.render();
 
-    stroke(0);
-    fill(0);
-    text("last action:"+g_querySummary,width/2+2,height-4);
+    stroke(255);
+    fill(255);
+    text("last action:"+g_querySummary,width-250,24);
 }
 
 ///////////////////////////////////////////////
