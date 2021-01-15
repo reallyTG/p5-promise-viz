@@ -4,15 +4,15 @@
 class BarChart {
     constructor(x, y, w, h, data) {
         print("Constructing BarChart");
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+        this.x = x;                 // x position of barchart
+        this.y = y;                 // y position of barchart
+        this.w = w;                 // Width of the barchart
+        this.h = h;                 // height of the barchart
         this.data = data;
 
-        this.entities = [];
-        var entityHeight = 4;
-        var xScaleOfeachEntity = 1;
+        this.entities = [];         // Stores all of the entities in the bar chart, these are the 'rectangles' that are hovered on
+        var entityHeight = 5;       // The actual height of the rectangle which is rendered
+        var xScaleOfeachEntity = 1; 
 
         // Iterate through data and find the min and max
         // values of start time.
@@ -48,14 +48,15 @@ class BarChart {
         // total duration of program
         var range = maxRange - minRange;       
  
+        // Default width 
+        this.w = 0;
+
         print("minRange: "+minRange);
         print("maxRange: "+maxRange);
         print("range: "+range);
 
         // Create the entities from the data
         for (var i = 0; i < this.data.length; i++) {
-            // Set the width of our barchart visualization
-            this.w = max(this.w, this.data[i].startTime);
             // Extra information out of our data
             // The data that we are extracting from is a promiseData object.
             var entityX = this.x + map(this.data[i].startTime,firstEntry,lastEntry,0,range);
@@ -71,12 +72,14 @@ class BarChart {
             }
                
             this.entities.push(temp);
+            // Extend the width of the bar chart to our last data point
+            // Set the width of our barchart visualization
+            this.w = max(this.w, entityX+entityW);
         }
 
         // Set the height of the bar chart
         this.h = this.data.length * entityHeight;
-        // Extend the width of the bar chart to our last data point
-        this.w *= 2;
+
     }
 
   // startRange and endRange are
@@ -85,7 +88,7 @@ class BarChart {
     // Background
     fill(192, 128);
     stroke(192);
-    rect(this.x, this.y, this.w/2, this.h);
+    rect(this.x, this.y, this.w, this.h);
     // x-axis
     this.xaxis(1);
     // y-axis
@@ -97,6 +100,53 @@ class BarChart {
             this.entities[i].hover();
         }
     }
+  }
+
+  // Displays a smaller version of the graph so you can quickly 
+  // scrub (i.e. search) for interesting data
+  //
+  // Parameters: x and y indicate the position
+  //             h is the height of the minidisplay
+  minidisplay(x,y,h){
+    // Background
+    fill(255,0,0,192);
+    rect(x,y,width,h);
+    fill(0,0,0,255);
+    rect(x-2,y-2,width-2,h-2);
+    // Draw a green dot representing where a promise would be
+    for (var i = 0; i < this.entities.length; i++) {
+      // Map to the minimap
+      var xRelative = map(this.entities[i].x,0,this.w, 0,width);
+      var yRelative = map(this.entities[i].y,0,this.h, 0,h);
+      // figure out the relative width as well
+      // Note: It should be at least 1 pixel wide if there is a promise that exists
+      var widthRelative = map(this.entities[i].w,0,this.w, 0,width);
+      var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
+
+      // Draw a green box
+      fill(0,255,0,255);
+      stroke(0,255,0,255);
+      // TODO: Get rid of the '130' hard coded number
+      //       For some erason, the offset is not quite working, maybe a rounding error?
+      //       when working at the sub-pixel level?
+      rect(x+xRelative,yRelative+y-(h-130),widthRelative,heightRelative);
+    }
+
+    // Slider
+    if(mouseY > y && mouseY < y+h){
+      fill(255,255,255,255);
+      stroke(255,255,255,255);
+      ellipse(mouseX, y, 2, 2);
+      ellipse(mouseX, y+h, 2, 2);
+
+      line(mouseX,y,mouseX,y+h);
+      if (mouseIsPressed) {
+        if (mouseButton === LEFT) {
+          offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
+        }
+      }
+    }
+
   }
 
 
@@ -246,18 +296,19 @@ class BarChart {
     stroke(255, 0, 0);
     rect(this.x, this.y, border, this.h);
   }
+  
 
   // Popup the currently hovered item
     // Helpful popup window identifying the promise
     popup(){
-      text("test",70,70);
       if(g_hoveredID>=0 && g_hoveredID<this.entities.length){
         fill(255,192);
         stroke(255);
         rect(mouseX, mouseY-textSize(), width/2, 400);
         fill(0);
         stroke(0);
-        text(this.entities[g_hoveredID].datum.print(),mouseX,mouseY);
+        //text(this.entities[g_hoveredID].datum.print(),mouseX,mouseY);
+        text(this.entities[g_hoveredID].datum.printStringData(),mouseX,mouseY);
       }
     }
 

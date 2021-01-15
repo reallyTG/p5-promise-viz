@@ -6,7 +6,7 @@ class Panel{
         this.y    = y;
         this.w    = w;
         this.h    = h;
-        this.padding = 8;
+        this.g_padding = 8;
         this.widgets = [];
         this.isOpen = true;
     }
@@ -24,7 +24,7 @@ class Panel{
         fill(0,0,128,125);
         rect(this.x, this.y-textSize(), this.w, textSize());
         stroke(0,0,0,255);
-        text(this.text, this.x+2, this.y-this.padding/2);
+        text(this.text, this.x+2, this.y-this.g_padding/2);
         fill(0,125);
 
         // If the panel is not open, then immediately return.

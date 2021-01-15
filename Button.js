@@ -12,11 +12,11 @@ class Button{
     // Render a button
     render(){
         fill(192,0,0,222);
-        stroke(192,0,0,255);
+        stroke(0,0,0,255);
         rect(this.x,this.y,this.w,textSize());
         stroke(0);
         fill(0);
-        text(this.text, this.x+2, this.y+textSize());
+        text(this.text, this.x+1, this.y+textSize());
     
         // Buttons
         if(mouseX > this.x && mouseX < this.x+this.w){

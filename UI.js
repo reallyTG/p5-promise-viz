@@ -4,7 +4,7 @@ let g_scale = 1;
 let offsetX = 0;
 let offsetY = 0;
 
-let padding = 8;  
+let g_padding = 8;  
 
 // Details string
 let g_details = '';
@@ -20,6 +20,37 @@ let g_mouseIsCurrentlyDown = 0;
 let g_mouseBeforeDownX=0;
 let g_mouseBeforeDownY=0;
 
+var g_scrollX=0;
+var g_scrollY=0;
+
+// y position of the miniDisplay
+var g_miniMapY = 150
+
+// Helper function to draw a grid to help improve visualization
+function drawGrid() {
+    fill(0, 0, 0, 192);
+    stroke(0, 0, 0,192);
+
+    var segments = 8;
+    var horizontalSpace = (height/g_scale) / segments;
+    var verticalSpace = (width/g_scale) / segments;
+
+
+    // Draw some horizontal segments
+    for(var horizontal =0; horizontal < segments*g_scale; horizontal++){
+        line(0, horizontal*horizontalSpace, width, horizontal*horizontalSpace);
+    }
+    // Draw some vertical segments
+    for(var vertical =0; vertical < segments*g_scale; vertical++){
+        line(vertical*verticalSpace, 0, vertical*verticalSpace, height);
+
+        //line(xhorizontal, this.h + horizontal*horizontalSpace, this.w, this.h + horizontal*horizontalSpace);
+    }
+
+}
+
+
+
 function setUIOffset(x, y){
     offsetX = x;
     offsetY = y;
@@ -29,24 +60,24 @@ function menubar(){
     // Menubar
     // X,Y position -- Offset
     fill(0);
-    rect(0, 0 , width, textSize()+padding);
+    rect(0, 0 , width, textSize()+g_padding);
     fill(255);
     stroke(192);
-    text("Pan Offset: (" + offsetX + "," + offsetY + ")", 160, textSize());
+    text("Pan Offset: (" + round(offsetX,1) + "," + round(offsetY,1) + ")", 160, textSize());
     // Render framerate
     var rate = frameRate();
     text("FPS:" + int(rate), 2, textSize());
     // Zoom
-    text("zoom scale: "+g_scale, 600, textSize());
+    text("zoom scale: "+round(g_scale,2), 600, textSize());
 }
 
 function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){   
     // Details Panel
-    fill(0,0,128,125);
+    fill(0,0,128,164);
     rect(x, y-textSize(), detailPanelWidth, textSize());
     fill(255,255,255,255);
-    text("Details:", x+2, y-padding/2);
-    fill(0,125);
+    text("Details:", x+2, y-g_padding/2);
+    fill(0,164);
     rect(x, y, detailPanelWidth, detailPanelHeight);
     fill(255);
     text(g_details, x+2, y+textSize(),detailPanelWidth,detailPanelHeight);
@@ -54,63 +85,49 @@ function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){
 
 function queriesPanel(x,y,panelWidth,panelHeight){
     // Queries Panel
-    fill(0,0,128,125);
+    fill(0,0,128,164);
     rect(x, y-textSize(), panelWidth, textSize());
     fill(255,255,255,255);
-    text("Queries:", x+2, y-padding/2);
-    fill(0,125);
+    text("Queries:", x+2, y-g_padding/2);
+    fill(0,164);
     rect(x, y, panelWidth, panelHeight);
-    /*
+
+
     // Buttons
-    fill(0);
-    rect(x,y,panelWidth,textSize());
-    fill(255); 
-    text("Save Selection", x+2, y+textSize());
-    // Buttons
-    fill(0);
-    rect(x,y+textSize(),panelWidth,textSize());
-    fill(255);
-    text("Hide Selected", x+2, y+textSize()*2);
-    // Buttons
-    fill(0);
-    rect(x,y+textSize()*2,panelWidth,textSize());
-    fill(255);
-    text("Hide Non-Selected", x+2, y+textSize()*3);  
-    */
-   
-    var callFilterShowNone = function (){g_bar.filterShow(0)};
-    var showNone = new Button("Show None",x,y+textSize()*1,panelWidth,textSize(),callFilterShowNone);
-    showNone.render();
+    var buttonWidth = 350;
 
     var callFilterShow = function (){g_bar.filterShow(1)};
-    var showAll = new Button("Show All",x,y+textSize()*2,panelWidth,textSize(),callFilterShow);
-    showAll.render();
+    var showAll = new Button("Show All",x,y+textSize()*1,buttonWidth,textSize(),callFilterShow);
+    showAll.render();    
+
+    var callFilterShowNone = function (){g_bar.filterShow(0)};
+    var showNone = new Button("Show None",x+buttonWidth,y+textSize()*1,buttonWidth,textSize(),callFilterShowNone);
+    showNone.render();
 
     var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-    var showSelected = new Button("Show Selected",x,y+textSize()*3,panelWidth,textSize(),callFilterShowSelected);
+    var showSelected = new Button("Show Selected",x,y+textSize()*2,buttonWidth,textSize(),callFilterShowSelected);
     showSelected.render();
 
     var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
-    var showSelected = new Button("Show Unselected",x,y+textSize()*4,panelWidth,textSize(),callFilterShowUnSelected);
+    var showSelected = new Button("Show Unselected",x+buttonWidth,y+textSize()*2,buttonWidth,textSize(),callFilterShowUnSelected);
     showSelected.render();
 
-    var callSelectAllNone = function (){g_bar.selectState(0)};
-    var selectState = new Button("Select None",x,y+textSize()*5,panelWidth,textSize(),callSelectAllNone);
-    selectState.render();
-
     var callSelectAll = function (){g_bar.selectState(1)};
-    var selectState = new Button("Select All",x,y+textSize()*6,panelWidth,textSize(),callSelectAll);
+    var selectState = new Button("Select All",x,y+textSize()*3,buttonWidth,textSize(),callSelectAll);
     selectState.render();
 
-    // Buttons
+    var callSelectAllNone = function (){g_bar.selectState(0)};
+    var selectState = new Button("Select None",x+buttonWidth,y+textSize()*3,buttonWidth,textSize(),callSelectAllNone);
+    selectState.render();
+
+
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*7,panelWidth,textSize(),callSelectIO);
+    var selectIO = new Button("Select All IO",x,y+textSize()*7,buttonWidth,textSize(),callSelectIO);
     selectIO.render();
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*8,panelWidth,textSize(),callSelectUserCode);
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*8,buttonWidth,textSize(),callSelectUserCode);
     selectUserCode.render();
-
 
 
     /*
@@ -141,11 +158,11 @@ function UI() {
 
     // Render the details pane
     var detailsHeight = 320; // Set height of details panel
-    detailsPanel(0,height - detailsHeight,width/2,detailsHeight);
+    detailsPanel(0,height - detailsHeight-g_miniMapY,width/2,detailsHeight);
 
     // Render the queries pane
     var queriesHeight = 320; // Set height of details panel
-    queriesPanel(width/2,height - queriesHeight,width/2,queriesHeight);
+    queriesPanel(width/2,height - queriesHeight-g_miniMapY,width/2,queriesHeight);
 
     // Render the panel
     //g_Panel.render();
@@ -163,19 +180,18 @@ function Controls() {
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
-
     // Handle Panning
     if (mouseIsPressed && mouseButton === CENTER) {
         offsetY -= pmouseY - mouseY;
         offsetX -= pmouseX - mouseX;
     }
 
-   // Draw a selection region
-   if(g_mouseIsCurrentlyDown){
-    stroke(0);
-    fill(128,128,128,128);
-    rect(g_mouseBeforeDownX,g_mouseBeforeDownY,mouseX-g_mouseBeforeDownX,mouseY-g_mouseBeforeDownY);
-}
+    // Draw a selection region
+    if(g_mouseIsCurrentlyDown){
+        stroke(0);
+        fill(128,128,128,128);
+        rect(g_mouseBeforeDownX,g_mouseBeforeDownY,mouseX-g_mouseBeforeDownX,mouseY-g_mouseBeforeDownY);
+    }
 
     // Handle ranged selection
     if(mouseIsPressed && mouseButton === LEFT){ 
@@ -184,7 +200,7 @@ function Controls() {
         g_mouseIsCurrentlyDown = 0;
         g_mouseBeforeDownX=mouseX;
         g_mouseBeforeDownY=mouseY;
-   }
+    }
 
     // Avoid updating sketch if mouse is out of bounds
     if (mouseX > width || mouseX < 0 || mouseY > height){
@@ -193,10 +209,9 @@ function Controls() {
       // Translate the camera
       translate(offsetX,offsetY);
       // Scale the camera
-     // translate(scrollX,scrollY);
+     // translate(g_scrollX,g_scrollY);
       scale(g_scale);
-     // translate(-scrollX,-scrollY/g_scale);
-
+      //translate(-g_scrollX/g_scale,-g_scrollY/g_scale);
 }
 
 function mouseReleased(){
@@ -207,9 +222,6 @@ function mouseReleased(){
         g_bar.inverteSelectedRange(startY,endY);
     }
 }
-
-let scrollX=0;
-let scrollY=0;
 
 
 function mouseWheel(event) {
@@ -227,11 +239,11 @@ function mouseWheel(event) {
             g_scale *= 1.05;
         }
         
-        scrollX = mouseX/g_scale;
-        scrollY = mouseY/g_scale;
+        g_scrollX = mouseX/g_scale;
+        g_scrollY = mouseY/g_scale;
     }else{
-        scrollX = pMouseX;
-        scrollY = pMouseY;
+        g_scrollX = pMouseX;
+        g_scrollY = pMouseY;
     }    
 
 }
@@ -259,15 +271,3 @@ window.addEventListener("wheel", function(e) {
 
   });
 */
-///////////////////////////////////////////////
-//
-///////////////////////////////////////////////
-class View {
-  constructor(x, y, w, h, data) {
-
-  }
-
-  display() {
-
-  }
-}
