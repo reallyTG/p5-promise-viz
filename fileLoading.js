@@ -1,3 +1,7 @@
+
+/*  Old method for loading sources. Leaving it here as we might want it
+ *  when we want to include a full project hierarchy in the tool.
+ */
 function getFile(fileName,element,preElement){
     var output = document.getElementById(element);
     var pre = document.getElementById(preElement);
@@ -18,10 +22,25 @@ function getFile(fileName,element,preElement){
     }
 }
 
+/*  Function to display provided <content> onto the <element>
+ *  and <preElement> HTML object. <preElement> must be a prism element.
+ *  Called from: bar objects in entity.js
+ */
+function writeTo( element, preElement, content, highlightFrom, highlightTo) {
+    let output = document.getElementById( element);
+    let pre = document.getElementById( preElement);
+
+    output.innerHTML = content;
+    if (highlightFrom === highlightTo)
+        pre.setAttribute('data-line', highlightFrom);
+    else
+        pre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
+    Prism.highlightAll();
+}
 
 // Start reading a file from the a file box specified by
 // 'elementID'
-function startRead(fileElementID,outputElementID,progressElementID){
+function startRead( fileElementID, outputElementID, progressElementID){
     // obtain input element through DOM 
     var file = document.getElementById(fileElementID).files[0];
     // If we successfully find the file element in the DOM

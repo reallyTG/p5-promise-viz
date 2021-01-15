@@ -39,7 +39,11 @@ function preload(){
     //filename = "./results-chained-ex2.json"
     //filename = "./results/ava-results-big.json";
     //filename = "./results/apex-charts-results-1602517085490.json"; 
-    filename = "./results/results-small-example5-again.json";
+
+    // For Jan 14 2021 Meeting:
+    // filename = "./results/processed-results-json2csv.json";
+    // filename = "./results/processed-results-centra.json";
+    filename = "./results/processed-results-c8.json";
     
     // Load the resulting file
     //loadDataSet(filename); 
@@ -74,6 +78,7 @@ function setup() {
     for(var key in elements){
         // Push the actual element into the data set
         var temp = new promiseData(
+                                    elements[key].uniqueid,
                                     elements[key].source,
                                     elements[key].startTime,
                                     elements[key].endTime,
@@ -82,7 +87,12 @@ function setup() {
                                     elements[key].triggerAsyncId,
                                     elements[key].io,
                                     elements[key].userCode,
-                                    elements[key].line
+                                    elements[key].line,
+                                    elements[key].startLine,
+                                    elements[key].startCol,
+                                    elements[key].endLine,
+                                    elements[key].endCol,
+                                    elements[key].file
                                   );
         dataset.push(temp);
     }
