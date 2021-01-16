@@ -39,8 +39,8 @@ class entity {
         if(mouseX < 0 || mouseX > width){
           return;
         }
-        //if (mouseX >= offsetX + (this.x*g_scale ) && mouseX <= offsetX + ((this.x + this.w)*g_scale )) {
-              if (mouseY >= offsetY + (this.y*g_scale ) && mouseY <= offsetY + ((this.y + this.h)*g_scale )) {
+        //if (mouseX >= g_offsetX + (this.x*g_scale ) && mouseX <= g_offsetX + ((this.x + this.w)*g_scale )) {
+              if (mouseY >= g_offsetY + (this.y*g_scale ) && mouseY <= g_offsetY + ((this.y + this.h)*g_scale )) {
                     // Invert fill and stroke
                     fill(this.stroke);
                     stroke(this.fill);

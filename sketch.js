@@ -115,7 +115,7 @@ function setup() {
     button.mousePressed(changeDebugMode);
 
 
-    setUIOffset(offsetX, offsetY);
+    setUIOffset(g_offsetX, g_offsetY);
 }
 
 //

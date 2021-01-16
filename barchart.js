@@ -142,7 +142,7 @@ class BarChart {
       line(mouseX,y,mouseX,y+h);
       if (mouseIsPressed) {
         if (mouseButton === LEFT) {
-          offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
+          g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
         }
       }
     }
@@ -221,8 +221,8 @@ class BarChart {
       var itemsSelected=0;
 
       for (var i = 0; i < this.entities.length; i++) {
-          if(startY < offsetY +(this.entities[i].y*g_scale) && 
-            endY > offsetY + (this.entities[i].y*g_scale+this.entities[i].h*g_scale)){
+          if(startY < g_offsetY +(this.entities[i].y*g_scale) && 
+            endY > g_offsetY + (this.entities[i].y*g_scale+this.entities[i].h*g_scale)){
             // Currently inverts the selected range
             // TODO: Will likely want more controls over this.
               this.entities[i].selected = !this.entities[i].selected;

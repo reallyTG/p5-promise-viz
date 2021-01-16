@@ -1,8 +1,8 @@
 // Scale of how zoomed in we are in our visualization
 let g_scale = 1;
 // Offset
-let offsetX = 0;
-let offsetY = 0;
+let g_offsetX = 0;
+let g_offsetY = 0;
 
 let g_padding = 8;  
 
@@ -25,6 +25,41 @@ var g_scrollY=0;
 
 // y position of the miniDisplay
 var g_miniMapY = 150
+
+// Essentially create a bounding sphere, and then
+// push the camera outwards to the radius so we can
+// view the entire plane (i.e. the bar chart).
+function ZoomToFit(state){
+    console.log("Zoom To Fit");
+
+    var fov = 60; // TODO: Figure out actual field of view
+    // Compute aspect ratio of the scene
+    var aspectRatio = width/height;
+    half_fov_radians = 0.5*(fov*3.1415926/180);
+    if(aspectRatio < 1.0){
+        half_fov_radians = atan(aspect*tan(half_fov_radians));
+    }
+
+    // Radius of our visualization is half of the width
+    var radius = g_bar.w / 2.0;
+    // Distance to the center
+    var distance_to_center = radius / sin(half_fov_radians);
+    console.log(distance_to_center);
+
+
+    g_offsetX = g_bar.w / 2.0;
+    g_offsetY = g_bar.h / 2.0;
+    g_scale = 1/distance_to_center;
+    g_scale = 0.001;
+
+    if(aspectRatio > 1){
+        // Get the width of our bar chart
+        var originShapeWidth = g_bar.w;
+    }else{
+
+    }
+}
+
 
 // Helper function to draw a grid to help improve visualization
 function drawGrid() {
@@ -49,26 +84,30 @@ function drawGrid() {
 
 }
 
-
-
 function setUIOffset(x, y){
-    offsetX = x;
-    offsetY = y;
+    g_offsetX = x;
+    g_offsetY = y;
 }
 
-function menubar(){
+function menubar(x,y){
     // Menubar
     // X,Y position -- Offset
     fill(0);
-    rect(0, 0 , width, textSize()+g_padding);
+    rect(x, y , width, textSize()+g_padding);
     fill(255);
     stroke(192);
-    text("Pan Offset: (" + round(offsetX,1) + "," + round(offsetY,1) + ")", 160, textSize());
+    text("Pan Offset: (" + round(g_offsetX,1) + "," + round(g_offsetY,3) + ")", x+160, y+textSize());
     // Render framerate
     var rate = frameRate();
-    text("FPS:" + int(rate), 2, textSize());
+    text("FPS:" + int(rate), x+2, y+textSize());
     // Zoom
-    text("zoom scale: "+round(g_scale,2), 600, textSize());
+    text("zoom scale: "+round(g_scale,3), x+600, y+textSize());
+}
+
+function ZoomPanel(x,y){
+    fill(0,0,128,164);
+    var ZoomFit = new Button("Fit to Window",x,y+textSize()*1,220,textSize(),ZoomToFit);
+    ZoomFit.render();
 }
 
 function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){   
@@ -154,7 +193,10 @@ function UI() {
     textFont("monospace", 26);
 
     // Render the menubar
-    menubar();
+    menubar(0,0);
+
+    // Render the Zoom controls
+    ZoomPanel(0,10);
 
     // Render the details pane
     var detailsHeight = 320; // Set height of details panel
@@ -163,6 +205,8 @@ function UI() {
     // Render the queries pane
     var queriesHeight = 320; // Set height of details panel
     queriesPanel(width/2,height - queriesHeight-g_miniMapY,width/2,queriesHeight);
+
+    
 
     // Render the panel
     //g_Panel.render();
@@ -182,8 +226,8 @@ function Controls() {
     }
     // Handle Panning
     if (mouseIsPressed && mouseButton === CENTER) {
-        offsetY -= pmouseY - mouseY;
-        offsetX -= pmouseX - mouseX;
+        g_offsetY -= pmouseY - mouseY;
+        g_offsetX -= pmouseX - mouseX;
     }
 
     // Draw a selection region
@@ -207,7 +251,7 @@ function Controls() {
         return;
     }
       // Translate the camera
-      translate(offsetX,offsetY);
+      translate(g_offsetX,g_offsetY);
       // Scale the camera
      // translate(g_scrollX,g_scrollY);
       scale(g_scale);
