@@ -2,14 +2,13 @@
   "promises": {
     "0": {
       "source": "bin/c8.js:49:1:49:1",
-      "startTime": "22782289506832",
-      "endTime": "22782331715529",
-      "elapsedTime": "42208697",
+      "startTime": "21257163838904",
+      "endTime": "21257210183805",
+      "elapsedTime": "46344901",
       "asyncId": 5,
       "triggerAsyncId": 1,
       "io": "",
       "userCode": false,
-      "uniqueid": "0",
       "line": "\n}\n\nrun().catch((err) => {\n  console.error(err.stack)\n  process.exitCode = 1\n}",
       "startLine": 49,
       "startCol": 1,
@@ -18,18 +17,18 @@
       "file": "bin/c8.js",
       "triggers": [
         9
-      ]
+      ],
+      "uniqueid": 0
     },
     "1": {
       "source": "(internal/util.js:296:12:296:12)",
-      "startTime": "22782290335169",
-      "endTime": "22782323656796",
-      "elapsedTime": "33321627",
+      "startTime": "21257164845658",
+      "endTime": "21257201136069",
+      "elapsedTime": "36290411",
       "asyncId": 6,
       "triggerAsyncId": 1,
       "io": false,
       "userCode": false,
-      "uniqueid": "1",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -38,18 +37,18 @@
       "file": "",
       "triggers": [
         8
-      ]
+      ],
+      "uniqueid": 1
     },
     "2": {
       "source": "bin/c8.js:49:1:49:1",
-      "startTime": "22782293015325",
-      "endTime": "22782325000156",
-      "elapsedTime": "31984831",
+      "startTime": "21257168459754",
+      "endTime": "21257202759464",
+      "elapsedTime": "34299710",
       "asyncId": 8,
       "triggerAsyncId": 6,
       "io": "",
       "userCode": false,
-      "uniqueid": "2",
       "line": "\n}\n\nrun().catch((err) => {\n  console.error(err.stack)\n  process.exitCode = 1\n}",
       "startLine": 49,
       "startCol": 1,
@@ -59,90 +58,90 @@
       "triggers": [
         93,
         94
-      ]
+      ],
+      "uniqueid": 2
     },
     "3": {
       "source": "bin/c8.js:49:12:49:12",
-      "startTime": "22782293421686",
-      "endTime": "22782332072024",
-      "elapsedTime": "38650338",
+      "startTime": "21257169566213",
+      "endTime": "21257210615715",
+      "elapsedTime": "41049502",
       "asyncId": 9,
       "triggerAsyncId": 5,
       "io": "",
       "userCode": false,
-      "uniqueid": "3",
       "line": "\n}\n\nrun().catch((err) => {\n  console.error(err.stack)\n  process.exitCode = 1\n}",
       "startLine": 49,
       "startCol": 12,
       "endLine": 49,
       "endCol": 12,
       "file": "bin/c8.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 3
     },
     "4": {
       "source": "bin/c8.js:35:20:35:20",
-      "startTime": "22782324071007",
-      "endTime": "22782325587521",
-      "elapsedTime": "1516514",
+      "startTime": "21257201657220",
+      "endTime": "21257203563540",
+      "elapsedTime": "1906320",
       "asyncId": 93,
       "triggerAsyncId": 8,
       "io": false,
       "userCode": false,
-      "uniqueid": "4",
       "line": "\n    }\n\n    await promises.mkdir(argv.tempDirectory, { recursive: true })\n    process.env.NODE_V8_COVERAGE = argv.tempDirectory\n    foreground(hideInstrumenterArgs(argv), async (done) => {\n      try ",
       "startLine": 35,
       "startCol": 20,
       "endLine": 35,
       "endCol": 20,
       "file": "bin/c8.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 4
     },
     "5": {
       "source": "bin/c8.js:35:20:35:20",
-      "startTime": "22782324295979",
-      "endTime": "22782325472231",
-      "elapsedTime": "1176252",
+      "startTime": "21257202000917",
+      "endTime": "21257203434693",
+      "elapsedTime": "1433776",
       "asyncId": 94,
       "triggerAsyncId": 8,
       "io": false,
       "userCode": false,
-      "uniqueid": "5",
       "line": "\n    }\n\n    await promises.mkdir(argv.tempDirectory, { recursive: true })\n    process.env.NODE_V8_COVERAGE = argv.tempDirectory\n    foreground(hideInstrumenterArgs(argv), async (done) => {\n      try ",
       "startLine": 35,
       "startCol": 20,
       "endLine": 35,
       "endCol": 20,
       "file": "bin/c8.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 5
     },
     "6": {
       "source": "bin/c8.js:39:15:39:15",
-      "startTime": "22804324141479",
-      "endTime": "22809032828507",
-      "elapsedTime": "4708687028",
+      "startTime": "21280587829410",
+      "endTime": "21285360844593",
+      "elapsedTime": "4773015183",
       "asyncId": 114,
       "triggerAsyncId": 98,
       "io": "",
       "userCode": false,
-      "uniqueid": "7",
       "line": "\n    foreground(hideInstrumenterArgs(argv), async (done) => {\n      try {\n        await outputReport(argv)\n      } catch (err) {\n        console.error(err.stack)\n        process.exitCode = ",
       "startLine": 39,
       "startCol": 15,
       "endLine": 39,
       "endCol": 15,
       "file": "bin/c8.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 6
     },
     "7": {
       "source": "lib/commands/report.js:27:16:27:16",
-      "startTime": "22804325550537",
-      "endTime": "22809032511116",
-      "elapsedTime": "4706960579",
+      "startTime": "21280589237600",
+      "endTime": "21285360436938",
+      "elapsedTime": "4771199338",
       "asyncId": 115,
       "triggerAsyncId": 98,
       "io": false,
       "userCode": false,
-      "uniqueid": "8",
       "line": "\n    src: argv.src\n  })\n  await report.run()\n  if (argv.checkCoverage) await checkCoverages(argv, report)\n}",
       "startLine": 27,
       "startCol": 16,
@@ -151,18 +150,18 @@
       "file": "lib/commands/report.js",
       "triggers": [
         127
-      ]
+      ],
+      "uniqueid": 7
     },
     "8": {
       "source": "lib/report.js:61:31:61:31",
-      "startTime": "22804326144110",
-      "endTime": "22808997189934",
-      "elapsedTime": "4671045824",
+      "startTime": "21280590077295",
+      "endTime": "21285324396227",
+      "elapsedTime": "4734318932",
       "asyncId": 116,
       "triggerAsyncId": 98,
       "io": false,
       "userCode": false,
-      "uniqueid": "9",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 31,
@@ -171,38 +170,38 @@
       "file": "lib/report.js",
       "triggers": [
         126
-      ]
+      ],
+      "uniqueid": 8
     },
     "9": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808900759752",
-      "endTime": "22808920622475",
-      "elapsedTime": "19862723",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285233274069",
+      "endTime": "21285253330441",
+      "elapsedTime": "20056372",
       "asyncId": 117,
       "triggerAsyncId": 98,
       "io": false,
       "userCode": false,
-      "uniqueid": "10",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         125
-      ]
+      ],
+      "uniqueid": 9
     },
     "10": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808901266178",
-      "endTime": "22808918353231",
-      "elapsedTime": "17087053",
+      "startTime": "21285234082605",
+      "endTime": "21285250848075",
+      "elapsedTime": "16765470",
       "asyncId": 118,
       "triggerAsyncId": 98,
       "io": false,
       "userCode": false,
-      "uniqueid": "11",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -211,36 +210,36 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         124
-      ]
+      ],
+      "uniqueid": 10
     },
     "11": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808903168573",
-      "endTime": "22808920760596",
-      "elapsedTime": "17592023",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285236932477",
+      "endTime": "21285253470536",
+      "elapsedTime": "16538059",
       "asyncId": 124,
       "triggerAsyncId": 118,
       "io": false,
       "userCode": false,
-      "uniqueid": "16",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 11
     },
     "12": {
       "source": "lib/report.js:61:31:61:31",
-      "startTime": "22808903635689",
-      "endTime": "22808925244952",
-      "elapsedTime": "21609263",
+      "startTime": "21285237210417",
+      "endTime": "21285257515817",
+      "elapsedTime": "20305400",
       "asyncId": 125,
       "triggerAsyncId": 117,
       "io": false,
       "userCode": false,
-      "uniqueid": "17",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 31,
@@ -252,74 +251,74 @@
         152,
         153,
         154
-      ]
+      ],
+      "uniqueid": 12
     },
     "13": {
       "source": "lib/commands/report.js:27:16:27:16",
-      "startTime": "22808904001596",
-      "endTime": "22809032688099",
-      "elapsedTime": "128686503",
+      "startTime": "21285237481187",
+      "endTime": "21285360639805",
+      "elapsedTime": "123158618",
       "asyncId": 126,
       "triggerAsyncId": 116,
       "io": false,
       "userCode": false,
-      "uniqueid": "18",
       "line": "\n    src: argv.src\n  })\n  await report.run()\n  if (argv.checkCoverage) await checkCoverages(argv, report)\n}",
       "startLine": 27,
       "startCol": 16,
       "endLine": 27,
       "endCol": 16,
       "file": "lib/commands/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 13
     },
     "14": {
       "source": "bin/c8.js:39:15:39:15",
-      "startTime": "22808904390676",
-      "endTime": "22809033035162",
-      "elapsedTime": "128644486",
+      "startTime": "21285237674063",
+      "endTime": "21285361018837",
+      "elapsedTime": "123344774",
       "asyncId": 127,
       "triggerAsyncId": 115,
       "io": "",
       "userCode": false,
-      "uniqueid": "19",
       "line": "\n    foreground(hideInstrumenterArgs(argv), async (done) => {\n      try {\n        await outputReport(argv)\n      } catch (err) {\n        console.error(err.stack)\n        process.exitCode = ",
       "startLine": 39,
       "startCol": 15,
       "endLine": 39,
       "endCol": 15,
       "file": "bin/c8.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 14
     },
     "15": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808923245966",
-      "endTime": "22808935295781",
-      "elapsedTime": "12049815",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285255537119",
+      "endTime": "21285265728833",
+      "elapsedTime": "10191714",
       "asyncId": 151,
       "triggerAsyncId": 125,
       "io": false,
       "userCode": false,
-      "uniqueid": "36",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         159
-      ]
+      ],
+      "uniqueid": 15
     },
     "16": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808923594150",
-      "endTime": "22808934788513",
-      "elapsedTime": "11194363",
+      "startTime": "21285255846088",
+      "endTime": "21285265266097",
+      "elapsedTime": "9420009",
       "asyncId": 152,
       "triggerAsyncId": 125,
       "io": false,
       "userCode": false,
-      "uniqueid": "37",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -328,18 +327,18 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         158
-      ]
+      ],
+      "uniqueid": 16
     },
     "17": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808923832316",
-      "endTime": "22808925557670",
-      "elapsedTime": "1725354",
+      "startTime": "21285256137324",
+      "endTime": "21285257849548",
+      "elapsedTime": "1712224",
       "asyncId": 153,
       "triggerAsyncId": 125,
       "io": false,
       "userCode": false,
-      "uniqueid": "38",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -348,18 +347,18 @@
       "file": "",
       "triggers": [
         157
-      ]
+      ],
+      "uniqueid": 17
     },
     "18": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808924161311",
-      "endTime": "22808925421542",
-      "elapsedTime": "1260231",
+      "startTime": "21285256358463",
+      "endTime": "21285257708790",
+      "elapsedTime": "1350327",
       "asyncId": 154,
       "triggerAsyncId": 125,
       "io": false,
       "userCode": false,
-      "uniqueid": "39",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -368,36 +367,36 @@
       "file": "",
       "triggers": [
         156
-      ]
+      ],
+      "uniqueid": 18
     },
     "19": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808924398989",
-      "endTime": "22808925767052",
-      "elapsedTime": "1368063",
+      "startTime": "21285256638871",
+      "endTime": "21285258064974",
+      "elapsedTime": "1426103",
       "asyncId": 156,
       "triggerAsyncId": 154,
       "io": false,
       "userCode": false,
-      "uniqueid": "40",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 19
     },
     "20": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808924704333",
-      "endTime": "22808927308328",
-      "elapsedTime": "2603995",
+      "startTime": "21285256831082",
+      "endTime": "21285259375882",
+      "elapsedTime": "2544800",
       "asyncId": 157,
       "triggerAsyncId": 153,
       "io": false,
       "userCode": false,
-      "uniqueid": "41",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -407,36 +406,36 @@
       "triggers": [
         161,
         162
-      ]
+      ],
+      "uniqueid": 20
     },
     "21": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808924918117",
-      "endTime": "22808935550745",
-      "elapsedTime": "10632628",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285257114838",
+      "endTime": "21285265906833",
+      "elapsedTime": "8791995",
       "asyncId": 158,
       "triggerAsyncId": 152,
       "io": false,
       "userCode": false,
-      "uniqueid": "42",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 21
     },
     "22": {
       "source": "lib/report.js:61:20:61:20",
-      "startTime": "22808925115519",
-      "endTime": "22808938024557",
-      "elapsedTime": "12909038",
+      "startTime": "21285257295000",
+      "endTime": "21285268093535",
+      "elapsedTime": "10798535",
       "asyncId": 159,
       "triggerAsyncId": 151,
       "io": false,
       "userCode": false,
-      "uniqueid": "43",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 20,
@@ -448,18 +447,18 @@
         182,
         183,
         184
-      ]
+      ],
+      "uniqueid": 22
     },
     "23": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808926109731",
-      "endTime": "22808932286600",
-      "elapsedTime": "6176869",
+      "startTime": "21285258285881",
+      "endTime": "21285263512173",
+      "elapsedTime": "5226292",
       "asyncId": 161,
       "triggerAsyncId": 157,
       "io": false,
       "userCode": false,
-      "uniqueid": "44",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -468,18 +467,18 @@
       "file": "",
       "triggers": [
         165
-      ]
+      ],
+      "uniqueid": 23
     },
     "24": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808926399481",
-      "endTime": "22808927910367",
-      "elapsedTime": "1510886",
+      "startTime": "21285258576687",
+      "endTime": "21285259883158",
+      "elapsedTime": "1306471",
       "asyncId": 162,
       "triggerAsyncId": 157,
       "io": false,
       "userCode": false,
-      "uniqueid": "45",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -488,18 +487,18 @@
       "file": "",
       "triggers": [
         164
-      ]
+      ],
+      "uniqueid": 24
     },
     "25": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808926647373",
-      "endTime": "22808929296805",
-      "elapsedTime": "2649432",
+      "startTime": "21285258870537",
+      "endTime": "21285261144870",
+      "elapsedTime": "2274333",
       "asyncId": 164,
       "triggerAsyncId": 162,
       "io": false,
       "userCode": false,
-      "uniqueid": "46",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -509,18 +508,18 @@
       "triggers": [
         167,
         168
-      ]
+      ],
+      "uniqueid": 25
     },
     "26": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808926957215",
-      "endTime": "22808934456781",
-      "elapsedTime": "7499566",
+      "startTime": "21285259082179",
+      "endTime": "21285264991359",
+      "elapsedTime": "5909180",
       "asyncId": 165,
       "triggerAsyncId": 161,
       "io": "",
       "userCode": "",
-      "uniqueid": "47",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -529,18 +528,18 @@
       "file": "",
       "triggers": [
         177
-      ]
+      ],
+      "uniqueid": 26
     },
     "27": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808928195500",
-      "endTime": "22808929707327",
-      "elapsedTime": "1511827",
+      "startTime": "21285260199561",
+      "endTime": "21285261515340",
+      "elapsedTime": "1315779",
       "asyncId": 167,
       "triggerAsyncId": 164,
       "io": false,
       "userCode": false,
-      "uniqueid": "48",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -549,18 +548,18 @@
       "file": "",
       "triggers": [
         171
-      ]
+      ],
+      "uniqueid": 27
     },
     "28": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808928536761",
-      "endTime": "22808929490848",
-      "elapsedTime": "954087",
+      "startTime": "21285260423441",
+      "endTime": "21285261351444",
+      "elapsedTime": "928003",
       "asyncId": 168,
       "triggerAsyncId": 164,
       "io": false,
       "userCode": false,
-      "uniqueid": "49",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -569,36 +568,36 @@
       "file": "",
       "triggers": [
         170
-      ]
+      ],
+      "uniqueid": 28
     },
     "29": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808928876823",
-      "endTime": "22808929890585",
-      "elapsedTime": "1013762",
+      "startTime": "21285260724473",
+      "endTime": "21285261632200",
+      "elapsedTime": "907727",
       "asyncId": 170,
       "triggerAsyncId": 168,
       "io": false,
       "userCode": false,
-      "uniqueid": "50",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 29
     },
     "30": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808929096571",
-      "endTime": "22808931439742",
-      "elapsedTime": "2343171",
+      "startTime": "21285260925885",
+      "endTime": "21285262845743",
+      "elapsedTime": "1919858",
       "asyncId": 171,
       "triggerAsyncId": 167,
       "io": false,
       "userCode": false,
-      "uniqueid": "51",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
@@ -608,18 +607,18 @@
       "triggers": [
         172,
         173
-      ]
+      ],
+      "uniqueid": 30
     },
     "31": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808930316936",
-      "endTime": "22808931871876",
-      "elapsedTime": "1554940",
+      "startTime": "21285261938208",
+      "endTime": "21285263200059",
+      "elapsedTime": "1261851",
       "asyncId": 172,
       "triggerAsyncId": 171,
       "io": false,
       "userCode": false,
-      "uniqueid": "52",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -628,18 +627,18 @@
       "file": "",
       "triggers": [
         176
-      ]
+      ],
+      "uniqueid": 31
     },
     "32": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808930599136",
-      "endTime": "22808931651133",
-      "elapsedTime": "1051997",
+      "startTime": "21285262245641",
+      "endTime": "21285262975660",
+      "elapsedTime": "730019",
       "asyncId": 173,
       "triggerAsyncId": 171,
       "io": false,
       "userCode": false,
-      "uniqueid": "53",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -648,54 +647,54 @@
       "file": "",
       "triggers": [
         175
-      ]
+      ],
+      "uniqueid": 32
     },
     "33": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808930959233",
-      "endTime": "22808932035711",
-      "elapsedTime": "1076478",
+      "startTime": "21285262462691",
+      "endTime": "21285263329455",
+      "elapsedTime": "866764",
       "asyncId": 175,
       "triggerAsyncId": 173,
       "io": false,
       "userCode": false,
-      "uniqueid": "54",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 33
     },
     "34": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808931227172",
-      "endTime": "22808932503637",
-      "elapsedTime": "1276465",
+      "startTime": "21285262728038",
+      "endTime": "21285263624981",
+      "elapsedTime": "896943",
       "asyncId": 176,
       "triggerAsyncId": 172,
       "io": false,
       "userCode": false,
-      "uniqueid": "55",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
       "endLine": 43,
       "endCol": 46,
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 34
     },
     "35": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808932912915",
-      "endTime": "22808934030399",
-      "elapsedTime": "1117484",
+      "startTime": "21285263835893",
+      "endTime": "21285264692990",
+      "elapsedTime": "857097",
       "asyncId": 177,
       "triggerAsyncId": 165,
       "io": "",
       "userCode": "",
-      "uniqueid": "56",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -704,56 +703,56 @@
       "file": "",
       "triggers": [
         179
-      ]
+      ],
+      "uniqueid": 35
     },
     "36": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808933188198",
-      "endTime": "22808934291398",
-      "elapsedTime": "1103200",
+      "startTime": "21285264119640",
+      "endTime": "21285264868004",
+      "elapsedTime": "748364",
       "asyncId": 179,
       "triggerAsyncId": 177,
       "io": "",
       "userCode": "",
-      "uniqueid": "57",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 36
     },
     "37": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808936120888",
-      "endTime": "22808947319420",
-      "elapsedTime": "11198532",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285266378266",
+      "endTime": "21285275638782",
+      "elapsedTime": "9260516",
       "asyncId": 181,
       "triggerAsyncId": 159,
       "io": false,
       "userCode": false,
-      "uniqueid": "58",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         189
-      ]
+      ],
+      "uniqueid": 37
     },
     "38": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808936350150",
-      "endTime": "22808946823206",
-      "elapsedTime": "10473056",
+      "startTime": "21285266653131",
+      "endTime": "21285275344369",
+      "elapsedTime": "8691238",
       "asyncId": 182,
       "triggerAsyncId": 159,
       "io": false,
       "userCode": false,
-      "uniqueid": "59",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -762,18 +761,18 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         188
-      ]
+      ],
+      "uniqueid": 38
     },
     "39": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808936676012",
-      "endTime": "22808938387917",
-      "elapsedTime": "1711905",
+      "startTime": "21285266858933",
+      "endTime": "21285268483646",
+      "elapsedTime": "1624713",
       "asyncId": 183,
       "triggerAsyncId": 159,
       "io": false,
       "userCode": false,
-      "uniqueid": "60",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -782,18 +781,18 @@
       "file": "",
       "triggers": [
         187
-      ]
+      ],
+      "uniqueid": 39
     },
     "40": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808936993857",
-      "endTime": "22808938220646",
-      "elapsedTime": "1226789",
+      "startTime": "21285267127752",
+      "endTime": "21285268312918",
+      "elapsedTime": "1185166",
       "asyncId": 184,
       "triggerAsyncId": 159,
       "io": false,
       "userCode": false,
-      "uniqueid": "61",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -802,36 +801,36 @@
       "file": "",
       "triggers": [
         186
-      ]
+      ],
+      "uniqueid": 40
     },
     "41": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808937229637",
-      "endTime": "22808938564431",
-      "elapsedTime": "1334794",
+      "startTime": "21285267319397",
+      "endTime": "21285268581525",
+      "elapsedTime": "1262128",
       "asyncId": 186,
       "triggerAsyncId": 184,
       "io": false,
       "userCode": false,
-      "uniqueid": "62",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 41
     },
     "42": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808937513015",
-      "endTime": "22808939973955",
-      "elapsedTime": "2460940",
+      "startTime": "21285267560300",
+      "endTime": "21285269743464",
+      "elapsedTime": "2183164",
       "asyncId": 187,
       "triggerAsyncId": 183,
       "io": false,
       "userCode": false,
-      "uniqueid": "63",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -841,36 +840,36 @@
       "triggers": [
         191,
         192
-      ]
+      ],
+      "uniqueid": 42
     },
     "43": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808937711843",
-      "endTime": "22808947521386",
-      "elapsedTime": "9809543",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285267723880",
+      "endTime": "21285275739855",
+      "elapsedTime": "8015975",
       "asyncId": 188,
       "triggerAsyncId": 182,
       "io": false,
       "userCode": false,
-      "uniqueid": "64",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 43
     },
     "44": {
       "source": "lib/report.js:61:20:61:20",
-      "startTime": "22808937901444",
-      "endTime": "22808950093811",
-      "elapsedTime": "12192367",
+      "startTime": "21285267977493",
+      "endTime": "21285277776316",
+      "elapsedTime": "9798823",
       "asyncId": 189,
       "triggerAsyncId": 181,
       "io": false,
       "userCode": false,
-      "uniqueid": "65",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 20,
@@ -882,18 +881,18 @@
         212,
         213,
         214
-      ]
+      ],
+      "uniqueid": 44
     },
     "45": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808938896602",
-      "endTime": "22808944553919",
-      "elapsedTime": "5657317",
+      "startTime": "21285268760585",
+      "endTime": "21285273446502",
+      "elapsedTime": "4685917",
       "asyncId": 191,
       "triggerAsyncId": 187,
       "io": false,
       "userCode": false,
-      "uniqueid": "66",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -902,18 +901,18 @@
       "file": "",
       "triggers": [
         195
-      ]
+      ],
+      "uniqueid": 45
     },
     "46": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808939128701",
-      "endTime": "22808940470273",
-      "elapsedTime": "1341572",
+      "startTime": "21285268993460",
+      "endTime": "21285270243855",
+      "elapsedTime": "1250395",
       "asyncId": 192,
       "triggerAsyncId": 187,
       "io": false,
       "userCode": false,
-      "uniqueid": "67",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -922,18 +921,18 @@
       "file": "",
       "triggers": [
         194
-      ]
+      ],
+      "uniqueid": 46
     },
     "47": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808939426588",
-      "endTime": "22808941868380",
-      "elapsedTime": "2441792",
+      "startTime": "21285269177598",
+      "endTime": "21285271298318",
+      "elapsedTime": "2120720",
       "asyncId": 194,
       "triggerAsyncId": 192,
       "io": false,
       "userCode": false,
-      "uniqueid": "68",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -943,18 +942,18 @@
       "triggers": [
         197,
         198
-      ]
+      ],
+      "uniqueid": 47
     },
     "48": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808939724137",
-      "endTime": "22808946506283",
-      "elapsedTime": "6782146",
+      "startTime": "21285269417173",
+      "endTime": "21285275057480",
+      "elapsedTime": "5640307",
       "asyncId": 195,
       "triggerAsyncId": 191,
       "io": "",
       "userCode": "",
-      "uniqueid": "69",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -963,18 +962,18 @@
       "file": "",
       "triggers": [
         207
-      ]
+      ],
+      "uniqueid": 48
     },
     "49": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808940763231",
-      "endTime": "22808942270424",
-      "elapsedTime": "1507193",
+      "startTime": "21285270514329",
+      "endTime": "21285271615688",
+      "elapsedTime": "1101359",
       "asyncId": 197,
       "triggerAsyncId": 194,
       "io": false,
       "userCode": false,
-      "uniqueid": "70",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -983,18 +982,18 @@
       "file": "",
       "triggers": [
         201
-      ]
+      ],
+      "uniqueid": 49
     },
     "50": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808941114694",
-      "endTime": "22808942083297",
-      "elapsedTime": "968603",
+      "startTime": "21285270697178",
+      "endTime": "21285271429899",
+      "elapsedTime": "732721",
       "asyncId": 198,
       "triggerAsyncId": 194,
       "io": false,
       "userCode": false,
-      "uniqueid": "71",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1003,36 +1002,36 @@
       "file": "",
       "triggers": [
         200
-      ]
+      ],
+      "uniqueid": 50
     },
     "51": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808941372755",
-      "endTime": "22808942403477",
-      "elapsedTime": "1030722",
+      "startTime": "21285270935809",
+      "endTime": "21285271732667",
+      "elapsedTime": "796858",
       "asyncId": 200,
       "triggerAsyncId": 198,
       "io": false,
       "userCode": false,
-      "uniqueid": "72",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 51
     },
     "52": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808941723940",
-      "endTime": "22808943749818",
-      "elapsedTime": "2025878",
+      "startTime": "21285271119842",
+      "endTime": "21285272805971",
+      "elapsedTime": "1686129",
       "asyncId": 201,
       "triggerAsyncId": 197,
       "io": false,
       "userCode": false,
-      "uniqueid": "73",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
@@ -1042,18 +1041,18 @@
       "triggers": [
         202,
         203
-      ]
+      ],
+      "uniqueid": 52
     },
     "53": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808942685272",
-      "endTime": "22808944122531",
-      "elapsedTime": "1437259",
+      "startTime": "21285272020791",
+      "endTime": "21285273145705",
+      "elapsedTime": "1124914",
       "asyncId": 202,
       "triggerAsyncId": 201,
       "io": false,
       "userCode": false,
-      "uniqueid": "74",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1062,18 +1061,18 @@
       "file": "",
       "triggers": [
         206
-      ]
+      ],
+      "uniqueid": 53
     },
     "54": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808943016381",
-      "endTime": "22808943906094",
-      "elapsedTime": "889713",
+      "startTime": "21285272218524",
+      "endTime": "21285272935607",
+      "elapsedTime": "717083",
       "asyncId": 203,
       "triggerAsyncId": 201,
       "io": false,
       "userCode": false,
-      "uniqueid": "75",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1082,54 +1081,54 @@
       "file": "",
       "triggers": [
         205
-      ]
+      ],
+      "uniqueid": 54
     },
     "55": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808943340901",
-      "endTime": "22808944364638",
-      "elapsedTime": "1023737",
+      "startTime": "21285272472109",
+      "endTime": "21285273264379",
+      "elapsedTime": "792270",
       "asyncId": 205,
       "triggerAsyncId": 203,
       "io": false,
       "userCode": false,
-      "uniqueid": "76",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 55
     },
     "56": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808943550087",
-      "endTime": "22808944740511",
-      "elapsedTime": "1190424",
+      "startTime": "21285272635532",
+      "endTime": "21285273563201",
+      "elapsedTime": "927669",
       "asyncId": 206,
       "triggerAsyncId": 202,
       "io": false,
       "userCode": false,
-      "uniqueid": "77",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
       "endLine": 43,
       "endCol": 46,
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 56
     },
     "57": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808945090946",
-      "endTime": "22808946172493",
-      "elapsedTime": "1081547",
+      "startTime": "21285273828301",
+      "endTime": "21285274763416",
+      "elapsedTime": "935115",
       "asyncId": 207,
       "triggerAsyncId": 195,
       "io": "",
       "userCode": "",
-      "uniqueid": "78",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1138,56 +1137,56 @@
       "file": "",
       "triggers": [
         209
-      ]
+      ],
+      "uniqueid": 57
     },
     "58": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808945344966",
-      "endTime": "22808946361453",
-      "elapsedTime": "1016487",
+      "startTime": "21285274100726",
+      "endTime": "21285274881011",
+      "elapsedTime": "780285",
       "asyncId": 209,
       "triggerAsyncId": 207,
       "io": "",
       "userCode": "",
-      "uniqueid": "79",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 58
     },
     "59": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808948085946",
-      "endTime": "22808959039055",
-      "elapsedTime": "10953109",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285276086353",
+      "endTime": "21285285855271",
+      "elapsedTime": "9768918",
       "asyncId": 211,
       "triggerAsyncId": 189,
       "io": false,
       "userCode": false,
-      "uniqueid": "80",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         219
-      ]
+      ],
+      "uniqueid": 59
     },
     "60": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808948318461",
-      "endTime": "22808958632423",
-      "elapsedTime": "10313962",
+      "startTime": "21285276366615",
+      "endTime": "21285285450006",
+      "elapsedTime": "9083391",
       "asyncId": 212,
       "triggerAsyncId": 189,
       "io": false,
       "userCode": false,
-      "uniqueid": "81",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -1196,18 +1195,18 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         218
-      ]
+      ],
+      "uniqueid": 60
     },
     "61": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808948637046",
-      "endTime": "22808950471708",
-      "elapsedTime": "1834662",
+      "startTime": "21285276587096",
+      "endTime": "21285278085112",
+      "elapsedTime": "1498016",
       "asyncId": 213,
       "triggerAsyncId": 189,
       "io": false,
       "userCode": false,
-      "uniqueid": "82",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1216,18 +1215,18 @@
       "file": "",
       "triggers": [
         217
-      ]
+      ],
+      "uniqueid": 61
     },
     "62": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808948861335",
-      "endTime": "22808950285424",
-      "elapsedTime": "1424089",
+      "startTime": "21285276858009",
+      "endTime": "21285277962295",
+      "elapsedTime": "1104286",
       "asyncId": 214,
       "triggerAsyncId": 189,
       "io": false,
       "userCode": false,
-      "uniqueid": "83",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1236,36 +1235,36 @@
       "file": "",
       "triggers": [
         216
-      ]
+      ],
+      "uniqueid": 62
     },
     "63": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808949179116",
-      "endTime": "22808950601870",
-      "elapsedTime": "1422754",
+      "startTime": "21285277069576",
+      "endTime": "21285278277008",
+      "elapsedTime": "1207432",
       "asyncId": 216,
       "triggerAsyncId": 214,
       "io": false,
       "userCode": false,
-      "uniqueid": "84",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 63
     },
     "64": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808949402289",
-      "endTime": "22808952061806",
-      "elapsedTime": "2659517",
+      "startTime": "21285277322066",
+      "endTime": "21285279598497",
+      "elapsedTime": "2276431",
       "asyncId": 217,
       "triggerAsyncId": 213,
       "io": false,
       "userCode": false,
-      "uniqueid": "85",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -1275,36 +1274,36 @@
       "triggers": [
         221,
         222
-      ]
+      ],
+      "uniqueid": 64
     },
     "65": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808949689077",
-      "endTime": "22808959228971",
-      "elapsedTime": "9539894",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285277495946",
+      "endTime": "21285286041426",
+      "elapsedTime": "8545480",
       "asyncId": 218,
       "triggerAsyncId": 212,
       "io": false,
       "userCode": false,
-      "uniqueid": "86",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 65
     },
     "66": {
       "source": "lib/report.js:61:20:61:20",
-      "startTime": "22808949891195",
-      "endTime": "22808961710620",
-      "elapsedTime": "11819425",
+      "startTime": "21285277673511",
+      "endTime": "21285288579554",
+      "elapsedTime": "10906043",
       "asyncId": 219,
       "triggerAsyncId": 211,
       "io": false,
       "userCode": false,
-      "uniqueid": "87",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 20,
@@ -1316,18 +1315,18 @@
         242,
         243,
         244
-      ]
+      ],
+      "uniqueid": 66
     },
     "67": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808950929047",
-      "endTime": "22808956546042",
-      "elapsedTime": "5616995",
+      "startTime": "21285278564088",
+      "endTime": "21285283491209",
+      "elapsedTime": "4927121",
       "asyncId": 221,
       "triggerAsyncId": 217,
       "io": false,
       "userCode": false,
-      "uniqueid": "88",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1336,18 +1335,18 @@
       "file": "",
       "triggers": [
         225
-      ]
+      ],
+      "uniqueid": 67
     },
     "68": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808951179296",
-      "endTime": "22808952560229",
-      "elapsedTime": "1380933",
+      "startTime": "21285278885148",
+      "endTime": "21285280154901",
+      "elapsedTime": "1269753",
       "asyncId": 222,
       "triggerAsyncId": 217,
       "io": false,
       "userCode": false,
-      "uniqueid": "89",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1356,18 +1355,18 @@
       "file": "",
       "triggers": [
         224
-      ]
+      ],
+      "uniqueid": 68
     },
     "69": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808951508515",
-      "endTime": "22808953951190",
-      "elapsedTime": "2442675",
+      "startTime": "21285279090724",
+      "endTime": "21285281253239",
+      "elapsedTime": "2162515",
       "asyncId": 224,
       "triggerAsyncId": 222,
       "io": false,
       "userCode": false,
-      "uniqueid": "90",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1377,18 +1376,18 @@
       "triggers": [
         227,
         228
-      ]
+      ],
+      "uniqueid": 69
     },
     "70": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808951741400",
-      "endTime": "22808958328176",
-      "elapsedTime": "6586776",
+      "startTime": "21285279329590",
+      "endTime": "21285285131625",
+      "elapsedTime": "5802035",
       "asyncId": 225,
       "triggerAsyncId": 221,
       "io": "",
       "userCode": "",
-      "uniqueid": "91",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1397,18 +1396,18 @@
       "file": "",
       "triggers": [
         237
-      ]
+      ],
+      "uniqueid": 70
     },
     "71": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808952940228",
-      "endTime": "22808954336930",
-      "elapsedTime": "1396702",
+      "startTime": "21285280385714",
+      "endTime": "21285281588608",
+      "elapsedTime": "1202894",
       "asyncId": 227,
       "triggerAsyncId": 224,
       "io": false,
       "userCode": false,
-      "uniqueid": "92",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1417,18 +1416,18 @@
       "file": "",
       "triggers": [
         231
-      ]
+      ],
+      "uniqueid": 71
     },
     "72": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808953266242",
-      "endTime": "22808954105248",
-      "elapsedTime": "839006",
+      "startTime": "21285280641351",
+      "endTime": "21285281385786",
+      "elapsedTime": "744435",
       "asyncId": 228,
       "triggerAsyncId": 224,
       "io": false,
       "userCode": false,
-      "uniqueid": "93",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1437,36 +1436,36 @@
       "file": "",
       "triggers": [
         230
-      ]
+      ],
+      "uniqueid": 72
     },
     "73": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808953507475",
-      "endTime": "22808954485570",
-      "elapsedTime": "978095",
+      "startTime": "21285280897890",
+      "endTime": "21285281710528",
+      "elapsedTime": "812638",
       "asyncId": 230,
       "triggerAsyncId": 228,
       "io": false,
       "userCode": false,
-      "uniqueid": "94",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 73
     },
     "74": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808953811941",
-      "endTime": "22808955769146",
-      "elapsedTime": "1957205",
+      "startTime": "21285281078728",
+      "endTime": "21285282852342",
+      "elapsedTime": "1773614",
       "asyncId": 231,
       "triggerAsyncId": 227,
       "io": false,
       "userCode": false,
-      "uniqueid": "95",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
@@ -1476,18 +1475,18 @@
       "triggers": [
         232,
         233
-      ]
+      ],
+      "uniqueid": 74
     },
     "75": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808954769181",
-      "endTime": "22808956191955",
-      "elapsedTime": "1422774",
+      "startTime": "21285282035058",
+      "endTime": "21285283189713",
+      "elapsedTime": "1154655",
       "asyncId": 232,
       "triggerAsyncId": 231,
       "io": false,
       "userCode": false,
-      "uniqueid": "96",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1496,18 +1495,18 @@
       "file": "",
       "triggers": [
         236
-      ]
+      ],
+      "uniqueid": 75
     },
     "76": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808955090876",
-      "endTime": "22808955980228",
-      "elapsedTime": "889352",
+      "startTime": "21285282227379",
+      "endTime": "21285282977531",
+      "elapsedTime": "750152",
       "asyncId": 233,
       "triggerAsyncId": 231,
       "io": false,
       "userCode": false,
-      "uniqueid": "97",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1516,54 +1515,54 @@
       "file": "",
       "triggers": [
         235
-      ]
+      ],
+      "uniqueid": 76
     },
     "77": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808955343581",
-      "endTime": "22808956376777",
-      "elapsedTime": "1033196",
+      "startTime": "21285282501348",
+      "endTime": "21285283304730",
+      "elapsedTime": "803382",
       "asyncId": 235,
       "triggerAsyncId": 233,
       "io": false,
       "userCode": false,
-      "uniqueid": "98",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 77
     },
     "78": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808955633648",
-      "endTime": "22808956739334",
-      "elapsedTime": "1105686",
+      "startTime": "21285282678479",
+      "endTime": "21285283603625",
+      "elapsedTime": "925146",
       "asyncId": 236,
       "triggerAsyncId": 232,
       "io": false,
       "userCode": false,
-      "uniqueid": "99",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
       "endLine": 43,
       "endCol": 46,
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 78
     },
     "79": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808956994900",
-      "endTime": "22808957999895",
-      "elapsedTime": "1004995",
+      "startTime": "21285283957271",
+      "endTime": "21285284834331",
+      "elapsedTime": "877060",
       "asyncId": 237,
       "triggerAsyncId": 225,
       "io": "",
       "userCode": "",
-      "uniqueid": "100",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1572,56 +1571,56 @@
       "file": "",
       "triggers": [
         239
-      ]
+      ],
+      "uniqueid": 79
     },
     "80": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808957319350",
-      "endTime": "22808958183671",
-      "elapsedTime": "864321",
+      "startTime": "21285284164004",
+      "endTime": "21285285023855",
+      "elapsedTime": "859851",
       "asyncId": 239,
       "triggerAsyncId": 237,
       "io": "",
       "userCode": "",
-      "uniqueid": "101",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 80
     },
     "81": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808959632824",
-      "endTime": "22808971740059",
-      "elapsedTime": "12107235",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285286571608",
+      "endTime": "21285297237421",
+      "elapsedTime": "10665813",
       "asyncId": 241,
       "triggerAsyncId": 219,
       "io": false,
       "userCode": false,
-      "uniqueid": "102",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         249
-      ]
+      ],
+      "uniqueid": 81
     },
     "82": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808959961791",
-      "endTime": "22808971036416",
-      "elapsedTime": "11074625",
+      "startTime": "21285286858531",
+      "endTime": "21285296259056",
+      "elapsedTime": "9400525",
       "asyncId": 242,
       "triggerAsyncId": 219,
       "io": false,
       "userCode": false,
-      "uniqueid": "103",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -1630,18 +1629,18 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         248
-      ]
+      ],
+      "uniqueid": 82
     },
     "83": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808960270819",
-      "endTime": "22808962081326",
-      "elapsedTime": "1810507",
+      "startTime": "21285287178277",
+      "endTime": "21285288955648",
+      "elapsedTime": "1777371",
       "asyncId": 243,
       "triggerAsyncId": 219,
       "io": false,
       "userCode": false,
-      "uniqueid": "104",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1650,18 +1649,18 @@
       "file": "",
       "triggers": [
         247
-      ]
+      ],
+      "uniqueid": 83
     },
     "84": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808960492085",
-      "endTime": "22808961876284",
-      "elapsedTime": "1384199",
+      "startTime": "21285287473030",
+      "endTime": "21285288783677",
+      "elapsedTime": "1310647",
       "asyncId": 244,
       "triggerAsyncId": 219,
       "io": false,
       "userCode": false,
-      "uniqueid": "105",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1670,36 +1669,36 @@
       "file": "",
       "triggers": [
         246
-      ]
+      ],
+      "uniqueid": 84
     },
     "85": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808960801992",
-      "endTime": "22808962256630",
-      "elapsedTime": "1454638",
+      "startTime": "21285287799785",
+      "endTime": "21285289064186",
+      "elapsedTime": "1264401",
       "asyncId": 246,
       "triggerAsyncId": 244,
       "io": false,
       "userCode": false,
-      "uniqueid": "106",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 85
     },
     "86": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808961018821",
-      "endTime": "22808963714116",
-      "elapsedTime": "2695295",
+      "startTime": "21285288102305",
+      "endTime": "21285290441095",
+      "elapsedTime": "2338790",
       "asyncId": 247,
       "triggerAsyncId": 243,
       "io": false,
       "userCode": false,
-      "uniqueid": "107",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -1709,36 +1708,36 @@
       "triggers": [
         251,
         252
-      ]
+      ],
+      "uniqueid": 86
     },
     "87": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808961323088",
-      "endTime": "22808971910915",
-      "elapsedTime": "10587827",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285288299288",
+      "endTime": "21285297578761",
+      "elapsedTime": "9279473",
       "asyncId": 248,
       "triggerAsyncId": 242,
       "io": false,
       "userCode": false,
-      "uniqueid": "108",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 87
     },
     "88": {
       "source": "lib/report.js:61:20:61:20",
-      "startTime": "22808961529693",
-      "endTime": "22808974675449",
-      "elapsedTime": "13145756",
+      "startTime": "21285288466245",
+      "endTime": "21285301112671",
+      "elapsedTime": "12646426",
       "asyncId": 249,
       "triggerAsyncId": 241,
       "io": false,
       "userCode": false,
-      "uniqueid": "109",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 20,
@@ -1750,18 +1749,18 @@
         272,
         273,
         274
-      ]
+      ],
+      "uniqueid": 88
     },
     "89": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808962507417",
-      "endTime": "22808968537714",
-      "elapsedTime": "6030297",
+      "startTime": "21285289414202",
+      "endTime": "21285294253579",
+      "elapsedTime": "4839377",
       "asyncId": 251,
       "triggerAsyncId": 247,
       "io": false,
       "userCode": false,
-      "uniqueid": "110",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1770,18 +1769,18 @@
       "file": "",
       "triggers": [
         255
-      ]
+      ],
+      "uniqueid": 89
     },
     "90": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808962847763",
-      "endTime": "22808964285429",
-      "elapsedTime": "1437666",
+      "startTime": "21285289634867",
+      "endTime": "21285290936536",
+      "elapsedTime": "1301669",
       "asyncId": 252,
       "triggerAsyncId": 247,
       "io": false,
       "userCode": false,
-      "uniqueid": "111",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1790,18 +1789,18 @@
       "file": "",
       "triggers": [
         254
-      ]
+      ],
+      "uniqueid": 90
     },
     "91": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808963183731",
-      "endTime": "22808965653724",
-      "elapsedTime": "2469993",
+      "startTime": "21285289905903",
+      "endTime": "21285291995644",
+      "elapsedTime": "2089741",
       "asyncId": 254,
       "triggerAsyncId": 252,
       "io": false,
       "userCode": false,
-      "uniqueid": "112",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1811,18 +1810,18 @@
       "triggers": [
         257,
         258
-      ]
+      ],
+      "uniqueid": 91
     },
     "92": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808963408103",
-      "endTime": "22808970691495",
-      "elapsedTime": "7283392",
+      "startTime": "21285290157196",
+      "endTime": "21285295948710",
+      "elapsedTime": "5791514",
       "asyncId": 255,
       "triggerAsyncId": 251,
       "io": "",
       "userCode": "",
-      "uniqueid": "113",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1831,18 +1830,18 @@
       "file": "",
       "triggers": [
         267
-      ]
+      ],
+      "uniqueid": 92
     },
     "93": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808964669566",
-      "endTime": "22808966015812",
-      "elapsedTime": "1346246",
+      "startTime": "21285291177825",
+      "endTime": "21285292277745",
+      "elapsedTime": "1099920",
       "asyncId": 257,
       "triggerAsyncId": 254,
       "io": false,
       "userCode": false,
-      "uniqueid": "114",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1851,18 +1850,18 @@
       "file": "",
       "triggers": [
         261
-      ]
+      ],
+      "uniqueid": 93
     },
     "94": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808964911617",
-      "endTime": "22808965816568",
-      "elapsedTime": "904951",
+      "startTime": "21285291440730",
+      "endTime": "21285292172219",
+      "elapsedTime": "731489",
       "asyncId": 258,
       "triggerAsyncId": 254,
       "io": false,
       "userCode": false,
-      "uniqueid": "115",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1871,36 +1870,36 @@
       "file": "",
       "triggers": [
         260
-      ]
+      ],
+      "uniqueid": 94
     },
     "95": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808965219242",
-      "endTime": "22808966278539",
-      "elapsedTime": "1059297",
+      "startTime": "21285291640206",
+      "endTime": "21285292447859",
+      "elapsedTime": "807653",
       "asyncId": 260,
       "triggerAsyncId": 258,
       "io": false,
       "userCode": false,
-      "uniqueid": "116",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 95
     },
     "96": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808965447791",
-      "endTime": "22808967830132",
-      "elapsedTime": "2382341",
+      "startTime": "21285291879790",
+      "endTime": "21285293623135",
+      "elapsedTime": "1743345",
       "asyncId": 261,
       "triggerAsyncId": 257,
       "io": false,
       "userCode": false,
-      "uniqueid": "117",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
@@ -1910,18 +1909,18 @@
       "triggers": [
         262,
         263
-      ]
+      ],
+      "uniqueid": 96
     },
     "97": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808966693046",
-      "endTime": "22808968123843",
-      "elapsedTime": "1430797",
+      "startTime": "21285292670794",
+      "endTime": "21285293968158",
+      "elapsedTime": "1297364",
       "asyncId": 262,
       "triggerAsyncId": 261,
       "io": false,
       "userCode": false,
-      "uniqueid": "118",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1930,18 +1929,18 @@
       "file": "",
       "triggers": [
         266
-      ]
+      ],
+      "uniqueid": 97
     },
     "98": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808967042616",
-      "endTime": "22808967995704",
-      "elapsedTime": "953088",
+      "startTime": "21285292922220",
+      "endTime": "21285293779746",
+      "elapsedTime": "857526",
       "asyncId": 263,
       "triggerAsyncId": 261,
       "io": false,
       "userCode": false,
-      "uniqueid": "119",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -1950,54 +1949,54 @@
       "file": "",
       "triggers": [
         265
-      ]
+      ],
+      "uniqueid": 98
     },
     "99": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808967366883",
-      "endTime": "22808968334282",
-      "elapsedTime": "967399",
+      "startTime": "21285293232637",
+      "endTime": "21285294077386",
+      "elapsedTime": "844749",
       "asyncId": 265,
       "triggerAsyncId": 263,
       "io": false,
       "userCode": false,
-      "uniqueid": "120",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 99
     },
     "100": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808967688060",
-      "endTime": "22808968741716",
-      "elapsedTime": "1053656",
+      "startTime": "21285293422300",
+      "endTime": "21285294359185",
+      "elapsedTime": "936885",
       "asyncId": 266,
       "triggerAsyncId": 262,
       "io": false,
       "userCode": false,
-      "uniqueid": "121",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
       "endLine": 43,
       "endCol": 46,
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 100
     },
     "101": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808969160830",
-      "endTime": "22808970265393",
-      "elapsedTime": "1104563",
+      "startTime": "21285294676272",
+      "endTime": "21285295617216",
+      "elapsedTime": "940944",
       "asyncId": 267,
       "triggerAsyncId": 255,
       "io": "",
       "userCode": "",
-      "uniqueid": "122",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2006,56 +2005,56 @@
       "file": "",
       "triggers": [
         269
-      ]
+      ],
+      "uniqueid": 101
     },
     "102": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808969542963",
-      "endTime": "22808970501683",
-      "elapsedTime": "958720",
+      "startTime": "21285294895359",
+      "endTime": "21285295816268",
+      "elapsedTime": "920909",
       "asyncId": 269,
       "triggerAsyncId": 267,
       "io": "",
       "userCode": "",
-      "uniqueid": "123",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 102
     },
     "103": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808972637542",
-      "endTime": "22808983899848",
-      "elapsedTime": "11262306",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285298446891",
+      "endTime": "21285310311257",
+      "elapsedTime": "11864366",
       "asyncId": 271,
       "triggerAsyncId": 249,
       "io": false,
       "userCode": false,
-      "uniqueid": "124",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         279
-      ]
+      ],
+      "uniqueid": 103
     },
     "104": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808972957360",
-      "endTime": "22808983042955",
-      "elapsedTime": "10085595",
+      "startTime": "21285298751835",
+      "endTime": "21285308732422",
+      "elapsedTime": "9980587",
       "asyncId": 272,
       "triggerAsyncId": 249,
       "io": false,
       "userCode": false,
-      "uniqueid": "125",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -2064,18 +2063,18 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         278
-      ]
+      ],
+      "uniqueid": 104
     },
     "105": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808973205013",
-      "endTime": "22808975038103",
-      "elapsedTime": "1833090",
+      "startTime": "21285299301230",
+      "endTime": "21285301477302",
+      "elapsedTime": "2176072",
       "asyncId": 273,
       "triggerAsyncId": 249,
       "io": false,
       "userCode": false,
-      "uniqueid": "126",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2084,18 +2083,18 @@
       "file": "",
       "triggers": [
         277
-      ]
+      ],
+      "uniqueid": 105
     },
     "106": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808973536060",
-      "endTime": "22808974830525",
-      "elapsedTime": "1294465",
+      "startTime": "21285299600653",
+      "endTime": "21285301284967",
+      "elapsedTime": "1684314",
       "asyncId": 274,
       "triggerAsyncId": 249,
       "io": false,
       "userCode": false,
-      "uniqueid": "127",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2104,36 +2103,36 @@
       "file": "",
       "triggers": [
         276
-      ]
+      ],
+      "uniqueid": 106
     },
     "107": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808973774076",
-      "endTime": "22808975185554",
-      "elapsedTime": "1411478",
+      "startTime": "21285299957026",
+      "endTime": "21285301606487",
+      "elapsedTime": "1649461",
       "asyncId": 276,
       "triggerAsyncId": 274,
       "io": false,
       "userCode": false,
-      "uniqueid": "128",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 107
     },
     "108": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808974073541",
-      "endTime": "22808976587637",
-      "elapsedTime": "2514096",
+      "startTime": "21285300184747",
+      "endTime": "21285302956128",
+      "elapsedTime": "2771381",
       "asyncId": 277,
       "triggerAsyncId": 273,
       "io": false,
       "userCode": false,
-      "uniqueid": "129",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -2143,36 +2142,36 @@
       "triggers": [
         281,
         282
-      ]
+      ],
+      "uniqueid": 108
     },
     "109": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808974281014",
-      "endTime": "22808984097785",
-      "elapsedTime": "9816771",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285300690062",
+      "endTime": "21285310482563",
+      "elapsedTime": "9792501",
       "asyncId": 278,
       "triggerAsyncId": 272,
       "io": false,
       "userCode": false,
-      "uniqueid": "130",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 109
     },
     "110": {
       "source": "lib/report.js:61:20:61:20",
-      "startTime": "22808974541485",
-      "endTime": "22808988087035",
-      "elapsedTime": "13545550",
+      "startTime": "21285300920014",
+      "endTime": "21285314888632",
+      "elapsedTime": "13968618",
       "asyncId": 279,
       "triggerAsyncId": 271,
       "io": false,
       "userCode": false,
-      "uniqueid": "131",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 20,
@@ -2184,18 +2183,18 @@
         302,
         303,
         304
-      ]
+      ],
+      "uniqueid": 110
     },
     "111": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808975417511",
-      "endTime": "22808980926806",
-      "elapsedTime": "5509295",
+      "startTime": "21285301910717",
+      "endTime": "21285306775663",
+      "elapsedTime": "4864946",
       "asyncId": 281,
       "triggerAsyncId": 277,
       "io": false,
       "userCode": false,
-      "uniqueid": "132",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2204,18 +2203,18 @@
       "file": "",
       "triggers": [
         285
-      ]
+      ],
+      "uniqueid": 111
     },
     "112": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808975722488",
-      "endTime": "22808977122889",
-      "elapsedTime": "1400401",
+      "startTime": "21285302123437",
+      "endTime": "21285303414649",
+      "elapsedTime": "1291212",
       "asyncId": 282,
       "triggerAsyncId": 277,
       "io": false,
       "userCode": false,
-      "uniqueid": "133",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2224,18 +2223,18 @@
       "file": "",
       "triggers": [
         284
-      ]
+      ],
+      "uniqueid": 112
     },
     "113": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808976005724",
-      "endTime": "22808978429710",
-      "elapsedTime": "2423986",
+      "startTime": "21285302407958",
+      "endTime": "21285304596142",
+      "elapsedTime": "2188184",
       "asyncId": 284,
       "triggerAsyncId": 282,
       "io": false,
       "userCode": false,
-      "uniqueid": "134",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2245,18 +2244,18 @@
       "triggers": [
         287,
         288
-      ]
+      ],
+      "uniqueid": 113
     },
     "114": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808976345366",
-      "endTime": "22808982691143",
-      "elapsedTime": "6345777",
+      "startTime": "21285302609983",
+      "endTime": "21285308401899",
+      "elapsedTime": "5791916",
       "asyncId": 285,
       "triggerAsyncId": 281,
       "io": "",
       "userCode": "",
-      "uniqueid": "135",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2265,18 +2264,18 @@
       "file": "",
       "triggers": [
         297
-      ]
+      ],
+      "uniqueid": 114
     },
     "115": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808977475967",
-      "endTime": "22808978786513",
-      "elapsedTime": "1310546",
+      "startTime": "21285303719368",
+      "endTime": "21285304919272",
+      "elapsedTime": "1199904",
       "asyncId": 287,
       "triggerAsyncId": 284,
       "io": false,
       "userCode": false,
-      "uniqueid": "136",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2285,18 +2284,18 @@
       "file": "",
       "triggers": [
         291
-      ]
+      ],
+      "uniqueid": 115
     },
     "116": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808977707978",
-      "endTime": "22808978595725",
-      "elapsedTime": "887747",
+      "startTime": "21285304004355",
+      "endTime": "21285304724514",
+      "elapsedTime": "720159",
       "asyncId": 288,
       "triggerAsyncId": 284,
       "io": false,
       "userCode": false,
-      "uniqueid": "137",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2305,36 +2304,36 @@
       "file": "",
       "triggers": [
         290
-      ]
+      ],
+      "uniqueid": 116
     },
     "117": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808978009451",
-      "endTime": "22808978911053",
-      "elapsedTime": "901602",
+      "startTime": "21285304216252",
+      "endTime": "21285305048726",
+      "elapsedTime": "832474",
       "asyncId": 290,
       "triggerAsyncId": 288,
       "io": false,
       "userCode": false,
-      "uniqueid": "138",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 117
     },
     "118": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808978227500",
-      "endTime": "22808980252755",
-      "elapsedTime": "2025255",
+      "startTime": "21285304476978",
+      "endTime": "21285306162694",
+      "elapsedTime": "1685716",
       "asyncId": 291,
       "triggerAsyncId": 287,
       "io": false,
       "userCode": false,
-      "uniqueid": "139",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
@@ -2344,18 +2343,18 @@
       "triggers": [
         292,
         293
-      ]
+      ],
+      "uniqueid": 118
     },
     "119": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808979272451",
-      "endTime": "22808980608818",
-      "elapsedTime": "1336367",
+      "startTime": "21285305287819",
+      "endTime": "21285306481512",
+      "elapsedTime": "1193693",
       "asyncId": 292,
       "triggerAsyncId": 291,
       "io": false,
       "userCode": false,
-      "uniqueid": "140",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2364,18 +2363,18 @@
       "file": "",
       "triggers": [
         296
-      ]
+      ],
+      "uniqueid": 119
     },
     "120": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808979509529",
-      "endTime": "22808980428782",
-      "elapsedTime": "919253",
+      "startTime": "21285305564539",
+      "endTime": "21285306293153",
+      "elapsedTime": "728614",
       "asyncId": 293,
       "triggerAsyncId": 291,
       "io": false,
       "userCode": false,
-      "uniqueid": "141",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2384,54 +2383,54 @@
       "file": "",
       "triggers": [
         295
-      ]
+      ],
+      "uniqueid": 120
     },
     "121": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808979833214",
-      "endTime": "22808980741512",
-      "elapsedTime": "908298",
+      "startTime": "21285305787592",
+      "endTime": "21285306595301",
+      "elapsedTime": "807709",
       "asyncId": 295,
       "triggerAsyncId": 293,
       "io": false,
       "userCode": false,
-      "uniqueid": "142",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 121
     },
     "122": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808980052914",
-      "endTime": "22808981046071",
-      "elapsedTime": "993157",
+      "startTime": "21285306048092",
+      "endTime": "21285306881336",
+      "elapsedTime": "833244",
       "asyncId": 296,
       "triggerAsyncId": 292,
       "io": false,
       "userCode": false,
-      "uniqueid": "143",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
       "endLine": 43,
       "endCol": 46,
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 122
     },
     "123": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808981373606",
-      "endTime": "22808982365008",
-      "elapsedTime": "991402",
+      "startTime": "21285307089892",
+      "endTime": "21285308069406",
+      "elapsedTime": "979514",
       "asyncId": 297,
       "triggerAsyncId": 285,
       "io": "",
       "userCode": "",
-      "uniqueid": "144",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2440,56 +2439,56 @@
       "file": "",
       "triggers": [
         299
-      ]
+      ],
+      "uniqueid": 123
     },
     "124": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808981688342",
-      "endTime": "22808982555461",
-      "elapsedTime": "867119",
+      "startTime": "21285307377467",
+      "endTime": "21285308195531",
+      "elapsedTime": "818064",
       "asyncId": 299,
       "triggerAsyncId": 297,
       "io": "",
       "userCode": "",
-      "uniqueid": "145",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 124
     },
     "125": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808986077933",
-      "endTime": "22808996760035",
-      "elapsedTime": "10682102",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285312893104",
+      "endTime": "21285323885814",
+      "elapsedTime": "10992710",
       "asyncId": 301,
       "triggerAsyncId": 279,
       "io": false,
       "userCode": false,
-      "uniqueid": "146",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
       "triggers": [
         309
-      ]
+      ],
+      "uniqueid": 125
     },
     "126": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808986411937",
-      "endTime": "22808996394137",
-      "elapsedTime": "9982200",
+      "startTime": "21285313213416",
+      "endTime": "21285323535391",
+      "elapsedTime": "10321975",
       "asyncId": 302,
       "triggerAsyncId": 279,
       "io": false,
       "userCode": false,
-      "uniqueid": "147",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -2498,18 +2497,18 @@
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
       "triggers": [
         308
-      ]
+      ],
+      "uniqueid": 126
     },
     "127": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808986660272",
-      "endTime": "22808988476475",
-      "elapsedTime": "1816203",
+      "startTime": "21285313521453",
+      "endTime": "21285315207184",
+      "elapsedTime": "1685731",
       "asyncId": 303,
       "triggerAsyncId": 279,
       "io": false,
       "userCode": false,
-      "uniqueid": "148",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2518,18 +2517,18 @@
       "file": "",
       "triggers": [
         307
-      ]
+      ],
+      "uniqueid": 127
     },
     "128": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808986962732",
-      "endTime": "22808988258640",
-      "elapsedTime": "1295908",
+      "startTime": "21285313731238",
+      "endTime": "21285315073317",
+      "elapsedTime": "1342079",
       "asyncId": 304,
       "triggerAsyncId": 279,
       "io": false,
       "userCode": false,
-      "uniqueid": "149",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2538,36 +2537,36 @@
       "file": "",
       "triggers": [
         306
-      ]
+      ],
+      "uniqueid": 128
     },
     "129": {
       "source": "(internal/fs/promises.js:535:20:535:20)",
-      "startTime": "22808987194242",
-      "endTime": "22808988636573",
-      "elapsedTime": "1442331",
+      "startTime": "21285314007670",
+      "endTime": "21285315424022",
+      "elapsedTime": "1416352",
       "asyncId": 306,
       "triggerAsyncId": 304,
       "io": false,
       "userCode": false,
-      "uniqueid": "150",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 129
     },
     "130": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:52:43:52",
-      "startTime": "22808987479540",
-      "endTime": "22808989982242",
-      "elapsedTime": "2502702",
+      "startTime": "21285314199372",
+      "endTime": "21285316816553",
+      "elapsedTime": "2617181",
       "asyncId": 307,
       "triggerAsyncId": 303,
       "io": false,
       "userCode": false,
-      "uniqueid": "151",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 52,
@@ -2577,54 +2576,54 @@
       "triggers": [
         311,
         312
-      ]
+      ],
+      "uniqueid": 130
     },
     "131": {
-      "source": "lib/report.js:90:25:90:25",
-      "startTime": "22808987686925",
-      "endTime": "22808996936240",
-      "elapsedTime": "9249315",
+      "source": "lib/report.js:137:25:137:25",
+      "startTime": "21285314452074",
+      "endTime": "21285324119673",
+      "elapsedTime": "9667599",
       "asyncId": 308,
       "triggerAsyncId": 302,
       "io": false,
       "userCode": false,
-      "uniqueid": "152",
       "line": "\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1",
-      "startLine": 90,
+      "startLine": 137,
       "startCol": 25,
-      "endLine": 90,
+      "endLine": 137,
       "endCol": 25,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 131
     },
     "132": {
       "source": "lib/report.js:61:20:61:20",
-      "startTime": "22808987892670",
-      "endTime": "22808997388273",
-      "elapsedTime": "9495603",
+      "startTime": "21285314628045",
+      "endTime": "21285324597967",
+      "elapsedTime": "9969922",
       "asyncId": 309,
       "triggerAsyncId": 301,
       "io": false,
       "userCode": false,
-      "uniqueid": "153",
       "line": "\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) ",
       "startLine": 61,
       "startCol": 20,
       "endLine": 61,
       "endCol": 20,
       "file": "lib/report.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 132
     },
     "133": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808988957258",
-      "endTime": "22808994233008",
-      "elapsedTime": "5275750",
+      "startTime": "21285315662104",
+      "endTime": "21285321370133",
+      "elapsedTime": "5708029",
       "asyncId": 311,
       "triggerAsyncId": 307,
       "io": false,
       "userCode": false,
-      "uniqueid": "154",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2633,18 +2632,18 @@
       "file": "",
       "triggers": [
         315
-      ]
+      ],
+      "uniqueid": 133
     },
     "134": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808989247409",
-      "endTime": "22808990486533",
-      "elapsedTime": "1239124",
+      "startTime": "21285315956444",
+      "endTime": "21285317331000",
+      "elapsedTime": "1374556",
       "asyncId": 312,
       "triggerAsyncId": 307,
       "io": false,
       "userCode": false,
-      "uniqueid": "155",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2653,18 +2652,18 @@
       "file": "",
       "triggers": [
         314
-      ]
+      ],
+      "uniqueid": 134
     },
     "135": {
       "source": "(internal/fs/promises.js:536:10:536:10)",
-      "startTime": "22808989465199",
-      "endTime": "22808991697032",
-      "elapsedTime": "2231833",
+      "startTime": "21285316257503",
+      "endTime": "21285318645688",
+      "elapsedTime": "2388185",
       "asyncId": 314,
       "triggerAsyncId": 312,
       "io": false,
       "userCode": false,
-      "uniqueid": "156",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2674,18 +2673,18 @@
       "triggers": [
         317,
         318
-      ]
+      ],
+      "uniqueid": 135
     },
     "136": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808989741728",
-      "endTime": "22808996054409",
-      "elapsedTime": "6312681",
+      "startTime": "21285316473771",
+      "endTime": "21285323172003",
+      "elapsedTime": "6698232",
       "asyncId": 315,
       "triggerAsyncId": 311,
       "io": "",
       "userCode": "",
-      "uniqueid": "157",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2694,18 +2693,18 @@
       "file": "",
       "triggers": [
         327
-      ]
+      ],
+      "uniqueid": 136
     },
     "137": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808990726471",
-      "endTime": "22808992030518",
-      "elapsedTime": "1304047",
+      "startTime": "21285317660575",
+      "endTime": "21285319039779",
+      "elapsedTime": "1379204",
       "asyncId": 317,
       "triggerAsyncId": 314,
       "io": false,
       "userCode": false,
-      "uniqueid": "158",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2714,18 +2713,18 @@
       "file": "",
       "triggers": [
         321
-      ]
+      ],
+      "uniqueid": 137
     },
     "138": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808991022359",
-      "endTime": "22808991843671",
-      "elapsedTime": "821312",
+      "startTime": "21285317942400",
+      "endTime": "21285318797252",
+      "elapsedTime": "854852",
       "asyncId": 318,
       "triggerAsyncId": 314,
       "io": false,
       "userCode": false,
-      "uniqueid": "159",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2734,36 +2733,36 @@
       "file": "",
       "triggers": [
         320
-      ]
+      ],
+      "uniqueid": 138
     },
     "139": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808991312287",
-      "endTime": "22808992169339",
-      "elapsedTime": "857052",
+      "startTime": "21285318250910",
+      "endTime": "21285319222575",
+      "elapsedTime": "971665",
       "asyncId": 320,
       "triggerAsyncId": 318,
       "io": false,
       "userCode": false,
-      "uniqueid": "160",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 139
     },
     "140": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808991522335",
-      "endTime": "22808993362400",
-      "elapsedTime": "1840065",
+      "startTime": "21285318462808",
+      "endTime": "21285320455064",
+      "elapsedTime": "1992256",
       "asyncId": 321,
       "triggerAsyncId": 317,
       "io": false,
       "userCode": false,
-      "uniqueid": "161",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
@@ -2773,18 +2772,18 @@
       "triggers": [
         322,
         323
-      ]
+      ],
+      "uniqueid": 140
     },
     "141": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808992481163",
-      "endTime": "22808993932535",
-      "elapsedTime": "1451372",
+      "startTime": "21285319532490",
+      "endTime": "21285320984480",
+      "elapsedTime": "1451990",
       "asyncId": 322,
       "triggerAsyncId": 321,
       "io": false,
       "userCode": false,
-      "uniqueid": "162",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2793,18 +2792,18 @@
       "file": "",
       "triggers": [
         326
-      ]
+      ],
+      "uniqueid": 141
     },
     "142": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808992695485",
-      "endTime": "22808993750265",
-      "elapsedTime": "1054780",
+      "startTime": "21285319819891",
+      "endTime": "21285320853266",
+      "elapsedTime": "1033375",
       "asyncId": 323,
       "triggerAsyncId": 321,
       "io": false,
       "userCode": false,
-      "uniqueid": "163",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2813,54 +2812,54 @@
       "file": "",
       "triggers": [
         325
-      ]
+      ],
+      "uniqueid": 142
     },
     "143": {
       "source": "(internal/fs/promises.js:185:13:185:13)",
-      "startTime": "22808992989870",
-      "endTime": "22808994053568",
-      "elapsedTime": "1063698",
+      "startTime": "21285320048770",
+      "endTime": "21285321200933",
+      "elapsedTime": "1152163",
       "asyncId": 325,
       "triggerAsyncId": 323,
       "io": false,
       "userCode": false,
-      "uniqueid": "164",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 143
     },
     "144": {
       "source": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js:43:46:43:46",
-      "startTime": "22808993188852",
-      "endTime": "22808994350592",
-      "elapsedTime": "1161740",
+      "startTime": "21285320329927",
+      "endTime": "21285321491663",
+      "elapsedTime": "1161736",
       "asyncId": 326,
       "triggerAsyncId": 322,
       "io": false,
       "userCode": false,
-      "uniqueid": "165",
       "line": "\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used durin",
       "startLine": 43,
       "startCol": 46,
       "endLine": 43,
       "endCol": 46,
       "file": "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 144
     },
     "145": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808994650549",
-      "endTime": "22808995636062",
-      "elapsedTime": "985513",
+      "startTime": "21285321777970",
+      "endTime": "21285322816838",
+      "elapsedTime": "1038868",
       "asyncId": 327,
       "triggerAsyncId": 315,
       "io": "",
       "userCode": "",
-      "uniqueid": "166",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
@@ -2869,31 +2868,32 @@
       "file": "",
       "triggers": [
         329
-      ]
+      ],
+      "uniqueid": 145
     },
     "146": {
       "source": "(:0:0:0:0)",
-      "startTime": "22808994936494",
-      "endTime": "22808995869934",
-      "elapsedTime": "933440",
+      "startTime": "21285322106712",
+      "endTime": "21285322942291",
+      "elapsedTime": "835579",
       "asyncId": 329,
       "triggerAsyncId": 327,
       "io": "",
       "userCode": "",
-      "uniqueid": "167",
       "line": "<promise not in user code>",
       "startLine": 0,
       "startCol": 0,
       "endLine": 0,
       "endCol": 0,
       "file": "",
-      "triggers": []
+      "triggers": [],
+      "uniqueid": 146
     }
   },
   "files": {
     "bin/c8.js": "#!/usr/bin/env node\n'use strict'\n\nconst foreground = require('foreground-child')\nconst { outputReport } = require('../lib/commands/report')\nconst { promises } = require('fs')\nconst { promisify } = require('util')\nconst rimraf = require('rimraf')\nconst {\n  buildYargs,\n  hideInstrumenteeArgs,\n  hideInstrumenterArgs\n} = require('../lib/parse-args')\n\nconst instrumenterArgs = hideInstrumenteeArgs()\nlet argv = buildYargs().parse(instrumenterArgs)\n\nasync function run () {\n  if ([\n    'check-coverage', 'report'\n  ].indexOf(argv._[0]) !== -1) {\n    argv = buildYargs(true).parse(process.argv.slice(2))\n  } else {\n    // fs.promises was not added until Node.js v10.0.0, if it doesn't\n    // exist, assume we're Node.js v8.x and skip coverage.\n    if (!promises) {\n      foreground(hideInstrumenterArgs(argv))\n      return\n    }\n\n    if (argv.clean) {\n      await promisify(rimraf)(argv.tempDirectory)\n    }\n\n    await promises.mkdir(argv.tempDirectory, { recursive: true })\n    process.env.NODE_V8_COVERAGE = argv.tempDirectory\n    foreground(hideInstrumenterArgs(argv), async (done) => {\n      try {\n        await outputReport(argv)\n      } catch (err) {\n        console.error(err.stack)\n        process.exitCode = 1\n      }\n      done()\n    })\n  }\n}\n\nrun().catch((err) => {\n  console.error(err.stack)\n  process.exitCode = 1\n})\n",
     "lib/commands/report.js": "const { checkCoverages } = require('./check-coverage')\nconst Report = require('../report')\n\nexports.command = 'report'\n\nexports.describe = 'read V8 coverage data from temp and output report'\n\nexports.handler = async function (argv) {\n  await exports.outputReport(argv)\n}\n\nexports.outputReport = async function (argv) {\n  const report = Report({\n    include: argv.include,\n    exclude: argv.exclude,\n    reporter: Array.isArray(argv.reporter) ? argv.reporter : [argv.reporter],\n    reportsDirectory: argv['reports-dir'],\n    tempDirectory: argv.tempDirectory,\n    watermarks: argv.watermarks,\n    resolve: argv.resolve,\n    omitRelative: argv.omitRelative,\n    wrapperLength: argv.wrapperLength,\n    all: argv.all,\n    allowExternal: argv.allowExternal,\n    src: argv.src\n  })\n  await report.run()\n  if (argv.checkCoverage) await checkCoverages(argv, report)\n}\n",
-    "lib/report.js": "const Exclude = require('test-exclude')\nconst furi = require('furi')\nconst libCoverage = require('istanbul-lib-coverage')\nconst libReport = require('istanbul-lib-report')\nconst reports = require('istanbul-reports')\nconst { readdirSync, readFileSync, statSync } = require('fs')\nconst { isAbsolute, resolve, extname } = require('path')\nconst getSourceMapFromFile = require('./source-map-from-file')\n// TODO: switch back to @c88/v8-coverage once patch is landed.\nconst v8toIstanbul = require('v8-to-istanbul')\nconst isCjsEsmBridgeCov = require('./is-cjs-esm-bridge')\nconst util = require('util')\nconst debuglog = util.debuglog('c8')\n\nclass Report {\n  constructor ({\n    exclude,\n    include,\n    reporter,\n    reportsDirectory,\n    tempDirectory,\n    watermarks,\n    omitRelative,\n    wrapperLength,\n    resolve: resolvePaths,\n    all,\n    src,\n    allowExternal = false\n  }) {\n    this.reporter = reporter\n    this.reportsDirectory = reportsDirectory\n    this.tempDirectory = tempDirectory\n    this.watermarks = watermarks\n    this.resolve = resolvePaths\n    this.exclude = new Exclude({\n      exclude: exclude,\n      include: include,\n      relativePath: !allowExternal\n    })\n    this.omitRelative = omitRelative\n    this.sourceMapCache = {}\n    this.wrapperLength = wrapperLength\n    this.all = all\n    this.src = this._getSrc(src)\n  }\n\n  _getSrc (src) {\n    if (typeof src === 'string') {\n      return [src]\n    } else if (Array.isArray(src)) {\n      return src\n    } else {\n      return [process.cwd()]\n    }\n  }\n\n  async run () {\n    const context = libReport.createContext({\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) {\n      reports.create(_reporter, {\n        skipEmpty: false,\n        skipFull: false,\n        maxCols: 100\n      }).execute(context)\n    })\n  }\n\n  async getCoverageMapFromAllCoverageFiles () {\n    // the merge process can be very expensive, and it's often the case that\n    // check-coverage is called immediately after a report. We memoize the\n    // result from getCoverageMapFromAllCoverageFiles() to address this\n    // use-case.\n    if (this._allCoverageFiles) return this._allCoverageFiles\n\n    const map = libCoverage.createCoverageMap()\n    const v8ProcessCov = this._getMergedProcessCov()\n    const resultCountPerPath = new Map()\n    const possibleCjsEsmBridges = new Map()\n\n    for (const v8ScriptCov of v8ProcessCov.result) {\n      try {\n        const sources = this._getSourceMap(v8ScriptCov)\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1)\n        } else {\n          resultCountPerPath.set(path, 0)\n        }\n\n        if (isCjsEsmBridgeCov(v8ScriptCov)) {\n          possibleCjsEsmBridges.set(converter, {\n            path,\n            functions: v8ScriptCov.functions\n          })\n        } else {\n          converter.applyCoverage(v8ScriptCov.functions)\n          map.merge(converter.toIstanbul())\n        }\n      } catch (err) {\n        debuglog(`file: ${v8ScriptCov.url} error: ${err.stack}`)\n      }\n    }\n\n    for (const [converter, { path, functions }] of possibleCjsEsmBridges) {\n      if (resultCountPerPath.get(path) <= 1) {\n        converter.applyCoverage(functions)\n        map.merge(converter.toIstanbul())\n      }\n    }\n    this._allCoverageFiles = map\n    return this._allCoverageFiles\n  }\n\n  /**\n   * Returns source-map and fake source file, if cached during Node.js'\n   * execution. This is used to support tools like ts-node, which transpile\n   * using runtime hooks.\n   *\n   * Note: requires Node.js 13+\n   *\n   * @return {Object} sourceMap and fake source file (created from line #s).\n   * @private\n   */\n  _getSourceMap (v8ScriptCov) {\n    const sources = {}\n    if (this.sourceMapCache[`file://${v8ScriptCov.url}`]) {\n      const sourceMapAndLineLengths = this.sourceMapCache[`file://${v8ScriptCov.url}`]\n      // See: https://github.com/nodejs/node/pull/34305\n      if (!sourceMapAndLineLengths.data) return\n      sources.sourceMap = {\n        sourcemap: sourceMapAndLineLengths.data\n      }\n      if (sourceMapAndLineLengths.lineLengths) {\n        let source = ''\n        sourceMapAndLineLengths.lineLengths.forEach(length => {\n          source += `${''.padEnd(length, '.')}\\n`\n        })\n        sources.source = source\n      }\n    }\n    return sources\n  }\n\n  /**\n   * Returns the merged V8 process coverage.\n   *\n   * The result is computed from the individual process coverages generated\n   * by Node. It represents the sum of their counts.\n   *\n   * @return {ProcessCov} Merged V8 process coverage.\n   * @private\n   */\n  _getMergedProcessCov () {\n    const { mergeProcessCovs } = require('@bcoe/v8-coverage')\n    const v8ProcessCovs = []\n    const fileIndex = new Set() // Set<string>\n    for (const v8ProcessCov of this._loadReports()) {\n      if (this._isCoverageObject(v8ProcessCov)) {\n        if (v8ProcessCov['source-map-cache']) {\n          Object.assign(this.sourceMapCache, v8ProcessCov['source-map-cache'])\n        }\n        v8ProcessCovs.push(this._normalizeProcessCov(v8ProcessCov, fileIndex))\n      }\n    }\n\n    if (this.all) {\n      const emptyReports = []\n      v8ProcessCovs.unshift({\n        result: emptyReports\n      })\n      const workingDirs = this.src\n      for (const workingDir of workingDirs) {\n        this.exclude.globSync(workingDir).forEach((f) => {\n          const fullPath = resolve(workingDir, f)\n          if (!fileIndex.has(fullPath)) {\n            const ext = extname(fullPath)\n            if (ext === '.js' || ext === '.ts' || ext === '.mjs') {\n              const stat = statSync(fullPath)\n              const sourceMap = getSourceMapFromFile(fullPath)\n              if (sourceMap !== undefined) {\n                this.sourceMapCache[`file://${fullPath}`] = { data: JSON.parse(readFileSync(sourceMap).toString()) }\n              }\n              emptyReports.push({\n                scriptId: 0,\n                url: resolve(fullPath),\n                functions: [{\n                  functionName: '(empty-report)',\n                  ranges: [{\n                    startOffset: 0,\n                    endOffset: stat.size,\n                    count: 0\n                  }],\n                  isBlockCoverage: true\n                }]\n              })\n            }\n          }\n        })\n      }\n    }\n\n    return mergeProcessCovs(v8ProcessCovs)\n  }\n\n  /**\n   * Make sure v8ProcessCov actually contains coverage information.\n   *\n   * @return {boolean} does it look like v8ProcessCov?\n   * @private\n   */\n  _isCoverageObject (maybeV8ProcessCov) {\n    return maybeV8ProcessCov && Array.isArray(maybeV8ProcessCov.result)\n  }\n\n  /**\n   * Returns the list of V8 process coverages generated by Node.\n   *\n   * @return {ProcessCov[]} Process coverages generated by Node.\n   * @private\n   */\n  _loadReports () {\n    const reports = []\n    for (const file of readdirSync(this.tempDirectory)) {\n      try {\n        reports.push(JSON.parse(readFileSync(\n          resolve(this.tempDirectory, file),\n          'utf8'\n        )))\n      } catch (err) {\n        debuglog(`${err.stack}`)\n      }\n    }\n    return reports\n  }\n\n  /**\n   * Normalizes a process coverage.\n   *\n   * This function replaces file URLs (`url` property) by their corresponding\n   * system-dependent path and applies the current inclusion rules to filter out\n   * the excluded script coverages.\n   *\n   * The result is a copy of the input, with script coverages filtered based\n   * on their `url` and the current inclusion rules.\n   * There is no deep cloning.\n   *\n   * @param v8ProcessCov V8 process coverage to normalize.\n   * @param fileIndex a Set<string> of paths discovered in coverage\n   * @return {v8ProcessCov} Normalized V8 process coverage.\n   * @private\n   */\n  _normalizeProcessCov (v8ProcessCov, fileIndex) {\n    const result = []\n    for (const v8ScriptCov of v8ProcessCov.result) {\n      // https://github.com/nodejs/node/pull/35498 updates Node.js'\n      // builtin module filenames:\n      if (/^node:/.test(v8ScriptCov.url)) {\n        v8ScriptCov.url = `${v8ScriptCov.url.replace(/^node:/, '')}.js`\n      }\n      if (/^file:\\/\\//.test(v8ScriptCov.url)) {\n        try {\n          v8ScriptCov.url = furi.toSysPath(v8ScriptCov.url)\n          fileIndex.add(v8ScriptCov.url)\n        } catch (err) {\n          debuglog(`${err.stack}`)\n          continue\n        }\n      }\n      if (this.exclude.shouldInstrument(v8ScriptCov.url) &&\n        (!this.omitRelative || isAbsolute(v8ScriptCov.url))) {\n        result.push(v8ScriptCov)\n      }\n    }\n    return { result }\n  }\n}\n\nmodule.exports = function (opts) {\n  return new Report(opts)\n}\n",
+    "lib/report.js": "const Exclude = require('test-exclude')\nconst furi = require('furi')\nconst libCoverage = require('istanbul-lib-coverage')\nconst libReport = require('istanbul-lib-report')\nconst reports = require('istanbul-reports')\nconst { readdirSync, readFileSync, statSync } = require('fs')\nconst { isAbsolute, resolve, extname } = require('path')\nconst getSourceMapFromFile = require('./source-map-from-file')\n// TODO: switch back to @c88/v8-coverage once patch is landed.\nconst v8toIstanbul = require('v8-to-istanbul')\nconst isCjsEsmBridgeCov = require('./is-cjs-esm-bridge')\nconst util = require('util')\nconst debuglog = util.debuglog('c8')\n\nclass Report {\n  constructor ({\n    exclude,\n    include,\n    reporter,\n    reportsDirectory,\n    tempDirectory,\n    watermarks,\n    omitRelative,\n    wrapperLength,\n    resolve: resolvePaths,\n    all,\n    src,\n    allowExternal = false\n  }) {\n    this.reporter = reporter\n    this.reportsDirectory = reportsDirectory\n    this.tempDirectory = tempDirectory\n    this.watermarks = watermarks\n    this.resolve = resolvePaths\n    this.exclude = new Exclude({\n      exclude: exclude,\n      include: include,\n      relativePath: !allowExternal\n    })\n    this.omitRelative = omitRelative\n    this.sourceMapCache = {}\n    this.wrapperLength = wrapperLength\n    this.all = all\n    this.src = this._getSrc(src)\n  }\n\n  _getSrc (src) {\n    if (typeof src === 'string') {\n      return [src]\n    } else if (Array.isArray(src)) {\n      return src\n    } else {\n      return [process.cwd()]\n    }\n  }\n\n  async run () {\n    const context = libReport.createContext({\n      dir: this.reportsDirectory,\n      watermarks: this.watermarks,\n      coverageMap: await this.getCoverageMapFromAllCoverageFiles()\n    })\n\n    this.reporter.forEach(function (_reporter) {\n      reports.create(_reporter, {\n        skipEmpty: false,\n        skipFull: false,\n        maxCols: 100\n      }).execute(context)\n    })\n  }\n\n  async getCoverageMapFromAllCoverageFiles () {\n    // the merge process can be very expensive, and it's often the case that\n    // check-coverage is called immediately after a report. We memoize the\n    // result from getCoverageMapFromAllCoverageFiles() to address this\n    // use-case.\n    if (this._allCoverageFiles) return this._allCoverageFiles\n\n    const map = libCoverage.createCoverageMap()\n    const v8ProcessCov = this._getMergedProcessCov()\n    const resultCountPerPath = new Map()\n    const possibleCjsEsmBridges = new Map()\n\n    /*\n    \n    OG Runtime:\n    Executed in   28.81 secs   fish           external \n       usr time   31.46 secs  138.00 micros   31.46 secs \n       sys time    3.39 secs  582.00 micros    3.39 secs \n\n    Runtime with change:\n    Executed in   28.00 secs   fish           external \n       usr time   30.63 secs  126.00 micros   30.63 secs \n       sys time    3.17 secs  580.00 micros    3.17 secs \n\n    */\n\n    /*\n    async function tmp (v8ScriptCov) {\n      try {\n        const sources = this._getSourceMap(v8ScriptCov)\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1)\n        } else {\n          resultCountPerPath.set(path, 0)\n        }\n\n        if (isCjsEsmBridgeCov(v8ScriptCov)) {\n          possibleCjsEsmBridges.set(converter, {\n            path,\n            functions: v8ScriptCov.functions\n          })\n        } else {\n          converter.applyCoverage(v8ScriptCov.functions)\n          map.merge(converter.toIstanbul())\n        }\n      } catch (err) {\n        debuglog(`file: ${v8ScriptCov.url} error: ${err.stack}`)\n      }\n    }\n\n    await Promise.all(v8ProcessCov.result.map(async (e) => { \n      await tmp.apply(this, [e]);\n    }));\n    */\n    \n    for (const v8ScriptCov of v8ProcessCov.result) {\n      try {\n        const sources = this._getSourceMap(v8ScriptCov)\n        const path = resolve(this.resolve, v8ScriptCov.url)\n        const converter = v8toIstanbul(path, this.wrapperLength, sources)\n        await converter.load()\n\n        if (resultCountPerPath.has(path)) {\n          resultCountPerPath.set(path, resultCountPerPath.get(path) + 1)\n        } else {\n          resultCountPerPath.set(path, 0)\n        }\n\n        if (isCjsEsmBridgeCov(v8ScriptCov)) {\n          possibleCjsEsmBridges.set(converter, {\n            path,\n            functions: v8ScriptCov.functions\n          })\n        } else {\n          converter.applyCoverage(v8ScriptCov.functions)\n          map.merge(converter.toIstanbul())\n        }\n      } catch (err) {\n        debuglog(`file: ${v8ScriptCov.url} error: ${err.stack}`)\n      }\n    }\n    \n\n    for (const [converter, { path, functions }] of possibleCjsEsmBridges) {\n      if (resultCountPerPath.get(path) <= 1) {\n        converter.applyCoverage(functions)\n        map.merge(converter.toIstanbul())\n      }\n    }\n    this._allCoverageFiles = map\n    return this._allCoverageFiles\n  }\n\n  /**\n   * Returns source-map and fake source file, if cached during Node.js'\n   * execution. This is used to support tools like ts-node, which transpile\n   * using runtime hooks.\n   *\n   * Note: requires Node.js 13+\n   *\n   * @return {Object} sourceMap and fake source file (created from line #s).\n   * @private\n   */\n  _getSourceMap (v8ScriptCov) {\n    const sources = {}\n    if (this.sourceMapCache[`file://${v8ScriptCov.url}`]) {\n      const sourceMapAndLineLengths = this.sourceMapCache[`file://${v8ScriptCov.url}`]\n      // See: https://github.com/nodejs/node/pull/34305\n      if (!sourceMapAndLineLengths.data) return\n      sources.sourceMap = {\n        sourcemap: sourceMapAndLineLengths.data\n      }\n      if (sourceMapAndLineLengths.lineLengths) {\n        let source = ''\n        sourceMapAndLineLengths.lineLengths.forEach(length => {\n          source += `${''.padEnd(length, '.')}\\n`\n        })\n        sources.source = source\n      }\n    }\n    return sources\n  }\n\n  /**\n   * Returns the merged V8 process coverage.\n   *\n   * The result is computed from the individual process coverages generated\n   * by Node. It represents the sum of their counts.\n   *\n   * @return {ProcessCov} Merged V8 process coverage.\n   * @private\n   */\n  _getMergedProcessCov () {\n    const { mergeProcessCovs } = require('@bcoe/v8-coverage')\n    const v8ProcessCovs = []\n    const fileIndex = new Set() // Set<string>\n    for (const v8ProcessCov of this._loadReports()) {\n      if (this._isCoverageObject(v8ProcessCov)) {\n        if (v8ProcessCov['source-map-cache']) {\n          Object.assign(this.sourceMapCache, v8ProcessCov['source-map-cache'])\n        }\n        v8ProcessCovs.push(this._normalizeProcessCov(v8ProcessCov, fileIndex))\n      }\n    }\n\n    if (this.all) {\n      const emptyReports = []\n      v8ProcessCovs.unshift({\n        result: emptyReports\n      })\n      const workingDirs = this.src\n      for (const workingDir of workingDirs) {\n        this.exclude.globSync(workingDir).forEach((f) => {\n          const fullPath = resolve(workingDir, f)\n          if (!fileIndex.has(fullPath)) {\n            const ext = extname(fullPath)\n            if (ext === '.js' || ext === '.ts' || ext === '.mjs') {\n              const stat = statSync(fullPath)\n              const sourceMap = getSourceMapFromFile(fullPath)\n              if (sourceMap !== undefined) {\n                this.sourceMapCache[`file://${fullPath}`] = { data: JSON.parse(readFileSync(sourceMap).toString()) }\n              }\n              emptyReports.push({\n                scriptId: 0,\n                url: resolve(fullPath),\n                functions: [{\n                  functionName: '(empty-report)',\n                  ranges: [{\n                    startOffset: 0,\n                    endOffset: stat.size,\n                    count: 0\n                  }],\n                  isBlockCoverage: true\n                }]\n              })\n            }\n          }\n        })\n      }\n    }\n\n    return mergeProcessCovs(v8ProcessCovs)\n  }\n\n  /**\n   * Make sure v8ProcessCov actually contains coverage information.\n   *\n   * @return {boolean} does it look like v8ProcessCov?\n   * @private\n   */\n  _isCoverageObject (maybeV8ProcessCov) {\n    return maybeV8ProcessCov && Array.isArray(maybeV8ProcessCov.result)\n  }\n\n  /**\n   * Returns the list of V8 process coverages generated by Node.\n   *\n   * @return {ProcessCov[]} Process coverages generated by Node.\n   * @private\n   */\n  _loadReports () {\n    const reports = []\n    for (const file of readdirSync(this.tempDirectory)) {\n      try {\n        reports.push(JSON.parse(readFileSync(\n          resolve(this.tempDirectory, file),\n          'utf8'\n        )))\n      } catch (err) {\n        debuglog(`${err.stack}`)\n      }\n    }\n    return reports\n  }\n\n  /**\n   * Normalizes a process coverage.\n   *\n   * This function replaces file URLs (`url` property) by their corresponding\n   * system-dependent path and applies the current inclusion rules to filter out\n   * the excluded script coverages.\n   *\n   * The result is a copy of the input, with script coverages filtered based\n   * on their `url` and the current inclusion rules.\n   * There is no deep cloning.\n   *\n   * @param v8ProcessCov V8 process coverage to normalize.\n   * @param fileIndex a Set<string> of paths discovered in coverage\n   * @return {v8ProcessCov} Normalized V8 process coverage.\n   * @private\n   */\n  _normalizeProcessCov (v8ProcessCov, fileIndex) {\n    const result = []\n    for (const v8ScriptCov of v8ProcessCov.result) {\n      // https://github.com/nodejs/node/pull/35498 updates Node.js'\n      // builtin module filenames:\n      if (/^node:/.test(v8ScriptCov.url)) {\n        v8ScriptCov.url = `${v8ScriptCov.url.replace(/^node:/, '')}.js`\n      }\n      if (/^file:\\/\\//.test(v8ScriptCov.url)) {\n        try {\n          v8ScriptCov.url = furi.toSysPath(v8ScriptCov.url)\n          fileIndex.add(v8ScriptCov.url)\n        } catch (err) {\n          debuglog(`${err.stack}`)\n          continue\n        }\n      }\n      if (this.exclude.shouldInstrument(v8ScriptCov.url) &&\n        (!this.omitRelative || isAbsolute(v8ScriptCov.url))) {\n        result.push(v8ScriptCov)\n      }\n    }\n    return { result }\n  }\n}\n\nmodule.exports = function (opts) {\n  return new Report(opts)\n}\n",
     "node_modules/v8-to-istanbul/lib/v8-to-istanbul.js": "const assert = require('assert')\nconst convertSourceMap = require('convert-source-map')\nconst { dirname, isAbsolute, join, resolve } = require('path')\nconst CovBranch = require('./branch')\nconst CovFunction = require('./function')\nconst CovSource = require('./source')\nconst compatError = Error(`requires Node.js ${require('../package.json').engines.node}`)\nlet readFile = () => { throw compatError }\ntry {\n  readFile = require('fs').promises.readFile\n} catch (_err) {\n  // most likely we're on an older version of Node.js.\n}\nconst { SourceMapConsumer } = require('source-map')\nconst isOlderNode10 = /^v10\\.(([0-9]\\.)|(1[0-5]\\.))/u.test(process.version)\nconst isNode8 = /^v8\\./.test(process.version)\n\n// Injected when Node.js is loading script into isolate pre Node 10.16.x.\n// see: https://github.com/nodejs/node/pull/21573.\nconst cjsWrapperLength = isOlderNode10 ? require('module').wrapper[0].length : 0\n\nmodule.exports = class V8ToIstanbul {\n  constructor (scriptPath, wrapperLength, sources, excludePath) {\n    assert(typeof scriptPath === 'string', 'scriptPath must be a string')\n    assert(!isNode8, 'This module does not support node 8 or lower, please upgrade to node 10')\n    this.path = parsePath(scriptPath)\n    this.wrapperLength = wrapperLength === undefined ? cjsWrapperLength : wrapperLength\n    this.excludePath = excludePath || (() => false)\n    this.sources = sources || {}\n    this.generatedLines = []\n    this.branches = {}\n    this.functions = {}\n    this.covSources = []\n    this.rawSourceMap = undefined\n    this.sourceMap = undefined\n    this.sourceTranspiled = undefined\n    // Indicate that this report was generated with placeholder data from\n    // running --all:\n    this.all = false\n  }\n\n  async load () {\n    const rawSource = this.sources.source || await readFile(this.path, 'utf8')\n    this.rawSourceMap = this.sources.sourceMap ||\n      // if we find a source-map (either inline, or a .map file) we load\n      // both the transpiled and original source, both of which are used during\n      // the backflips we perform to remap absolute to relative positions.\n      convertSourceMap.fromSource(rawSource) || convertSourceMap.fromMapFileSource(rawSource, dirname(this.path))\n\n    if (this.rawSourceMap) {\n      if (this.rawSourceMap.sourcemap.sources.length > 1) {\n        this.sourceMap = await new SourceMapConsumer(this.rawSourceMap.sourcemap)\n        this.covSources = this.sourceMap.sourcesContent.map((rawSource, i) => ({ source: new CovSource(rawSource, this.wrapperLength), path: this.sourceMap.sources[i] }))\n        this.sourceTranspiled = new CovSource(rawSource, this.wrapperLength)\n      } else {\n        const candidatePath = this.rawSourceMap.sourcemap.sources.length >= 1 ? this.rawSourceMap.sourcemap.sources[0] : this.rawSourceMap.sourcemap.file\n        this.path = this._resolveSource(this.rawSourceMap, candidatePath)\n        this.sourceMap = await new SourceMapConsumer(this.rawSourceMap.sourcemap)\n\n        let originalRawSource\n        if (this.sources.sourceMap && this.sources.sourceMap.sourcemap && this.sources.sourceMap.sourcemap.sourcesContent && this.sources.sourceMap.sourcemap.sourcesContent.length === 1) {\n          // If the sourcesContent field has been provided, return it rather than attempting\n          // to load the original source from disk.\n          // TODO: investigate whether there's ever a case where we hit this logic with 1:many sources.\n          originalRawSource = this.sources.sourceMap.sourcemap.sourcesContent[0]\n        } else if (this.sources.originalSource) {\n          // Original source may be populated on the sources object.\n          originalRawSource = this.sources.originalSource\n        } else if (this.sourceMap.sourcesContent && this.sourceMap.sourcesContent[0]) {\n          // perhaps we loaded sourcesContent was populated by an inline source map, or .map file?\n          // TODO: investigate whether there's ever a case where we hit this logic with 1:many sources.\n          originalRawSource = this.sourceMap.sourcesContent[0]\n        } else {\n          // We fallback to reading the original source from disk.\n          originalRawSource = await readFile(this.path, 'utf8')\n        }\n        this.covSources = [{ source: new CovSource(originalRawSource, this.wrapperLength), path: this.path }]\n        this.sourceTranspiled = new CovSource(rawSource, this.wrapperLength)\n      }\n    } else {\n      this.covSources = [{ source: new CovSource(rawSource, this.wrapperLength), path: this.path }]\n    }\n  }\n\n  _resolveSource (rawSourceMap, sourcePath) {\n    sourcePath = sourcePath.replace(/(^file:\\/\\/)|(^webpack:\\/\\/)/, '')\n    const sourceRoot = rawSourceMap.sourcemap.sourceRoot ? rawSourceMap.sourcemap.sourceRoot.replace('file://', '') : ''\n    const candidatePath = join(sourceRoot, sourcePath)\n\n    if (isAbsolute(candidatePath)) {\n      return candidatePath\n    } else {\n      return resolve(dirname(this.path), candidatePath)\n    }\n  }\n\n  applyCoverage (blocks) {\n    blocks.forEach(block => {\n      block.ranges.forEach((range, i) => {\n        const { startCol, endCol, path, covSource } = this._maybeRemapStartColEndCol(range)\n        if (this.excludePath(path)) {\n          return\n        }\n        const lines = covSource.lines.filter(line => {\n          // Upstream tooling can provide a block with the functionName\n          // (empty-report), this will result in a report that has all\n          // lines zeroed out.\n          if (block.functionName === '(empty-report)') {\n            line.count = 0\n            this.all = true\n            return true\n          }\n\n          return startCol < line.endCol && endCol >= line.startCol\n        })\n        const startLineInstance = lines[0]\n        const endLineInstance = lines[lines.length - 1]\n\n        if (block.isBlockCoverage && lines.length) {\n          this.branches[path] = this.branches[path] || []\n          // record branches.\n          this.branches[path].push(new CovBranch(\n            startLineInstance.line,\n            startCol - startLineInstance.startCol,\n            endLineInstance.line,\n            endCol - endLineInstance.startCol,\n            range.count\n          ))\n\n          // if block-level granularity is enabled, we we still create a single\n          // CovFunction tracking object for each set of ranges.\n          if (block.functionName && i === 0) {\n            this.functions[path] = this.functions[path] || []\n            this.functions[path].push(new CovFunction(\n              block.functionName,\n              startLineInstance.line,\n              startCol - startLineInstance.startCol,\n              endLineInstance.line,\n              endCol - endLineInstance.startCol,\n              range.count\n            ))\n          }\n        } else if (block.functionName && lines.length) {\n          this.functions[path] = this.functions[path] || []\n          // record functions.\n          this.functions[path].push(new CovFunction(\n            block.functionName,\n            startLineInstance.line,\n            startCol - startLineInstance.startCol,\n            endLineInstance.line,\n            endCol - endLineInstance.startCol,\n            range.count\n          ))\n        }\n\n        // record the lines (we record these as statements, such that we're\n        // compatible with Istanbul 2.0).\n        lines.forEach(line => {\n          // make sure branch spans entire line; don't record 'goodbye'\n          // branch in `const foo = true ? 'hello' : 'goodbye'` as a\n          // 0 for line coverage.\n          //\n          // All lines start out with coverage of 1, and are later set to 0\n          // if they are not invoked; line.ignore prevents a line from being\n          // set to 0, and is set if the special comment /* c8 ignore next */\n          // is used.\n\n          if (startCol <= line.startCol && endCol >= line.endCol && !line.ignore) {\n            line.count = range.count\n          }\n        })\n      })\n    })\n  }\n\n  _maybeRemapStartColEndCol (range) {\n    let covSource = this.covSources[0].source\n    let startCol = Math.max(0, range.startOffset - covSource.wrapperLength)\n    let endCol = Math.min(covSource.eof, range.endOffset - covSource.wrapperLength)\n    let path = this.path\n\n    if (this.sourceMap) {\n      startCol = Math.max(0, range.startOffset - this.sourceTranspiled.wrapperLength)\n      endCol = Math.min(this.sourceTranspiled.eof, range.endOffset - this.sourceTranspiled.wrapperLength)\n\n      const { startLine, relStartCol, endLine, relEndCol, source } = this.sourceTranspiled.offsetToOriginalRelative(\n        this.sourceMap,\n        startCol,\n        endCol\n      )\n\n      const matchingSource = this.covSources.find(covSource => covSource.path === source)\n      covSource = matchingSource ? matchingSource.source : this.covSources[0].source\n      path = matchingSource ? matchingSource.path : this.covSources[0].path\n\n      // next we convert these relative positions back to absolute positions\n      // in the original source (which is the format expected in the next step).\n      startCol = covSource.relativeToOffset(startLine, relStartCol)\n      endCol = covSource.relativeToOffset(endLine, relEndCol)\n    }\n\n    return {\n      path,\n      covSource,\n      startCol,\n      endCol\n    }\n  }\n\n  getInnerIstanbul (source, path) {\n    // We apply the \"Resolving Sources\" logic (as defined in\n    // sourcemaps.info/spec.html) as a final step for 1:many source maps.\n    // for 1:1 source maps, the resolve logic is applied while loading.\n    //\n    // TODO: could we move the resolving logic for 1:1 source maps to the final\n    // step as well? currently this breaks some tests in c8.\n    let resolvedPath = path\n    if (this.rawSourceMap && this.rawSourceMap.sourcemap.sources.length > 1) {\n      resolvedPath = this._resolveSource(this.rawSourceMap, path)\n    }\n\n    if (this.excludePath(resolvedPath)) {\n      return\n    }\n\n    return {\n      [resolvedPath]: {\n        path: resolvedPath,\n        all: this.all,\n        ...this._statementsToIstanbul(source, path),\n        ...this._branchesToIstanbul(source, path),\n        ...this._functionsToIstanbul(source, path)\n      }\n    }\n  }\n\n  toIstanbul () {\n    return this.covSources.reduce((istanbulOuter, { source, path }) => Object.assign(istanbulOuter, this.getInnerIstanbul(source, path)), {})\n  }\n\n  _statementsToIstanbul (source, path) {\n    const statements = {\n      statementMap: {},\n      s: {}\n    }\n    source.lines.forEach((line, index) => {\n      statements.statementMap[`${index}`] = line.toIstanbul()\n      statements.s[`${index}`] = line.count\n    })\n    return statements\n  }\n\n  _branchesToIstanbul (source, path) {\n    const branches = {\n      branchMap: {},\n      b: {}\n    }\n    this.branches[path] = this.branches[path] || []\n    this.branches[path].forEach((branch, index) => {\n      const ignore = source.lines[branch.startLine - 1].ignore\n      branches.branchMap[`${index}`] = branch.toIstanbul()\n      branches.b[`${index}`] = [ignore ? 1 : branch.count]\n    })\n    return branches\n  }\n\n  _functionsToIstanbul (source, path) {\n    const functions = {\n      fnMap: {},\n      f: {}\n    }\n    this.functions[path] = this.functions[path] || []\n    this.functions[path].forEach((fn, index) => {\n      const ignore = source.lines[fn.startLine - 1].ignore\n      functions.fnMap[`${index}`] = fn.toIstanbul()\n      functions.f[`${index}`] = ignore ? 1 : fn.count\n    })\n    return functions\n  }\n}\n\nfunction parsePath (scriptPath) {\n  return scriptPath.replace('file://', '')\n}\n"
   }
 }
