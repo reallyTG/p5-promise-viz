@@ -19,6 +19,7 @@ pre[class*="language-"] {
 	word-break: normal;
 	word-wrap: normal;
 	line-height: 1.5;
+	height: 1100px; /* This is by no means permanent. TODO: Set up dynamic sizing. */ 
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
