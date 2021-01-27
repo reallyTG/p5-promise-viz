@@ -31,12 +31,9 @@ function drawGrid() {
     fill(0, 0, 0, 192);
     stroke(0, 0, 0,192);
 
-    console.log('g_scale: ' + g_scale);
-
     var segments = 40;
     var horizontalSpace = (height * g_scale) / segments;
     var verticalSpace = (width * g_scale) / segments;
-
 
     // Draw some horizontal segments
     for(var horizontal =0; horizontal < segments*g_scale; horizontal++){
