@@ -5,7 +5,7 @@
 // Static Variables for the entity class
 // Prefix of 's_' indicates static
 let g_uniqueid = 0;
-
+let g_sourceHovered = '';
 
 class entity {
 
@@ -40,25 +40,30 @@ class entity {
           return;
         }
         //if (mouseX >= offsetX + (this.x*g_scale ) && mouseX <= offsetX + ((this.x + this.w)*g_scale )) {
-              if (mouseY >= offsetY + (this.y*g_scale ) && mouseY <= offsetY + ((this.y + this.h)*g_scale )) {
-                    // Invert fill and stroke
-                    fill(this.stroke);
-                    stroke(this.fill);
-                    rect((this.x), this.y, this.w, this.h);
-                    // Set UI details to currently hovered node
-                    //g_details = this.datum.printAll();    // Uncomment to print all details
-                    g_details = this.datum.printNumbericData();
+        if (mouseY >= offsetY + (this.y*g_scale ) && mouseY <= offsetY + ((this.y + this.h)*g_scale )) {
+              // Invert fill and stroke
+              fill(this.stroke);
+              stroke(this.fill);
+              rect((this.x), this.y, this.w, this.h);
+              // Set UI details to currently hovered node
+              //g_details = this.datum.printAll();    // Uncomment to print all details
+              g_details = this.datum.printNumbericData();
 
-                    // Currently hovered id
-                    g_hoveredID = this.entityid;
-                    // Toggle selection of entity
-                    if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
-                        this.selected = true;
-                        this.loadContents();
-                    }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
-                        this.selected = false;
-                    }
+              // Currently hovered id
+              g_hoveredID = this.entityid;
+
+              // Currently hovered source. Used in render() to
+              // fill matching promises.
+              g_sourceHovered = this.datum.source; 
+
+              // Toggle selection of entity
+              if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
+                  this.selected = true;
+                  this.loadContents();
+              }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
+                  this.selected = false;
               }
+        }
        //   }
     }
     
@@ -124,12 +129,16 @@ class entity {
 
   // How to render the entity
     render() {
+      let thisDatumSource = this.datum.source;
         if (this.selected) {
           strokeWeight(2);
           // Invert fill and stroke
           fill(this.stroke);
           stroke(this.fill);
           rect((this.x), this.y, this.w, this.h);
+        } else if (thisDatumSource == g_sourceHovered) {
+          fill('red');
+          stroke(255); 
         } else {
           fill(this.fill);
           stroke(this.stroke);
