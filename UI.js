@@ -31,9 +31,11 @@ function drawGrid() {
     fill(0, 0, 0, 192);
     stroke(0, 0, 0,192);
 
-    var segments = 8;
-    var horizontalSpace = (height/g_scale) / segments;
-    var verticalSpace = (width/g_scale) / segments;
+    console.log('g_scale: ' + g_scale);
+
+    var segments = 40;
+    var horizontalSpace = (height * g_scale) / segments;
+    var verticalSpace = (width * g_scale) / segments;
 
 
     // Draw some horizontal segments
@@ -233,10 +235,12 @@ function mouseWheel(event) {
     // Scroll the mouse
     if (!mouseIsPressed) {
         if (event.deltaY > 0){
-            g_scale *= .95;
+            // g_scale *= .95;
+            g_scale -= 0.01;
         }
         else{
-            g_scale *= 1.05;
+            // g_scale *= 1.05;
+            g_scale += 0.01;
         }
         
         g_scrollX = mouseX/g_scale;

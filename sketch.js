@@ -43,6 +43,7 @@ function preload(){
     // filename = "./results/processed-results-json2csv.json";
     // filename = "./results/processed-results-centra.json";
     // filename = "./results/processed-results-json2csv1.json";
+    // filename = "./results/processed-results-c8.json"
     
     filename = "./results/CodeceptJS/CodeceptJS-processed-results-0004.json";
 
@@ -58,7 +59,9 @@ function preload(){
 // and parses it to
 // ava/node_modules/tsd/dist/cli.js
 function parseStringAsFileName(input){
-  parsed = input.substr(1,input.lastIndexOf(".js")+2);
+  // Alexi: changed the first arg to 0, since we deal with
+  // the leading ( in preprocessing.
+  parsed = input.substr(0,input.lastIndexOf(".js")+3);
   return parsed;
 }
 
@@ -107,15 +110,16 @@ function setup() {
       g_totalKeys++;
     }
 
-    for(var i=0; i < g_totalKeys;i++){
-      //g_sourceFilesMap[g_rawPromiseData["promises"][i]["source"]] = loadStrings(parseStringAsFileName(g_rawPromiseData["promises"][i]["source"]));
-      let fileToLoad = parseStringAsFileName(g_rawPromiseData["promises"][i]["source"]);
-      g_sourceFilesMap[g_rawPromiseData["promises"][i]["source"]] = loadStrings(fileToLoad);
-    }
+    // Alexi: Never used.
+    // for(var i=0; i < g_totalKeys;i++){
+    //   // g_sourceFilesMap[g_rawPromiseData["promises"][i]["source"]] = loadStrings(parseStringAsFileName(g_rawPromiseData["promises"][i]["source"]));
+    //   let fileToLoad = parseStringAsFileName(g_rawPromiseData["promises"][i]["source"]);
+    //   // console.log('loadStrings: ' + loadStrings);
+    //   g_sourceFilesMap[g_rawPromiseData["promises"][i]["source"]] = loadStrings(fileToLoad);
+    // }
 
     button = createButton('Toggle Debug Mode: '+(!g_disableFriendlyErrors));
     button.mousePressed(changeDebugMode);
-
 
     setUIOffset(offsetX, offsetY);
 }
