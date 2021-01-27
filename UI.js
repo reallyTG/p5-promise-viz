@@ -176,6 +176,10 @@ function UI() {
 ///////////////////////////////////////////////
 function Controls() {
     // Avoid updating sketch if mouse is out of bounds
+
+    // Always scale, or (better) find a way to not have to do this every frame.
+    scale(g_scale);
+    
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
@@ -209,7 +213,6 @@ function Controls() {
       translate(offsetX,offsetY);
       // Scale the camera
      // translate(g_scrollX,g_scrollY);
-      scale(g_scale);
       //translate(-g_scrollX/g_scale,-g_scrollY/g_scale);
 }
 
