@@ -201,7 +201,8 @@ function draw() {
     g_bar.display(0, 500);
     // Highlights all nodes in the promise chain
     if(g_hoveredID>0 && g_hoveredID < g_bar.entities.length){
-      g_bar.highlightPromiseChain(g_hoveredID);
+    // TODO: Item for mike to fix highlighting the promise chain
+    //  g_bar.highlightPromiseChain(g_hoveredID); 
     }
     // Points to the first promise triggered
     g_bar.pointToTrigger(g_hoveredID);
@@ -221,8 +222,10 @@ function draw() {
     //       after we reset the matrix
     //       otherwise the scale will be
     //       thrown off.
-    g_bar.minidisplay(0,height-g_miniMapY,g_miniMapY);
-    UI();
+    // Takes as a parameter the height
+    UI(height - 220);
+    g_bar.minidisplay(0,height-g_miniMapY-250,g_miniMapY);
+
 
 
 

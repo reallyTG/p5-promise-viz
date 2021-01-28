@@ -26,6 +26,16 @@ var g_scrollY=0;
 // y position of the miniDisplay
 var g_miniMapY = 150
 
+
+
+function resetView(state){
+    console.log("resetView");
+    g_scale = 1;
+    // Offset
+    g_offsetX = 0;
+    g_offsetY = 0;
+}
+
 // Essentially create a bounding sphere, and then
 // push the camera outwards to the radius so we can
 // view the entire plane (i.e. the bar chart).
@@ -109,8 +119,11 @@ function menubar(x,y){
 
 function ZoomPanel(x,y){
     fill(0,0,128,164);
-    var ZoomFit = new Button("Fit to Window",x,y+textSize()*1,220,textSize(),ZoomToFit);
-    ZoomFit.render();
+    var resetViewButton = new Button("Reset View",x,y+textSize()*1,220,textSize(),resetView);
+    resetViewButton.render();
+
+    var zoomFitButton = new Button("Fit to Window",x+220,y+textSize()*1,220,textSize(),ZoomToFit);
+    zoomFitButton.render();
 }
 
 function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){   
@@ -175,7 +188,7 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 // User interface
 // User interface will stay locked to screen
 ///////////////////////////////////////////////
-function UI() {
+function UI(y) {
     // Configuration of UI
     textSize(26);
     textFont("monospace", 26);
@@ -188,11 +201,11 @@ function UI() {
 
     // Render the details pane
     var detailsHeight = 220; // Set height of details panel
-    detailsPanel(0,height - detailsHeight-g_miniMapY,width/2,detailsHeight);
+    detailsPanel(0,y,width/2,detailsHeight);
 
     // Render the queries pane
     var queriesHeight = 220; // Set height of details panel
-    queriesPanel(width/2,height - queriesHeight-g_miniMapY,width/2,queriesHeight);
+    queriesPanel(width/2,y,width/2,queriesHeight);
 
     // Render the panel
     //g_Panel.render();

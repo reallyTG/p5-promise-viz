@@ -129,7 +129,7 @@ class BarChart {
       // TODO: Get rid of the '130' hard coded number
       //       For some erason, the offset is not quite working, maybe a rounding error?
       //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y-(h-130),widthRelative,heightRelative);
+      rect(x+xRelative,yRelative+y-(h-100),widthRelative,heightRelative);
     }
 
     // Slider
