@@ -46,11 +46,10 @@ function ZoomToFit(state){
     var distance_to_center = radius / sin(half_fov_radians);
     console.log(distance_to_center);
 
-
     g_offsetX = g_bar.w / 2.0;
     g_offsetY = g_bar.h / 2.0;
     g_scale = 1/distance_to_center;
-    g_scale = 0.001;
+    g_scale = 0.15;
 
     if(aspectRatio > 1){
         // Get the width of our bar chart
@@ -70,7 +69,6 @@ function drawGrid() {
     var horizontalSpace = (height/g_scale) / segments;
     var verticalSpace = (width/g_scale) / segments;
 
-
     // Draw some horizontal segments
     for(var horizontal =0; horizontal < segments*g_scale; horizontal++){
         line(0, horizontal*horizontalSpace, width, horizontal*horizontalSpace);
@@ -81,7 +79,6 @@ function drawGrid() {
 
         //line(xhorizontal, this.h + horizontal*horizontalSpace, this.w, this.h + horizontal*horizontalSpace);
     }
-
 }
 
 function setUIOffset(x, y){
@@ -119,7 +116,7 @@ function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){
     fill(0,164);
     rect(x, y, detailPanelWidth, detailPanelHeight);
     fill(255);
-    text(g_details, x+2, y+textSize(),detailPanelWidth,detailPanelHeight);
+    text(g_details, x+2, y,detailPanelWidth,detailPanelHeight);
 }
 
 function queriesPanel(x,y,panelWidth,panelHeight){
@@ -130,7 +127,6 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     text("Queries:", x+2, y-g_padding/2);
     fill(0,164);
     rect(x, y, panelWidth, panelHeight);
-
 
     // Buttons
     var buttonWidth = 350;
@@ -159,28 +155,14 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     var selectState = new Button("Select None",x+buttonWidth,y+textSize()*3,buttonWidth,textSize(),callSelectAllNone);
     selectState.render();
 
-
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*7,buttonWidth,textSize(),callSelectIO);
+    var selectIO = new Button("Select All IO",x,y+textSize()*4,buttonWidth,textSize(),callSelectIO);
     selectIO.render();
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*8,buttonWidth,textSize(),callSelectUserCode);
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*5,buttonWidth,textSize(),callSelectUserCode);
     selectUserCode.render();
 
-
-    /*
-    // Buttons
-    fill(0);
-    rect(x,y+textSize()*4,panelWidth,textSize());
-    fill(255);
-    text("Select all userCode", x+2, y+textSize()*5);  
-    // Buttons
-    fill(0);
-    rect(x,y+textSize()*5,panelWidth,textSize());
-    fill(255);
-    text("Invert Selection vs Select Range vs Unselect Range", x+2, y+textSize()*6);       
-    */
 }
 
 ///////////////////////////////////////////////
@@ -199,14 +181,12 @@ function UI() {
     ZoomPanel(0,10);
 
     // Render the details pane
-    var detailsHeight = 320; // Set height of details panel
+    var detailsHeight = 220; // Set height of details panel
     detailsPanel(0,height - detailsHeight-g_miniMapY,width/2,detailsHeight);
 
     // Render the queries pane
-    var queriesHeight = 320; // Set height of details panel
+    var queriesHeight = 220; // Set height of details panel
     queriesPanel(width/2,height - queriesHeight-g_miniMapY,width/2,queriesHeight);
-
-    
 
     // Render the panel
     //g_Panel.render();

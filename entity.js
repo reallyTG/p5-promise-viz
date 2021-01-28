@@ -25,6 +25,7 @@ class entity {
         // Attributes for interation
         this.selected = false;  // Nothing selected by default
         this.show = true;       // Show all entities by default
+        this.highlighted = false; // temporarily highlight a node
 
         // Color of box
         this.stroke = 255;
@@ -58,6 +59,8 @@ class entity {
                     }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
                         this.selected = false;
                     }
+                    this.highlightPromises();
+                    
               }
        //   }
     }
@@ -122,6 +125,53 @@ class entity {
       // getFile(parseStringAsFileName(this.datum.source),'output','promisePre');
     }
 
+    highlightPromises(){
+        if(this.datum.asyncId >= 0){
+            // Spit out related promises onto console?
+            let asyncIDs        = [this.datum.asyncId];
+            let displayAsyncIDs = [this.datum.asyncId];
+            let triggerAsyncIDs = [this.datum.triggerAsyncId];
+            let promisesTriggered = [this.datum];
+
+            for (let i = this.datum.id; i < Object.keys(g_rawPromiseData.promises).length; i++) {
+              let cProm = g_rawPromiseData.promises[i];
+
+              // If cProm is triggered by one of the asyncIDs we care about...
+              if (asyncIDs.indexOf(cProm.triggerAsyncId) != -1) {
+                // Collect it to display it later.
+                promisesTriggered.push(cProm);
+                // Add it's asyncID to the list we care about.
+                asyncIDs.push(cProm.asyncId);
+                displayAsyncIDs.push(cProm.asyncId);
+              }
+            }
+
+            // TODO Go backwards and get the reverse.
+            for (let i = this.datum.id; i >= 0; i--) {
+              let cProm = g_rawPromiseData.promises[i];
+
+              // If cProm triggers one of the asyncIDs we care about...
+              if (triggerAsyncIDs.indexOf(cProm.asyncId) != -1) {
+                // Collect it to display it later.
+                promisesTriggered.push(cProm);
+                // Add it's asyncID to the list we care about.
+                triggerAsyncIDs.push(cProm.triggerAsyncId);
+                displayAsyncIDs.push(cProm.asyncId);
+              }
+            }
+
+            //console.log(promisesTriggered); // Uncomment to debug
+
+            for (let i = 0; i < g_bar.entities.length; i++) {
+              if (displayAsyncIDs.indexOf(g_bar.entities[i].datum.asyncId) == -1) {
+                g_bar.entities[i].highlighted = false;
+              } else {
+                g_bar.entities[i].highlighted = true;
+              }
+            }
+      }
+    }
+
   // How to render the entity
     render() {
         if (this.selected) {
@@ -135,8 +185,19 @@ class entity {
           stroke(this.stroke);
           noStroke();
         }
+
+        // If the entity is highlighted
+        // then color it in purple
+        if(this.highlighted){
+          fill(75,0,130,255);
+          stroke(255,255,0,255);
+        }
+
       // Render the rectangle
-      rect((this.x), this.y, this.w, this.h);
+      rect(this.x, this.y, this.w, this.h);
+
+      // Immediately set the highlight to false
+      this.highlighted = false;
     }
 }
 

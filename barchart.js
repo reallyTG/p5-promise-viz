@@ -171,8 +171,8 @@ class BarChart {
         // trigger ID
         if(this.entities[nodeID].datum.triggerAsyncId>0 && this.entities[nodeID].datum.triggerAsyncId < this.entities.length){
             var triggerIndex = this.entities[nodeID].datum.triggerAsyncId;
-            stroke(255,0,0,100);
-            fill(255,0,0,100);
+            stroke(255,255,0,100);
+            fill(255,255,0,100);
             line(this.entities[nodeID].x,
                   this.entities[nodeID].y,
                   this.entities[triggerIndex].x+this.entities[triggerIndex].w/2,
@@ -183,6 +183,20 @@ class BarChart {
 
         g_querySummary = itemsSelected;
     }
+
+    highlightPromiseChain(startingNode){
+        if(this.entities[startingNode].datum.triggerAsyncId>=0 && this.entities[startingNode].datum.triggerAsyncId <= this.entities.length){
+          // Start highlighting the node pointed to)
+          this.entities[startingNode].highlighted = true;
+
+          // Recursively highlight all the other async ids in the promise chain
+          var trigger = this.entities[startingNode].datum.asyncId;
+          if(trigger >= 0 && trigger < this.entities.length && trigger !=startingNode){
+            this.highlightPromiseChain(trigger);
+          }
+        }
+    }
+
 
     // Only show selected nodes
     filterShow(state){
