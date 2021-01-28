@@ -65,9 +65,15 @@ function drawGrid() {
     fill(0, 0, 0, 192);
     stroke(0, 0, 0,192);
 
-    var segments = 8;
-    var horizontalSpace = (height/g_scale) / segments;
-    var verticalSpace = (width/g_scale) / segments;
+
+    //var segments = 8;
+    //var horizontalSpace = (height/g_scale) / segments;
+    //var verticalSpace = (width/g_scale) / segments;
+
+    var segments = 40;
+    var horizontalSpace = (height * g_scale) / segments;
+    var verticalSpace = (width * g_scale) / segments;
+
 
     // Draw some horizontal segments
     for(var horizontal =0; horizontal < segments*g_scale; horizontal++){
@@ -201,6 +207,10 @@ function UI() {
 ///////////////////////////////////////////////
 function Controls() {
     // Avoid updating sketch if mouse is out of bounds
+
+    // Always scale, or (better) find a way to not have to do this every frame.
+    scale(g_scale);
+    
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
@@ -234,7 +244,6 @@ function Controls() {
       translate(g_offsetX,g_offsetY);
       // Scale the camera
      // translate(g_scrollX,g_scrollY);
-      scale(g_scale);
       //translate(-g_scrollX/g_scale,-g_scrollY/g_scale);
 }
 
@@ -257,10 +266,12 @@ function mouseWheel(event) {
     // Scroll the mouse
     if (!mouseIsPressed) {
         if (event.deltaY > 0){
-            g_scale *= .95;
+            // g_scale *= .95;
+            g_scale -= 0.01;
         }
         else{
-            g_scale *= 1.05;
+            // g_scale *= 1.05;
+            g_scale += 0.01;
         }
         
         g_scrollX = mouseX/g_scale;

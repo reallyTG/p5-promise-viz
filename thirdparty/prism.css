@@ -19,6 +19,7 @@ pre[class*="language-"] {
 	word-break: normal;
 	word-wrap: normal;
 	line-height: 1.5;
+	height: 1000px; /* This is by no means permanent. TODO: Set up dynamic sizing. */ 
 
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
@@ -51,7 +52,7 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-	g_padding: 1em;
+	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
 }
@@ -63,7 +64,7 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	g_padding: .1em;
+	padding: .1em;
 	border-radius: .3em;
 	white-space: normal;
 }
@@ -143,15 +144,15 @@ pre[class*="language-"] {
 
 pre[data-line] {
 	position: relative;
-	g_padding: 1em 0 1em 3em;
+	padding: 1em 0 1em 3em;
 }
 
 .line-highlight {
 	position: absolute;
 	left: 0;
 	right: 0;
-	g_padding: inherit 0;
-	margin-top: 1em; /* Same as .prism’s g_padding-top */
+	padding: inherit 0;
+	margin-top: 1em; /* Same as .prism’s padding-top */
 
 	background: hsla(24, 20%, 50%,.08);
 	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
@@ -169,7 +170,7 @@ pre[data-line] {
 		top: .4em;
 		left: .6em;
 		min-width: 1em;
-		g_padding: 0 .5em;
+		padding: 0 .5em;
 		background-color: hsla(24, 20%, 50%,.4);
 		color: hsl(24, 20%, 95%);
 		font: bold 65%/1.5 sans-serif;
@@ -203,7 +204,7 @@ pre[id].linkable-line-numbers span.line-numbers-rows > span:hover:before {
 
 pre[class*="language-"].line-numbers {
 	position: relative;
-	g_padding-left: 3.8em;
+	padding-left: 3.8em;
 	counter-reset: linenumber;
 }
 
@@ -238,7 +239,7 @@ pre[class*="language-"].line-numbers > code {
 			content: counter(linenumber);
 			color: #999;
 			display: block;
-			g_padding-right: 0.8em;
+			padding-right: 0.8em;
 			text-align: right;
 		}
 

@@ -5,7 +5,7 @@
 // Static Variables for the entity class
 // Prefix of 's_' indicates static
 let g_uniqueid = 0;
-
+let g_sourceHovered = '';
 
 class entity {
 
@@ -40,6 +40,7 @@ class entity {
         if(mouseX < 0 || mouseX > width){
           return;
         }
+      /*
         //if (mouseX >= g_offsetX + (this.x*g_scale ) && mouseX <= g_offsetX + ((this.x + this.w)*g_scale )) {
               if (mouseY >= g_offsetY + (this.y*g_scale ) && mouseY <= g_offsetY + ((this.y + this.h)*g_scale )) {
                     // Invert fill and stroke
@@ -60,8 +61,33 @@ class entity {
                         this.selected = false;
                     }
                     this.highlightPromises();
-                    
+         */           
+
+        //if (mouseX >= offsetX + (this.x*g_scale ) && mouseX <= offsetX + ((this.x + this.w)*g_scale )) {
+        if (mouseY >= offsetY + (this.y*g_scale ) && mouseY <= offsetY + ((this.y + this.h)*g_scale )) {
+              // Invert fill and stroke
+              fill(this.stroke);
+              stroke(this.fill);
+              rect((this.x), this.y, this.w, this.h);
+              // Set UI details to currently hovered node
+              //g_details = this.datum.printAll();    // Uncomment to print all details
+              g_details = this.datum.printNumbericData();
+
+              // Currently hovered id
+              g_hoveredID = this.entityid;
+
+              // Currently hovered source. Used in render() to
+              // fill matching promises.
+              g_sourceHovered = this.datum.source; 
+
+              // Toggle selection of entity
+              if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
+                  this.selected = true;
+                  this.loadContents();
+              }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
+                  this.selected = false;
               }
+        }
        //   }
     }
     
@@ -71,10 +97,12 @@ class entity {
     loadContents() {
       g_txt = g_rawPromiseData.files[this.datum.file];
       if (g_txt) {
-        writeTo( 'output', 'promisePre', g_txt, this.datum.startLine, this.datum.endLine);
+        // writeTo( 'output', 'promisePre', g_txt, this.datum.startLine, this.datum.endLine);
+        addFileToView(this.datum.file, g_txt, this.datum.startLine, this.datum.endLine);
       } else {
         writeTo( 'output', 'promisePre', 'No file associated with the selected promise.', 1, 1)
       }
+      
 
       // Spit out related promises onto console?
       let asyncIDs = [this.datum.asyncId];
@@ -174,12 +202,16 @@ class entity {
 
   // How to render the entity
     render() {
+      let thisDatumSource = this.datum.source;
         if (this.selected) {
           strokeWeight(2);
           // Invert fill and stroke
           fill(this.stroke);
           stroke(this.fill);
           rect((this.x), this.y, this.w, this.h);
+        } else if (thisDatumSource == g_sourceHovered) {
+          fill('red');
+          stroke(255); 
         } else {
           fill(this.fill);
           stroke(this.stroke);

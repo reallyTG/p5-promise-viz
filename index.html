@@ -9,7 +9,7 @@
     <script src="barchart.js"></script>
     <script src="UI.js"></script>
     <script src="sketch.js"></script>
-    <!-- Style sheet-->
+    <!-- Style sheet -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Third party libraries -->
@@ -43,9 +43,16 @@
             <td valign="top">
                 <p></p>
                   <h3>Selected Promise contents:</h3>
-                    <pre id="promisePre" class="line-numbers" data-line="1-1">
-<!--               --><code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
-                    </pre>
+                    <div class="tab" id="tabController">
+                      <button class="tablinks" onclick="viewFile(event, 'readme')" id="defaultOpen">readme</button>
+                    </div>
+                    <div id="listOfOpenFiles">
+                      <div id="readme" class="tabcontent">
+                        <pre id="promisePre" class="line-numbers" data-line="1-1">
+<!--                   --><code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
+                        </pre>
+                      </div>
+                    </div>
                 </p>
             </td>
         </tr>
@@ -95,6 +102,11 @@
     </table>
 
     Patterns: testrunner(one long running promise with many smaller promises), airplane, sequential (completely sequential)
+
+    <script>
+// For loading default tab.
+document.getElementById("defaultOpen").click();
+    </script>
 
   </body>
 </html>

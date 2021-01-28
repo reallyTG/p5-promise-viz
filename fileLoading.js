@@ -1,4 +1,29 @@
 
+/* Code for dealing with file tabs */
+function viewFile(evt, fileName) {
+  console.log("I've been called with " +  fileName);
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(fileName).style.display = "block";
+  evt.currentTarget.className += " active";
+
+  // Get Prism to highlight things in case it didn't already.
+  Prism.highlightAll();
+}
+
 /*  Old method for loading sources. Leaving it here as we might want it
  *  when we want to include a full project hierarchy in the tool.
  */
@@ -37,6 +62,63 @@ function writeTo( element, preElement, content, highlightFrom, highlightTo) {
         pre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
     Prism.highlightAll();
 }
+
+let g_filesOpenInViewer = [];
+
+function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
+
+    // Skip if we've already opened the file.
+    // TODO: Instead change the line highlight, if a new promise is selected.
+    if (g_filesOpenInViewer.indexOf(fileName) == -1) {
+        g_filesOpenInViewer.push(fileName);
+    } else {
+        return;
+    }
+
+    /* Add Content... */
+    let outerDiv = document.createElement('div');
+    let thePre = document.createElement('pre');
+    let theCode = document.createElement('code');
+
+    outerDiv.className = 'tabcontent';
+    outerDiv.id = fileName;
+
+    thePre.id = 'promisePre';
+    thePre.className = 'line-numbers'
+    if (highlightFrom === highlightTo)
+        thePre.setAttribute('data-line', highlightFrom);
+    else
+        thePre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
+    Prism.highlightAll();
+
+    theCode.className = 'language-javascript';
+    theCode.innerHTML = fileContents;
+
+    thePre.appendChild(theCode);
+    outerDiv.appendChild(thePre);
+
+    var tabController = document.getElementById('listOfOpenFiles');
+    tabController.appendChild(outerDiv);
+
+    /* Add tab Button */
+    let tabButton = document.createElement('button');
+    tabButton.className = 'tablinks';
+    tabButton.setAttribute('onclick', `viewFile(event, '${fileName}')`);
+    tabButton.innerHTML = fileName;
+
+    var tabList = document.getElementById('tabController');
+    tabList.appendChild(tabButton);
+
+    tabButton.click();
+}
+
+/* Create this:
+
+
+                      <div class="tab">
+                      <button class="tablinks" onclick="viewFile(event, 'readme')" id="defaultOpen">readme</button>
+                    </div>
+*/
 
 // Start reading a file from the a file box specified by
 // 'elementID'
