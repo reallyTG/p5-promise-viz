@@ -142,7 +142,7 @@ class BarChart {
       line(mouseX,y,mouseX,y+h);
       if (mouseIsPressed) {
         if (mouseButton === LEFT) {
-          offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
+          g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
         }
       }
     }
@@ -171,8 +171,8 @@ class BarChart {
         // trigger ID
         if(this.entities[nodeID].datum.triggerAsyncId>0 && this.entities[nodeID].datum.triggerAsyncId < this.entities.length){
             var triggerIndex = this.entities[nodeID].datum.triggerAsyncId;
-            stroke(255,0,0,100);
-            fill(255,0,0,100);
+            stroke(255,255,0,100);
+            fill(255,255,0,100);
             line(this.entities[nodeID].x,
                   this.entities[nodeID].y,
                   this.entities[triggerIndex].x+this.entities[triggerIndex].w/2,
@@ -183,6 +183,20 @@ class BarChart {
 
         g_querySummary = itemsSelected;
     }
+
+    highlightPromiseChain(startingNode){
+        if(this.entities[startingNode].datum.triggerAsyncId>=0 && this.entities[startingNode].datum.triggerAsyncId <= this.entities.length){
+          // Start highlighting the node pointed to)
+          this.entities[startingNode].highlighted = true;
+
+          // Recursively highlight all the other async ids in the promise chain
+          var trigger = this.entities[startingNode].datum.asyncId;
+          if(trigger >= 0 && trigger < this.entities.length && trigger !=startingNode){
+            this.highlightPromiseChain(trigger);
+          }
+        }
+    }
+
 
     // Only show selected nodes
     filterShow(state){
@@ -221,8 +235,8 @@ class BarChart {
       var itemsSelected=0;
 
       for (var i = 0; i < this.entities.length; i++) {
-          if(startY < offsetY +(this.entities[i].y*g_scale) && 
-            endY > offsetY + (this.entities[i].y*g_scale+this.entities[i].h*g_scale)){
+          if(startY < g_offsetY +(this.entities[i].y*g_scale) && 
+            endY > g_offsetY + (this.entities[i].y*g_scale+this.entities[i].h*g_scale)){
             // Currently inverts the selected range
             // TODO: Will likely want more controls over this.
               this.entities[i].selected = !this.entities[i].selected;

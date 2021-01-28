@@ -48,11 +48,8 @@ class promiseData{
         return  "uniqueid :"        + this.id               + "\n" +
                 "source   :"        + this.source           + "\n" +
                 "line:"             + this.line             + "\n" +
-                "startLine:"        + this.startLine        + "\n" +
-                "startCol:"         + this.startCol         + "\n" +
-                "endLine:"          + this.endLine          + "\n" +
-                "endCol:"           + this.endCol           + "\n" +
-                "file:"             + this.file;
+                "asyncId:"          + this.asyncId          + "\n" +
+                "triggerAsyncId:"   + this.triggerAsyncId   + "\n";
     }
 
     printNumbericData(){
