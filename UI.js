@@ -26,6 +26,9 @@ var g_scrollY=0;
 // y position of the miniDisplay
 var g_miniMapY = 150
 
+// input
+let g_searchInput;
+
 
 
 function resetView(state){
@@ -151,38 +154,57 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     var buttonWidth = 350;
 
     var callFilterShow = function (){g_bar.filterShow(1)};
-    var showAll = new Button("Show All",x,y+textSize()*1,buttonWidth,textSize(),callFilterShow);
+    var showAll = new Button("Show All",x,y+textSize()*0,buttonWidth,textSize(),callFilterShow);
     showAll.render();    
 
     var callFilterShowNone = function (){g_bar.filterShow(0)};
-    var showNone = new Button("Show None",x+buttonWidth,y+textSize()*1,buttonWidth,textSize(),callFilterShowNone);
+    var showNone = new Button("Show None",x+buttonWidth,y+textSize()*0,buttonWidth,textSize(),callFilterShowNone);
     showNone.render();
 
     var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-    var showSelected = new Button("Show Selected",x,y+textSize()*2,buttonWidth,textSize(),callFilterShowSelected);
+    var showSelected = new Button("Show Selected",x,y+textSize()*1,buttonWidth,textSize(),callFilterShowSelected);
     showSelected.render();
 
     var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
-    var showSelected = new Button("Show Unselected",x+buttonWidth,y+textSize()*2,buttonWidth,textSize(),callFilterShowUnSelected);
+    var showSelected = new Button("Show Unselected",x+buttonWidth,y+textSize()*1,buttonWidth,textSize(),callFilterShowUnSelected);
     showSelected.render();
 
     var callSelectAll = function (){g_bar.selectState(1)};
-    var selectState = new Button("Select All",x,y+textSize()*3,buttonWidth,textSize(),callSelectAll);
+    var selectState = new Button("Select All",x,y+textSize()*2,buttonWidth,textSize(),callSelectAll);
     selectState.render();
 
     var callSelectAllNone = function (){g_bar.selectState(0)};
-    var selectState = new Button("Select None",x+buttonWidth,y+textSize()*3,buttonWidth,textSize(),callSelectAllNone);
+    var selectState = new Button("Select None",x+buttonWidth,y+textSize()*2,buttonWidth,textSize(),callSelectAllNone);
     selectState.render();
 
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*4,buttonWidth,textSize(),callSelectIO);
+    var selectIO = new Button("Select All IO",x,y+textSize()*3,buttonWidth,textSize(),callSelectIO);
     selectIO.render();
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*5,buttonWidth,textSize(),callSelectUserCode);
+    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*4,buttonWidth,textSize(),callSelectUserCode);
     selectUserCode.render();
 
+    // Retreive the value for search box
+    g_searchInput.value();
+    g_searchInput.position(x,y+textSize()*6);
+    g_searchButton.position(x + g_searchInput.width, y+textSize()*6);
+    g_searchButton.mousePressed(searchLine);
+
+
 }
+
+  // Selects all promises with a particular matching string in their data.
+  function searchLine(){
+    console.log("searchLine");
+    for (var i = 0; i < g_bar.entities.length; i++) {
+      if(g_bar.entities[i].datum.line.search(g_searchInput.value())>=0){
+        g_bar.entities[i].show=true;
+      }else{
+        g_bar.entities[i].show=false;
+      }
+    }
+  }
 
 ///////////////////////////////////////////////
 // User interface

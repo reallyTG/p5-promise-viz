@@ -76,6 +76,7 @@ function setup() {
     // Create UI
     //g_Panel = new Panel("Queries Panel",0,0,width,320);
 
+
     // Populate our data structure for the barchart
     // with JSON Data
     var elements = g_rawPromiseData.promises;
@@ -103,6 +104,10 @@ function setup() {
 
     // Create a bar chart
     g_bar = new BarChart(50, 100, 200, 100, dataset);
+
+    // Create some widgets
+    g_searchInput = createInput(); // Located in UI.js
+    g_searchButton = createButton('search line');
 
     // Performance Tuning
     // Parse each of the file names from the data set

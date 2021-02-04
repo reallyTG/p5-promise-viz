@@ -297,6 +297,7 @@ class BarChart {
     g_querySummary = itemsSelected;
   }
 
+
   // Helper function to draw the x-axis
   xaxis(border, maxheight) {
     fill(255, 0, 0, 128);
