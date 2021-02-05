@@ -6,6 +6,9 @@ let g_offsetY = 0;
 
 let g_padding = 8;  
 
+// Panels
+let g_DetailsPanel;
+
 // Details string
 let g_details = '';
 // Currently hovered element
@@ -78,8 +81,8 @@ function ZoomToFit(state){
 
 // Helper function to draw a grid to help improve visualization
 function drawGrid() {
-    fill(0, 0, 0, 192);
-    stroke(0, 0, 0,192);
+    fill(0, 0, 0, 64);
+    stroke(0, 0, 0,64);
 
 
     //var segments = 8;
@@ -207,6 +210,13 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     }
   }
 
+
+// Setup UI panels
+function setupPanels(){
+    g_DetailsPanel = new Panel("Details",250,150,width/2,200);
+  }
+
+
 ///////////////////////////////////////////////
 // User interface
 // User interface will stay locked to screen
@@ -221,6 +231,8 @@ function UI(y) {
 
     // Render the Zoom controls
     ZoomPanel(0,10);
+
+    g_DetailsPanel.Render();
 
     // Render the details pane
     var detailsHeight = 220; // Set height of details panel
@@ -244,8 +256,7 @@ function UI(y) {
 function Controls() {
     // Avoid updating sketch if mouse is out of bounds
 
-    // Always scale, or (better) find a way to not have to do this every frame.
-    scale(g_scale);
+
     
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
@@ -280,6 +291,8 @@ function Controls() {
       translate(g_offsetX,g_offsetY);
       // Scale the camera
      // translate(g_scrollX,g_scrollY);
+         // Always scale, or (better) find a way to not have to do this every frame.
+    scale(g_scale);
       //translate(-g_scrollX/g_scale,-g_scrollY/g_scale);
 }
 

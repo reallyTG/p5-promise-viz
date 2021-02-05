@@ -15,6 +15,7 @@ let g_disableFriendlyErrors = true;
 // UI
 //var g_Panel;
 
+
 let g_txt;
 let g_sourceFilesMap=new Map();
 let g_totalKeys = 0;
@@ -65,6 +66,9 @@ function parseStringAsFileName(input){
   return parsed;
 }
 
+
+
+
 //////////////////////////////////////////////
 //       Processing setup function          //
 //////////////////////////////////////////////
@@ -75,7 +79,7 @@ function setup() {
 
     // Create UI
     //g_Panel = new Panel("Queries Panel",0,0,width,320);
-
+    setupPanels();
 
     // Populate our data structure for the barchart
     // with JSON Data
@@ -107,7 +111,7 @@ function setup() {
 
     // Create some widgets
     g_searchInput = createInput(); // Located in UI.js
-    g_searchButton = createButton('search line');
+    g_searchButton = createButton('Search line (case-sensitive)');
 
     // Performance Tuning
     // Parse each of the file names from the data set
