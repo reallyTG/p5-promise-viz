@@ -8,6 +8,9 @@ let g_padding = 8;
 
 // Panels
 let g_DetailsPanel;
+let g_QueriesPanel;
+// Text Widgets
+let g_detailTextWidget;
 
 // Global Details string
 // Currently hovered element
@@ -32,7 +35,8 @@ var g_miniMapY = 150
 let g_searchInput;
 
 
-
+// Reset global variables with respect to the
+// current view of the visualization
 function resetView(state){
     console.log("resetView");
     g_scale = 1;
@@ -126,11 +130,11 @@ function menubar(x,y){
 
 function ZoomPanel(x,y){
     fill(0,0,128,164);
-    var resetViewButton = new Button("Reset View",x,y+textSize()*1,220,textSize(),resetView);
-    resetViewButton.render();
+    var resetViewButton = new ButtonWidget("Reset View",x,y+textSize()*1,220,textSize(),resetView);
+    resetViewButton.Render();
 
-    var zoomFitButton = new Button("Fit to Window",x+220,y+textSize()*1,220,textSize(),ZoomToFit);
-    zoomFitButton.render();
+    var zoomFitButton = new ButtonWidget("Fit to Window",x+220,y+textSize()*1,220,textSize(),ZoomToFit);
+    zoomFitButton.Render();
 }
 
 function queriesPanel(x,y,panelWidth,panelHeight){
@@ -141,47 +145,6 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     text("Queries:", x+2, y-g_padding/2);
     fill(0,164);
     rect(x, y, panelWidth, panelHeight);
-
-    // Buttons
-    var buttonWidth = 350;
-
-    var callFilterShow = function (){g_bar.filterShow(1)};
-    var showAll = new Button("Show All",x,y+textSize()*0,buttonWidth,textSize(),callFilterShow);
-    showAll.render();    
-
-    var callFilterShowNone = function (){g_bar.filterShow(0)};
-    var showNone = new Button("Show None",x+buttonWidth,y+textSize()*0,buttonWidth,textSize(),callFilterShowNone);
-    showNone.render();
-
-    var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-    var showSelected = new Button("Show Selected",x,y+textSize()*1,buttonWidth,textSize(),callFilterShowSelected);
-    showSelected.render();
-
-    var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
-    var showSelected = new Button("Show Unselected",x+buttonWidth,y+textSize()*1,buttonWidth,textSize(),callFilterShowUnSelected);
-    showSelected.render();
-
-    var callSelectAll = function (){g_bar.selectState(1)};
-    var selectState = new Button("Select All",x,y+textSize()*2,buttonWidth,textSize(),callSelectAll);
-    selectState.render();
-
-    var callSelectAllNone = function (){g_bar.selectState(0)};
-    var selectState = new Button("Select None",x+buttonWidth,y+textSize()*2,buttonWidth,textSize(),callSelectAllNone);
-    selectState.render();
-
-    var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIO = new Button("Select All IO",x,y+textSize()*3,buttonWidth,textSize(),callSelectIO);
-    selectIO.render();
-
-    var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCode = new Button("Select All UserCode",x,y+textSize()*4,buttonWidth,textSize(),callSelectUserCode);
-    selectUserCode.render();
-
-    // Retreive the value for search box
-    g_searchInput.value();
-    g_searchInput.position(x,y+textSize()*6);
-    g_searchButton.position(x + g_searchInput.width, y+textSize()*6);
-    g_searchButton.mousePressed(searchLine);
 
 }
 
@@ -200,8 +163,52 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 
 // Setup UI panels
 function setupPanels(){
-    g_DetailsPanel = new Panel("Details",0,height - 220,width/2,200);
+    // Setup the details
+    g_DetailsPanel = new Panel("Details",0,height - 220,width/2,240);
+    // Details panel widgets
+    g_detailTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_DetailsPanel.addWidget(g_detailTextWidget);
+
+    // Setup the queries
+    var g_QueriesPanelXPosition = width/2;
+    var g_QueriesPanelYPosition = height - 220;
+    g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,width/2,240);
+
+    // Queries panel Widgets 
+    var buttonWidth = 350;
+    var buttonHeight = textSize();
+
+    var callFilterShow = function (){g_bar.filterShow(1)};
+    var showAllButton = new ButtonWidget("Show All",0,0+buttonHeight*0,buttonWidth,buttonHeight,callFilterShow);
+    g_QueriesPanel.addWidget(showAllButton);
+
+    var callFilterShowNone = function (){g_bar.filterShow(0)};
+    var showNoneButton = new ButtonWidget("Show None",0+buttonWidth,0+buttonHeight*0,buttonWidth,buttonHeight,callFilterShowNone);
+    g_QueriesPanel.addWidget(showNoneButton);
+
+    var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
+    var showSelectedButton = new ButtonWidget("Show Selected",0,0+buttonHeight*2,buttonWidth,buttonHeight,callFilterShowSelected);
+    g_QueriesPanel.addWidget(showSelectedButton);
+
+    var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
+    var showSelectedButton = new ButtonWidget("Show Unselected",0+buttonWidth,0+textSize()*2,buttonWidth,buttonHeight,callFilterShowUnSelected);
+    g_QueriesPanel.addWidget(showSelectedButton);
+
+    var callSelectAll = function (){g_bar.selectState(1)};
+    var selectStateButton = new ButtonWidget("Select All",0,0+buttonHeight*4,buttonWidth,buttonHeight,callSelectAll);
+    g_QueriesPanel.addWidget(selectStateButton);
+
+    var callSelectAllNone = function (){g_bar.selectState(0)};
+    var selectStateButton = new ButtonWidget("Select None",0+buttonWidth,0+buttonHeight*4,buttonWidth,buttonHeight,callSelectAllNone);
+    g_QueriesPanel.addWidget(selectStateButton);
+
+    var callSelectIO = function (){g_bar.selectIO(1)};
+    var selectIOButton = new ButtonWidget("Select All IO",0,0+buttonHeight*6,buttonWidth,buttonHeight,callSelectIO);
+    g_QueriesPanel.addWidget(selectIOButton);
+
+    var callSelectUserCode = function (){g_bar.selectUserCode(1)};
+    var selectUserCodeButton = new ButtonWidget("Select All UserCode",0,0+buttonHeight*6,buttonWidth,buttonHeight,callSelectUserCode);
+    g_QueriesPanel.addWidget(selectUserCodeButton);
 }
 
 
@@ -220,15 +227,18 @@ function UI(y) {
     // Render the Zoom controls
     ZoomPanel(0,10);
 
-    // Render the details
+    // Render the details panel
     g_DetailsPanel.Render();
+    // Render the queries panel
+    g_QueriesPanel.Render();
 
-    // Render the queries pane
-    var queriesHeight = 220; // Set height of details panel
-    queriesPanel(width/2,y,width/2,queriesHeight);
+    // TODO: Move this into the queries panel as a widget
+        // Retreive the value for search box
+        g_searchInput.value();
+        g_searchInput.position(width/2,height-240+textSize()*6);
+        g_searchButton.position(width/2 + g_searchInput.width, height-240+textSize()*6);
+        g_searchButton.mousePressed(searchLine);
 
-    // Render the panel
-    //g_Panel.render();
 
     stroke(255);
     fill(255);
@@ -270,13 +280,13 @@ function Controls() {
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
-      // Translate the camera
-      translate(g_offsetX,g_offsetY);
-      // Scale the camera
-     // translate(g_scrollX,g_scrollY);
-         // Always scale, or (better) find a way to not have to do this every frame.
+    // Translate the camera
+    translate(g_offsetX,g_offsetY);
+    // Scale the camera
+    // translate(g_scrollX,g_scrollY);
+    // Always scale, or (better) find a way to not have to do this every frame.
     scale(g_scale);
-      //translate(-g_scrollX/g_scale,-g_scrollY/g_scale);
+    //translate(-g_scrollX/g_scale,-g_scrollY/g_scale);
 }
 
 function mouseReleased(){

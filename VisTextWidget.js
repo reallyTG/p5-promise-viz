@@ -1,10 +1,11 @@
 
 // Text widget for rendering text
 class VisTextWidget{
-    constructor(text,x,y){
+    constructor(text,x,y,w,h){
         this.text = text;
         this.x = x;
         this.y = y;
+        this.h;
     }
 
     SetPos(x,y){
@@ -20,12 +21,14 @@ class VisTextWidget{
         this.text = text;
     }
 
+    GetHeight(){
+        return this.h;
+    }
+
     Render(){
         textSize(20);
         textFont("monospace", 20);
 
-
-        console.log("render being called");
         fill(255,255,255,255);
         text(this.text, this.x+2, this.y+textSize());
     }

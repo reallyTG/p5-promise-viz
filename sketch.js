@@ -12,10 +12,6 @@ let g_rawPromiseData = {};
 // When set to 'true' performance will be improved.
 let g_disableFriendlyErrors = true;
 
-// UI
-//var g_Panel;
-let g_detailTextWidget;
-
 
 let g_txt;
 let g_sourceFilesMap=new Map();
@@ -79,8 +75,6 @@ function setup() {
     createCanvas(1600, 1200);
 
     // Create UI
-    // Setup individual widgets first
-    g_detailTextWidget = new VisTextWidget("Testing",10,100);
     // Call setup Panels
     setupPanels();
 
@@ -182,7 +176,7 @@ function draw() {
     // Avoid updating sketch if mouse is out of bounds
     if (mouseX > width || mouseX < 0 || mouseY > height){
       return;
-  }
+    }
     background(220);
     drawGrid();
 

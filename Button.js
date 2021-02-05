@@ -1,5 +1,5 @@
 // Button Widget
-class Button{
+class ButtonWidget{
     constructor(text,x,y,w,h,callback) {
         this.text = text;    
         this.x    = x;
@@ -9,8 +9,21 @@ class Button{
         this.callback = callback;
     }
 
+    SetPos(x,y){
+        this.x = x;
+        this.y = y;
+    }
+
+    GetText(){
+        return this.text;
+    }
+
+    SetText(text){
+        this.text = text;
+    }
+
     // Render a button
-    render(){
+    Render(){
         fill(192,0,0,222);
         stroke(0,0,0,255);
         rect(this.x,this.y,this.w,textSize());

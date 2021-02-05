@@ -1,31 +1,3 @@
-
-// Text widget for rendering text
-class VisTextWidget{
-    constructor(text,x,y){
-        this.text = text;
-        this.x = x;
-        this.y = y;
-    }
-
-    SetPos(x,y){
-        this.x = x;
-        this.y = y;
-    }
-
-    GetText(){
-        return this.text;
-    }
-
-    SetText(text){
-        this.text = text;
-    }
-
-    Render(){
-        stroke(255,255,255,255);
-        text(this.text, this.x+2, this.y-this.g_padding/2);
-    }
-}
-
 // The data that we want to hold
 class Panel{
     constructor(text,x,y,w,h) {
@@ -41,8 +13,6 @@ class Panel{
 
     // Adds a new widget to the panel
     addWidget(obj){
-        console.log("adding");
-        console.log(obj);
         this.widgets.push(obj);
     }
 
@@ -58,12 +28,17 @@ class Panel{
                 fill(0,0,255,125);
                 rect(this.x, this.y-textSize(), this.w, textSize());
 
-
+                // Fold panel
                 if(mouseIsPressed && mouseButton === LEFT && this.isOpen){ 
                     this.isOpen = false;
                 }
                 else if(mouseIsPressed && mouseButton === LEFT && !this.isOpen){ 
                     this.isOpen = true;
+                }
+                // Drag panel
+                if(mouseIsPressed && mouseButton === CENTER){
+                    this.x -= (pmouseX - mouseX);
+                    this.y -= (pmouseY - mouseY);
                 }
             }
         }else{
@@ -83,8 +58,13 @@ class Panel{
         fill(0,164);
         rect(this.x, this.y, this.w, this.h);
 
-        for(var i=0; i < this.widgets;i++){
+        for(var i=0; i < this.widgets.length;i++){
+            var oldX = this.widgets[i].x;
+            var oldY = this.widgets[i].y;
+            this.widgets[i].SetPos(this.x+this.widgets[i].x,this.y+this.widgets[i].y);
             this.widgets[i].Render();
+            this.widgets[i].SetPos(oldX,oldY);
+
         }
 
     }
