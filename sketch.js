@@ -80,7 +80,7 @@ function setup() {
 
     // Create UI
     // Setup individual widgets first
-    g_detailTextWidget = new Text("Testing",10,100);
+    g_detailTextWidget = new VisTextWidget("Testing",10,100);
     // Call setup Panels
     setupPanels();
 
@@ -179,6 +179,10 @@ let value = 0;
 //            Main draw function            //
 //////////////////////////////////////////////
 function draw() {
+    // Avoid updating sketch if mouse is out of bounds
+    if (mouseX > width || mouseX < 0 || mouseY > height){
+      return;
+  }
     background(220);
     drawGrid();
 
@@ -205,7 +209,6 @@ function draw() {
     //  translate(mx,my);
     // Retrieve user input
     Controls();
-    
     
     //popMatrix();
     // Allow pan and zoom of visual components
@@ -237,8 +240,5 @@ function draw() {
     // Takes as a parameter the height
     UI(height - 220);
     g_bar.minidisplay(0,height-g_miniMapY-250,g_miniMapY);
-
-
-
 
 }

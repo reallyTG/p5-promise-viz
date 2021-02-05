@@ -1,6 +1,6 @@
 
 // Text widget for rendering text
-class TextWidget{
+class VisTextWidget{
     constructor(text,x,y){
         this.text = text;
         this.x = x;
@@ -36,11 +36,13 @@ class Panel{
         this.h    = h;
         this.g_padding = 8;
         this.widgets = [];
-        this.isOpen = false;
+        this.isOpen = true;
     }
 
     // Adds a new widget to the panel
     addWidget(obj){
+        console.log("adding");
+        console.log(obj);
         this.widgets.push(obj);
     }
 

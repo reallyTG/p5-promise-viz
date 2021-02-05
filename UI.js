@@ -133,18 +133,6 @@ function ZoomPanel(x,y){
     zoomFitButton.render();
 }
 
-function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){   
-    // Details Panel
-    fill(0,0,128,164);
-    rect(x, y-textSize(), detailPanelWidth, textSize());
-    fill(255,255,255,255);
-    text("Details:", x+2, y-g_padding/2);
-    fill(0,164);
-    rect(x, y, detailPanelWidth, detailPanelHeight);
-    fill(255);
-    text(g_detailTextWidget.text, x+2, y,detailPanelWidth,detailPanelHeight);
-}
-
 function queriesPanel(x,y,panelWidth,panelHeight){
     // Queries Panel
     fill(0,0,128,164);
@@ -235,10 +223,6 @@ function UI(y) {
     // Render the details
     g_DetailsPanel.Render();
 
-    // Render the details pane
-    var detailsHeight = 220; // Set height of details panel
-    detailsPanel(0,y,width/2,detailsHeight);
-
     // Render the queries pane
     var queriesHeight = 220; // Set height of details panel
     queriesPanel(width/2,y,width/2,queriesHeight);
@@ -256,12 +240,10 @@ function UI(y) {
 ///////////////////////////////////////////////
 function Controls() {
     // Avoid updating sketch if mouse is out of bounds
-
-
-    
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
+    
     // Handle Panning
     if (mouseIsPressed && mouseButton === CENTER) {
         g_offsetY -= pmouseY - mouseY;
