@@ -14,6 +14,7 @@ let g_disableFriendlyErrors = true;
 
 // UI
 //var g_Panel;
+let g_detailTextWidget;
 
 
 let g_txt;
@@ -78,7 +79,9 @@ function setup() {
     createCanvas(1600, 1200);
 
     // Create UI
-    //g_Panel = new Panel("Queries Panel",0,0,width,320);
+    // Setup individual widgets first
+    g_detailTextWidget = new Text("Testing",10,100);
+    // Call setup Panels
     setupPanels();
 
     // Populate our data structure for the barchart

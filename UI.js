@@ -9,8 +9,7 @@ let g_padding = 8;
 // Panels
 let g_DetailsPanel;
 
-// Details string
-let g_details = '';
+// Global Details string
 // Currently hovered element
 let g_hoveredID = -1;
 
@@ -143,7 +142,7 @@ function detailsPanel(x,y,detailPanelWidth,detailPanelHeight){
     fill(0,164);
     rect(x, y, detailPanelWidth, detailPanelHeight);
     fill(255);
-    text(g_details, x+2, y,detailPanelWidth,detailPanelHeight);
+    text(g_detailTextWidget.text, x+2, y,detailPanelWidth,detailPanelHeight);
 }
 
 function queriesPanel(x,y,panelWidth,panelHeight){
@@ -213,8 +212,9 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 
 // Setup UI panels
 function setupPanels(){
-    g_DetailsPanel = new Panel("Details",250,150,width/2,200);
-  }
+    g_DetailsPanel = new Panel("Details",0,height - 220,width/2,200);
+    g_DetailsPanel.addWidget(g_detailTextWidget);
+}
 
 
 ///////////////////////////////////////////////
@@ -232,6 +232,7 @@ function UI(y) {
     // Render the Zoom controls
     ZoomPanel(0,10);
 
+    // Render the details
     g_DetailsPanel.Render();
 
     // Render the details pane
