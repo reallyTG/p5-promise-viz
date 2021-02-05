@@ -59,6 +59,9 @@ function ZoomToFit(state){
     var distance_to_center = radius / sin(half_fov_radians);
     console.log(distance_to_center);
 
+    // TODO: Basic idea is to figure out aspect ratio, of screen
+    //       and based off of the current number of pixels, figure out
+    //       how much we need to zoom out to see everything
     g_offsetX = g_bar.w / 2.0;
     g_offsetY = g_bar.h / 2.0;
     g_scale = 1/distance_to_center;
@@ -87,13 +90,12 @@ function drawGrid() {
     var horizontalSpace = (height * g_scale) / segments;
     var verticalSpace = (width * g_scale) / segments;
 
-
     // Draw some horizontal segments
-    for(var horizontal =0; horizontal < segments*g_scale; horizontal++){
+    for(var horizontal =0; horizontal < segments/g_scale; horizontal++){
         line(0, horizontal*horizontalSpace, width, horizontal*horizontalSpace);
     }
     // Draw some vertical segments
-    for(var vertical =0; vertical < segments*g_scale; vertical++){
+    for(var vertical =0; vertical < segments/g_scale; vertical++){
         line(vertical*verticalSpace, 0, vertical*verticalSpace, height);
 
         //line(xhorizontal, this.h + horizontal*horizontalSpace, this.w, this.h + horizontal*horizontalSpace);
@@ -190,7 +192,6 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     g_searchInput.position(x,y+textSize()*6);
     g_searchButton.position(x + g_searchInput.width, y+textSize()*6);
     g_searchButton.mousePressed(searchLine);
-
 
 }
 
@@ -301,12 +302,12 @@ function mouseWheel(event) {
     // Scroll the mouse
     if (!mouseIsPressed) {
         if (event.deltaY > 0){
-            // g_scale *= .95;
-            g_scale -= 0.01;
+            g_scale *= .95;
+            //g_scale -= 0.01;
         }
         else{
-            // g_scale *= 1.05;
-            g_scale += 0.01;
+            g_scale *= 1.05;
+            //g_scale += 0.01;
         }
         
         g_scrollX = mouseX/g_scale;
