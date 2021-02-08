@@ -9,8 +9,10 @@ let g_padding = 8;
 // Panels
 let g_DetailsPanel;
 let g_QueriesPanel;
+let g_MetricsPanel;
 // Text Widgets
 let g_detailTextWidget;
+let g_metricsTextWidget;
 
 // Global Details string
 // Currently hovered element
@@ -163,11 +165,17 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 
 // Setup UI panels
 function setupPanels(){
-    // Setup the details
+    // Setup the details Panel
     g_DetailsPanel = new Panel("Details",0,height - 220,width/2,240);
     // Details panel widgets
     g_detailTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_DetailsPanel.addWidget(g_detailTextWidget);
+
+    // Setup the Metrics Panel
+    g_MetricsPanel = new Panel("Metrics",width-width/3,60,width/3,240);
+    // Details panel widgets
+    g_metricsTextWidget = new VisTextWidget("VisTextWidget",0,0);
+    g_MetricsPanel.addWidget(g_metricsTextWidget);
 
     // Setup the queries
     var g_QueriesPanelXPosition = width/2;
@@ -231,6 +239,8 @@ function UI(y) {
     g_DetailsPanel.Render();
     // Render the queries panel
     g_QueriesPanel.Render();
+    // Render the metrics panel
+    g_MetricsPanel.Render();
 
     // TODO: Move this into the queries panel as a widget
         // Retreive the value for search box

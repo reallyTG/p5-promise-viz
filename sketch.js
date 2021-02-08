@@ -12,7 +12,6 @@ let g_rawPromiseData = {};
 // When set to 'true' performance will be improved.
 let g_disableFriendlyErrors = true;
 
-
 let g_txt;
 let g_sourceFilesMap=new Map();
 let g_totalKeys = 0;

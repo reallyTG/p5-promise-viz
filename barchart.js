@@ -8,11 +8,16 @@ class BarChart {
         this.y = y;                 // y position of barchart
         this.w = w;                 // Width of the barchart
         this.h = h;                 // height of the barchart
-        this.data = data;
+        this.data = data;           // Raw data stored in the bar chart
 
         this.entities = [];         // Stores all of the entities in the bar chart, these are the 'rectangles' that are hovered on
         var entityHeight = 5;       // The actual height of the rectangle which is rendered
         var xScaleOfeachEntity = 1; 
+
+        // Various metrics stored about the data
+        this.totalPromises = this.data.length;
+        this.totalElapsedTime = 0;
+        this.averageDuration = 0;
 
         // Iterate through data and find the min and max
         // values of start time.
@@ -24,14 +29,18 @@ class BarChart {
         var maxElapsedTime =0;
         for (var i = 0; i < this.data.length; i++) {
             // Update minRange
-             minRange = min(this.data[i].startTime,minRange)
+            minRange = min(this.data[i].startTime,minRange)
             // Update maxRange
-             maxRange = max(this.data[i].endTime,maxRange)
+            maxRange = max(this.data[i].endTime,maxRange)
             // Update minElapsedTime
             minElapsedTime = min(this.data[i].elapsedTime,minElapsedTime);
             // Update maxElapsedTime
             maxElapsedTime = max(this.data[i].elapsedTime,maxElapsedTime);
+            // Add to the total elapsed time
+            this.totalElapsedTime += parseInt(this.data[i].elapsedTime);
         }
+        // Compute average duration
+        this.averageDuration = this.totalElapsedTime / this.totalPromises;
 
         // Convert to seconds from nanoseconds
         var nanosecondsToSeconds = 1000000000;
@@ -82,6 +91,14 @@ class BarChart {
 
     }
 
+  GetMetrics(){
+    let result = "Total Promises: "+ this.totalPromises
+            +"\nTotal Elapsed Time: "+this.totalElapsedTime
+            +"\nAverage Promise Duration: "+this.averageDuration;
+
+    return result;
+  }
+
   // startRange and endRange are
   // the values along the x-axis for which we want to show data
   display(startRange, endRange) {
@@ -100,7 +117,12 @@ class BarChart {
             this.entities[i].hover();
         }
     }
+    // Update our metrics panel text
+    g_metricsTextWidget.SetText(this.GetMetrics());
   }
+
+
+
 
   // Displays a smaller version of the graph so you can quickly 
   // scrub (i.e. search) for interesting data
