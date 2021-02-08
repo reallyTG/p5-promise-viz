@@ -34,6 +34,9 @@ class ButtonWidget{
         // Buttons
         if(mouseX > this.x && mouseX < this.x+this.w){
             if(mouseY > this.y && mouseY < this.y+this.h){
+                if(g_bar.MouseInMiniDisplay()){
+                    return;
+                }
                 fill(255);
                 stroke(255);
                 rect(this.x,this.y,this.w,this.h);

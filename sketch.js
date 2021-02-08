@@ -104,7 +104,7 @@ function setup() {
     }
 
     // Create a bar chart
-    g_bar = new BarChart(50, 100, 200, 100, dataset);
+    g_bar = new BarChartWidget(50, 100, 200, 100, dataset);
 
     // Create some widgets
     g_searchInput = createInput(); // Located in UI.js
