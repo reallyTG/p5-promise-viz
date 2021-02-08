@@ -184,16 +184,21 @@ class BarChartWidget {
       line(mouseX,y,mouseX,y+h);
       if (mouseIsPressed && mouseButton === LEFT) {
           g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
+          g_offsetY = -map(mouseY,height,-height,y,y+h)*g_scale;
+
       }
     }
 
     // Draw an indicator of where we are in the project
     let currentXStart = -map(g_offsetX,0,this.w,0,width)/g_scale;
-    let currentXEnd =   -map(g_offsetX-width,0,this.w,0,width)/g_scale;
+    let currentXEnd =   -map(g_offsetX+width,0,this.w,0,width)/g_scale;
     fill(255,0,0,255);
     stroke(255,0,0,255);
     line(currentXStart,y,currentXStart,y+h);
     line(currentXEnd,y,currentXEnd,y+h);
+    line(currentXStart,mouseY,currentXEnd,mouseY);
+
+    
     // Uncomment to debug the range of the start and end
     // text(currentXStart,200,200);
     // text(currentXEnd,200,240);

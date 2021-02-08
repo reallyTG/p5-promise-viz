@@ -81,7 +81,7 @@ class entity {
               g_sourceHovered = this.datum.source; 
 
               // Ensure that mouse is not hovering over the minidisplay
-              if(!g_bar.MouseInMiniDisplay()){
+              if(g_bar.MouseInMiniDisplay()){
                 return;
               }
               // Toggle selection of entity
