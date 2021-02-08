@@ -109,7 +109,7 @@ class BarChartWidget {
   // the values along the x-axis for which we want to show data
   display(startRange, endRange) {
     // Background
-    fill(192, 128);
+    fill(128, 128);
     stroke(192);
     rect(this.x, this.y, this.w, this.h);
     // x-axis
@@ -151,10 +151,11 @@ class BarChartWidget {
     this.MiniDisplayH = h;
 
     // Background
+    stroke(0,255);
     fill(255,0,0,192);
     rect(x,y,width,h);
     fill(0,0,0,255);
-    rect(x-2,y-2,width-2,h-2);
+    rect(x,y,width,h);
     // Draw a green dot representing where a promise would be
     for (var i = 0; i < this.entities.length; i++) {
       // Map to the minimap
@@ -166,12 +167,12 @@ class BarChartWidget {
       var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
 
       // Draw a green box
-      fill(0,255,0,255);
-      stroke(0,255,0,255);
+      fill(0,255,0,64);
+      stroke(0,255,0,64);
       // TODO: Get rid of the '130' hard coded number
       //       For some erason, the offset is not quite working, maybe a rounding error?
       //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y-(h-140),widthRelative,heightRelative);
+      rect(x+xRelative,yRelative+y-(h-g_miniMapY),widthRelative,heightRelative);
     }
 
     // Slider
@@ -184,14 +185,14 @@ class BarChartWidget {
       line(mouseX,y,mouseX,y+h);
       if (mouseIsPressed && mouseButton === LEFT) {
           g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
-          g_offsetY = -map(mouseY,height,-height,y,y+h)*g_scale;
+          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale;
 
       }
     }
 
     // Draw an indicator of where we are in the project
     let currentXStart = -map(g_offsetX,0,this.w,0,width)/g_scale;
-    let currentXEnd =   -map(g_offsetX+width,0,this.w,0,width)/g_scale;
+    let currentXEnd =   -map(g_offsetX-width,0,this.w,0,width)/g_scale;
     fill(255,0,0,255);
     stroke(255,0,0,255);
     line(currentXStart,y,currentXStart,y+h);

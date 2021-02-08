@@ -31,7 +31,7 @@ var g_scrollX=0;
 var g_scrollY=0;
 
 // y position of the miniDisplay
-var g_miniMapY = 150
+var g_miniMapY = 180
 
 // input
 let g_searchInput;
