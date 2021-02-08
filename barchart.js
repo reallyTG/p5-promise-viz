@@ -151,7 +151,7 @@ class BarChart {
       // TODO: Get rid of the '130' hard coded number
       //       For some erason, the offset is not quite working, maybe a rounding error?
       //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y-(h-100),widthRelative,heightRelative);
+      rect(x+xRelative,yRelative+y-(h-140),widthRelative,heightRelative);
     }
 
     // Slider
@@ -168,6 +168,18 @@ class BarChart {
         }
       }
     }
+
+
+    // Draw an indicator of where we are in the project
+    let currentXStart = -map(g_offsetX,0,this.w,0,width)/g_scale;
+    let currentXEnd =   -map(g_offsetX-width,0,this.w,0,width)/g_scale;
+    fill(255,0,0,255);
+    stroke(255,0,0,255);
+    line(currentXStart,y,currentXStart,y+h);
+    line(currentXEnd,y,currentXEnd,y+h);
+    // Uncomment to debug the range of the start and end
+    // text(currentXStart,200,200);
+    // text(currentXEnd,200,240);
 
   }
 

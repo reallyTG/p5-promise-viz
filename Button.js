@@ -26,7 +26,7 @@ class ButtonWidget{
     Render(){
         fill(192,0,0,222);
         stroke(0,0,0,255);
-        rect(this.x,this.y,this.w,textSize());
+        rect(this.x,this.y,this.w,this.h);
         stroke(0);
         fill(0);
         text(this.text, this.x+1, this.y+textSize());
@@ -36,14 +36,14 @@ class ButtonWidget{
             if(mouseY > this.y && mouseY < this.y+this.h){
                 fill(255);
                 stroke(255);
-                rect(this.x,this.y,this.w,textSize());
+                rect(this.x,this.y,this.w,this.h);
                 stroke(0);
                 fill(0);
                 text(this.text, this.x+2, this.y+textSize());
-                if(mouseIsPressed){
+                if(mouseIsPressed && mouseButton===LEFT){
                     fill(64,192);
                     stroke(64,192);
-                    rect(this.x,this.y,this.w,textSize());
+                    rect(this.x,this.y,this.w,this.h);
                     stroke(255);
                     fill(255);
                     text(this.text, this.x+2, this.y+textSize());
