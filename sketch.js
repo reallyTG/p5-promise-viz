@@ -31,16 +31,6 @@ function loadDataSet(path){
 // We have to structure our project to load
 // all of the data first before populating the visualization.
 function preload(){
-    //filename = "./ava/results-1595602620959.json"
-    //filename = "./results-chained-ex2.json"
-    //filename = "./results/ava-results-big.json";
-    //filename = "./results/apex-charts-results-1602517085490.json"; 
-
-    // For Jan 14 2021 Meeting:
-    // filename = "./results/processed-results-json2csv.json";
-    // filename = "./results/processed-results-centra.json";
-    // filename = "./results/processed-results-json2csv1.json";
-    // filename = "./results/processed-results-c8.json"
     
     // For Feb 4 Meeting:
     // this one is slow.
@@ -54,6 +44,7 @@ function preload(){
 
     // Good example to highlight (as a positive example!)
     // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
+
 
     // Load the resulting file
     //loadDataSet(filename); 
@@ -114,7 +105,7 @@ function setup() {
     }
 
     // Create a bar chart
-    g_bar = new BarChart(50, 100, 200, 100, dataset);
+    g_bar = new BarChartWidget(50, 100, 200, 100, dataset);
 
     // Create some widgets
     g_searchInput = createInput(); // Located in UI.js

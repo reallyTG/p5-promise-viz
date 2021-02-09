@@ -80,6 +80,10 @@ class entity {
               // fill matching promises.
               g_sourceHovered = this.datum.source; 
 
+              // Ensure that mouse is not hovering over the minidisplay
+              if(g_bar.MouseInMiniDisplay()){
+                return;
+              }
               // Toggle selection of entity
               if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
                   this.selected = true;

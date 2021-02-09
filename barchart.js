@@ -1,14 +1,20 @@
 ///////////////////////////////////////////////
 //
 ///////////////////////////////////////////////
-class BarChart {
+class BarChartWidget {
     constructor(x, y, w, h, data) {
-        print("Constructing BarChart");
+        print("Constructing BarChartWidget");
         this.x = x;                 // x position of barchart
         this.y = y;                 // y position of barchart
         this.w = w;                 // Width of the barchart
         this.h = h;                 // height of the barchart
         this.data = data;           // Raw data stored in the bar chart
+
+        // Store positions of the minidisplay
+        // This is done so that mouse clicks are ignored from the minidisplay
+        this.MiniDisplayX = 0;
+        this.MiniDisplayY = 0;
+        this.MiniDisplayH = 0;
 
         this.entities = [];         // Stores all of the entities in the bar chart, these are the 'rectangles' that are hovered on
         var entityHeight = 5;       // The actual height of the rectangle which is rendered
@@ -73,7 +79,7 @@ class BarChart {
             var entityW = map(this.data[i].elapsedTime,minElapsedTime,maxElapsedTime,0,range);
             var entityH = entityHeight;
 
-            // Create a new barchart entity from our data
+            // Create a new entity from our data for our BarChartWidget
             var temp = new entity(entityX,entityY,entityW,entityH,this.data[i]);
             if(i<2){
                 print("entityX:"+entityX)
@@ -103,7 +109,7 @@ class BarChart {
   // the values along the x-axis for which we want to show data
   display(startRange, endRange) {
     // Background
-    fill(192, 128);
+    fill(128, 128);
     stroke(192);
     rect(this.x, this.y, this.w, this.h);
     // x-axis
@@ -122,6 +128,15 @@ class BarChart {
   }
 
 
+  // Returns a 1 if the mouse is over the minidisplay
+  MouseInMiniDisplay(){
+    if(mouseY > this.MiniDisplayY && mouseY < this.MiniDisplayY+this.MiniDisplayH){
+      console.log("In minidisplay");
+      return true;
+    }
+    console.log("Not in minidisplay");
+    return false;
+  }
 
 
   // Displays a smaller version of the graph so you can quickly 
@@ -130,11 +145,17 @@ class BarChart {
   // Parameters: x and y indicate the position
   //             h is the height of the minidisplay
   minidisplay(x,y,h){
+    // Update inteneral Minidiplay position
+    this.MiniDisplayX = x;
+    this.MiniDisplayY = y;
+    this.MiniDisplayH = h;
+
     // Background
+    stroke(0,255);
     fill(255,0,0,192);
     rect(x,y,width,h);
     fill(0,0,0,255);
-    rect(x-2,y-2,width-2,h-2);
+    rect(x,y,width,h);
     // Draw a green dot representing where a promise would be
     for (var i = 0; i < this.entities.length; i++) {
       // Map to the minimap
@@ -146,28 +167,42 @@ class BarChart {
       var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
 
       // Draw a green box
-      fill(0,255,0,255);
-      stroke(0,255,0,255);
+      fill(0,255,0,64);
+      stroke(0,255,0,64);
       // TODO: Get rid of the '130' hard coded number
       //       For some erason, the offset is not quite working, maybe a rounding error?
       //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y-(h-100),widthRelative,heightRelative);
+      rect(x+xRelative,yRelative+y-(h-g_miniMapY),widthRelative,heightRelative);
     }
 
     // Slider
-    if(mouseY > y && mouseY < y+h){
+    if(this.MouseInMiniDisplay()){
       fill(255,255,255,255);
       stroke(255,255,255,255);
       ellipse(mouseX, y, 2, 2);
       ellipse(mouseX, y+h, 2, 2);
 
       line(mouseX,y,mouseX,y+h);
-      if (mouseIsPressed) {
-        if (mouseButton === LEFT) {
+      if (mouseIsPressed && mouseButton === LEFT) {
           g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
-        }
+          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale;
+
       }
     }
+
+    // Draw an indicator of where we are in the project
+    let currentXStart = -map(g_offsetX,0,this.w,0,width)/g_scale;
+    let currentXEnd =   -map(g_offsetX-width,0,this.w,0,width)/g_scale;
+    fill(255,0,0,255);
+    stroke(255,0,0,255);
+    line(currentXStart,y,currentXStart,y+h);
+    line(currentXEnd,y,currentXEnd,y+h);
+    line(currentXStart,mouseY,currentXEnd,mouseY);
+
+    
+    // Uncomment to debug the range of the start and end
+    // text(currentXStart,200,200);
+    // text(currentXEnd,200,240);
 
   }
 

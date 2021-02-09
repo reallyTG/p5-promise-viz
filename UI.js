@@ -31,7 +31,7 @@ var g_scrollX=0;
 var g_scrollY=0;
 
 // y position of the miniDisplay
-var g_miniMapY = 150
+var g_miniMapY = 180
 
 // input
 let g_searchInput;
@@ -135,7 +135,7 @@ function ZoomPanel(x,y){
     var resetViewButton = new ButtonWidget("Reset View",x,y+textSize()*1,220,textSize(),resetView);
     resetViewButton.Render();
 
-    var zoomFitButton = new ButtonWidget("Fit to Window",x+220,y+textSize()*1,220,textSize(),ZoomToFit);
+    var zoomFitButton = new ButtonWidget("Fit to Window",x,y+textSize()*2,220,textSize(),ZoomToFit);
     zoomFitButton.Render();
 }
 
@@ -184,7 +184,7 @@ function setupPanels(){
 
     // Queries panel Widgets 
     var buttonWidth = 350;
-    var buttonHeight = textSize();
+    var buttonHeight = 25;
 
     var callFilterShow = function (){g_bar.filterShow(1)};
     var showAllButton = new ButtonWidget("Show All",0,0+buttonHeight*0,buttonWidth,buttonHeight,callFilterShow);
@@ -195,27 +195,27 @@ function setupPanels(){
     g_QueriesPanel.addWidget(showNoneButton);
 
     var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-    var showSelectedButton = new ButtonWidget("Show Selected",0,0+buttonHeight*2,buttonWidth,buttonHeight,callFilterShowSelected);
+    var showSelectedButton = new ButtonWidget("Show Selected",0,0+buttonHeight*1,buttonWidth,buttonHeight,callFilterShowSelected);
     g_QueriesPanel.addWidget(showSelectedButton);
 
     var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
-    var showSelectedButton = new ButtonWidget("Show Unselected",0+buttonWidth,0+textSize()*2,buttonWidth,buttonHeight,callFilterShowUnSelected);
+    var showSelectedButton = new ButtonWidget("Show Unselected",0+buttonWidth,0+buttonHeight*1,buttonWidth,buttonHeight,callFilterShowUnSelected);
     g_QueriesPanel.addWidget(showSelectedButton);
 
     var callSelectAll = function (){g_bar.selectState(1)};
-    var selectStateButton = new ButtonWidget("Select All",0,0+buttonHeight*4,buttonWidth,buttonHeight,callSelectAll);
+    var selectStateButton = new ButtonWidget("Select All",0,0+buttonHeight*2,buttonWidth,buttonHeight,callSelectAll);
     g_QueriesPanel.addWidget(selectStateButton);
 
     var callSelectAllNone = function (){g_bar.selectState(0)};
-    var selectStateButton = new ButtonWidget("Select None",0+buttonWidth,0+buttonHeight*4,buttonWidth,buttonHeight,callSelectAllNone);
+    var selectStateButton = new ButtonWidget("Select None",0+buttonWidth,0+buttonHeight*2,buttonWidth,buttonHeight,callSelectAllNone);
     g_QueriesPanel.addWidget(selectStateButton);
 
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIOButton = new ButtonWidget("Select All IO",0,0+buttonHeight*6,buttonWidth,buttonHeight,callSelectIO);
+    var selectIOButton = new ButtonWidget("Select All IO",0,0+buttonHeight*3,buttonWidth,buttonHeight,callSelectIO);
     g_QueriesPanel.addWidget(selectIOButton);
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCodeButton = new ButtonWidget("Select All UserCode",0,0+buttonHeight*6,buttonWidth,buttonHeight,callSelectUserCode);
+    var selectUserCodeButton = new ButtonWidget("Select All UserCode",0,0+buttonHeight*3,buttonWidth,buttonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
 }
 
