@@ -30,7 +30,7 @@ function loadDataSet(path){
 // Because loading of data happens asynchronously
 // We have to structure our project to load
 // all of the data first before populating the visualization.
-function preload(){
+function preload() {
     
     // For Feb 4 Meeting:
     // this one is slow.
@@ -45,9 +45,8 @@ function preload(){
     // Good example to highlight (as a positive example!)
     // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
 
-
     // Load the resulting file
-    //loadDataSet(filename); 
+    // loadDataSet(filename); 
     g_rawPromiseData = loadJSON(filename);
 
     print("Finished loading data")
@@ -63,9 +62,6 @@ function parseStringAsFileName(input){
   parsed = input.substr(0,input.lastIndexOf(".js")+3);
   return parsed;
 }
-
-
-
 
 //////////////////////////////////////////////
 //       Processing setup function          //

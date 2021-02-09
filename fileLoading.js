@@ -72,6 +72,16 @@ function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
     if (g_filesOpenInViewer.indexOf(fileName) == -1) {
         g_filesOpenInViewer.push(fileName);
     } else {
+        // The file is already open, but we should update the highlighted lines.
+        let theOuterElement = document.getElementById(fileName);
+        let theInnerPre = theOuterElement.childNodes[0]; // Should only have one child.
+        theInnerPre.removeAttribute('data-line');
+        if (highlightFrom === highlightTo)
+            theInnerPre.setAttribute('data-line', highlightFrom);
+        else
+            theInnerPre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
+
+        Prism.highlightAll();
         return;
     }
 
@@ -84,7 +94,7 @@ function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
     outerDiv.id = fileName;
 
     thePre.id = 'promisePre';
-    thePre.className = 'line-numbers'
+    thePre.className = 'line-numbers';
     if (highlightFrom === highlightTo)
         thePre.setAttribute('data-line', highlightFrom);
     else

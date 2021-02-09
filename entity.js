@@ -37,7 +37,8 @@ class entity {
     }
 
     hover() {
-        if(mouseX < 0 || mouseX > width){
+
+        if(mouseX < 0 || mouseX > width) {
           return;
         }
       /*
