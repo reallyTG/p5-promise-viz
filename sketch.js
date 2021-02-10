@@ -13,8 +13,9 @@ let g_rawPromiseData = {};
 let g_disableFriendlyErrors = true;
 
 let g_txt;
-let g_sourceFilesMap=new Map();
+let g_sourceFilesMap = new Map();
 let g_totalKeys = 0;
+let g_sourceCounts = new Map();
 
 // Helper function for loading data
 function loadDataSet(path){
@@ -40,7 +41,7 @@ function preload() {
     
     // Injection vulnerability?
     // Send this one to Frank.
-    filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
+    // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
 
     // Good example to highlight (as a positive example!)
     // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
@@ -78,6 +79,7 @@ function setup() {
     // Populate our data structure for the barchart
     // with JSON Data
     var elements = g_rawPromiseData.promises;
+    var sourceCounts = new Map();
     for(var key in elements){
         // Push the actual element into the data set
         var temp = new promiseData(
@@ -98,7 +100,19 @@ function setup() {
                                     elements[key].file
                                   );
         dataset.push(temp);
+
+        let thisSource = elements[key].source;
+        if (!sourceCounts.has(thisSource)) {
+          sourceCounts.set(thisSource, 1);
+        } else {
+          sourceCounts.set(thisSource, sourceCounts.get(thisSource) + 1);
+        }
     }
+
+    // Update global variable so as to give other parts of the Vis access to it.
+    g_sourceCounts = sourceCounts;
+
+    createSummary();
 
     // Create a bar chart
     g_bar = new BarChartWidget(50, 100, 200, 100, dataset);
@@ -126,6 +140,79 @@ function setup() {
 
     setUIOffset(g_offsetX, g_offsetY);
 
+}
+
+// Function to build the summary statistics pane.
+// Currently, write out to promises into the readme.
+function createSummary() {
+  let readmeElement = document.getElementById('readme');
+
+  // Build string.
+  let summaryStatisticsString = '';
+
+  // Get top promises.
+  let mapDes = new Map([...g_sourceCounts.entries()].sort((a, b) => {
+    return b[1] - a[1];
+  }));
+
+  for (k of mapDes.keys()) {
+    summaryStatisticsString += k + ': ' + mapDes.get(k) + '\n';
+  }
+
+  // TODO: Style the table.
+
+  // New thing! Try to make it not a text list, but something better.
+  let summaryHTMLElement = document.createElement('table');
+  let tableBody = document.createElement('tbody');
+  let tableHeaderRow = document.createElement('tr');
+
+  let tableHeader_file = document.createElement('th');
+  tableHeader_file.innerHTML = 'Promise Location';
+  let tableHeader_count = document.createElement('th');
+  tableHeader_count.innerHTML = 'Count';
+  let tableHeader_go = document.createElement('th');
+  tableHeader_go.innerHTML = 'Go';
+
+  tableHeaderRow.appendChild(tableHeader_file);
+  tableHeaderRow.appendChild(tableHeader_count);
+  tableHeaderRow.appendChild(tableHeader_go);
+
+  tableBody.appendChild(tableHeaderRow);
+
+  for (k of mapDes.keys()) {
+    let tr = document.createElement('tr');
+
+    let td_file = document.createElement('td');
+    td_file.innerHTML = k;
+    tr.appendChild(td_file);
+
+    let td_count = document.createElement('td');
+    td_count.innerHTML = mapDes.get(k);
+    tr.appendChild(td_count);
+
+    let td_go = document.createElement('td');
+    /* Add a button which opens the file. */
+    let go_button = document.createElement('button');
+    let splitName = k.split(':');
+
+    let fname, fcontents, startLine, endLine;
+    fname = splitName[0];
+    fcontents = g_rawPromiseData.files[fname];
+    startLine = splitName[1];
+    endLine = splitName[3];
+    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; draw(true)`);
+    /* TODO: We also want to highlight them in the vis. */
+    go_button.innerHTML = 'Go';
+    td_go.appendChild(go_button);
+    tr.appendChild(td_go);
+
+    tableBody.appendChild(tr);
+  }
+
+  summaryHTMLElement.appendChild(tableBody);
+
+  readmeElement.removeChild(readmeElement.children[0]);
+  readmeElement.appendChild(summaryHTMLElement); 
 }
 
 //
@@ -169,9 +256,9 @@ let value = 0;
 //////////////////////////////////////////////
 //            Main draw function            //
 //////////////////////////////////////////////
-function draw() {
+function draw(force) {
     // Avoid updating sketch if mouse is out of bounds
-    if (mouseX > width || mouseX < 0 || mouseY > height){
+    if (!force && (mouseX > width || mouseX < 0 || mouseY > height)) {
       return;
     }
     background(220);
