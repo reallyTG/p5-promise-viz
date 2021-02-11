@@ -202,11 +202,14 @@ class BarChartWidget {
     if(mouseY > y && mouseY < y+h){
       line(currentXStart,mouseY,currentXEnd,mouseY);
     }
-    
+    // Draw a slightly transparent rectangle over the minidisplay
+    fill(255,255,255,32);
+    rect(0,y,currentXStart,h);
+    rect(currentXEnd,y,width,h);
+
     // Uncomment to debug the range of the start and end
     // text(currentXStart,200,200);
     // text(currentXEnd,200,240);
-
   }
 
 
