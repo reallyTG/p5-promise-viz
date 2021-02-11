@@ -216,7 +216,12 @@ class entity {
           rect((this.x), this.y, this.w, this.h);
         } else if (thisDatumSource == g_sourceHovered) {
           fill('red');
-          stroke(255); 
+          stroke(255);
+        }
+        else if(this.show===false){ // Render entities transparently if they are
+          fill(this.fill,48);       // not selected
+          stroke(this.stroke,48);
+          noStroke();
         } else {
           fill(this.fill);
           stroke(this.stroke);
