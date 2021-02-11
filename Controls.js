@@ -125,8 +125,8 @@ function mouseWheel(event) {
     }
 
     let direction =event.deltaY > 0 ? -1 : 1;   // Are we scrolling in or out
-    let zoomFactor = 0.05;
-    const zoom = 1 * direction * zoomFactor;
+    let zoomFactor = 0.02;                      // How much to zoom in
+    const zoom = 1 * direction * zoomFactor;    // zoom multiplier
 
     // Scroll the mouse
     if (!mouseIsPressed) {
@@ -141,9 +141,12 @@ function mouseWheel(event) {
             //g_scale += 0.01;
         }
         
+        // Figure out our window coordinates based on scale, and aspect(width and height)
+        // and where our cursor is relative to our position
         const wx = (mouseX-g_offsetX)/(width*g_scale);
         const wy = (mouseY-g_offsetY)/(height*g_scale);
 
+        // Update our offset and zoom
         g_offsetX-= wx*width*zoom;
         g_offsetY-= wy*height*zoom;
         g_scale += zoom;

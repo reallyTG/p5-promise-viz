@@ -174,7 +174,7 @@ class BarChartWidget {
       // TODO: Get rid of the '130' hard coded number
       //       For some erason, the offset is not quite working, maybe a rounding error?
       //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y-(h-g_miniMapY),widthRelative,heightRelative);
+      rect(x+xRelative,yRelative+y+g_miniMapY-h-20,widthRelative,heightRelative);
     }
 
     // Slider
@@ -199,8 +199,9 @@ class BarChartWidget {
     stroke(255,0,0,255);
     line(currentXStart,y,currentXStart,y+h);
     line(currentXEnd,y,currentXEnd,y+h);
-    line(currentXStart,mouseY,currentXEnd,mouseY);
-
+    if(mouseY > y && mouseY < y+h){
+      line(currentXStart,mouseY,currentXEnd,mouseY);
+    }
     
     // Uncomment to debug the range of the start and end
     // text(currentXStart,200,200);
