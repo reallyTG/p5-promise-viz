@@ -12,6 +12,10 @@ let g_mouseBeforeDownY=0;
 var g_scrollX=0;
 var g_scrollY=0;
 
+// Variables to hold mouse position
+// for when we zoom
+let g_zoomMouseX = 0;
+let g_zoomMouseY =0;
 
 // Reset global variables with respect to the
 // current view of the visualization
@@ -120,24 +124,37 @@ function mouseWheel(event) {
         return;
     }
 
+    let direction =event.deltaY > 0 ? -1 : 1;   // Are we scrolling in or out
+    let zoomFactor = 0.05;
+    const zoom = 1 * direction * zoomFactor;
+
     // Scroll the mouse
     if (!mouseIsPressed) {
         if (event.deltaY > 0){
-            g_scale *= .95;
+           // g_scale *= (1-zoomFactor);
+            direction = -1;
             //g_scale -= 0.01;
         }
         else{
-            g_scale *= 1.05;
+            //g_scale *= (1+zoomFactor);
+            direction =1;
             //g_scale += 0.01;
         }
         
-        g_scrollX = mouseX/g_scale;
-        g_scrollY = mouseY/g_scale;
+        const wx = (mouseX-g_offsetX)/(width*g_scale);
+        const wy = (mouseY-g_offsetY)/(height*g_scale);
+
+        g_offsetX-= wx*width*zoom;
+        g_offsetY-= wy*height*zoom;
+        g_scale += zoom;
+
+       // g_scrollX = mouseX/g_scale;
+       // g_scrollY = mouseY/g_scale;
     }else{
         g_scrollX = pMouseX;
         g_scrollY = pMouseY;
     }    
-
+    
 }
 
 /*
