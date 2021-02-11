@@ -118,6 +118,8 @@ class BarChartWidget {
     this.yaxis(1);
     // Render all of the entities in our collection
     for (var i = 0; i < this.entities.length; i++) {
+      
+        // Display all of the entities
         if(this.entities[i].show==true){
             this.entities[i].display();
             this.entities[i].hover();
