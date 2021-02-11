@@ -46,6 +46,8 @@ function preload() {
     // Good example to highlight (as a positive example!)
     // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
 
+    //filename = "./results/processed-results-c8.json";
+
     // Load the resulting file
     // loadDataSet(filename); 
     g_rawPromiseData = loadJSON(filename);

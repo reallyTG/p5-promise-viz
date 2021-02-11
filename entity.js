@@ -218,11 +218,12 @@ class entity {
           fill('red');
           stroke(255);
         }
-        else if(this.show===false){ // Render entities transparently if they are
-          fill(this.fill,48);       // not selected
-          stroke(this.stroke,48);
-          noStroke();
-        } else {
+        //else if(this.show===false){ // Render entities transparently if they are
+        //  fill(this.fill,48);       // not selected
+        //  stroke(this.stroke,48);
+        //  noStroke();
+        //} 
+        else {
           fill(this.fill);
           stroke(this.stroke);
           noStroke();

@@ -120,10 +120,8 @@ class BarChartWidget {
     for (var i = 0; i < this.entities.length; i++) {
       
         // Display all of the entities
-        this.entities[i].display();
-        // If they are not 'shown' then they cannot
-        // be interacted with.
         if(this.entities[i].show==true){
+            this.entities[i].display();
             this.entities[i].hover();
         }
     }
