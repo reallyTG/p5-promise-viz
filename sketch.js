@@ -200,7 +200,7 @@ function createSummary() {
     fcontents = g_rawPromiseData.files[fname];
     startLine = splitName[1];
     endLine = splitName[3];
-    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; draw(true)`);
+    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; cry(true)`);
     /* TODO: We also want to highlight them in the vis. */
     go_button.innerHTML = 'Go';
     td_go.appendChild(go_button);
@@ -213,6 +213,10 @@ function createSummary() {
 
   readmeElement.removeChild(readmeElement.children[0]);
   readmeElement.appendChild(summaryHTMLElement); 
+}
+
+function cry() {
+  g_bar.entities.forEach(e => e.render());
 }
 
 //
