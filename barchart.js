@@ -187,8 +187,8 @@ class BarChartWidget {
       line(mouseX,y,mouseX,y+h);
       if (mouseIsPressed && mouseButton === LEFT) {
           g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
-          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale;
-
+          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
+                                                                       // a minimum the hieght of the minimap display.
       }
     }
 
