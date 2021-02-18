@@ -174,7 +174,7 @@ class BarChartWidget {
       // TODO: Get rid of the '130' hard coded number
       //       For some erason, the offset is not quite working, maybe a rounding error?
       //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y-(h-g_miniMapY),widthRelative,heightRelative);
+      rect(x+xRelative,yRelative+y+g_miniMapY-h-20,widthRelative,heightRelative);
     }
 
     // Slider
@@ -187,8 +187,8 @@ class BarChartWidget {
       line(mouseX,y,mouseX,y+h);
       if (mouseIsPressed && mouseButton === LEFT) {
           g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
-          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale;
-
+          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
+                                                                       // a minimum the hieght of the minimap display.
       }
     }
 
@@ -199,13 +199,17 @@ class BarChartWidget {
     stroke(255,0,0,255);
     line(currentXStart,y,currentXStart,y+h);
     line(currentXEnd,y,currentXEnd,y+h);
-    line(currentXStart,mouseY,currentXEnd,mouseY);
+    if(mouseY > y && mouseY < y+h){
+      line(currentXStart,mouseY,currentXEnd,mouseY);
+    }
+    // Draw a slightly transparent rectangle over the minidisplay
+    fill(255,255,255,32);
+    rect(0,y,currentXStart,h);
+    rect(currentXEnd,y,width,h);
 
-    
     // Uncomment to debug the range of the start and end
     // text(currentXStart,200,200);
     // text(currentXEnd,200,240);
-
   }
 
 

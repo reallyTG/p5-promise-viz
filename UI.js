@@ -18,7 +18,7 @@ let g_querySummary = '';
 
 
 // y position of the miniDisplay
-var g_miniMapY = 180
+var g_miniMapY = 200
 
 // input
 let g_searchInput;
