@@ -138,10 +138,10 @@ class BarChartWidget {
   // Returns a 1 if the mouse is over the minidisplay
   MouseInMiniDisplay(){
     if(mouseY > this.MiniDisplayY && mouseY < this.MiniDisplayY+this.MiniDisplayH){
-      console.log("In minidisplay");
+      // console.log("In minidisplay"); // Uncomment to debug
       return true;
     }
-    console.log("Not in minidisplay");
+    //console.log("Not in minidisplay"); // Uncomment to debug
     return false;
   }
 
@@ -191,7 +191,7 @@ class BarChartWidget {
         ellipse(mouseX, y+h, 2, 2);
 
         line(mouseX,y,mouseX,y+h);
-        if (mouseIsPressed && mouseButton === LEFT) {
+        if (mouseIsPressed && mouseButton === LEFT && g_buttonClickEvent===false) {
             g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
             g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
                                                                         // a minimum the hieght of the minimap display.

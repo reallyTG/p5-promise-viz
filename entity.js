@@ -86,10 +86,10 @@ class entity {
                 return;
               }
               // Toggle selection of entity
-              if (mouseIsPressed && mouseButton === LEFT && this.selected == false) {
+              if (mouseIsPressed && mouseButton === LEFT && this.selected == false && g_buttonClickEvent===false) {
                   this.selected = true;
                   this.loadContents();
-              }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true){
+              }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true && g_buttonClickEvent===false){
                   this.selected = false;
               }
         }
@@ -107,7 +107,7 @@ class entity {
       } else {
         writeTo( 'output', 'promisePre', 'No file associated with the selected promise.', 1, 1)
       }
-      
+
 
       // Spit out related promises onto console?
       let asyncIDs = [this.datum.asyncId];
