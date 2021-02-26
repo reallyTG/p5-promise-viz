@@ -70,13 +70,21 @@ function menubar(x,y){
     text("zoom scale: "+round(g_scale,3), x+600, y+textSize());
 }
 
-function ZoomPanel(x,y){
+function SettingsPanel(x,y){
     fill(0,0,128,164);
     var resetViewButton = new ButtonWidget("Reset View",x,y+textSize()*1,220,textSize(),resetView);
     resetViewButton.Render();
 
     var zoomFitButton = new ButtonWidget("Fit to Window",x,y+textSize()*2,220,textSize(),ZoomToFit);
     zoomFitButton.Render();
+
+    var showMiniDisplayOnFunc = function (){g_bar.ShowMiniDisplay(1)};
+    var showMiniDisplayButtonOn = new ButtonWidget("Show MiniDisplay",220,y+textSize()*1,260,textSize(),showMiniDisplayOnFunc);
+    showMiniDisplayButtonOn.Render();
+
+    var showMiniDisplayOffFunc = function (){g_bar.ShowMiniDisplay(0)};
+    var showMiniDisplayButtonOff = new ButtonWidget("Hide MiniDisplay",220,y+textSize()*2,260,textSize(),showMiniDisplayOffFunc);
+    showMiniDisplayButtonOff.Render();
 }
 
 function queriesPanel(x,y,panelWidth,panelHeight){
@@ -87,7 +95,6 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     text("Queries:", x+2, y-g_padding/2);
     fill(0,164);
     rect(x, y, panelWidth, panelHeight);
-
 }
 
   // Selects all promises with a particular matching string in their data.
@@ -172,8 +179,8 @@ function UI(y) {
     // Render the menubar
     menubar(0,0);
 
-    // Render the Zoom controls
-    ZoomPanel(0,10);
+    // Render the Settings Panel
+    SettingsPanel(0,10);
 
     // Render the details panel
     g_DetailsPanel.Render();

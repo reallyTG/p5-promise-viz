@@ -15,6 +15,11 @@ class BarChartWidget {
         this.MiniDisplayX = 0;
         this.MiniDisplayY = 0;
         this.MiniDisplayH = 0;
+        // Toggle visibility of minidisplay
+        // Hiding the mini display avoids rendering, so
+        // overall performance of program will be faster.
+        this.showMiniDisplay = true;
+
 
         this.entities = [];         // Stores all of the entities in the bar chart, these are the 'rectangles' that are hovered on
         var entityHeight = 5;       // The actual height of the rectangle which is rendered
@@ -147,69 +152,71 @@ class BarChartWidget {
   // Parameters: x and y indicate the position
   //             h is the height of the minidisplay
   minidisplay(x,y,h){
-    // Update inteneral Minidiplay position
-    this.MiniDisplayX = x;
-    this.MiniDisplayY = y;
-    this.MiniDisplayH = h;
+    if(1==this.showMiniDisplay){
+      // Update inteneral Minidiplay position
+      this.MiniDisplayX = x;
+      this.MiniDisplayY = y;
+      this.MiniDisplayH = h;
+      // Background
 
-    // Background
-    stroke(0,255);
-    fill(255,0,0,192);
-    rect(x,y,width,h);
-    fill(0,0,0,255);
-    rect(x,y,width,h);
-    // Draw a green dot representing where a promise would be
-    for (var i = 0; i < this.entities.length; i++) {
-      // Map to the minimap
-      var xRelative = map(this.entities[i].x,0,this.w, 0,width);
-      var yRelative = map(this.entities[i].y,0,this.h, 0,h);
-      // figure out the relative width as well
-      // Note: It should be at least 1 pixel wide if there is a promise that exists
-      var widthRelative = map(this.entities[i].w,0,this.w, 0,width);
-      var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
+      stroke(0,255);
+      fill(255,0,0,192);
+      rect(x,y,width,h);
+      fill(0,0,0,255);
+      rect(x,y,width,h);
+      // Draw a green rectangle representing where a promise would be
+      for (var i = 0; i < this.entities.length; i++) {
+        // Map to the minimap
+        var xRelative = map(this.entities[i].x,0,this.w, 0,width);
+        var yRelative = map(this.entities[i].y,0,this.h, 0,h);
+        // figure out the relative width as well
+        // Note: It should be at least 1 pixel wide if there is a promise that exists
+        var widthRelative = map(this.entities[i].w,0,this.w, 0,width);
+        var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
 
-      // Draw a green box
-      fill(0,255,0,64);
-      stroke(0,255,0,64);
-      // TODO: Get rid of the '130' hard coded number
-      //       For some erason, the offset is not quite working, maybe a rounding error?
-      //       when working at the sub-pixel level?
-      rect(x+xRelative,yRelative+y+g_miniMapY-h-20,widthRelative,heightRelative);
-    }
-
-    // Slider
-    if(this.MouseInMiniDisplay()){
-      fill(255,255,255,255);
-      stroke(255,255,255,255);
-      ellipse(mouseX, y, 2, 2);
-      ellipse(mouseX, y+h, 2, 2);
-
-      line(mouseX,y,mouseX,y+h);
-      if (mouseIsPressed && mouseButton === LEFT) {
-          g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
-          g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
-                                                                       // a minimum the hieght of the minimap display.
+        // Draw a green box
+        fill(0,255,0,64);
+        stroke(0,255,0,64);
+        // TODO: Get rid of the '130' hard coded number
+        //       For some erason, the offset is not quite working, maybe a rounding error?
+        //       when working at the sub-pixel level?
+        rect(x+xRelative,yRelative+y+g_miniMapY-h-20,widthRelative,heightRelative);
       }
-    }
 
-    // Draw an indicator of where we are in the project
-    let currentXStart = -map(g_offsetX,0,this.w,0,width)/g_scale;
-    let currentXEnd =   -map(g_offsetX-width,0,this.w,0,width)/g_scale;
-    fill(255,0,0,255);
-    stroke(255,0,0,255);
-    line(currentXStart,y,currentXStart,y+h);
-    line(currentXEnd,y,currentXEnd,y+h);
-    if(mouseY > y && mouseY < y+h){
-      line(currentXStart,mouseY,currentXEnd,mouseY);
-    }
-    // Draw a slightly transparent rectangle over the minidisplay
-    fill(255,255,255,32);
-    rect(0,y,currentXStart,h);
-    rect(currentXEnd,y,width,h);
+      // Slider
+      if(this.MouseInMiniDisplay()){
+        fill(255,255,255,255);
+        stroke(255,255,255,255);
+        ellipse(mouseX, y, 2, 2);
+        ellipse(mouseX, y+h, 2, 2);
 
-    // Uncomment to debug the range of the start and end
-    // text(currentXStart,200,200);
-    // text(currentXEnd,200,240);
+        line(mouseX,y,mouseX,y+h);
+        if (mouseIsPressed && mouseButton === LEFT) {
+            g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
+            g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
+                                                                        // a minimum the hieght of the minimap display.
+        }
+      }
+
+      // Draw an indicator of where we are in the project
+      let currentXStart = -map(g_offsetX,0,this.w,0,width)/g_scale;
+      let currentXEnd =   -map(g_offsetX-width,0,this.w,0,width)/g_scale;
+      fill(255,0,0,255);
+      stroke(255,0,0,255);
+      line(currentXStart,y,currentXStart,y+h);
+      line(currentXEnd,y,currentXEnd,y+h);
+      if(mouseY > y && mouseY < y+h){
+        line(currentXStart,mouseY,currentXEnd,mouseY);
+      }
+      // Draw a slightly transparent rectangle over the minidisplay
+      fill(255,255,255,32);
+      rect(0,y,currentXStart,h);
+      rect(currentXEnd,y,width,h);
+
+      // Uncomment to debug the range of the start and end
+      // text(currentXStart,200,200);
+      // text(currentXEnd,200,240);
+    }
   }
 
 
@@ -358,6 +365,12 @@ class BarChartWidget {
     }
         
     g_querySummary = itemsSelected;
+  }
+
+
+  // Helper function which toggles the mini-display on or off.
+  ShowMiniDisplay(selectedState){
+      this.showMiniDisplay = selectedState;
   }
 
 
