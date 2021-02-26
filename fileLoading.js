@@ -52,15 +52,18 @@ function getFile(fileName,element,preElement){
  *  Called from: bar objects in entity.js
  */
 function writeTo( element, preElement, content, highlightFrom, highlightTo) {
+    
     let output = document.getElementById( element);
     let pre = document.getElementById( preElement);
 
-    output.innerHTML = content;
-    if (highlightFrom === highlightTo)
-        pre.setAttribute('data-line', highlightFrom);
-    else
-        pre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
-    Prism.highlightAll();
+    if(output){     // If the 'output' != null, then attempt to highlight the line in prism.
+        output.innerHTML = content;
+        if (highlightFrom === highlightTo)
+            pre.setAttribute('data-line', highlightFrom);
+        else
+            pre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
+        Prism.highlightAll();
+    }
 }
 
 let g_filesOpenInViewer = [];
