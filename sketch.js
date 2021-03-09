@@ -3,6 +3,8 @@
 // Data set
 let dataset = [];
 
+
+
 // Global Array for data promises
 // This is the raw data loaded
 // from a JSON file
@@ -46,7 +48,7 @@ function preload() {
     // Good example to highlight (as a positive example!)
     // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
 
-    //filename = "./results/processed-results-c8.json";
+    filename = "./results/processed-results-c8.json";
 
     // Load the resulting file
     // loadDataSet(filename); 
@@ -255,10 +257,18 @@ function setGradient(x, y, w, h, c1, c2, axis) {
 let value = 0;
 */
 
+
+function ClearUIEvents(){
+  g_buttonClickEvent = false;
+}
+
 //////////////////////////////////////////////
 //            Main draw function            //
 //////////////////////////////////////////////
 function draw(force) {
+    // Clear the state of any UI events
+    ClearUIEvents();
+
     // Avoid updating sketch if mouse is out of bounds
     if (!force && (mouseX > width || mouseX < 0 || mouseY > height)) {
       return;
@@ -321,4 +331,5 @@ function draw(force) {
     UI(height - 220);
     g_bar.minidisplay(0,height-g_miniMapY-250,g_miniMapY);
 
+    
 }
