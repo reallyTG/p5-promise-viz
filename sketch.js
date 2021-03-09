@@ -35,26 +35,78 @@ function loadDataSet(path){
 // all of the data first before populating the visualization.
 function preload() {
     
-    // For Feb 4 Meeting:
-    // this one is slow.
-    // filename = "./results/collected-results-profiling-feb-3/appcenter-cli/processed-results-1612378731829.json";
+  // For Feb 4 Meeting:
+  // this one is slow.
+  // filename = "./results/collected-results-profiling-feb-3/appcenter-cli/processed-results-1612378731829.json";
 
-    filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
-    
-    // Injection vulnerability?
-    // Send this one to Frank.
-    // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
+  // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
+  // filename = "./results/collected-results-profiling-feb-3/dugite/processed-results-1612378862546.json";
+  // filename = "./results/collected-results-profiling-feb-3/dugite/processed-results-1612378874922.json";
+  // filename = "./results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
+  // From before Feb 15 meeting
+  // filename = "./results/collected-results-profiling-feb-3/joi-router/processed-results-1612379101636.json";
 
-    // Good example to highlight (as a positive example!)
-    // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
+  // Looking for dummy promises:
+  // filename = "./results/collected-results-profiling-feb-3/CodeceptJS/processed-results-1611858164940.json";
+  // filename = "./results/me/processed-results-CodeceptJS-changed-again.json"
 
+  // Feb 17 ones.
+  // filename = "./results/collected-results-profiling-feb-3/node-libcurl/processed-results-1612379194331.json"
+  // filename = "./results/collected-results-profiling-feb-3/node-promise-retry/processed-results-1612370799168.json"
+  // filename = "./results/collected-results-profiling-feb-3/node-promise-retry/processed-results-1612379172686.json"
+  // filename = "./results/collected-results-profiling-feb-3/node-pushnotifications/processed-results-1612379181814.json"
+  // filename = "./results/collected-results-profiling-feb-3/node-sonos/processed-results-1612379183949.json"
+  // filename = "./results/collected-results-profiling-feb-3/readdirp/processed-results-1612379264567.json"
+  
+  // Mar 1
+  // filename = "./results/FixedResultsMar2021/processed-results-readdirp-correct.json";
+  filename = "./results/FixedResultsMar2021/processed-results-readdirp-without-change.json";
+  // filename = "./results/FixedResultsMar2021/processed-results-readdirp-with-change.json";
+  // filename = "./results/processed-results-readdirp-promiseall.json";
+  /*
+      Map an operation over slice. It doesn't look like the loop needs to be sequential.
+      Will explore this further for Monday.
+  */
+  /*
+      Create a small toy program with Promise.all vs for await, show all promises, see
+      if more/less created.
+  */
+  
+  // Mar 4
+  // Not actually fixed, TypeScript is still a problem.
+  // filename = "./results/FixedResultsMar2021/processed-results-dugite-fixed.json";
+  // This one seems fine.
+  // filename = "./results/collected-results-profiling-feb-3/node-sonos/processed-results-1612379183949.json";
+  // Something is weird.
+  // filename = "./results/collected-results-profiling-feb-3/node-pushnotifications/processed-results-1612379181814.json";
+  // Nothing wrong with this one.
+  // filename = "./results/collected-results-profiling-feb-3/joi-router/processed-results-1612379101636.json";
+  // For some reason this one doesn't work on the server anymore.
+  // filename = "results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
+
+
+  // Constructed example.
+  // I was expecting this to be worse, given the Promise.all with the await inside.
+  // filename = "results/processed-results-imagemin-example.json";
+
+  // Injection vulnerability?
+  // Send this one to Frank.
+  // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
+
+<<<<<<< HEAD
     filename = "./results/processed-results-c8.json";
+=======
+  // Good example to highlight (as a positive example!)
+  // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
+>>>>>>> 748c73021680005eedaaa890558e3ef5c0788c39
 
-    // Load the resulting file
-    // loadDataSet(filename); 
-    g_rawPromiseData = loadJSON(filename);
+  // filename = "./results/processed-results-c8.json";
 
-    print("Finished loading data")
+  // Load the resulting file
+  // loadDataSet(filename); 
+  g_rawPromiseData = loadJSON(filename);
+
+  print("Finished loading data")
 }
 
 // Takes a string in the form:
@@ -204,7 +256,7 @@ function createSummary() {
     fcontents = g_rawPromiseData.files[fname];
     startLine = splitName[1];
     endLine = splitName[3];
-    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; draw(true)`);
+    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; cry(true)`);
     /* TODO: We also want to highlight them in the vis. */
     go_button.innerHTML = 'Go';
     td_go.appendChild(go_button);
@@ -217,6 +269,10 @@ function createSummary() {
 
   readmeElement.removeChild(readmeElement.children[0]);
   readmeElement.appendChild(summaryHTMLElement); 
+}
+
+function cry() {
+  g_bar.entities.forEach(e => e.render());
 }
 
 //
