@@ -43,9 +43,10 @@ class Panel{
             }
         }else{
             // Render the text of the panel
-            fill(0,0,128,125);
+            fill(0,0,128,255);
             rect(this.x, this.y-textSize(), this.w, textSize());
         }
+        fill(255,255,255,255);
         stroke(0,0,0,255);
         text(this.text, this.x+2, this.y-this.g_padding/2);
 
@@ -55,7 +56,7 @@ class Panel{
         }
 
         // Draw background of the panel
-        fill(0,164);
+        fill(0,200);
         rect(this.x, this.y, this.w, this.h);
 
         for(var i=0; i < this.widgets.length;i++){

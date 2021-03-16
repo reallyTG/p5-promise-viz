@@ -60,7 +60,7 @@ function preload() {
   
   // Mar 1
   // filename = "./results/FixedResultsMar2021/processed-results-readdirp-correct.json";
-  filename = "./results/FixedResultsMar2021/processed-results-readdirp-without-change.json";
+  filename = "./results/processed-results-1612378731829.json";
   // filename = "./results/FixedResultsMar2021/processed-results-readdirp-with-change.json";
   // filename = "./results/processed-results-readdirp-promiseall.json";
   /*
@@ -93,12 +93,9 @@ function preload() {
   // Send this one to Frank.
   // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
 
-<<<<<<< HEAD
-    filename = "./results/processed-results-c8.json";
-=======
+  // filename = "./results/processed-results-c8.json";
   // Good example to highlight (as a positive example!)
   // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
->>>>>>> 748c73021680005eedaaa890558e3ef5c0788c39
 
   // filename = "./results/processed-results-c8.json";
 
@@ -126,11 +123,7 @@ function parseStringAsFileName(input){
 function setup() {
     // Canvas size
     // The size of the canvas that will 
-    createCanvas(1600, 1200);
-
-    // Create UI
-    // Call setup Panels
-    setupPanels();
+    createCanvas(1600, 1400);
 
     // Populate our data structure for the barchart
     // with JSON Data
@@ -173,10 +166,6 @@ function setup() {
     // Create a bar chart
     g_bar = new BarChartWidget(50, 100, 200, 100, dataset);
 
-    // Create some widgets
-    g_searchInput = createInput(); // Located in UI.js
-    g_searchButton = createButton('Search line (case-sensitive)');
-
     // Performance Tuning
     // Parse each of the file names from the data set
     for(var k in g_rawPromiseData["promises"]){
@@ -190,6 +179,10 @@ function setup() {
     //   // console.log('loadStrings: ' + loadStrings);
     //   g_sourceFilesMap[g_rawPromiseData["promises"][i]["source"]] = loadStrings(fileToLoad);
     // }
+
+    // Create UI
+    // Call setup Panels
+    setupPanels();
 
     button = createButton('Toggle Debug Mode: '+(!g_disableFriendlyErrors));
     button.mousePressed(changeDebugMode);
@@ -384,8 +377,8 @@ function draw(force) {
     //       otherwise the scale will be
     //       thrown off.
     // Takes as a parameter the height
-    UI(height - 220);
-    g_bar.minidisplay(0,height-g_miniMapY-250,g_miniMapY);
+    UI(height - 120);
+    g_bar.minidisplay(0,height-g_miniMapY-10,g_miniMapY);
 
     
 }

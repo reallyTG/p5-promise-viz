@@ -20,7 +20,6 @@ class BarChartWidget {
         // overall performance of program will be faster.
         this.showMiniDisplay = true;
 
-
         this.entities = [];         // Stores all of the entities in the bar chart, these are the 'rectangles' that are hovered on
         var entityHeight = 5;       // The actual height of the rectangle which is rendered
         var xScaleOfeachEntity = 1; 
@@ -29,6 +28,8 @@ class BarChartWidget {
         this.totalPromises = this.data.length;
         this.totalElapsedTime = 0;
         this.averageDuration = 0;
+        this.totalFunctionswithIO = 0;
+        this.totalFunctionswithUserCode =0;
 
         // Iterate through data and find the min and max
         // values of start time.
@@ -49,6 +50,18 @@ class BarChartWidget {
             maxElapsedTime = max(this.data[i].elapsedTime,maxElapsedTime);
             // Add to the total elapsed time
             this.totalElapsedTime += parseInt(this.data[i].elapsedTime);
+            // Increment number of pieces of data
+            // that contain user code.
+            if(this.data[i].userCode){
+              this.totalFunctionswithUserCode++;
+            }
+            // Increment number of pieces of data
+            // that contain io
+            if(this.data[i].io){
+              this.totalFunctionswithIO++;
+            }
+            
+            
         }
         // Compute average duration
         this.averageDuration = this.totalElapsedTime / this.totalPromises;
@@ -103,9 +116,9 @@ class BarChartWidget {
     }
 
   GetMetrics(){
-    let result = "Total Promises: "+ this.totalPromises
-            +"\nTotal Elapsed Time: "+this.totalElapsedTime
-            +"\nAverage Promise Duration: "+this.averageDuration;
+    let result = "Total Promises:  \t\t\t"+ this.totalPromises
+                +"\nTotal Elapsed Time:  \t"+this.totalElapsedTime
+                +"\nAvg. Promise Duration: "+this.averageDuration;
 
     return result;
   }
@@ -153,12 +166,22 @@ class BarChartWidget {
   //             h is the height of the minidisplay
   minidisplay(x,y,h){
     if(1==this.showMiniDisplay){
+      // Quickly tally how many promises are suppose to be shown
+      var totalPromisesShown =0;
+      for (var i = 0; i < this.entities.length; i++) {
+        if(this.entities[i].show){
+          // Draw a green box
+          totalPromisesShown++;
+        }
+      }
+
+
+
       // Update inteneral Minidiplay position
       this.MiniDisplayX = x;
       this.MiniDisplayY = y;
       this.MiniDisplayH = h;
       // Background
-
       stroke(0,255);
       fill(255,0,0,192);
       rect(x,y,width,h);
@@ -173,14 +196,32 @@ class BarChartWidget {
         // Note: It should be at least 1 pixel wide if there is a promise that exists
         var widthRelative = map(this.entities[i].w,0,this.w, 0,width);
         var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
+        
+        // Draw in the mini-map what is currently visible
+        if(this.entities[i].show){
+          // Draw a green box
+          fill(0,255,0,255);
+          stroke(0,255,0,255);
+        }else{
+          // Draw a green box
+          fill(255,255,255,4);
+          stroke(255,255,255,4);
+        }
 
-        // Draw a green box
-        fill(0,255,0,64);
-        stroke(0,255,0,64);
         // TODO: Get rid of the '130' hard coded number
-        //       For some erason, the offset is not quite working, maybe a rounding error?
+        //       For some reason, the offset is not quite working, maybe a rounding error?
         //       when working at the sub-pixel level?
-        rect(x+xRelative,yRelative+y+g_miniMapY-h-20,widthRelative,heightRelative);
+        
+        // TODO: Need to higlight promises in a more effective way
+        //       Here's a hack that will make the promises slightly bigger relative
+        //       to how many total promises have been selected.
+        //if(totalPromisesShown < this.entities.length){
+        //  rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative*5,heightRelative*5);
+        //}else{
+        //  rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
+       // }
+        rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
+
       }
 
       // Slider
@@ -205,10 +246,12 @@ class BarChartWidget {
       stroke(255,0,0,255);
       line(currentXStart,y,currentXStart,y+h);
       line(currentXEnd,y,currentXEnd,y+h);
+      // Only draw the line if we are over the minidisplay
       if(mouseY > y && mouseY < y+h){
         line(currentXStart,mouseY,currentXEnd,mouseY);
       }
       // Draw a slightly transparent rectangle over the minidisplay
+      // These are the edges of the minidisplay.
       fill(255,255,255,32);
       rect(0,y,currentXStart,h);
       rect(currentXEnd,y,width,h);

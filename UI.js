@@ -1,6 +1,7 @@
 let g_padding = 8;  
 
 // Panels
+let g_SettingsPanel;
 let g_DetailsPanel;
 let g_QueriesPanel;
 let g_MetricsPanel;
@@ -16,12 +17,11 @@ let g_hoveredID = -1;
 // Keeps track of what happened in latest action.
 let g_querySummary = '';
 
-
 // y position of the miniDisplay
-var g_miniMapY = 200
+var g_miniMapY = 300
 
 // input
-let g_searchInput;
+let g_searchLineWidget;
 
 
 // Helper function to draw a grid to help improve visualization
@@ -70,22 +70,18 @@ function menubar(x,y){
     text("zoom scale: "+round(g_scale,3), x+600, y+textSize());
 }
 
-function SettingsPanel(x,y){
-    fill(0,0,128,164);
-    var resetViewButton = new ButtonWidget("Reset View",x,y+textSize()*1,220,textSize(),resetView);
-    resetViewButton.Render();
-
-    var zoomFitButton = new ButtonWidget("Fit to Window",x,y+textSize()*2,220,textSize(),ZoomToFit);
-    zoomFitButton.Render();
-
-    var showMiniDisplayOnFunc = function (){g_bar.ShowMiniDisplay(1)};
-    var showMiniDisplayButtonOn = new ButtonWidget("Show MiniDisplay",220,y+textSize()*1,260,textSize(),showMiniDisplayOnFunc);
-    showMiniDisplayButtonOn.Render();
-
-    var showMiniDisplayOffFunc = function (){g_bar.ShowMiniDisplay(0)};
-    var showMiniDisplayButtonOff = new ButtonWidget("Hide MiniDisplay",220,y+textSize()*2,260,textSize(),showMiniDisplayOffFunc);
-    showMiniDisplayButtonOff.Render();
+// Selects all promises with a particular matching string in their data.
+function searchLine(){
+  console.log("searchLine");
+  for (var i = 0; i < g_bar.entities.length; i++) {
+      if(g_bar.entities[i].datum.line.search(g_searchLineWidget.GetText())>=0){
+          g_bar.entities[i].show=true;
+      }else{
+          g_bar.entities[i].show=false;
+      }
+  }
 }
+
 
 function queriesPanel(x,y,panelWidth,panelHeight){
     // Queries Panel
@@ -97,73 +93,90 @@ function queriesPanel(x,y,panelWidth,panelHeight){
     rect(x, y, panelWidth, panelHeight);
 }
 
-  // Selects all promises with a particular matching string in their data.
-  function searchLine(){
-    console.log("searchLine");
-    for (var i = 0; i < g_bar.entities.length; i++) {
-      if(g_bar.entities[i].datum.line.search(g_searchInput.value())>=0){
-        g_bar.entities[i].show=true;
-      }else{
-        g_bar.entities[i].show=false;
-      }
-    }
-  }
+
 
 
 // Setup UI panels
 function setupPanels(){
+    // Setup the Settings Panel
+    var settingsPanelXPosition = 0;
+    var settingsPanelYPosition = 50;
+    var settingsPanelButtonWidth = 250;
+    var settingsPanelButtonHeight = 25;
+
+    g_SettingsPanel = new Panel("Settings",settingsPanelXPosition,settingsPanelYPosition,settingsPanelButtonWidth*2,50);
+
+    var resetViewButton = new ButtonWidget("Reset View",settingsPanelButtonWidth*0,settingsPanelButtonHeight*0,settingsPanelButtonWidth,settingsPanelButtonHeight,resetView);
+    g_SettingsPanel.addWidget(resetViewButton);
+
+    var zoomFitButton = new ButtonWidget("Fit to Window",settingsPanelButtonWidth*1,settingsPanelButtonHeight*0,settingsPanelButtonWidth,settingsPanelButtonHeight,ZoomToFit);
+    g_SettingsPanel.addWidget(zoomFitButton);
+
+    var showMiniDisplayOnFunc = function (){g_bar.ShowMiniDisplay(1)};
+    var showMiniDisplayButtonOn = new ButtonWidget("Show MiniDisplay",settingsPanelButtonWidth*0,settingsPanelButtonHeight*1,settingsPanelButtonWidth,settingsPanelButtonHeight,showMiniDisplayOnFunc);
+    g_SettingsPanel.addWidget(showMiniDisplayButtonOn);
+
+    var showMiniDisplayOffFunc = function (){g_bar.ShowMiniDisplay(0)};
+    var showMiniDisplayButtonOff = new ButtonWidget("Hide MiniDisplay",settingsPanelButtonWidth*1,settingsPanelButtonHeight*1,settingsPanelButtonWidth,settingsPanelButtonHeight,showMiniDisplayOffFunc);
+    g_SettingsPanel.addWidget(showMiniDisplayButtonOff);
+
+    // Queries panel Widgets Properties
+    var queryButtonWidth = 250;
+    var queryButtonHeight = 25;
+    // Setup the queries panel
+    var g_QueriesPanelXPosition = 0;
+    var g_QueriesPanelYPosition = 120;
+    g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,queryButtonWidth*2,180);
+    
+    var callFilterShow = function (){g_bar.filterShow(1)};
+    var showAllButton = new ButtonWidget("Show All",0,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callFilterShow);
+    g_QueriesPanel.addWidget(showAllButton);
+
+    var callFilterShowNone = function (){g_bar.filterShow(0)};
+    var showNoneButton = new ButtonWidget("Show None",0+queryButtonWidth,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callFilterShowNone);
+    g_QueriesPanel.addWidget(showNoneButton);
+
+    var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
+    var showSelectedButton = new ButtonWidget("Show Selected",0,0+queryButtonHeight*1,queryButtonWidth,queryButtonHeight,callFilterShowSelected);
+    g_QueriesPanel.addWidget(showSelectedButton);
+
+    var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
+    var showSelectedButton = new ButtonWidget("Show Unselected",0+queryButtonWidth,0+queryButtonHeight*1,queryButtonWidth,queryButtonHeight,callFilterShowUnSelected);
+    g_QueriesPanel.addWidget(showSelectedButton);
+
+    var callSelectAll = function (){g_bar.selectState(1)};
+    var selectStateButton = new ButtonWidget("Select All",0,0+queryButtonHeight*2,queryButtonWidth,queryButtonHeight,callSelectAll);
+    g_QueriesPanel.addWidget(selectStateButton);
+
+    var callSelectAllNone = function (){g_bar.selectState(0)};
+    var selectStateButton = new ButtonWidget("Select None",0+queryButtonWidth,0+queryButtonHeight*2,queryButtonWidth,queryButtonHeight,callSelectAllNone);
+    g_QueriesPanel.addWidget(selectStateButton);
+
+    var callSelectIO = function (){g_bar.selectIO(1)};
+    var selectIOButton = new ButtonWidget("Select All IO ("+g_bar.totalFunctionswithIO+")",0,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectIO);
+    g_QueriesPanel.addWidget(selectIOButton);
+
+    var callSelectUserCode = function (){g_bar.selectUserCode(1)};
+    var selectUserCodeButton = new ButtonWidget("Select All UserCode ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
+    g_QueriesPanel.addWidget(selectUserCodeButton);
+
+    g_searchLineWidget = new SearchBoxWidget("Search line (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
+    g_QueriesPanel.addWidget(g_searchLineWidget);
+
+
     // Setup the details Panel
-    g_DetailsPanel = new Panel("Details",0,height - 220,width/2,240);
+    var detailsPanelXPosition = 500;
+    var detailsPanelYPosition = 50;
+    g_DetailsPanel = new Panel("Details",detailsPanelXPosition,detailsPanelYPosition,600,250);
     // Details panel widgets
     g_detailTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_DetailsPanel.addWidget(g_detailTextWidget);
 
     // Setup the Metrics Panel
-    g_MetricsPanel = new Panel("Metrics",width-width/3,60,width/3,240);
+    g_MetricsPanel = new Panel("Metrics",1100,50,500,80);
     // Details panel widgets
     g_metricsTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_MetricsPanel.addWidget(g_metricsTextWidget);
-
-    // Setup the queries
-    var g_QueriesPanelXPosition = width/2;
-    var g_QueriesPanelYPosition = height - 220;
-    g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,width/2,240);
-
-    // Queries panel Widgets 
-    var buttonWidth = 350;
-    var buttonHeight = 25;
-
-    var callFilterShow = function (){g_bar.filterShow(1)};
-    var showAllButton = new ButtonWidget("Show All",0,0+buttonHeight*0,buttonWidth,buttonHeight,callFilterShow);
-    g_QueriesPanel.addWidget(showAllButton);
-
-    var callFilterShowNone = function (){g_bar.filterShow(0)};
-    var showNoneButton = new ButtonWidget("Show None",0+buttonWidth,0+buttonHeight*0,buttonWidth,buttonHeight,callFilterShowNone);
-    g_QueriesPanel.addWidget(showNoneButton);
-
-    var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
-    var showSelectedButton = new ButtonWidget("Show Selected",0,0+buttonHeight*1,buttonWidth,buttonHeight,callFilterShowSelected);
-    g_QueriesPanel.addWidget(showSelectedButton);
-
-    var callFilterShowUnSelected = function (){g_bar.filterShowSelected(0)};
-    var showSelectedButton = new ButtonWidget("Show Unselected",0+buttonWidth,0+buttonHeight*1,buttonWidth,buttonHeight,callFilterShowUnSelected);
-    g_QueriesPanel.addWidget(showSelectedButton);
-
-    var callSelectAll = function (){g_bar.selectState(1)};
-    var selectStateButton = new ButtonWidget("Select All",0,0+buttonHeight*2,buttonWidth,buttonHeight,callSelectAll);
-    g_QueriesPanel.addWidget(selectStateButton);
-
-    var callSelectAllNone = function (){g_bar.selectState(0)};
-    var selectStateButton = new ButtonWidget("Select None",0+buttonWidth,0+buttonHeight*2,buttonWidth,buttonHeight,callSelectAllNone);
-    g_QueriesPanel.addWidget(selectStateButton);
-
-    var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIOButton = new ButtonWidget("Select All IO",0,0+buttonHeight*3,buttonWidth,buttonHeight,callSelectIO);
-    g_QueriesPanel.addWidget(selectIOButton);
-
-    var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCodeButton = new ButtonWidget("Select All UserCode",0,0+buttonHeight*3,buttonWidth,buttonHeight,callSelectUserCode);
-    g_QueriesPanel.addWidget(selectUserCodeButton);
 }
 
 
@@ -174,28 +187,19 @@ function setupPanels(){
 function UI(y) {
     // Configuration of UI
     textSize(26);
-    textFont("monospace", 26);
+    textFont("monospace", 24);
 
     // Render the menubar
     menubar(0,0);
 
-    // Render the Settings Panel
-    SettingsPanel(0,10);
-
+    // Render the Settings panel
+    g_SettingsPanel.Render();
     // Render the details panel
     g_DetailsPanel.Render();
     // Render the queries panel
     g_QueriesPanel.Render();
     // Render the metrics panel
     g_MetricsPanel.Render();
-
-    // TODO: Move this into the queries panel as a widget
-        // Retreive the value for search box
-        g_searchInput.value();
-        g_searchInput.position(width/2,height-240+textSize()*6);
-        g_searchButton.position(width/2 + g_searchInput.width, height-240+textSize()*6);
-        g_searchButton.mousePressed(searchLine);
-
 
     stroke(255);
     fill(255);
