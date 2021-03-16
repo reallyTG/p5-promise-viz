@@ -158,7 +158,8 @@ function mouseWheel(event) {
         g_scrollY = pMouseY;
     }    
     
-
+    // Blocks page scrolling while mouse wheels
+    return false;
 }
 
 /*
