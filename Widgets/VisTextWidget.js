@@ -5,7 +5,7 @@ class VisTextWidget{
         this.text = text;
         this.x = x;
         this.y = y;
-        this.h;
+        this.h = h; // TODO: This is not really used.
     }
 
     SetPos(x,y){

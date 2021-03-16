@@ -103,9 +103,9 @@ class BarChartWidget {
     }
 
   GetMetrics(){
-    let result = "Total Promises: "+ this.totalPromises
-            +"\nTotal Elapsed Time: "+this.totalElapsedTime
-            +"\nAverage Promise Duration: "+this.averageDuration;
+    let result = "Total Promises: \t\t\t\t\t"+ this.totalPromises
+                +"\nTotal Elapsed Time: \t\t\t"+this.totalElapsedTime
+                +"\nAverage Promise Duration: "+this.averageDuration;
 
     return result;
   }
@@ -205,10 +205,12 @@ class BarChartWidget {
       stroke(255,0,0,255);
       line(currentXStart,y,currentXStart,y+h);
       line(currentXEnd,y,currentXEnd,y+h);
+      // Only draw the line if we are over the minidisplay
       if(mouseY > y && mouseY < y+h){
         line(currentXStart,mouseY,currentXEnd,mouseY);
       }
       // Draw a slightly transparent rectangle over the minidisplay
+      // These are the edges of the minidisplay.
       fill(255,255,255,32);
       rect(0,y,currentXStart,h);
       rect(currentXEnd,y,width,h);

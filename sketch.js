@@ -123,7 +123,7 @@ function parseStringAsFileName(input){
 function setup() {
     // Canvas size
     // The size of the canvas that will 
-    createCanvas(1600, 1200);
+    createCanvas(1600, 1400);
 
     // Create UI
     // Call setup Panels
@@ -169,10 +169,6 @@ function setup() {
 
     // Create a bar chart
     g_bar = new BarChartWidget(50, 100, 200, 100, dataset);
-
-    // Create some widgets
-    g_searchInput = createInput(); // Located in UI.js
-    g_searchButton = createButton('Search line (case-sensitive)');
 
     // Performance Tuning
     // Parse each of the file names from the data set
@@ -381,8 +377,8 @@ function draw(force) {
     //       otherwise the scale will be
     //       thrown off.
     // Takes as a parameter the height
-    UI(height - 220);
-    g_bar.minidisplay(0,height-g_miniMapY-250,g_miniMapY);
+    UI(height - 120);
+    g_bar.minidisplay(0,height-g_miniMapY-10,g_miniMapY);
 
     
 }
