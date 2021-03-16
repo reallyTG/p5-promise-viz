@@ -200,19 +200,17 @@ class BarChartWidget {
         // Draw in the mini-map what is currently visible
         if(this.entities[i].show){
           // Draw a green box
-          fill(0,255,0,128);
-          stroke(0,255,0,128);
+          fill(0,255,0,255);
+          stroke(0,255,0,255);
         }else{
           // Draw a green box
-          fill(255,255,255,16);
-          stroke(255,255,255,16);
+          fill(255,255,255,4);
+          stroke(255,255,255,4);
         }
 
         // TODO: Get rid of the '130' hard coded number
         //       For some reason, the offset is not quite working, maybe a rounding error?
         //       when working at the sub-pixel level?
-        
-
         
         // TODO: Need to higlight promises in a more effective way
         //       Here's a hack that will make the promises slightly bigger relative
@@ -222,7 +220,6 @@ class BarChartWidget {
         //}else{
         //  rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
        // }
-
         rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
 
       }
