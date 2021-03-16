@@ -224,9 +224,17 @@ class entity {
         //  noStroke();
         //} 
         else {
-          fill(this.fill);
-          stroke(this.stroke);
-          noStroke();
+          // Switch the fill color to 'indigo' if it is I/O
+          if(this.datum.io){
+            fill(75, 0, 130,255);
+            stroke(this.stroke);
+            noStroke();
+          }else{
+            fill(this.fill);
+            stroke(this.stroke);
+            noStroke();
+          }
+
         }
 
         // If the entity is highlighted

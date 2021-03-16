@@ -180,7 +180,7 @@ class BarChartWidget {
         // TODO: Get rid of the '130' hard coded number
         //       For some erason, the offset is not quite working, maybe a rounding error?
         //       when working at the sub-pixel level?
-        rect(x+xRelative,yRelative+y+g_miniMapY-h-20,widthRelative,heightRelative);
+        rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
       }
 
       // Slider

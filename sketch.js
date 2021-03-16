@@ -60,7 +60,7 @@ function preload() {
   
   // Mar 1
   // filename = "./results/FixedResultsMar2021/processed-results-readdirp-correct.json";
-  filename = "./results/FixedResultsMar2021/processed-results-readdirp-without-change.json";
+  filename = "./results/processed-results-1612378731829.json";
   // filename = "./results/FixedResultsMar2021/processed-results-readdirp-with-change.json";
   // filename = "./results/processed-results-readdirp-promiseall.json";
   /*
@@ -93,12 +93,9 @@ function preload() {
   // Send this one to Frank.
   // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
 
-<<<<<<< HEAD
-    filename = "./results/processed-results-c8.json";
-=======
+  // filename = "./results/processed-results-c8.json";
   // Good example to highlight (as a positive example!)
   // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
->>>>>>> 748c73021680005eedaaa890558e3ef5c0788c39
 
   // filename = "./results/processed-results-c8.json";
 
