@@ -125,10 +125,6 @@ function setup() {
     // The size of the canvas that will 
     createCanvas(1600, 1400);
 
-    // Create UI
-    // Call setup Panels
-    setupPanels();
-
     // Populate our data structure for the barchart
     // with JSON Data
     var elements = g_rawPromiseData.promises;
@@ -183,6 +179,10 @@ function setup() {
     //   // console.log('loadStrings: ' + loadStrings);
     //   g_sourceFilesMap[g_rawPromiseData["promises"][i]["source"]] = loadStrings(fileToLoad);
     // }
+
+    // Create UI
+    // Call setup Panels
+    setupPanels();
 
     button = createButton('Toggle Debug Mode: '+(!g_disableFriendlyErrors));
     button.mousePressed(changeDebugMode);

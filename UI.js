@@ -17,7 +17,6 @@ let g_hoveredID = -1;
 // Keeps track of what happened in latest action.
 let g_querySummary = '';
 
-
 // y position of the miniDisplay
 var g_miniMapY = 300
 
@@ -101,7 +100,7 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 function setupPanels(){
     // Setup the Settings Panel
     var settingsPanelXPosition = 0;
-    var settingsPanelYPosition = 60;
+    var settingsPanelYPosition = 50;
     var settingsPanelButtonWidth = 250;
     var settingsPanelButtonHeight = 25;
 
@@ -121,19 +120,13 @@ function setupPanels(){
     var showMiniDisplayButtonOff = new ButtonWidget("Hide MiniDisplay",settingsPanelButtonWidth*1,settingsPanelButtonHeight*1,settingsPanelButtonWidth,settingsPanelButtonHeight,showMiniDisplayOffFunc);
     g_SettingsPanel.addWidget(showMiniDisplayButtonOff);
 
-    // Setup the Metrics Panel
-    g_MetricsPanel = new Panel("Metrics",width-width/3,60,width/3,240);
-    // Details panel widgets
-    g_metricsTextWidget = new VisTextWidget("VisTextWidget",0,0);
-    g_MetricsPanel.addWidget(g_metricsTextWidget);
-
     // Queries panel Widgets Properties
     var queryButtonWidth = 250;
     var queryButtonHeight = 25;
     // Setup the queries panel
     var g_QueriesPanelXPosition = 0;
-    var g_QueriesPanelYPosition = 140;
-    g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,queryButtonWidth*2,200);
+    var g_QueriesPanelYPosition = 120;
+    g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,queryButtonWidth*2,180);
     
     var callFilterShow = function (){g_bar.filterShow(1)};
     var showAllButton = new ButtonWidget("Show All",0,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callFilterShow);
@@ -160,11 +153,11 @@ function setupPanels(){
     g_QueriesPanel.addWidget(selectStateButton);
 
     var callSelectIO = function (){g_bar.selectIO(1)};
-    var selectIOButton = new ButtonWidget("Select All IO",0,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectIO);
+    var selectIOButton = new ButtonWidget("Select All IO ("+g_bar.totalFunctionswithIO+")",0,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectIO);
     g_QueriesPanel.addWidget(selectIOButton);
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCodeButton = new ButtonWidget("Select All UserCode",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
+    var selectUserCodeButton = new ButtonWidget("Select All UserCode ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
 
     g_searchLineWidget = new SearchBoxWidget("Search line (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
@@ -172,12 +165,18 @@ function setupPanels(){
 
 
     // Setup the details Panel
-    var detailsPanelXPosition = 0;
-    var detailsPanelYPosition = 370;
-    g_DetailsPanel = new Panel("Details",detailsPanelXPosition,detailsPanelYPosition,width/2,240);
+    var detailsPanelXPosition = 500;
+    var detailsPanelYPosition = 50;
+    g_DetailsPanel = new Panel("Details",detailsPanelXPosition,detailsPanelYPosition,600,250);
     // Details panel widgets
     g_detailTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_DetailsPanel.addWidget(g_detailTextWidget);
+
+    // Setup the Metrics Panel
+    g_MetricsPanel = new Panel("Metrics",1100,50,500,80);
+    // Details panel widgets
+    g_metricsTextWidget = new VisTextWidget("VisTextWidget",0,0);
+    g_MetricsPanel.addWidget(g_metricsTextWidget);
 }
 
 
