@@ -18,7 +18,8 @@ P5 for promise visualization.
 # Links related to this project
 
 1. [Overleaf paper with edit access](https://www.overleaf.com/project/6058be88a518dd1d47dc9d76)
-2. https://docs.google.com/spreadsheets/d/1OmBX5fRUwys8eQI7Ome6Y1vFS5uo6ofk7p17HBVIIbU/edit#gid=0
+	- **This is where everything eventually needs to go**
+3. https://docs.google.com/spreadsheets/d/1OmBX5fRUwys8eQI7Ome6Y1vFS5uo6ofk7p17HBVIIbU/edit#gid=0
 	- This is slightly older when Mark was active on the project.
 4. [AsyncAwaitBenchmarks Github Repo](https://github.ccs.neu.edu/optimizing-async-await/AsyncAwaitBenchmarks)
 	- Old repository where we were going to write paper.
@@ -95,9 +96,10 @@ Characterizing Callbacks in JavaScript](https://www.cs.ubc.ca/~bestchai/papers/e
 
 
 
-Dump of related work from Frank
+### Dump of related work from Frank
 
-blog posts, etc. related to profiling/visualizing the execution of concurrent code:
+#### blog posts, etc. related to profiling/visualizing the execution of concurrent code:
+
 - https://docs.microsoft.com/en-us/visualstudio/profiling/concurrency-visualizer?view=vs-2019
 - https://blogs.oracle.com/nbprofiler/profiling-with-visualvm,-part-1
 - https://devblogs.microsoft.com/cppblog/concurrency-code-analysis-in-visual-studio-2019/
@@ -110,7 +112,7 @@ blog posts, etc. related to profiling/visualizing the execution of concurrent co
 - https://adamsitnik.com/ConcurrencyVisualizer-Profiler/
  -http://hydronitrogen.com/profiling-a-running-jvm-tools-you-should-know.html
  
-blog posts, etc. related to profiling async code:
+#### blog posts, etc. related to profiling async code:
 
 - https://hackernoon.com/profiling-java-applications-with-async-profiler-049s2790
 - https://dzone.com/articles/c-async-await-tasks-support-and-visualize-performa
