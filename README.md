@@ -19,12 +19,14 @@ P5 for promise visualization.
 
 1. [Overleaf paper with edit access](https://www.overleaf.com/project/6058be88a518dd1d47dc9d76)
 	- **This is where everything eventually needs to go**
-3. https://docs.google.com/spreadsheets/d/1OmBX5fRUwys8eQI7Ome6Y1vFS5uo6ofk7p17HBVIIbU/edit#gid=0
+2. https://docs.google.com/spreadsheets/d/1OmBX5fRUwys8eQI7Ome6Y1vFS5uo6ofk7p17HBVIIbU/edit#gid=0
 	- This is slightly older when Mark was active on the project.
-4. [AsyncAwaitBenchmarks Github Repo](https://github.ccs.neu.edu/optimizing-async-await/AsyncAwaitBenchmarks)
+3. [AsyncAwaitBenchmarks Github Repo](https://github.ccs.neu.edu/optimizing-async-await/AsyncAwaitBenchmarks)
 	- Old repository where we were going to write paper.
-5. [ProfilingPromisesExamples](https://github.ccs.neu.edu/alexi/ProfilingPromisesExamples)
+4. [ProfilingPromisesExamples](https://github.ccs.neu.edu/alexi/ProfilingPromisesExamples)
  	- Repository with small examples
+5. [manifest](https://github.com/JSPromiseProfiling/manifest)
+ 	- Benchmarks in this project
 
 
 # E-mails of importance (By Subject)
