@@ -58,16 +58,21 @@ function setUIOffset(x, y){
 function menubar(x,y){
     // Menubar
     // X,Y position -- Offset
-    fill(0);
+    fill(204);
     rect(x, y , width, textSize()+g_padding);
-    fill(255);
-    stroke(192);
+    fill(0);
+    // Text
+    stroke(255);
     text("Pan Offset: (" + round(g_offsetX,1) + "," + round(g_offsetY,3) + ")", x+160, y+textSize());
     // Render framerate
     var rate = frameRate();
     text("FPS:" + int(rate), x+2, y+textSize());
     // Zoom
-    text("zoom scale: "+round(g_scale,3), x+600, y+textSize());
+    text("zoom scale: "+round(g_scale,3), x+640, y+textSize());
+    // Last action
+    stroke(255);
+    fill(0);
+    text("last action:"+g_querySummary,width-250,24);
 }
 
 // Selects all promises with a particular matching string in their data.
@@ -157,7 +162,7 @@ function setupPanels(){
     g_QueriesPanel.addWidget(selectIOButton);
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCodeButton = new ButtonWidget("Select All UserCode ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
+    var selectUserCodeButton = new ButtonWidget("Select All User Code ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth+100,queryButtonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
 
     g_searchLineWidget = new SearchBoxWidget("Search line (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
@@ -200,9 +205,5 @@ function UI(y) {
     g_QueriesPanel.Render();
     // Render the metrics panel
     g_MetricsPanel.Render();
-
-    stroke(255);
-    fill(255);
-    text("last action:"+g_querySummary,width-250,24);
 }
 

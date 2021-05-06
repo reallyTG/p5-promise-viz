@@ -32,12 +32,17 @@ class ButtonWidget{
 
     // Render a button
     Render(){
-        fill(192,0,0,222);
-        stroke(0,0,0,255);
+        textSize(this.h-4);
+        fill(204,255);
+        stroke(204,255);
         rect(this.x,this.y,this.w,this.h);
-        stroke(0);
+        fill(238,255);
+        stroke(255,255);
+        rect(this.x+2,this.y+2,this.w-4,this.h-4);
+
+        stroke(255);
         fill(0);
-        text(this.text, this.x+1, this.y+textSize());
+        text(this.text, this.x+3, this.y+textSize()-1);
     
         // Buttons
         if(mouseX > this.x && mouseX < this.x+this.w){
@@ -48,7 +53,7 @@ class ButtonWidget{
                 fill(255);
                 stroke(255);
                 rect(this.x,this.y,this.w,this.h);
-                stroke(0);
+                stroke(64);
                 fill(0);
                 text(this.text, this.x+2, this.y+textSize());
                 if(mouseIsPressed && mouseButton===LEFT){

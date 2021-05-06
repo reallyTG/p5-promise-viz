@@ -9,6 +9,8 @@ class Panel{
         this.g_padding = 8;
         this.widgets = [];
         this.isOpen = true;
+        this.lastClickTime = 0;
+        this.centerMouseWasPressed = false;
     }
 
     // Adds a new widget to the panel
@@ -19,35 +21,60 @@ class Panel{
     // Function to print data about a 
     // promise in a string
     Render(){
+
+        var lastX = pmouseX;
+        var lastY = pmouseY;
+
         // Toggle opening and closing
         if(mouseY > this.y-textSize() && mouseY < this.y){
             if(mouseX>this.x && mouseX < this.x+this.w){
                 // Render the text of the panel in a lighter shade
                 // this also indicates that the menu is highlighted and
                 // interactable.
-                fill(0,0,255,125);
+                fill(255,255);
                 rect(this.x, this.y-textSize(), this.w, textSize());
 
+                // Keep track of the last time since we clicked on
+                // our panel to avoid it from opening and closing too fast.
+                let clickTime = millis() - this.lastClickTime;
+                
                 // Fold panel
-                if(mouseIsPressed && mouseButton === LEFT && this.isOpen){ 
+                if(mouseIsPressed && mouseButton === LEFT && this.isOpen && clickTime > 250){ 
                     this.isOpen = false;
+                    this.lastClickTime = millis();
                 }
-                else if(mouseIsPressed && mouseButton === LEFT && !this.isOpen){ 
+                else if(mouseIsPressed && mouseButton === LEFT && !this.isOpen && clickTime > 250){ 
                     this.isOpen = true;
+                    this.lastClickTime = millis();
                 }
-                // Drag panel
+                
+
+                // Handle the event that a middle click was made
+                // and then the panel can be dragged
                 if(mouseIsPressed && mouseButton === CENTER){
-                    this.x -= (pmouseX - mouseX);
-                    this.y -= (pmouseY - mouseY);
+                    this.centerMouseWasPressed = true;
                 }
             }
         }else{
             // Render the text of the panel
-            fill(0,0,128,255);
+            fill(204,255);
             rect(this.x, this.y-textSize(), this.w, textSize());
         }
-        fill(255,255,255,255);
-        stroke(0,0,0,255);
+
+        // If the middle mouse is not being pressed, stop the dragging event
+        // otherwise, continue dragging the panel as long as the middle mouse
+        // (or any other mouse button) is being pressed.
+        if(!mouseIsPressed){
+            this.centerMouseWasPressed = false;
+        }
+        else if(this.centerMouseWasPressed == true){
+            this.x -= (lastX - mouseX);
+            this.y -= (lastY - mouseY);
+        } 
+
+        // Text/Titlebar of panel
+        fill(0,0,0,255);
+        stroke(192,255);
         text(this.text, this.x+2, this.y-this.g_padding/2);
 
         // If the panel is not open, then immediately return.
@@ -59,6 +86,7 @@ class Panel{
         fill(0,200);
         rect(this.x, this.y, this.w, this.h);
 
+        // Render all of the weidgets that belong to this panel one after the other.
         for(var i=0; i < this.widgets.length;i++){
             var oldX = this.widgets[i].x;
             var oldY = this.widgets[i].y;

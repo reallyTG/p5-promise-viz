@@ -3,8 +3,6 @@
 // Data set
 let dataset = [];
 
-
-
 // Global Array for data promises
 // This is the raw data loaded
 // from a JSON file
@@ -14,10 +12,15 @@ let g_rawPromiseData = {};
 // When set to 'true' performance will be improved.
 let g_disableFriendlyErrors = true;
 
-let g_txt;
+let g_txt ='';
 let g_sourceFilesMap = new Map();
 let g_totalKeys = 0;
 let g_sourceCounts = new Map();
+
+
+// GUIs
+var g_gui; 
+
 
 // Helper function for loading data
 function loadDataSet(path){
@@ -99,6 +102,7 @@ function preload() {
 
   // filename = "./results/processed-results-c8.json";
 
+  filename = "./results/imagemin/processed-results-imagemin-example.json";
   // Load the resulting file
   // loadDataSet(filename); 
   g_rawPromiseData = loadJSON(filename);
@@ -116,6 +120,9 @@ function parseStringAsFileName(input){
   parsed = input.substr(0,input.lastIndexOf(".js")+3);
   return parsed;
 }
+
+
+var number = 9;
 
 //////////////////////////////////////////////
 //       Processing setup function          //
@@ -189,6 +196,19 @@ function setup() {
 
     setUIOffset(g_offsetX, g_offsetY);
 
+
+    g_gui = createGui('My awesome GUI');
+    g_gui.addGlobals('number');
+    g_gui.addGlobals('g_scale');
+    g_gui.addGlobals('g_offsetX');
+    g_gui.addGlobals('g_offsetY');
+    g_gui.addGlobals('g_mouseIsCurrentlyDown');
+    g_gui.addGlobals('g_scrollX');
+    g_gui.addGlobals('g_scrollY');
+
+    g_gui.addGlobals('g_zoomMouseX');
+    g_gui.addGlobals('g_zoomMouseY');
+    g_gui.addGlobals('g_txt');
 }
 
 // Function to build the summary statistics pane.
@@ -324,6 +344,7 @@ function draw(force) {
     }
     background(220);
     drawGrid();
+
 
     /*
     // Define colors
