@@ -31,6 +31,7 @@ P5 for promise visualization.
 
 # E-mails of importance (By Subject)
 
+0. Promise-Resolve-Then Pattern Example (from Alexi)
 1. explicit promisification anti-pattern (from Frank)
 2. additional anti-pattern to look for in the promise profiling project (from Frank)
 	-  https://stackoverflow.com/questions/23803743/what-is-the-explicit-promise-construction-antipattern-and-how-do-i-avoid-it
