@@ -87,6 +87,30 @@ function searchLine(){
   }
 }
 
+// Finds a 'text' in a promise and 
+function searchAndGoToSelectedText(mode){
+    console.log("searchSelectedText("+g_SelectedTextInTextBox+")");
+
+    g_scale = 2;
+    enterOnce = false;
+    for (var i = 0; i < g_bar.entities.length; i++) {
+        if(g_bar.entities[i].datum.line.search(g_SelectedTextInTextBox)>=0){
+            g_bar.entities[i].show=true;
+            g_bar.entities[i].selected=true;
+            if(mode == false){
+                g_offsetX =  -g_bar.entities[i].x*g_scale;
+                g_offsetY =  -g_bar.entities[i].y*g_scale;
+            }else if(mode == true && enterOnce == false){
+                g_offsetX =  -g_bar.entities[i].x*g_scale;
+                g_offsetY =  -g_bar.entities[i].y*g_scale;
+                enterOnce = true;
+            }
+        }else{
+            g_bar.entities[i].show=false;
+        }
+    }
+  }
+
 
 function queriesPanel(x,y,panelWidth,panelHeight){
     // Queries Panel

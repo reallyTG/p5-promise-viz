@@ -175,8 +175,6 @@ class BarChartWidget {
         }
       }
 
-
-
       // Update inteneral Minidiplay position
       this.MiniDisplayX = x;
       this.MiniDisplayY = y;
