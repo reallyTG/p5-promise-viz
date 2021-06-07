@@ -24,6 +24,20 @@
     <script type="text/javascript" src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
 
+<script type="text/javascript">
+  let g_SelectedTextInTextBox = "";
+
+    // If 'mode' is true we find the first selected text
+    // If 'mode' is false we find the last selected text
+    function GotoSelectedText(mode) {
+      var selObj = window.getSelection();
+      g_SelectedTextInTextBox = selObj.getRangeAt(0);
+      alert("Looking for"+g_SelectedTextInTextBox); // Uncomment to debug
+      // do stuff with the range
+      searchAndGoToSelectedText(mode);
+  }
+</script>
+
   </head>
   
   <body>
@@ -45,6 +59,9 @@
             <td valign="top">
                 <p></p>
                   <h3>Selected Promise contents:</h3>
+                  <button onclick="GotoSelectedText(true)">Find First Selected Text in Visualization</button>
+                  <button onclick="GotoSelectedText(false)">Find Last Selected Text in Visualization</button>
+
                     <div class="tab" id="tabController">
                       <button class="tablinks" onclick="viewFile(event, 'readme')" id="defaultOpen">readme</button>
                     </div>
@@ -58,6 +75,8 @@
                 </p>
             </td>
         </tr>
+        
+
     </table>
 
 

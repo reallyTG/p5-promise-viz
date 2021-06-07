@@ -3,8 +3,6 @@
 // Data set
 let dataset = [];
 
-
-
 // Global Array for data promises
 // This is the raw data loaded
 // from a JSON file
@@ -14,10 +12,11 @@ let g_rawPromiseData = {};
 // When set to 'true' performance will be improved.
 let g_disableFriendlyErrors = true;
 
-let g_txt;
+let g_txt ='';
 let g_sourceFilesMap = new Map();
 let g_totalKeys = 0;
 let g_sourceCounts = new Map();
+
 
 // Helper function for loading data
 function loadDataSet(path){
@@ -99,7 +98,10 @@ function preload() {
 
   // filename = "./results/processed-results-c8.json";
 
-  // Load the resulting file
+//  filename = "./results/imagemin/processed-results-imagemin-example.json";
+  filename = "./results/highlight.js-0.json";
+    
+   // Load the resulting file
   // loadDataSet(filename); 
   g_rawPromiseData = loadJSON(filename);
 
@@ -116,6 +118,8 @@ function parseStringAsFileName(input){
   parsed = input.substr(0,input.lastIndexOf(".js")+3);
   return parsed;
 }
+
+var number = 9;
 
 //////////////////////////////////////////////
 //       Processing setup function          //
@@ -188,6 +192,7 @@ function setup() {
     button.mousePressed(changeDebugMode);
 
     setUIOffset(g_offsetX, g_offsetY);
+
 
 }
 
@@ -325,6 +330,7 @@ function draw(force) {
     background(220);
     drawGrid();
 
+
     /*
     // Define colors
     b1 = color(255);
@@ -379,6 +385,4 @@ function draw(force) {
     // Takes as a parameter the height
     UI(height - 120);
     g_bar.minidisplay(0,height-g_miniMapY-10,g_miniMapY);
-
-    
 }

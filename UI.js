@@ -58,16 +58,21 @@ function setUIOffset(x, y){
 function menubar(x,y){
     // Menubar
     // X,Y position -- Offset
-    fill(0);
+    fill(204);
     rect(x, y , width, textSize()+g_padding);
-    fill(255);
-    stroke(192);
+    fill(0);
+    // Text
+    stroke(255);
     text("Pan Offset: (" + round(g_offsetX,1) + "," + round(g_offsetY,3) + ")", x+160, y+textSize());
     // Render framerate
     var rate = frameRate();
     text("FPS:" + int(rate), x+2, y+textSize());
     // Zoom
-    text("zoom scale: "+round(g_scale,3), x+600, y+textSize());
+    text("zoom scale: "+round(g_scale,3), x+640, y+textSize());
+    // Last action
+    stroke(255);
+    fill(0);
+    text("last action:"+g_querySummary,width-250,24);
 }
 
 // Selects all promises with a particular matching string in their data.
@@ -81,6 +86,30 @@ function searchLine(){
       }
   }
 }
+
+// Finds a 'text' in a promise and 
+function searchAndGoToSelectedText(mode){
+    console.log("searchSelectedText("+g_SelectedTextInTextBox+")");
+
+    g_scale = 2;
+    enterOnce = false;
+    for (var i = 0; i < g_bar.entities.length; i++) {
+        if(g_bar.entities[i].datum.line.search(g_SelectedTextInTextBox)>=0){
+            g_bar.entities[i].show=true;
+            g_bar.entities[i].selected=true;
+            if(mode == false){
+                g_offsetX =  -g_bar.entities[i].x*g_scale;
+                g_offsetY =  -g_bar.entities[i].y*g_scale;
+            }else if(mode == true && enterOnce == false){
+                g_offsetX =  -g_bar.entities[i].x*g_scale;
+                g_offsetY =  -g_bar.entities[i].y*g_scale;
+                enterOnce = true;
+            }
+        }else{
+            g_bar.entities[i].show=false;
+        }
+    }
+  }
 
 
 function queriesPanel(x,y,panelWidth,panelHeight){
@@ -157,7 +186,7 @@ function setupPanels(){
     g_QueriesPanel.addWidget(selectIOButton);
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCodeButton = new ButtonWidget("Select All UserCode ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
+    var selectUserCodeButton = new ButtonWidget("Select All User Code ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth+100,queryButtonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
 
     g_searchLineWidget = new SearchBoxWidget("Search line (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
@@ -200,9 +229,5 @@ function UI(y) {
     g_QueriesPanel.Render();
     // Render the metrics panel
     g_MetricsPanel.Render();
-
-    stroke(255);
-    fill(255);
-    text("last action:"+g_querySummary,width-250,24);
 }
 
