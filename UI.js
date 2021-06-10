@@ -87,28 +87,48 @@ function searchLine(){
   }
 }
 
-// Finds a 'text' in a promise and 
+// Finds a 'text' in a promise highlights it, and selects it
+// if 'mode' is true, then we just find the first selected promise
+// if 'mode' is false, then we select the 'last' promise only.
 function searchAndGoToSelectedText(mode){
     console.log("searchSelectedText("+g_SelectedTextInTextBox+")");
 
-    g_scale = 2;
+    g_scale = 4;
     enterOnce = false;
+    let lastIndex = -1;
+
     for (var i = 0; i < g_bar.entities.length; i++) {
+        g_bar.entities[i].show=false;
+        g_bar.entities[i].selected=false;
         if(g_bar.entities[i].datum.line.search(g_SelectedTextInTextBox)>=0){
-            g_bar.entities[i].show=true;
-            g_bar.entities[i].selected=true;
             if(mode == false){
-                g_offsetX =  -g_bar.entities[i].x*g_scale;
-                g_offsetY =  -g_bar.entities[i].y*g_scale;
+                // Record the 'last index' where we found this promise.
+                lastIndex = i;
             }else if(mode == true && enterOnce == false){
-                g_offsetX =  -g_bar.entities[i].x*g_scale;
-                g_offsetY =  -g_bar.entities[i].y*g_scale;
+                g_offsetX =  -g_bar.entities[i].x*g_scale+(width/2);
+                g_offsetY =  -g_bar.entities[i].y*g_scale+(height/2);
                 enterOnce = true;
+                g_bar.entities[i].show=true;
+                g_bar.entities[i].selected=true;
+                lastIndex = i; // By default, this should be the first promise found
             }
-        }else{
-            g_bar.entities[i].show=false;
         }
     }
+
+    // If our mode is false, and we are looking for the last promise,
+    // then simply wait until the end
+    if(mode == false && lastIndex != -1){
+        g_bar.entities[lastIndex].show=true;
+        g_bar.entities[lastIndex].selected=true;
+        g_offsetX =  -g_bar.entities[lastIndex].x*g_scale+(width/2);
+        g_offsetY =  -g_bar.entities[lastIndex].y*g_scale+(height/2);
+    }
+
+    // Report to user if no promises were found based on the 'lastIndex' value
+    if(lastIndex==-1){
+        alert("No source found for:"+g_SelectedTextInTextBox);
+    }
+
   }
 
 
