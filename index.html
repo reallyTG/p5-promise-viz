@@ -32,7 +32,8 @@
     function GotoSelectedText(mode) {
       var selObj = window.getSelection();
       g_SelectedTextInTextBox = selObj.getRangeAt(0);
-      alert("Looking for"+g_SelectedTextInTextBox); // Uncomment to debug
+      
+      alert("Looking for:"+g_SelectedTextInTextBox); // Uncomment to debug
       // do stuff with the range
       searchAndGoToSelectedText(mode);
   }
