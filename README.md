@@ -27,6 +27,8 @@ P5 for promise visualization.
  	- Repository with small examples
 5. [manifest](https://github.com/JSPromiseProfiling/manifest)
  	- Benchmarks in this project
+6. [Promise processing](https://github.com/reallyTG/ProfilingPromisesProcessing)
+	- Repo for processing results.
 
 
 # E-mails of importance (By Subject)
