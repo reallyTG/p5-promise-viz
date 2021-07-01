@@ -67,9 +67,17 @@
 
                     <div class="tab" id="tabController">
                       <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">PromiseBrowser</button>
+                      <button class="tablinks" onclick="viewFile(event, 'AntiPatternBrowser')">AntiPatternBrowser</button>
                     </div>
                     <div id="listOfOpenFiles">
                       <div id="PromiseBrowser" class="tabcontent">
+                        <pre id="promisePre" class="line-numbers" data-line="1-1">
+<!--                   --><code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
+                        </pre>
+                      </div>
+                    </div>
+                    <div id="listOfOpenFiles">
+                      <div id="AntiPatternBrowser" class="tabcontent">
                         <pre id="promisePre" class="line-numbers" data-line="1-1">
 <!--                   --><code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
                         </pre>
