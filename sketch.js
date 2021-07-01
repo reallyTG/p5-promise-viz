@@ -441,9 +441,12 @@ function setGradient(x, y, w, h, c1, c2, axis) {
 let value = 0;
 */
 
-
+// Clear UI events related to
+// if a mouse has been clicked or is otherwise
+// hovering over some component.
 function ClearUIEvents(){
   g_buttonClickEvent = false;
+  g_hoveringOverWidget = false;
 }
 
 //////////////////////////////////////////////
@@ -452,14 +455,14 @@ function ClearUIEvents(){
 function draw(force) {
     // Clear the state of any UI events
     ClearUIEvents();
-
     // Avoid updating sketch if mouse is out of bounds
     if (!force && (mouseX > width || mouseX < 0 || mouseY > height)) {
       return;
     }
+    // Draw the default background color
     background(220);
+    // Render a grid over the visualization
     drawGrid();
-
 
     /*
     // Define colors
@@ -480,8 +483,9 @@ function draw(force) {
     setGradient(50, 190, 540, 80, c2, c1, X_AXIS);
     */
 
-    //  push();
-    //  translate(mx,my);
+    // Handle UI Update events
+    UIUpdate();
+
     // Retrieve user input
     Controls();
     
@@ -513,6 +517,8 @@ function draw(force) {
     //       otherwise the scale will be
     //       thrown off.
     // Takes as a parameter the height
-    UI(height - 120);
+    UIRender(height - 120);
+
+    // Draw the minidisplay
     g_bar.minidisplay(0,height-g_miniMapY-10,g_miniMapY);
 }

@@ -5,6 +5,10 @@
 // on a button we do not interact with the other parts
 // of the visualization.
 let g_buttonClickEvent = true;
+// Similiar to the above, handle the condition where
+// the mouse is hovering over a widget and we may not
+// want to do anything.
+let g_hoveringOverWidget = true;
 
 // Button Widget
 class ButtonWidget{
@@ -28,6 +32,22 @@ class ButtonWidget{
 
     SetText(text){
         this.text = text;
+    }
+
+    // Update a Button
+    // Typically this just updates the buttons 'state'
+    Update(){
+        if(mouseX > this.x && mouseX < this.x+this.w){
+            if(mouseY > this.y && mouseY < this.y+this.h){
+                // Toggle flag to indicate we are hovering over some widget
+                g_hoveringOverWidget = true;
+                console.log(this.text+":"+g_hoveringOverWidget);
+
+                if(g_bar.MouseInMiniDisplay()){
+                    return;
+                }
+            }
+        }
     }
 
     // Render a button
@@ -57,7 +77,9 @@ class ButtonWidget{
                 fill(0);
                 text(this.text, this.x+2, this.y+textSize());
                 if(mouseIsPressed && mouseButton===LEFT){
+                    // Toggle flag to indicate a button click took place
                     g_buttonClickEvent = true;
+                    // Change visual display of button
                     fill(64,192);
                     stroke(64,192);
                     rect(this.x,this.y,this.w,this.h);
@@ -69,8 +91,6 @@ class ButtonWidget{
                 }
             }
         }
-
-
 
     }
 }

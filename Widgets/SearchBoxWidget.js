@@ -30,6 +30,10 @@ class SearchBoxWidget{
         return this.h;
     }
 
+    Update(){
+        
+    }
+
     Render(){
         // Retreive the value for search box
         this.searchInput.value();

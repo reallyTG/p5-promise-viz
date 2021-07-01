@@ -25,6 +25,10 @@ class VisTextWidget{
         return this.h;
     }
 
+    Update(){
+        
+    }
+
     Render(){
         textSize(20);
         textFont("monospace", 20);

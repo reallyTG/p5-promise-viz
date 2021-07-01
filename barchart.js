@@ -2,13 +2,13 @@
 //
 ///////////////////////////////////////////////
 class BarChartWidget {
-    constructor(x, y, w, h, data) {
+    constructor(x, y, w, h, promiseData) {
         print("Constructing BarChartWidget");
         this.x = x;                 // x position of barchart
         this.y = y;                 // y position of barchart
         this.w = w;                 // Width of the barchart
         this.h = h;                 // height of the barchart
-        this.data = data;           // Raw data stored in the bar chart
+        this.data = promiseData;           // Raw promise data stored in the bar chart
 
         // Store positions of the minidisplay
         // This is done so that mouse clicks are ignored from the minidisplay
@@ -60,10 +60,8 @@ class BarChartWidget {
             if(this.data[i].io){
               this.totalFunctionswithIO++;
             }
-            
-            
         }
-        // Compute average duration
+        // Compute average duration of promises
         this.averageDuration = this.totalElapsedTime / this.totalPromises;
 
         // Convert to seconds from nanoseconds
@@ -89,6 +87,8 @@ class BarChartWidget {
         print("range: "+range);
 
         // Create the entities from the data
+        // These are each of the individual 'bars' that
+        // are going to be rendered on the bar chart.
         for (var i = 0; i < this.data.length; i++) {
             // Extra information out of our data
             // The data that we are extracting from is a promiseData object.
@@ -112,7 +112,6 @@ class BarChartWidget {
 
         // Set the height of the bar chart
         this.h = this.data.length * entityHeight;
-
     }
 
   GetMetrics(){
@@ -125,6 +124,7 @@ class BarChartWidget {
 
   // startRange and endRange are
   // the values along the x-axis for which we want to show data
+  // startRange and endRange are for the 'time'
   display(startRange, endRange) {
     // Background
     fill(128, 128);
@@ -136,7 +136,6 @@ class BarChartWidget {
     this.yaxis(1);
     // Render all of the entities in our collection
     for (var i = 0; i < this.entities.length; i++) {
-      
         // Display all of the entities
         if(this.entities[i].show==true){
             this.entities[i].display();
@@ -196,7 +195,7 @@ class BarChartWidget {
         var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
         
         // Draw in the mini-map what is currently visible
-        if(this.entities[i].show){
+        if(this.entities[i].show==true){
           // Draw a green box
           fill(0,255,0,255);
           stroke(0,255,0,255);
@@ -206,7 +205,8 @@ class BarChartWidget {
             stroke(75,0,130,255);
           }
         }else{
-          // Draw a green box
+          // Draw a green box with a much lower opacity if it is not
+          // currently visible.
           fill(255,255,255,4);
           stroke(255,255,255,4);
         }
@@ -235,7 +235,7 @@ class BarChartWidget {
         ellipse(mouseX, y+h, 2, 2);
 
         line(mouseX,y,mouseX,y+h);
-        if (mouseIsPressed && mouseButton === LEFT && g_buttonClickEvent===false) {
+        if (mouseIsPressed && mouseButton === LEFT && g_buttonClickEvent==false && g_hoveringOverWidget==false) {
             g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
             g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
                                                                         // a minimum the hieght of the minimap display.
@@ -264,7 +264,6 @@ class BarChartWidget {
       // text(currentXEnd,200,240);
     }
   }
-
 
     // Points any selected node to its trigger id.
     pointToAllTriggers(node){
@@ -315,6 +314,8 @@ class BarChartWidget {
 
 
     // Only show selected nodes
+    // This changes the internal state in each of the
+    // enties objects.
     filterShow(state){
       var itemsSelected=0;
 
@@ -327,6 +328,8 @@ class BarChartWidget {
     }
 
     // Only show selected nodes
+      // This changes the internal state in each of the
+    // enties objects.
     filterShowSelected(state){
       var itemsSelected=0;
 
