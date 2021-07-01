@@ -22,7 +22,7 @@ let g_hoveredID = -1;
 let g_querySummary = '';
 
 // y position of the miniDisplay
-var g_miniMapY = 300
+var g_miniMapHeight = 300
 
 // input
 let g_searchLineWidget;

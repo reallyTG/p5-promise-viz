@@ -201,7 +201,7 @@ function setup() {
     createAntiPatternBrowserSummary();
 
     // Create a bar chart
-    g_bar = new BarChartWidget(50, 100, 200, 100, g_dataset);
+    g_bar = new BarChartWidget(50, 100, width, height, g_dataset);
 
     // Performance Tuning
     // Parse each of the file names from the data set
@@ -520,5 +520,5 @@ function draw(force) {
     UIRender(height - 120);
 
     // Draw the minidisplay
-    g_bar.minidisplay(0,height-g_miniMapY-10,g_miniMapY);
+    g_bar.minidisplay(0,height-g_miniMapHeight,g_miniMapHeight);
 }

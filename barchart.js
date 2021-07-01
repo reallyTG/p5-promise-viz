@@ -111,6 +111,7 @@ class BarChartWidget {
         }
 
         // Set the height of the bar chart
+        // This is primarily used for the 'background rendering'
         this.h = this.data.length * entityHeight;
     }
 
@@ -126,7 +127,7 @@ class BarChartWidget {
   // the values along the x-axis for which we want to show data
   // startRange and endRange are for the 'time'
   display(startRange, endRange) {
-    // Background
+    // Background/Boundary of the bar chart
     fill(128, 128);
     stroke(192);
     rect(this.x, this.y, this.w, this.h);
@@ -174,6 +175,11 @@ class BarChartWidget {
         }
       }
 
+      console.log("height:"+height);
+      console.log("y     :"+y);
+      console.log("h     :"+h);
+      console.log("this.h     :"+this.h);
+
       // Update inteneral Minidiplay position
       this.MiniDisplayX = x;
       this.MiniDisplayY = y;
@@ -193,15 +199,16 @@ class BarChartWidget {
       for (var i = 0; i < this.entities.length; i++) {
         // Map to the minimap
         var xRelative = map(this.entities[i].x,0,this.w, 0,width);
-        var yRelative = map(this.entities[i].y,0,this.h, 0,h);
+        var yRelative = map(this.entities[i].y,0,y, 0,h);
 
+        // Compute boundaries of the maximum position of an entities x and y position
         maxXPostion = max(maxXPostion,this.entities[i].x);
         maxYPosition = max(maxYPosition,this.entities[i].y);
 
         // figure out the relative width as well
         // Note: It should be at least 1 pixel wide if there is a promise that exists
-        var widthRelative = map(this.entities[i].w,0,this.w, 0,width);
-        var heightRelative = map(this.entities[i].h,0,this.h, 0,h);
+        var widthRelative  = map(this.entities[i].w,0,this.w, 0,width);
+        var heightRelative = map(this.entities[i].h,0,y, 0,h);
         
         // Draw in the mini-map what is currently visible
         if(this.entities[i].show==true){
@@ -228,12 +235,11 @@ class BarChartWidget {
         //       Here's a hack that will make the promises slightly bigger relative
         //       to how many total promises have been selected.
         //if(totalPromisesShown < this.entities.length){
-        //  rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative*5,heightRelative*5);
+        //  rect(x+xRelative,yRelative+y+g_miniMapHeight-h,widthRelative*5,heightRelative*5);
         //}else{
-        //  rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
+        //  rect(x+xRelative,yRelative+y+g_miniMapHeight-h,widthRelative,heightRelative);
        // }
-        rect(x+xRelative,yRelative+y+g_miniMapY-h,widthRelative,heightRelative);
-
+        rect(x+xRelative,yRelative+y,widthRelative,heightRelative);
       }
 
       // Slider
@@ -246,7 +252,7 @@ class BarChartWidget {
         line(mouseX,y,mouseX,y+h);
         if (mouseIsPressed && mouseButton === LEFT && g_buttonClickEvent==false && g_hoveringOverWidget==false) {
             g_offsetX = -map(mouseX,width,-width,this.w,-this.w)*g_scale;
-            g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapY; // Centered the mini map a bit more by adding to offset at
+            g_offsetY = map(mouseY,y,y+h,0,-this.h)*g_scale +g_miniMapHeight; // Centered the mini map a bit more by adding to offset at
                                                                         // a minimum the hieght of the minimap display.
         }
       }
@@ -275,15 +281,17 @@ class BarChartWidget {
       // Draw a rectangular region over where we are currently mousing around.
       if(!this.MouseInMiniDisplay()){
         let whereX = -map(g_offsetX-mouseX,0,this.w,0,width)/g_scale;
-        var whereY = -map(g_offsetY-mouseY,0,this.h,0,h)/g_scale;
+        var whereY = -map(g_offsetY-mouseY,0,y,0,h)/g_scale;
+
         console.log(whereX+":"+whereY);
-        fill(255,0,0,128);
-        stroke(255,0,0,0);
+        fill(255,255,255,128);
+        stroke(0,0,0,255);
         // cap the 'whereY' value
         whereY=max(whereY,0);
-        console.log("whereY"+whereY);
-        console.log("h="+h);
+        //console.log("whereY"+whereY);
+        //console.log("h="+h);
         rect(whereX-25,whereY+(height-h)-25,50,50);
+        rect(whereX-5,whereY+(height-h)-5,5,5);
       }
     }
   }
