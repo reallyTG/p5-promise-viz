@@ -9,8 +9,8 @@ let g_mouseIsCurrentlyDown = 0;
 let g_mouseBeforeDownX=0;
 let g_mouseBeforeDownY=0;
 
-var g_scrollX=0;
-var g_scrollY=0;
+let g_scrollX=0;
+let g_scrollY=0;
 
 // Variables to hold mouse position
 // for when we zoom
@@ -33,6 +33,27 @@ function resetView(state){
 function ZoomToFit(state){
     console.log("Zoom To Fit");
 
+    var xAspect = width  / g_bar.maxXPosition;
+    var yAspect = height / g_bar.maxYPosition;
+
+    console.log("xAspect:"+xAspect);
+    console.log("yAspect:"+yAspect);
+
+    if(xAspect < yAspect){
+        g_offsetX = 0;
+        g_offsetY = -yAspect*g_bar.maxYPosition + (yAspect*height);
+        g_scale = xAspect/2;
+    }else{
+        g_offsetX = 0;
+        g_offsetY = 0;
+        g_scale = yAspect;
+    }
+
+
+    //g_scale = 0.15;
+
+
+    /*
     var fov = 60; // TODO: Figure out actual field of view
     // Compute aspect ratio of the scene
     var aspectRatio = width/height;
@@ -61,6 +82,7 @@ function ZoomToFit(state){
     }else{
 
     }
+    */
 }
 
 

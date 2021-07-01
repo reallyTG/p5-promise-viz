@@ -19,6 +19,11 @@ class BarChartWidget {
         // Hiding the mini display avoids rendering, so
         // overall performance of program will be faster.
         this.showMiniDisplay = true;
+        // Keep track of some maximum values for the width and height
+        // These two values are later used to map a 'rectangular region
+        // of where the cursor is in the mini-display
+        this.maxXPosition = 0;
+        this.maxYPosition =0;
 
         this.entities = [];         // Stores all of the entities in the bar chart, these are the 'rectangles' that are hovered on
         var entityHeight = 5;       // The actual height of the rectangle which is rendered
@@ -179,11 +184,11 @@ class BarChartWidget {
       this.MiniDisplayX = x;
       this.MiniDisplayY = y;
       this.MiniDisplayH = h;
-      // Keep track of some maximum values for the width and height
-      // These two values are later used to map a 'rectangular region
-      // of where the cursor is in the mini-display
-      var maxXPostion = 0;
-      var maxYPosition =0;
+
+      // Reset the positions
+      this.maxXPosition = 0;
+      this.maxYPosition = 0;
+
       // Background
       stroke(0,255);
       fill(255,0,0,192);
@@ -197,8 +202,8 @@ class BarChartWidget {
         var yRelative = map(this.entities[i].y,0,y, 0,h);
 
         // Compute boundaries of the maximum position of an entities x and y position
-        maxXPostion = max(maxXPostion,this.entities[i].x);
-        maxYPosition = max(maxYPosition,this.entities[i].y);
+        this.maxXPosition = max(this.maxXPosition,this.entities[i].x);
+        this.maxYPosition = max(this.maxYPosition,this.entities[i].y);
 
         // figure out the relative width as well
         // Note: It should be at least 1 pixel wide if there is a promise that exists
@@ -278,7 +283,7 @@ class BarChartWidget {
         let whereX = -map(g_offsetX-mouseX,0,this.w,0,width)/g_scale;
         var whereY = -map(g_offsetY-mouseY,0,y,0,h)/g_scale;
 
-        console.log(whereX+":"+whereY);
+        //console.log(whereX+":"+whereY);
         fill(255,255,255,128);
         stroke(0,0,0,255);
         // cap the 'whereY' value

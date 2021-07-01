@@ -99,7 +99,6 @@ function preload() {
   // Send this one to Frank.
   // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
 
-  // filename = "./results/processed-results-c8.json";
   // Good example to highlight (as a positive example!)
   // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
 
