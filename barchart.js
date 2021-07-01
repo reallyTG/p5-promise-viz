@@ -175,11 +175,6 @@ class BarChartWidget {
         }
       }
 
-      console.log("height:"+height);
-      console.log("y     :"+y);
-      console.log("h     :"+h);
-      console.log("this.h     :"+this.h);
-
       // Update inteneral Minidiplay position
       this.MiniDisplayX = x;
       this.MiniDisplayY = y;
