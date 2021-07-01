@@ -41,7 +41,7 @@ class ButtonWidget{
             if(mouseY > this.y && mouseY < this.y+this.h){
                 // Toggle flag to indicate we are hovering over some widget
                 g_hoveringOverWidget = true;
-                console.log(this.text+":"+g_hoveringOverWidget);
+                //console.log(this.text+":"+g_hoveringOverWidget);
 
                 if(g_bar.MouseInMiniDisplay()){
                     return;

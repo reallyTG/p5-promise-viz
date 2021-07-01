@@ -12,6 +12,11 @@ let g_detailTextWidget;
 let g_metricsTextWidget;
 let g_antiPatternsTextWidget;
 
+// Stores the indices of all matching
+// promixes of the text. Useful for
+// navigation of promises.
+let g_PromiseTextSearchResults = [];
+let g_SearchIndex = -1;
 
 // Global Details string
 // Currently hovered element
@@ -82,7 +87,7 @@ function menubar(x,y){
 function searchLine(){
   console.log("searchLine");
   for (var i = 0; i < g_bar.entities.length; i++) {
-      if(g_bar.entities[i].datum.line.includes(g_searchLineWidget.GetText())>=0){
+      if(g_bar.entities[i].datum.line.includes(g_searchLineWidget.GetText())==true){
           g_bar.entities[i].show=true;
       }else{
           g_bar.entities[i].show=false;
@@ -96,17 +101,24 @@ function searchLine(){
 function searchAndGoToSelectedText(mode){
     console.log("searchSelectedText("+g_SelectedTextInTextBox+")");
 
+    // Clear previous search results
+    g_PromiseTextSearchResults = [];
+
     g_scale = 4;
     enterOnce = false;
     let lastIndex = -1;
+    g_SearchIndex = -1;
 
     for (var i = 0; i < g_bar.entities.length; i++) {
         g_bar.entities[i].show=false;
         g_bar.entities[i].selected=false;
-        if(g_bar.entities[i].datum.line.includes(g_SelectedTextInTextBox.toString()) >=0 ){
+
+        if(g_bar.entities[i].datum.line.includes(g_SelectedTextInTextBox) == true ){
+            g_PromiseTextSearchResults.push(i);
             if(mode == false){
                 // Record the 'last index' where we found this promise.
                 lastIndex = i;
+                g_SearchIndex = i;
             }else if(mode == true && enterOnce == false){
                 g_offsetX =  -g_bar.entities[i].x*g_scale+(width/2);
                 g_offsetY =  -g_bar.entities[i].y*g_scale+(height/2);
@@ -114,6 +126,7 @@ function searchAndGoToSelectedText(mode){
                 g_bar.entities[i].show=true;
                 g_bar.entities[i].selected=true;
                 lastIndex = i; // By default, this should be the first promise found
+                g_SearchIndex=i;
             }
         }
     }
@@ -134,6 +147,47 @@ function searchAndGoToSelectedText(mode){
 
   }
 
+function NextSelected(){
+    // Handle case where no text has been searched
+    if(g_PromiseTextSearchResults.length<=0){
+        return;
+    }
+    // Ensure at least one result has been found    
+    if(g_SearchIndex != -1){
+        // Search for next item
+        g_SearchIndex++;
+        // Handle wrap around
+        if(g_SearchIndex > g_PromiseTextSearchResults.length-1){
+            g_SearchIndex = g_PromiseTextSearchResults[0];
+        }
+        // Target the selected item
+        g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].show=true;
+        g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].selected=true;
+        g_offsetX =  -g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].x*g_scale+(width/2);
+        g_offsetY =  -g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].y*g_scale+(height/2);
+    }
+}
+
+function PreviousSelected(){
+    // Handle case where no text has been searched
+    if(g_PromiseTextSearchResults.length<=0){
+        return;
+    }
+    // Ensure at least one result has been found    
+    if(g_SearchIndex!=-1){
+        // Search for next item
+        g_SearchIndex--;
+        // Handle wrap around
+        if(g_SearchIndex < 0 ){
+            g_PromiseTextSearchResults[g_PromiseTextSearchResults.length-1];
+        }
+        // Target the selected item
+        g_bar.entities[g_SearchIndex].show=true;
+        g_bar.entities[g_SearchIndex].selected=true;
+        g_offsetX =  -g_bar.entities[g_SearchIndex].x*g_scale+(width/2);
+        g_offsetY =  -g_bar.entities[g_SearchIndex].y*g_scale+(height/2);
+    }
+}
 
 function queriesPanel(x,y,panelWidth,panelHeight){
     // Queries Panel
@@ -178,13 +232,13 @@ function setupPanels(){
     var g_QueriesPanelYPosition = 120;
     g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,queryButtonWidth*2,180);
     
-    var callFilterShow = function (){g_bar.filterShow(1)};
-    var showAllButton = new ButtonWidget("Show All",0,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callFilterShow);
-    g_QueriesPanel.addWidget(showAllButton);
+    var callSelectAll = function (){g_bar.selectState(1)};
+    var selectStateButton = new ButtonWidget("Select All",0,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callSelectAll);
+    g_QueriesPanel.addWidget(selectStateButton);
 
-    var callFilterShowNone = function (){g_bar.filterShow(0)};
-    var showNoneButton = new ButtonWidget("Show None",0+queryButtonWidth,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callFilterShowNone);
-    g_QueriesPanel.addWidget(showNoneButton);
+    var callSelectAllNone = function (){g_bar.selectState(0)};
+    var selectStateButton = new ButtonWidget("Select None",0+queryButtonWidth,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callSelectAllNone);
+    g_QueriesPanel.addWidget(selectStateButton);
 
     var callFilterShowSelected = function (){g_bar.filterShowSelected(1)};
     var showSelectedButton = new ButtonWidget("Show Selected",0,0+queryButtonHeight*1,queryButtonWidth,queryButtonHeight,callFilterShowSelected);
@@ -194,13 +248,13 @@ function setupPanels(){
     var showSelectedButton = new ButtonWidget("Show Unselected",0+queryButtonWidth,0+queryButtonHeight*1,queryButtonWidth,queryButtonHeight,callFilterShowUnSelected);
     g_QueriesPanel.addWidget(showSelectedButton);
 
-    var callSelectAll = function (){g_bar.selectState(1)};
-    var selectStateButton = new ButtonWidget("Select All",0,0+queryButtonHeight*2,queryButtonWidth,queryButtonHeight,callSelectAll);
-    g_QueriesPanel.addWidget(selectStateButton);
+    var callFilterShow = function (){g_bar.filterShow(1)};
+    var showAllButton = new ButtonWidget("Show All ("+g_bar.totalPromises+")",0,0+queryButtonHeight*2,queryButtonWidth,queryButtonHeight,callFilterShow);
+    g_QueriesPanel.addWidget(showAllButton);
 
-    var callSelectAllNone = function (){g_bar.selectState(0)};
-    var selectStateButton = new ButtonWidget("Select None",0+queryButtonWidth,0+queryButtonHeight*2,queryButtonWidth,queryButtonHeight,callSelectAllNone);
-    g_QueriesPanel.addWidget(selectStateButton);
+    var callFilterShowNone = function (){g_bar.filterShow(0)};
+    var showNoneButton = new ButtonWidget("Show None",0+queryButtonWidth,0+queryButtonHeight*2,queryButtonWidth,queryButtonHeight,callFilterShowNone);
+    g_QueriesPanel.addWidget(showNoneButton);
 
     var callSelectIO = function (){g_bar.selectIO(1)};
     var selectIOButton = new ButtonWidget("Select All IO ("+g_bar.totalFunctionswithIO+")",0,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectIO);

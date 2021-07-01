@@ -35,6 +35,7 @@
       g_SelectedTextInTextBox = selObj.getRangeAt(0).toString();
       console.log(g_SelectedTextInTextBox);
       
+      document.getElementById('searchedText').value = g_SelectedTextInTextBox;
       alert("Looking for:"+g_SelectedTextInTextBox); // Uncomment to debug
       // do stuff with the range
       searchAndGoToSelectedText(mode);
@@ -62,9 +63,16 @@
             <td valign="top">
                 <p></p>
                   <h3>Selected Promise contents:</h3>
-                  <button onclick="GotoSelectedText(true);">Find First Selected Text in Visualization</button>
-                  <button onclick="GotoSelectedText(false);">Find Last Selected Text in Visualization</button>
-
+                  <div id="searchTools">
+                    <button onclick="GotoSelectedText(true);">Find First Selected Text in Visualization</button>
+                    <button onclick="NextSelected();">Find Next</button>
+                    <button onclick="PreviousSelected();">Find Previous</button>
+                    <button onclick="GotoSelectedText(false);">Find Last Selected Text in Visualization</button>
+                    <div>
+                        <textarea id="searchedText" name="searchedText" rows="4" cols="500" style="width: 700px;" readonly>
+                        </textarea>
+                    </div>
+                  </div>
                     <div class="tab" id="tabController">
                       <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">PromiseBrowser</button>
                       <button class="tablinks" onclick="viewFile(event, 'AntiPatternBrowser')">AntiPatternBrowser</button>
