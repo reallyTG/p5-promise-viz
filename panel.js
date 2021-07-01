@@ -49,6 +49,7 @@ class Panel{
                 // this also indicates that the menu is highlighted and
                 // interactable.
                 fill(255,255);
+                stroke(192,255);
                 rect(this.x, this.y-textSize(), this.w, textSize());
 
                 // Keep track of the last time since we clicked on
@@ -65,7 +66,6 @@ class Panel{
                     this.lastClickTime = millis();
                 }
                 
-
                 // Handle the event that a middle click was made
                 // and then the panel can be dragged
                 if(mouseIsPressed && mouseButton === CENTER){
@@ -75,8 +75,11 @@ class Panel{
         }else{
             // Render the text of the panel
             fill(204,255);
+            stroke(192,255);
             rect(this.x, this.y-textSize(), this.w, textSize());
         }
+
+        
 
         // If the middle mouse is not being pressed, stop the dragging event
         // otherwise, continue dragging the panel as long as the middle mouse
@@ -85,6 +88,7 @@ class Panel{
             this.centerMouseWasPressed = false;
         }
         else if(this.centerMouseWasPressed == true){
+            g_hoveringOverWidget = true; // Avoid panning
             this.x -= (lastX - mouseX);
             this.y -= (lastY - mouseY);
         } 
@@ -102,6 +106,7 @@ class Panel{
         // Draw background of the panel
         fill(0,200);
         rect(this.x, this.y, this.w, this.h);
+        
 
         // Render all of the weidgets that belong to this panel one after the other.
         for(var i=0; i < this.widgets.length;i++){

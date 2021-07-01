@@ -4,12 +4,15 @@ class SearchBoxWidget{
         this.text = text;
         this.x = x;
         this.y = y;
-        this.h = h;
+
         this.callback = callback;
 
         // Create some widgets
         this.searchInput = createInput(); // Located in UI.js
         this.searchButton = createButton(this.text);
+
+        this.w = this.searchInput.width+this.searchButton.width;
+        this.h = this.searchButton.height;
     }
 
     SetPos(x,y){
@@ -31,7 +34,13 @@ class SearchBoxWidget{
     }
 
     Update(){
-        
+        if(mouseX > this.x && mouseX < this.x+this.w){
+            if(mouseY > this.y && mouseY < this.y+this.h){
+                // Toggle flag to indicate we are hovering over some widget
+                g_hoveringOverWidget = true;
+                console.log(this.text+":"+g_hoveringOverWidget);
+            }
+        }
     }
 
     Render(){
