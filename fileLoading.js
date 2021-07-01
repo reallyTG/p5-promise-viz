@@ -126,11 +126,9 @@ function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
 }
 
 /* Create this:
-
-
-                      <div class="tab">
-                      <button class="tablinks" onclick="viewFile(event, 'readme')" id="defaultOpen">readme</button>
-                    </div>
+    <div class="tab">
+        <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">PromiseBrowser</button>
+    </div>
 */
 
 // Start reading a file from the a file box specified by

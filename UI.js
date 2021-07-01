@@ -5,9 +5,13 @@ let g_SettingsPanel;
 let g_DetailsPanel;
 let g_QueriesPanel;
 let g_MetricsPanel;
+let g_AntiPatternsPanel;
+
 // Text Widgets
 let g_detailTextWidget;
 let g_metricsTextWidget;
+let g_antiPatternsTextWidget;
+
 
 // Global Details string
 // Currently hovered element
@@ -143,8 +147,6 @@ function queriesPanel(x,y,panelWidth,panelHeight){
 }
 
 
-
-
 // Setup UI panels
 function setupPanels(){
     // Setup the Settings Panel
@@ -226,6 +228,13 @@ function setupPanels(){
     // Details panel widgets
     g_metricsTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_MetricsPanel.addWidget(g_metricsTextWidget);
+
+    g_AntiPatternsPanel = new Panel("AntiPatterns",1100,150,500,80);
+    g_antiPatternsTextWidget = new VisTextWidget("VisTextWidget",0,0);
+    g_AntiPatternsPanel.addWidget(g_antiPatternsTextWidget);
+
+    // Update our antipatterns panel text
+    g_antiPatternsTextWidget.SetText("Antipatterns found: "+g_totalAntiPatterns);
 }
 
 
@@ -249,5 +258,7 @@ function UI(y) {
     g_QueriesPanel.Render();
     // Render the metrics panel
     g_MetricsPanel.Render();
+    // Render the Antipatterns panel
+    g_AntiPatternsPanel.Render();
 }
 

@@ -1,12 +1,20 @@
-
-
 // Data set
-let dataset = [];
+// This is what gets loaded into the g_barChart data structure
+let g_dataset = [];
 
 // Global Array for data promises
 // This is the raw data loaded
 // from a JSON file
+// This data consists of several components including:
+//  - Antipatterns
+//  - files
+//  - promises
 let g_rawPromiseData = {};
+
+// Used to track total antipatterns
+let g_totalAntiPatterns = 0;
+let g_AntiPatternData = [];
+
 
 // Improves the performance of the visualization
 // When set to 'true' performance will be improved.
@@ -83,7 +91,6 @@ function preload() {
   // For some reason this one doesn't work on the server anymore.
   // filename = "results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
 
-
   // Constructed example.
   // I was expecting this to be worse, given the Promise.all with the await inside.
   // filename = "results/processed-results-imagemin-example.json";
@@ -98,10 +105,10 @@ function preload() {
 
   // filename = "./results/processed-results-c8.json";
 
- // filename = "./results/imagemin/processed-results-imagemin-example.json";
+  // filename = "./results/imagemin/processed-results-imagemin-example.json";
   // filename = "./results/highlight.js-0.json";
 
-  // Anti-patterns .json file
+  // 6/30/21 Anti-patterns .json file
   filename = "./results/processed-results-1625068862120.json"
     
    // Load the resulting file
@@ -155,7 +162,7 @@ function setup() {
                                     elements[key].endCol,
                                     elements[key].file
                                   );
-        dataset.push(temp);
+        g_dataset.push(temp);
 
         let thisSource = elements[key].source;
         if (!sourceCounts.has(thisSource)) {
@@ -168,16 +175,35 @@ function setup() {
     // Update global variable so as to give other parts of the Vis access to it.
     g_sourceCounts = sourceCounts;
 
-    createSummary();
+    createPromiseBrowserSummary();
 
     // Create a bar chart
-    g_bar = new BarChartWidget(50, 100, 200, 100, dataset);
+    g_bar = new BarChartWidget(50, 100, 200, 100, g_dataset);
 
     // Performance Tuning
     // Parse each of the file names from the data set
     for(var k in g_rawPromiseData["promises"]){
       g_totalKeys++;
     }
+
+    var antiPatternElements = g_rawPromiseData.antipatterns;
+    for(var key in antiPatternElements){
+      g_totalAntiPatterns++;
+
+      var temp = new AntiPattern(
+        antiPatternElements[key].endCol,
+        antiPatternElements[key].endLine,
+        antiPatternElements[key].file,
+        antiPatternElements[key].patternID,
+        antiPatternElements[key].startCol,
+        antiPatternElements[key].startLine
+      );
+      
+
+      g_AntiPatternData.push(temp);
+    }
+
+    console.log("g_totalAntiPatterns: "+g_totalAntiPatterns);
 
     // Alexi: Never used.
     // for(var i=0; i < g_totalKeys;i++){
@@ -200,9 +226,9 @@ function setup() {
 }
 
 // Function to build the summary statistics pane.
-// Currently, write out to promises into the readme.
-function createSummary() {
-  let readmeElement = document.getElementById('readme');
+// Currently, write out to promises into the PromiseBrowser.
+function createPromiseBrowserSummary() {
+  let promiseBrowserElement = document.getElementById('PromiseBrowser');
 
   // Build string.
   let summaryStatisticsString = '';
@@ -268,8 +294,8 @@ function createSummary() {
 
   summaryHTMLElement.appendChild(tableBody);
 
-  readmeElement.removeChild(readmeElement.children[0]);
-  readmeElement.appendChild(summaryHTMLElement); 
+  promiseBrowserElement.removeChild(promiseBrowserElement.children[0]);
+  promiseBrowserElement.appendChild(summaryHTMLElement); 
 }
 
 function cry() {
