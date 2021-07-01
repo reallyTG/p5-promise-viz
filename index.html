@@ -31,12 +31,13 @@
     // If 'mode' is false we find the last selected text
     function GotoSelectedText(mode) {
       var selObj = window.getSelection();
-      g_SelectedTextInTextBox = selObj.getRangeAt(0);
+      g_SelectedTextInTextBox = selObj.getRangeAt(0).toString();
+      console.log(g_SelectedTextInTextBox);
       
       alert("Looking for:"+g_SelectedTextInTextBox); // Uncomment to debug
       // do stuff with the range
       searchAndGoToSelectedText(mode);
-  }
+    }
 </script>
 
   </head>
@@ -60,8 +61,8 @@
             <td valign="top">
                 <p></p>
                   <h3>Selected Promise contents:</h3>
-                  <button onclick="GotoSelectedText(true)">Find First Selected Text in Visualization</button>
-                  <button onclick="GotoSelectedText(false)">Find Last Selected Text in Visualization</button>
+                  <button onclick="GotoSelectedText(true);">Find First Selected Text in Visualization</button>
+                  <button onclick="GotoSelectedText(false);">Find Last Selected Text in Visualization</button>
 
                     <div class="tab" id="tabController">
                       <button class="tablinks" onclick="viewFile(event, 'readme')" id="defaultOpen">readme</button>

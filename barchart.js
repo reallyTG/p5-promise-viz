@@ -200,6 +200,11 @@ class BarChartWidget {
           // Draw a green box
           fill(0,255,0,255);
           stroke(0,255,0,255);
+          // If the entity has IO then color it a different color
+          if(this.entities[i].datum.io){
+            fill(75,0,130,255);
+            stroke(75,0,130,255);
+          }
         }else{
           // Draw a green box
           fill(255,255,255,4);

@@ -59,7 +59,7 @@ function preload() {
   
   // Mar 1
   // filename = "./results/FixedResultsMar2021/processed-results-readdirp-correct.json";
-  filename = "./results/processed-results-1612378731829.json";
+  // filename = "./results/processed-results-1612378731829.json";
   // filename = "./results/FixedResultsMar2021/processed-results-readdirp-with-change.json";
   // filename = "./results/processed-results-readdirp-promiseall.json";
   /*
@@ -98,8 +98,11 @@ function preload() {
 
   // filename = "./results/processed-results-c8.json";
 
-//  filename = "./results/imagemin/processed-results-imagemin-example.json";
-  filename = "./results/highlight.js-0.json";
+ // filename = "./results/imagemin/processed-results-imagemin-example.json";
+  // filename = "./results/highlight.js-0.json";
+
+  // Anti-patterns .json file
+  filename = "./results/processed-results-1625068862120.json"
     
    // Load the resulting file
   // loadDataSet(filename); 

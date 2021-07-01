@@ -79,7 +79,7 @@ function menubar(x,y){
 function searchLine(){
   console.log("searchLine");
   for (var i = 0; i < g_bar.entities.length; i++) {
-      if(g_bar.entities[i].datum.line.search(g_searchLineWidget.GetText())>=0){
+      if(g_bar.entities[i].datum.line.includes(g_searchLineWidget.GetText())>=0){
           g_bar.entities[i].show=true;
       }else{
           g_bar.entities[i].show=false;
@@ -100,7 +100,7 @@ function searchAndGoToSelectedText(mode){
     for (var i = 0; i < g_bar.entities.length; i++) {
         g_bar.entities[i].show=false;
         g_bar.entities[i].selected=false;
-        if(g_bar.entities[i].datum.line.search(g_SelectedTextInTextBox)>=0){
+        if(g_bar.entities[i].datum.line.includes(g_SelectedTextInTextBox.toString()) >=0 ){
             if(mode == false){
                 // Record the 'last index' where we found this promise.
                 lastIndex = i;
