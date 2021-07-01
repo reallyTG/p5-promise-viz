@@ -3,6 +3,7 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
     <script src="fileLoading.js"></script>
     <script src="promiseData.js"></script>
+    <script src="AntiPattern.js"></script>
     <script src="Widgets/VisTextWidget.js"></script>
     <script src="panel.js"></script>
     <script src="Widgets/ButtonWidget.js"></script>
@@ -31,12 +32,13 @@
     // If 'mode' is false we find the last selected text
     function GotoSelectedText(mode) {
       var selObj = window.getSelection();
-      g_SelectedTextInTextBox = selObj.getRangeAt(0);
+      g_SelectedTextInTextBox = selObj.getRangeAt(0).toString();
+      console.log(g_SelectedTextInTextBox);
       
       alert("Looking for:"+g_SelectedTextInTextBox); // Uncomment to debug
       // do stuff with the range
       searchAndGoToSelectedText(mode);
-  }
+    }
 </script>
 
   </head>
@@ -60,14 +62,14 @@
             <td valign="top">
                 <p></p>
                   <h3>Selected Promise contents:</h3>
-                  <button onclick="GotoSelectedText(true)">Find First Selected Text in Visualization</button>
-                  <button onclick="GotoSelectedText(false)">Find Last Selected Text in Visualization</button>
+                  <button onclick="GotoSelectedText(true);">Find First Selected Text in Visualization</button>
+                  <button onclick="GotoSelectedText(false);">Find Last Selected Text in Visualization</button>
 
                     <div class="tab" id="tabController">
-                      <button class="tablinks" onclick="viewFile(event, 'readme')" id="defaultOpen">readme</button>
+                      <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">PromiseBrowser</button>
                     </div>
                     <div id="listOfOpenFiles">
-                      <div id="readme" class="tabcontent">
+                      <div id="PromiseBrowser" class="tabcontent">
                         <pre id="promisePre" class="line-numbers" data-line="1-1">
 <!--                   --><code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
                         </pre>
