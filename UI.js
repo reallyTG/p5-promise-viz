@@ -100,6 +100,10 @@ function searchLine(){
 // if 'mode' is false, then we select the 'last' promise only.
 function searchAndGoToSelectedText(mode){
     console.log("searchSelectedText("+g_SelectedTextInTextBox+")");
+    // Handle case where nothing is selected and just return
+    if(g_SelectedTextInTextBox.length <=0){
+        return;
+    }
 
     // Clear previous search results
     g_PromiseTextSearchResults = [];
@@ -118,7 +122,7 @@ function searchAndGoToSelectedText(mode){
             if(mode == false){
                 // Record the 'last index' where we found this promise.
                 lastIndex = i;
-                g_SearchIndex = i;
+                g_SearchIndex++; // Increment the index
             }else if(mode == true && enterOnce == false){
                 g_offsetX =  -g_bar.entities[i].x*g_scale+(width/2);
                 g_offsetY =  -g_bar.entities[i].y*g_scale+(height/2);
@@ -126,7 +130,7 @@ function searchAndGoToSelectedText(mode){
                 g_bar.entities[i].show=true;
                 g_bar.entities[i].selected=true;
                 lastIndex = i; // By default, this should be the first promise found
-                g_SearchIndex=i;
+                g_SearchIndex=0; // Always set to '0' by default
             }
         }
     }
@@ -158,13 +162,14 @@ function NextSelected(){
         g_SearchIndex++;
         // Handle wrap around
         if(g_SearchIndex > g_PromiseTextSearchResults.length-1){
-            g_SearchIndex = g_PromiseTextSearchResults[0];
+            g_SearchIndex = 0;
         }
         // Target the selected item
-        g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].show=true;
-        g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].selected=true;
-        g_offsetX =  -g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].x*g_scale+(width/2);
-        g_offsetY =  -g_bar.entities[g_PromiseTextSearchResults[g_SearchIndex]].y*g_scale+(height/2);
+        var index= g_PromiseTextSearchResults[g_SearchIndex];
+        g_bar.entities[index].show=true;
+        g_bar.entities[index].selected=true;
+        g_offsetX =  -g_bar.entities[index].x*g_scale+(width/2);
+        g_offsetY =  -g_bar.entities[index].y*g_scale+(height/2);
     }
 }
 
@@ -179,13 +184,35 @@ function PreviousSelected(){
         g_SearchIndex--;
         // Handle wrap around
         if(g_SearchIndex < 0 ){
-            g_PromiseTextSearchResults[g_PromiseTextSearchResults.length-1];
+            g_SearchIndex = g_PromiseTextSearchResults.length-1;
         }
         // Target the selected item
-        g_bar.entities[g_SearchIndex].show=true;
-        g_bar.entities[g_SearchIndex].selected=true;
-        g_offsetX =  -g_bar.entities[g_SearchIndex].x*g_scale+(width/2);
-        g_offsetY =  -g_bar.entities[g_SearchIndex].y*g_scale+(height/2);
+        var index= g_PromiseTextSearchResults[g_SearchIndex];
+        g_bar.entities[index].show=true;
+        g_bar.entities[index].selected=true;
+        g_offsetX =  -g_bar.entities[index].x*g_scale+(width/2);
+        g_offsetY =  -g_bar.entities[index].y*g_scale+(height/2);
+    }
+}
+
+// Iterate through and select all instances of a particular promise
+function FindAllInstancesOfSelectedText(){
+    // Handle case where no text has been searched
+    if(g_PromiseTextSearchResults.length<=0){
+        return;
+    }
+    // Ensure at least one result has been found    
+    if(g_SearchIndex!=-1){
+        g_SearchIndex=0;
+
+        for(let i =0; i < g_PromiseTextSearchResults.length;i++){
+            // Target the selected item
+            var index= g_PromiseTextSearchResults[i];
+            g_bar.entities[index].show=true;
+            g_bar.entities[index].selected=true;
+            g_offsetX =  -g_bar.entities[index].x*g_scale+(width/2);
+            g_offsetY =  -g_bar.entities[index].y*g_scale+(height/2);
+        }
     }
 }
 
