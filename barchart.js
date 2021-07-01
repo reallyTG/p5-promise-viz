@@ -178,6 +178,11 @@ class BarChartWidget {
       this.MiniDisplayX = x;
       this.MiniDisplayY = y;
       this.MiniDisplayH = h;
+      // Keep track of some maximum values for the width and height
+      // These two values are later used to map a 'rectangular region
+      // of where the cursor is in the mini-display
+      var maxXPostion = 0;
+      var maxYPosition =0;
       // Background
       stroke(0,255);
       fill(255,0,0,192);
@@ -189,6 +194,10 @@ class BarChartWidget {
         // Map to the minimap
         var xRelative = map(this.entities[i].x,0,this.w, 0,width);
         var yRelative = map(this.entities[i].y,0,this.h, 0,h);
+
+        maxXPostion = max(maxXPostion,this.entities[i].x);
+        maxYPosition = max(maxYPosition,this.entities[i].y);
+
         // figure out the relative width as well
         // Note: It should be at least 1 pixel wide if there is a promise that exists
         var widthRelative = map(this.entities[i].w,0,this.w, 0,width);
@@ -262,6 +271,20 @@ class BarChartWidget {
       // Uncomment to debug the range of the start and end
       // text(currentXStart,200,200);
       // text(currentXEnd,200,240);
+
+      // Draw a rectangular region over where we are currently mousing around.
+      if(!this.MouseInMiniDisplay()){
+        let whereX = -map(g_offsetX-mouseX,0,this.w,0,width)/g_scale;
+        var whereY = -map(g_offsetY-mouseY,0,this.h,0,h)/g_scale;
+        console.log(whereX+":"+whereY);
+        fill(255,0,0,128);
+        stroke(255,0,0,0);
+        // cap the 'whereY' value
+        whereY=max(whereY,0);
+        console.log("whereY"+whereY);
+        console.log("h="+h);
+        rect(whereX-25,whereY+(height-h)-25,50,50);
+      }
     }
   }
 
