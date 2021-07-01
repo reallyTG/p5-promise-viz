@@ -175,17 +175,8 @@ function setup() {
     // Update global variable so as to give other parts of the Vis access to it.
     g_sourceCounts = sourceCounts;
 
-    createPromiseBrowserSummary();
 
-    // Create a bar chart
-    g_bar = new BarChartWidget(50, 100, 200, 100, g_dataset);
-
-    // Performance Tuning
-    // Parse each of the file names from the data set
-    for(var k in g_rawPromiseData["promises"]){
-      g_totalKeys++;
-    }
-
+    // Populate an anti-patterns data structure
     var antiPatternElements = g_rawPromiseData.antipatterns;
     for(var key in antiPatternElements){
       g_totalAntiPatterns++;
@@ -199,11 +190,26 @@ function setup() {
         antiPatternElements[key].startLine
       );
       
-
       g_AntiPatternData.push(temp);
     }
 
     console.log("g_totalAntiPatterns: "+g_totalAntiPatterns);
+
+
+    // Create
+    createPromiseBrowserSummary();
+    createAntiPatternBrowserSummary();
+
+    // Create a bar chart
+    g_bar = new BarChartWidget(50, 100, 200, 100, g_dataset);
+
+    // Performance Tuning
+    // Parse each of the file names from the data set
+    for(var k in g_rawPromiseData["promises"]){
+      g_totalKeys++;
+    }
+
+
 
     // Alexi: Never used.
     // for(var i=0; i < g_totalKeys;i++){
@@ -221,8 +227,6 @@ function setup() {
     button.mousePressed(changeDebugMode);
 
     setUIOffset(g_offsetX, g_offsetY);
-
-
 }
 
 // Function to build the summary statistics pane.
@@ -297,6 +301,103 @@ function createPromiseBrowserSummary() {
   promiseBrowserElement.removeChild(promiseBrowserElement.children[0]);
   promiseBrowserElement.appendChild(summaryHTMLElement); 
 }
+
+// Function to build the summary statistics pane.
+// Currently, write out to promises into the AntiPatternBrowser.
+function createAntiPatternBrowserSummary() {
+  let antiPatternBrowserElement = document.getElementById('AntiPatternBrowser');
+
+  // Build string.
+  let summaryStatisticsString = '';
+
+  // TODO: Style the table.
+  // New thing! Try to make it not a text list, but something better.
+  let summaryHTMLElement = document.createElement('table');
+  let tableBody = document.createElement('tbody');
+  let tableHeaderRow = document.createElement('tr');
+
+  let tableHeader_file = document.createElement('th');
+  tableHeader_file.innerHTML = 'Anti-Pattern Location';
+  let tableHeader_count = document.createElement('th');
+  tableHeader_count.innerHTML = 'Pattern';
+  let tableHeader_go = document.createElement('th');
+  tableHeader_go.innerHTML = 'Go';
+
+  tableHeaderRow.appendChild(tableHeader_file);
+  tableHeaderRow.appendChild(tableHeader_count);
+  tableHeaderRow.appendChild(tableHeader_go);
+
+  tableBody.appendChild(tableHeaderRow);
+
+  // Loop through each of the anti-patterns found
+  for(var i =0; i < g_AntiPatternData.length; i++){
+    let tr = document.createElement('tr');
+
+    let td_file = document.createElement('td');
+    td_file.innerHTML = g_AntiPatternData[i].file;
+    tr.appendChild(td_file);
+
+    let td_pattern = document.createElement('td');
+    td_pattern.innerHTML = g_AntiPatternData[i].patternID;
+    tr.appendChild(td_pattern);
+
+    let td_go = document.createElement('td');
+    /* Add a button which opens the file. */
+    let go_button = document.createElement('button');
+    //let splitName = k.split(':');
+
+    let fname, fcontents, startLine, endLine;
+    fname = g_AntiPatternData[i].file;
+    fcontents = g_rawPromiseData.files[fname];
+    startLine = g_AntiPatternData[i].startLine;
+    endLine = g_AntiPatternData[i].endLine;
+    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; cry(true)`);
+    /* TODO: We also want to highlight them in the vis. */
+    go_button.innerHTML = 'Go';
+    td_go.appendChild(go_button);
+    tr.appendChild(td_go);
+
+    tableBody.appendChild(tr);
+  }
+
+  /*
+  for (k of mapDes.keys()) {
+    let tr = document.createElement('tr');
+
+    let td_file = document.createElement('td');
+    td_file.innerHTML = k;
+    tr.appendChild(td_file);
+
+    let td_count = document.createElement('td');
+    td_count.innerHTML = mapDes.get(k);
+    tr.appendChild(td_count);
+
+    let td_go = document.createElement('td');
+    // Add a button which opens the file.
+    let go_button = document.createElement('button');
+    let splitName = k.split(':');
+
+    let fname, fcontents, startLine, endLine;
+    fname = splitName[0];
+    fcontents = g_rawPromiseData.files[fname];
+    startLine = splitName[1];
+    endLine = splitName[3];
+    go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; cry(true)`);
+    // TODO: We also want to highlight them in the vis.
+    go_button.innerHTML = 'Go';
+    td_go.appendChild(go_button);
+    tr.appendChild(td_go);
+
+    tableBody.appendChild(tr);
+  }
+  */
+
+  summaryHTMLElement.appendChild(tableBody);
+
+  antiPatternBrowserElement.removeChild(antiPatternBrowserElement.children[0]);
+  antiPatternBrowserElement.appendChild(summaryHTMLElement); 
+}
+
 
 function cry() {
   g_bar.entities.forEach(e => e.render());
