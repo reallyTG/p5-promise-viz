@@ -72,9 +72,10 @@ function Controls() {
     if (mouseX > width || mouseX < 0 || mouseY > height){
         return;
     }
-    
+
+
     // Handle Panning
-    if (mouseIsPressed && mouseButton === CENTER) {
+    if (mouseIsPressed && mouseButton === CENTER && g_hoveringOverWidget ==false) {
         g_offsetY -= pmouseY - mouseY;
         g_offsetX -= pmouseX - mouseX;
     }

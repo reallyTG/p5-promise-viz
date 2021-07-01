@@ -85,11 +85,13 @@ class entity {
               if(g_bar.MouseInMiniDisplay()){
                 return;
               }
+
+              
               // Toggle selection of entity
-              if (mouseIsPressed && mouseButton === LEFT && this.selected == false && g_buttonClickEvent===false) {
+              if (mouseIsPressed && mouseButton === LEFT && this.selected == false && g_buttonClickEvent==false && g_hoveringOverWidget==false) {
                   this.selected = true;
                   this.loadContents();
-              }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true && g_buttonClickEvent===false){
+              }else if(mouseIsPressed && mouseButton === LEFT && this.selected == true && g_buttonClickEvent==false && g_hoveringOverWidget==false){
                   this.selected = false;
               }
         }
@@ -205,48 +207,52 @@ class entity {
       }
     }
 
+  // Set the Color for the Entity
+  SetColor(){
+    let thisDatumSource = this.datum.source;
+
+    if (this.selected) {
+      strokeWeight(2);
+      // Invert fill and stroke
+      fill(this.stroke);
+      stroke(this.fill);
+      rect((this.x), this.y, this.w, this.h);
+    } else if (thisDatumSource == g_sourceHovered) {
+      fill('red');
+      stroke(255);
+    }
+    //else if(this.show===false){ // Render entities transparently if they are
+    //  fill(this.fill,48);       // not selected
+    //  stroke(this.stroke,48);
+    //  noStroke();
+    //} 
+    else {
+      // Switch the fill color to 'indigo' if it is I/O
+      if(this.datum.io){
+        fill(75, 0, 130,255);
+        stroke(this.stroke);
+        noStroke();
+      }else{
+        fill(this.fill);
+        stroke(this.stroke);
+        noStroke();
+      }
+    }
+
+    // If the entity is highlighted
+    // then color it in purple
+    if(this.highlighted){
+      fill(75,0,130,255);
+      stroke(255,255,0,255);
+    }
+  }
+  
   // How to render the entity
     render() {
-      let thisDatumSource = this.datum.source;
-        if (this.selected) {
-          strokeWeight(2);
-          // Invert fill and stroke
-          fill(this.stroke);
-          stroke(this.fill);
-          rect((this.x), this.y, this.w, this.h);
-        } else if (thisDatumSource == g_sourceHovered) {
-          fill('red');
-          stroke(255);
-        }
-        //else if(this.show===false){ // Render entities transparently if they are
-        //  fill(this.fill,48);       // not selected
-        //  stroke(this.stroke,48);
-        //  noStroke();
-        //} 
-        else {
-          // Switch the fill color to 'indigo' if it is I/O
-          if(this.datum.io){
-            fill(75, 0, 130,255);
-            stroke(this.stroke);
-            noStroke();
-          }else{
-            fill(this.fill);
-            stroke(this.stroke);
-            noStroke();
-          }
-
-        }
-
-        // If the entity is highlighted
-        // then color it in purple
-        if(this.highlighted){
-          fill(75,0,130,255);
-          stroke(255,255,0,255);
-        }
-
+      // Set the color of the entity
+      this.SetColor();
       // Render the rectangle
       rect(this.x, this.y, this.w, this.h);
-
       // Immediately set the highlight to false
       this.highlighted = false;
     }

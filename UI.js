@@ -1,4 +1,4 @@
-let g_padding = 8;  
+let g_padding = 8; 
 
 // Panels
 let g_SettingsPanel;
@@ -32,7 +32,6 @@ let g_searchLineWidget;
 function drawGrid() {
     fill(0, 0, 0, 64);
     stroke(0, 0, 0,64);
-
 
     //var segments = 8;
     //var horizontalSpace = (height/g_scale) / segments;
@@ -238,11 +237,25 @@ function setupPanels(){
 }
 
 
+
+
+function UIUpdate() {
+    // Render the Settings panel
+    g_SettingsPanel.Update();
+    // Render the details panel
+    g_DetailsPanel.Update();
+    // Render the queries panel
+    g_QueriesPanel.Update();
+    // Render the metrics panel
+    g_MetricsPanel.Update();
+    // Render the Antipatterns panel
+    g_AntiPatternsPanel.Update();
+}
 ///////////////////////////////////////////////
 // User interface
 // User interface will stay locked to screen
 ///////////////////////////////////////////////
-function UI(y) {
+function UIRender(y) {
     // Configuration of UI
     textSize(26);
     textFont("monospace", 24);

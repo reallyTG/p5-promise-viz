@@ -18,6 +18,23 @@ class Panel{
         this.widgets.push(obj);
     }
 
+    // Perform all of the update functions of the widgets
+    Update(){
+        if(mouseY > this.y-textSize() && mouseY < this.y){
+            if(mouseX>this.x && mouseX < this.x+this.w){
+                g_hoveringOverWidget = true;
+            }
+        }
+        // Render all of the weidgets that belong to this panel one after the other.
+        for(var i=0; i < this.widgets.length;i++){
+            var oldX = this.widgets[i].x;
+            var oldY = this.widgets[i].y;
+            this.widgets[i].SetPos(this.x+this.widgets[i].x,this.y+this.widgets[i].y);
+            this.widgets[i].Update();
+            this.widgets[i].SetPos(oldX,oldY);
+        }
+    }
+
     // Function to print data about a 
     // promise in a string
     Render(){
@@ -39,7 +56,7 @@ class Panel{
                 let clickTime = millis() - this.lastClickTime;
                 
                 // Fold panel
-                if(mouseIsPressed && mouseButton === LEFT && this.isOpen && clickTime > 250){ 
+                if(mouseIsPressed && mouseButton === LEFT && this.isOpen && clickTime > 250 ){ 
                     this.isOpen = false;
                     this.lastClickTime = millis();
                 }
@@ -93,7 +110,6 @@ class Panel{
             this.widgets[i].SetPos(this.x+this.widgets[i].x,this.y+this.widgets[i].y);
             this.widgets[i].Render();
             this.widgets[i].SetPos(oldX,oldY);
-
         }
 
     }
