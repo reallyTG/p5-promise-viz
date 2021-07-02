@@ -1,37 +1,74 @@
-// Data set
-// This is what gets loaded into the g_barChart data structure
-let g_dataset = [];
-
-// Global Array for data promises
-// This is the raw data loaded
-// from a JSON file
-// This data consists of several components including:
-//  - Antipatterns
-//  - files
-//  - promises
-let g_rawPromiseData = {};
-
-// Used to track total antipatterns
-let g_totalAntiPatterns = 0;
-let g_AntiPatternData = [];
-
-
-// Improves the performance of the visualization
-// When set to 'true' performance will be improved.
-let g_disableFriendlyErrors = true;
-
-let g_txt ='';
-let g_sourceFilesMap = new Map();
-let g_totalKeys = 0;
-let g_sourceCounts = new Map();
-
-
 // Helper function for loading data
 function loadDataSet(path){
     print("Loading data from: "+path);
     // Load a JSON Data file
     g_rawPromiseData = loadJSON(path);
 }
+
+// Helper function to load project and setup properties
+// from the URL.
+function loadProjectFromURL(){
+      // Retrieve the http response
+      g_URLParams = getURLParams();
+
+      // Initial x position
+      if(g_URLParams.hasOwnProperty("x")){
+        g_offsetX = parseFloat(g_URLParams.x);
+      }
+      // Initial y position
+      if(g_URLParams.hasOwnProperty("y")){
+        g_offsetY = parseFloat(g_URLParams.y);
+      }
+      // Zoom
+      if(g_URLParams.hasOwnProperty("z")){
+        g_scale = parseFloat(g_URLParams.z);
+      }
+      // Filename
+      if(g_URLParams.hasOwnProperty("f")){
+        g_filename = g_URLParams.f;
+      }else{
+        alert("no file found--check your path carefully");
+      }
+}
+
+// Helper function to get the base URL
+function getBaseURL(){
+  let url = getURL();
+  let spliter = split(url, '/');
+  // Rebuild url string
+  let newURL = spliter[0]+"//"+spliter[2]+"/";
+
+  return newURL;
+}
+
+// Helper function to share projects and create
+// a query string based off of the current URL
+function shareProjectURL(){
+  // Get the base URL
+  baseURL = getBaseURL();
+
+  // Initial x position
+  baseURL += "?x="+g_offsetX;
+  // Initial y position
+  baseURL += "&y="+g_offsetY;
+  // Zoom
+  baseURL += "&z="+g_scale;
+  // filename
+  baseURL += "&f="+g_filename;
+
+  console.log(baseURL);
+  prompt("Copy to clipboard: Ctrl+C, Enter", baseURL);
+}
+
+// Function to load project
+function loadProject(){
+  relativePath = prompt("Enter relative filepath to project");
+  baseURL = getBaseURL();
+  let newURL =baseURL+"?f="+relativePath;
+  console.log(newURL);
+  //window.location.assign();
+}
+
 
 //////////////////////////////////////////////
 //      Processing preload function         //
@@ -41,35 +78,37 @@ function loadDataSet(path){
 // We have to structure our project to load
 // all of the data first before populating the visualization.
 function preload() {
-    
+  // Attempt to load the project based on the URL parameters
+  loadProjectFromURL();
+
   // For Feb 4 Meeting:
   // this one is slow.
-  // filename = "./results/collected-results-profiling-feb-3/appcenter-cli/processed-results-1612378731829.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/appcenter-cli/processed-results-1612378731829.json";
 
-  // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
-  // filename = "./results/collected-results-profiling-feb-3/dugite/processed-results-1612378862546.json";
-  // filename = "./results/collected-results-profiling-feb-3/dugite/processed-results-1612378874922.json";
-  // filename = "./results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/dugite/processed-results-1612378862546.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/dugite/processed-results-1612378874922.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
   // From before Feb 15 meeting
-  // filename = "./results/collected-results-profiling-feb-3/joi-router/processed-results-1612379101636.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/joi-router/processed-results-1612379101636.json";
 
   // Looking for dummy promises:
-  // filename = "./results/collected-results-profiling-feb-3/CodeceptJS/processed-results-1611858164940.json";
-  // filename = "./results/me/processed-results-CodeceptJS-changed-again.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/CodeceptJS/processed-results-1611858164940.json";
+  // g_filename = "./results/me/processed-results-CodeceptJS-changed-again.json"
 
   // Feb 17 ones.
-  // filename = "./results/collected-results-profiling-feb-3/node-libcurl/processed-results-1612379194331.json"
-  // filename = "./results/collected-results-profiling-feb-3/node-promise-retry/processed-results-1612370799168.json"
-  // filename = "./results/collected-results-profiling-feb-3/node-promise-retry/processed-results-1612379172686.json"
-  // filename = "./results/collected-results-profiling-feb-3/node-pushnotifications/processed-results-1612379181814.json"
-  // filename = "./results/collected-results-profiling-feb-3/node-sonos/processed-results-1612379183949.json"
-  // filename = "./results/collected-results-profiling-feb-3/readdirp/processed-results-1612379264567.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/node-libcurl/processed-results-1612379194331.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/node-promise-retry/processed-results-1612370799168.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/node-promise-retry/processed-results-1612379172686.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/node-pushnotifications/processed-results-1612379181814.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/node-sonos/processed-results-1612379183949.json"
+  // g_filename = "./results/collected-results-profiling-feb-3/readdirp/processed-results-1612379264567.json"
   
   // Mar 1
-  // filename = "./results/FixedResultsMar2021/processed-results-readdirp-correct.json";
-  // filename = "./results/processed-results-1612378731829.json";
-  // filename = "./results/FixedResultsMar2021/processed-results-readdirp-with-change.json";
-  // filename = "./results/processed-results-readdirp-promiseall.json";
+  // g_filename = "./results/FixedResultsMar2021/processed-results-readdirp-correct.json";
+  // g_filename = "./results/processed-results-1612378731829.json";
+  // g_filename = "./results/FixedResultsMar2021/processed-results-readdirp-with-change.json";
+  // g_filename = "./results/processed-results-readdirp-promiseall.json";
   /*
       Map an operation over slice. It doesn't look like the loop needs to be sequential.
       Will explore this further for Monday.
@@ -81,38 +120,43 @@ function preload() {
   
   // Mar 4
   // Not actually fixed, TypeScript is still a problem.
-  // filename = "./results/FixedResultsMar2021/processed-results-dugite-fixed.json";
+  // g_filename = "./results/FixedResultsMar2021/processed-results-dugite-fixed.json";
   // This one seems fine.
-  // filename = "./results/collected-results-profiling-feb-3/node-sonos/processed-results-1612379183949.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/node-sonos/processed-results-1612379183949.json";
   // Something is weird.
-  // filename = "./results/collected-results-profiling-feb-3/node-pushnotifications/processed-results-1612379181814.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/node-pushnotifications/processed-results-1612379181814.json";
   // Nothing wrong with this one.
-  // filename = "./results/collected-results-profiling-feb-3/joi-router/processed-results-1612379101636.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/joi-router/processed-results-1612379101636.json";
   // For some reason this one doesn't work on the server anymore.
-  // filename = "results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
+  // g_filename = "results/collected-results-profiling-feb-3/forbid.only/processed-results-1612378960908.json";
 
   // Constructed example.
   // I was expecting this to be worse, given the Promise.all with the await inside.
-  // filename = "results/processed-results-imagemin-example.json";
+  // g_filename = "results/processed-results-imagemin-example.json";
 
   // Injection vulnerability?
   // Send this one to Frank.
-  // filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/Concierge/processed-results-1612378786407.json";
 
   // Good example to highlight (as a positive example!)
-  // filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
+  // g_filename = "./results/collected-results-profiling-feb-3/babel-plugin-transform-define/processed-results-1612378743089.json";
 
-  // filename = "./results/processed-results-c8.json";
+  // g_filename = "./results/processed-results-c8.json";
 
-  // filename = "./results/imagemin/processed-results-imagemin-example.json";
-  // filename = "./results/highlight.js-0.json";
+  // g_filename = "./results/imagemin/processed-results-imagemin-example.json";
+  // g_filename = "./results/highlight.js-0.json";
 
   // 6/30/21 Anti-patterns .json file
-  filename = "./results/processed-results-1625068862120.json"
+  //g_filename = "./results/processed-results-1625068862120.json"
     
    // Load the resulting file
   // loadDataSet(filename); 
-  g_rawPromiseData = loadJSON(filename);
+
+  if(g_filename.length>0){
+    g_rawPromiseData = loadJSON(g_filename);
+  }else{
+    alert("Cannot find file to load");
+  }
 
   print("Finished loading data")
 }
@@ -202,12 +246,17 @@ function setup() {
     // Create a bar chart
     g_bar = new BarChartWidget(50, 100, width, height, g_dataset);
 
+    // Create the share widget button
+    g_shareURLButtonWidget = new ButtonWidget(" Share Project URL",width-180,1,180,20,shareProjectURL);
+    // Create the load widget button
+    g_loadProjectButtonWidget = new ButtonWidget(" Load Project",width-360,1,180,20,loadProject);
+
+
     // Performance Tuning
     // Parse each of the file names from the data set
     for(var k in g_rawPromiseData["promises"]){
       g_totalKeys++;
     }
-
 
 
     // Alexi: Never used.

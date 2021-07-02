@@ -1,22 +1,3 @@
-// Scale of how zoomed in we are in our visualization
-let g_scale = 1;
-// Offset
-let g_offsetX = 0;
-let g_offsetY = 0;
-
-// Used in range selection
-let g_mouseIsCurrentlyDown = 0;
-let g_mouseBeforeDownX=0;
-let g_mouseBeforeDownY=0;
-
-let g_scrollX=0;
-let g_scrollY=0;
-
-// Variables to hold mouse position
-// for when we zoom
-let g_zoomMouseX = 0;
-let g_zoomMouseY =0;
-
 // Reset global variables with respect to the
 // current view of the visualization
 function resetView(state){

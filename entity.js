@@ -37,10 +37,10 @@ class entity {
     }
 
     hover() {
-
-        if(mouseX < 0 || mouseX > width) {
-          return;
-        }
+      // Exit eaerly
+      if(mouseX < 0 || mouseX > width) {
+        return;
+      }
       /*
         //if (mouseX >= g_offsetX + (this.x*g_scale ) && mouseX <= g_offsetX + ((this.x + this.w)*g_scale )) {
               if (mouseY >= g_offsetY + (this.y*g_scale ) && mouseY <= g_offsetY + ((this.y + this.h)*g_scale )) {
