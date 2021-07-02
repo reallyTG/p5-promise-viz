@@ -148,6 +148,9 @@ function preload() {
 
   // 6/30/21 Anti-patterns .json file
   //g_filename = "./results/processed-results-1625068862120.json"
+
+  // Network information
+  // g_filename = "./results/processed-results-1625235491375.json"
     
    // Load the resulting file
   // loadDataSet(filename); 
@@ -197,6 +200,7 @@ function setup() {
                                     elements[key].asyncId,
                                     elements[key].triggerAsyncId,
                                     elements[key].io,
+                                    elements[key].network,
                                     elements[key].userCode,
                                     elements[key].line,
                                     elements[key].startLine,

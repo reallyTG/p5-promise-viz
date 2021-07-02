@@ -34,6 +34,8 @@ class BarChartWidget {
         this.totalElapsedTime = 0;
         this.averageDuration = 0;
         this.totalFunctionswithIO = 0;
+        this.totalFunctionswithNetwork = 0;
+
         this.totalFunctionswithUserCode =0;
 
         // Iterate through data and find the min and max
@@ -64,6 +66,11 @@ class BarChartWidget {
             // that contain io
             if(this.data[i].io){
               this.totalFunctionswithIO++;
+            }
+            // Increment number of pieces of data
+            // that contain networking
+            if(this.data[i].network){
+              this.totalFunctionswithNetwork++;
             }
         }
         // Compute average duration of promises
@@ -219,6 +226,9 @@ class BarChartWidget {
           if(this.entities[i].datum.io){
             fill(75,0,130,255);
             stroke(75,0,130,255);
+          }else if(this.entities[i].datum.network){
+            fill(255,165,0,255);
+            stroke(255,165,0,255);
           }
         }else{
           // Draw a green box with a much lower opacity if it is not
@@ -419,6 +429,23 @@ class BarChartWidget {
     var itemsSelected=0;
     for (var i = 0; i < this.entities.length; i++) {
         if(this.entities[i].datum.io){
+            this.entities[i].selected = selectedState;
+            itemsSelected++;
+        }else{
+          this.entities[i].selected = !selectedState;
+        }
+    }
+        
+    g_querySummary = itemsSelected;
+  }
+
+    // Helper function which allows the selection or deselection
+  // of a series of nodes.
+  // Selects all IO nodes
+  selectNetwork(selectedState){
+    var itemsSelected=0;
+    for (var i = 0; i < this.entities.length; i++) {
+        if(this.entities[i].datum.network){
             this.entities[i].selected = selectedState;
             itemsSelected++;
         }else{
