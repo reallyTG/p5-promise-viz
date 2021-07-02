@@ -291,6 +291,10 @@ function setupPanels(){
     var selectIOButton = new ButtonWidget("Select All IO ("+g_bar.totalFunctionswithIO+")",0,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectIO);
     g_QueriesPanel.addWidget(selectIOButton);
 
+    var callSelectNetwork = function (){g_bar.selectNetwork(1)};
+    var selectNetworkButton = new ButtonWidget("Select All Network ("+g_bar.totalFunctionswithNetwork+")",queryButtonWidth,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectNetwork);
+    g_QueriesPanel.addWidget(selectNetworkButton);
+
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
     var selectUserCodeButton = new ButtonWidget("Select All User Code ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth+100,queryButtonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
@@ -303,7 +307,7 @@ function setupPanels(){
     var detailsPanelYPosition = 50;
     g_DetailsPanel = new Panel("Details",detailsPanelXPosition,detailsPanelYPosition,600,250);
     // Details panel widgets
-    g_detailTextWidget = new VisTextWidget("VisTextWidget",0,0);
+    g_detailTextWidget = new VisTextWidget("Details Panel",0,0);
     g_DetailsPanel.addWidget(g_detailTextWidget);
 
     // Setup the Metrics Panel
@@ -322,12 +326,12 @@ function setupPanels(){
     g_LegendPanel = new Panel("Visualiation Legend",1100,250,500,80);
 
     var HoverFunc = function (){doSomething()};
-    var LegendHoverButton1 = new HoverButtonWidget("Pattern 1",0,  0,16,16,255,0,0,HoverFunc);
-    var LegendHoverButton2 = new HoverButtonWidget("Pattern 2",0,  20,16,16,255,0,0,HoverFunc);
-    var LegendHoverButton3 = new HoverButtonWidget("Pattern 3",0,  40,16,16,255,0,0,HoverFunc);
-    var LegendHoverButton4 = new HoverButtonWidget("Pattern 4",20, 0,16,16,255,0,0,HoverFunc);
-    var LegendHoverButton5 = new HoverButtonWidget("Pattern 5",20, 20,16,16,255,0,0,HoverFunc);
-    var LegendHoverButton6 = new HoverButtonWidget("Pattern 6",20, 40,16,16,255,0,0,HoverFunc);
+    var LegendHoverButton1 = new HoverButtonWidget("Unselected"      ,0,  0 , 16,16,  0  ,0  ,0,   HoverFunc);
+    var LegendHoverButton2 = new HoverButtonWidget("Selected"        ,0,  20, 16,16,  255,255,255, HoverFunc);
+    var LegendHoverButton3 = new HoverButtonWidget("I/O"             ,0,  40, 16,16,  75 ,0  ,130, HoverFunc);
+    var LegendHoverButton4 = new HoverButtonWidget("Network"         ,20, 0,  16,16,  265,155,0,  HoverFunc);
+    var LegendHoverButton5 = new HoverButtonWidget("Pattern TBD"     ,20, 20, 16,16,  255,0  ,0,      HoverFunc);
+    var LegendHoverButton6 = new HoverButtonWidget("AntiPattern TBD" ,20, 40, 16,16,  255,0  ,0,      HoverFunc);
     // For now add the widgets in reverse order so they do not overlap
     g_LegendPanel.addWidget(LegendHoverButton6);
     g_LegendPanel.addWidget(LegendHoverButton5);

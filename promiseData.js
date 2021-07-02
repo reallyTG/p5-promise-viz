@@ -5,7 +5,7 @@
 
 // The data that we want to hold
 class promiseData{
-    constructor(uniqueid,source,startTime,endTime,elapsedTime,asyncId,triggerAsyncId,io,userCode,line,
+    constructor(uniqueid,source,startTime,endTime,elapsedTime,asyncId,triggerAsyncId,io,network,userCode,line,
                 startLine, startCol, endLine, endCol, file) {
         this.id             = uniqueid;
         this.source         = source;
@@ -15,6 +15,7 @@ class promiseData{
         this.asyncId        = asyncId;
         this.triggerAsyncId = triggerAsyncId;
         this.io             = io;
+        this.network        = network;
         this.userCode       = userCode;
         this.line           = line;
         this.startLine      = startLine;
@@ -34,6 +35,7 @@ class promiseData{
                 "asyncId:"          + this.asyncId          + "\n" +
                 "triggerAsyncId:"   + this.triggerAsyncId   + "\n"+
                 "io:"               + this.io               + "\n" +
+                "network:"          + this.network          + "\n" +
                 "userCode:"         + this.userCode         + "\n" +
                 "line:"             + this.line             + "\n" +
                 "startLine:"        + this.startLine        + "\n" +
@@ -61,6 +63,7 @@ class promiseData{
                 "asyncId:"          + this.asyncId          + "\n" +
                 "triggerAsyncId:"   + this.triggerAsyncId   + "\n"+
                 "io:"               + this.io               + "\n" +
+                "network:"          + this.network          + "\n" +
                 "userCode:"         + this.userCode         + "\n";
     }
 }

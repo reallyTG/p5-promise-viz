@@ -85,7 +85,6 @@ class entity {
               if(g_bar.MouseInMiniDisplay()){
                 return;
               }
-
               
               // Toggle selection of entity
               if (mouseIsPressed && mouseButton === LEFT && this.selected == false && g_buttonClickEvent==false && g_hoveringOverWidget==false) {
@@ -232,7 +231,12 @@ class entity {
         fill(75, 0, 130,255);
         stroke(this.stroke);
         noStroke();
-      }else{
+      }else if(this.datum.network){ // Switch fill color to 'orange' if it is network
+        fill(255, 165, 0,255);
+        stroke(this.stroke);
+        noStroke();
+      }
+      else{
         fill(this.fill);
         stroke(this.stroke);
         noStroke();
