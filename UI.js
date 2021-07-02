@@ -6,6 +6,7 @@ let g_DetailsPanel;
 let g_QueriesPanel;
 let g_MetricsPanel;
 let g_AntiPatternsPanel;
+let g_LegendPanel;
 
 // Text Widgets
 let g_detailTextWidget;
@@ -65,12 +66,13 @@ function setUIOffset(x, y){
 
 function menubar(x,y){
     // Menubar
+    textSize(16);
     // X,Y position -- Offset
-    fill(204);
+    fill(164);
     rect(x, y , width, textSize()+g_padding);
     fill(0);
     // Text
-    stroke(255);
+    stroke(0);
     text("Pan Offset: (" + round(g_offsetX,1) + "," + round(g_offsetY,3) + ")", x+160, y+textSize());
     // Render framerate
     var rate = frameRate();
@@ -78,9 +80,11 @@ function menubar(x,y){
     // Zoom
     text("zoom scale: "+round(g_scale,3), x+640, y+textSize());
     // Last action
-    stroke(255);
-    fill(0);
-    text("last action:"+g_querySummary,width-250,24);
+    text("last action:"+g_querySummary,width-350,y+textSize());
+
+    g_shareURLButtonWidget.Render();
+    g_loadProjectButtonWidget.Render();
+
 }
 
 // Selects all promises with a particular matching string in their data.
@@ -294,7 +298,6 @@ function setupPanels(){
     g_searchLineWidget = new SearchBoxWidget("Search line (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
     g_QueriesPanel.addWidget(g_searchLineWidget);
 
-
     // Setup the details Panel
     var detailsPanelXPosition = 500;
     var detailsPanelYPosition = 50;
@@ -311,16 +314,40 @@ function setupPanels(){
 
     g_AntiPatternsPanel = new Panel("AntiPatterns",1100,150,500,80);
     g_antiPatternsTextWidget = new VisTextWidget("VisTextWidget",0,0);
-    g_AntiPatternsPanel.addWidget(g_antiPatternsTextWidget);
-
     // Update our antipatterns panel text
     g_antiPatternsTextWidget.SetText("Antipatterns found: "+g_totalAntiPatterns);
+    g_AntiPatternsPanel.addWidget(g_antiPatternsTextWidget);
+
+    // Setup the Legend Panel
+    g_LegendPanel = new Panel("Visualiation Legend",1100,250,500,80);
+
+    var HoverFunc = function (){doSomething()};
+    var LegendHoverButton1 = new HoverButtonWidget("Pattern 1",0,  0,16,16,255,0,0,HoverFunc);
+    var LegendHoverButton2 = new HoverButtonWidget("Pattern 2",0,  20,16,16,255,0,0,HoverFunc);
+    var LegendHoverButton3 = new HoverButtonWidget("Pattern 3",0,  40,16,16,255,0,0,HoverFunc);
+    var LegendHoverButton4 = new HoverButtonWidget("Pattern 4",20, 0,16,16,255,0,0,HoverFunc);
+    var LegendHoverButton5 = new HoverButtonWidget("Pattern 5",20, 20,16,16,255,0,0,HoverFunc);
+    var LegendHoverButton6 = new HoverButtonWidget("Pattern 6",20, 40,16,16,255,0,0,HoverFunc);
+    // For now add the widgets in reverse order so they do not overlap
+    g_LegendPanel.addWidget(LegendHoverButton6);
+    g_LegendPanel.addWidget(LegendHoverButton5);
+    g_LegendPanel.addWidget(LegendHoverButton4);
+    g_LegendPanel.addWidget(LegendHoverButton3);
+    g_LegendPanel.addWidget(LegendHoverButton2);
+    g_LegendPanel.addWidget(LegendHoverButton1);
+}
+
+function doSomething(){
+    console.log("Do something");
 }
 
 
-
-
 function UIUpdate() {
+    // Update the buttons
+    g_shareURLButtonWidget.Update();
+    g_loadProjectButtonWidget.Update();
+
+
     // Render the Settings panel
     g_SettingsPanel.Update();
     // Render the details panel
@@ -331,6 +358,8 @@ function UIUpdate() {
     g_MetricsPanel.Update();
     // Render the Antipatterns panel
     g_AntiPatternsPanel.Update();
+    // Render the Legend panel
+    g_LegendPanel.Update();
 }
 ///////////////////////////////////////////////
 // User interface
@@ -354,5 +383,7 @@ function UIRender(y) {
     g_MetricsPanel.Render();
     // Render the Antipatterns panel
     g_AntiPatternsPanel.Render();
+    // Render the Antipatterns panel
+    g_LegendPanel.Render();
 }
 
