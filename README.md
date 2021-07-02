@@ -13,7 +13,10 @@ P5 for promise visualization.
 	- Using Python2
 		- e.g. `python -m SimpleHTTPServer 1024` from the directory where index.html resides
 3. Start webbrowser at local http address (e.g. `localhost:1024` in the browser bar)
-4. Note: Sometimes visualization gets cached, try opening incognito if the visualization has not changed.
+	- Test by clicking on this URL for a project (Assuming you are using port 1024): 
+	- http://localhost:1024/?x=-26.09410059573868&y=569.6268474329406&z=0.3416720635297972&f=./results/processed-results-1625068862120.json
+		- The project uses URL Parameters to set the x, y, zoom, and the file to be loaded.
+5. Note: Sometimes visualization gets cached, try opening incognito if the visualization has not changed.
 
 # Links related to this project
 
