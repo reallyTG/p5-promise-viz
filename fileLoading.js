@@ -68,6 +68,19 @@ function writeTo( element, preElement, content, highlightFrom, highlightTo) {
 
 let g_filesOpenInViewer = [];
 
+// https://stackoverflow.com/questions/35182928/prismjs-centering-highlighted-lines-vertically
+function scrollToLines (pre) {
+    var lines = document.querySelector('.line-highlight'),
+        linesHeight = lines.offsetHeight,
+        preHeight = pre.offsetHeight;
+  
+    lines.scrollIntoView();
+  
+    if (preHeight > linesHeight && pre.scrollTop < (pre.scrollHeight - preHeight)) {
+      pre.scrollTop = pre.scrollTop - (preHeight / 2) + (linesHeight / 2);
+    }
+  }
+
 function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
 
     // Skip if we've already opened the file.
@@ -85,6 +98,15 @@ function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
             theInnerPre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
 
         Prism.highlightAll();
+
+        // Click the button.
+        document.getElementById('tabButton-' + fileName).click();
+        
+        // Set scroll location.
+        for (let highlightedLine of document.getElementsByClassName(' line-highlight'))
+            highlightedLine.setAttribute('class', 'line-highlight');
+        scrollToLines(theInnerPre);
+
         return;
     }
 
@@ -102,7 +124,6 @@ function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
         thePre.setAttribute('data-line', highlightFrom);
     else
         thePre.setAttribute('data-line', highlightFrom + '-' + highlightTo);
-    Prism.highlightAll();
 
     theCode.className = 'language-javascript';
     theCode.innerHTML = fileContents;
@@ -118,11 +139,19 @@ function addFileToView(fileName, fileContents, highlightFrom, highlightTo) {
     tabButton.className = 'tablinks';
     tabButton.setAttribute('onclick', `viewFile(event, '${fileName}')`);
     tabButton.innerHTML = fileName;
+    tabButton.id = 'tabButton-' + fileName;
 
     var tabList = document.getElementById('tabController');
     tabList.appendChild(tabButton);
 
+    Prism.highlightAll();
+
     tabButton.click();
+
+    // Scroll after the thing is in view.
+    for (let highlightedLine of document.getElementsByClassName(' line-highlight'))
+        highlightedLine.setAttribute('class', 'line-highlight');
+    scrollToLines(thePre);
 }
 
 /* Create this:
