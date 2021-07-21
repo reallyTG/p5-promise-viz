@@ -152,8 +152,10 @@ function preload() {
   // Network information
   // g_filename = "./results/processed-results-1625235491375.json"
     
-   // Load the resulting file
+  // Load the resulting file
   // loadDataSet(filename); 
+
+  // let g_filename = "./results/EvaluationCandidates/Boostnote-0.json";
 
   if(g_filename.length>0){
     g_rawPromiseData = loadJSON(g_filename);
@@ -176,6 +178,29 @@ function parseStringAsFileName(input){
 }
 
 var number = 9;
+
+/* Takes a patternID and translates it to match what it should be in the paper.
+ * analysis  | paper
+ * pattern1  | p2
+ * pattern2  | p5
+ * pattern3  | pV                             * currently ignored TODO:FIXP3
+ * pattern4  | p6
+ * pattern5  | pP
+ */
+function paperParityPattern(patternID) {
+  switch (patternID) {
+    case 'pattern1':
+      return 'p2';
+    case 'pattern2':
+      return 'p5';
+    case 'pattern3':
+      return 'pV';
+    case 'pattern4':
+      return 'p6';
+    case 'pattern5':
+      return 'pP';
+  }
+}
 
 //////////////////////////////////////////////
 //       Processing setup function          //
@@ -228,11 +253,15 @@ function setup() {
     for(var key in antiPatternElements){
       g_totalAntiPatterns++;
 
+      // TODO:FIXP3 Currently, we ignore pattern3, because it's way too broad.
+      if (antiPatternElements[key].patternID === 'pattern3')
+        continue;
+
       var temp = new AntiPattern(
         antiPatternElements[key].endCol,
         antiPatternElements[key].endLine,
         antiPatternElements[key].file,
-        antiPatternElements[key].patternID,
+        paperParityPattern(antiPatternElements[key].patternID),
         antiPatternElements[key].startCol,
         antiPatternElements[key].startLine
       );
