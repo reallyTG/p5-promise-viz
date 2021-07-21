@@ -83,6 +83,29 @@ function Controls() {
         g_offsetX -= pmouseX - mouseX;
     }
 
+    // Handle panning w/ arrow keys and WASD.
+    if (keyIsPressed) {
+        // Which direction?
+        switch (key) {
+            case 'ArrowRight':
+            case 'd':
+                g_offsetX -= 5;
+                break;
+            case 'ArrowLeft':
+            case 'a':
+                g_offsetX += 5;
+                break;
+            case 'ArrowUp':
+            case 'w':
+                g_offsetY += 5;
+                break;
+            case 'ArrowDown':
+            case 's':
+                g_offsetY -= 5;
+                break;
+        }
+    }
+
     // Draw a selection region
     if(g_mouseIsCurrentlyDown){
         stroke(0);
