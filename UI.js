@@ -329,10 +329,27 @@ function setupPanels(){
     var LegendHoverButton1 = new HoverButtonWidget("Unselected"      ,0,  0 , 16,16,  0  ,0  ,0,   HoverFunc);
     var LegendHoverButton2 = new HoverButtonWidget("Selected"        ,0,  20, 16,16,  255,255,255, HoverFunc);
     var LegendHoverButton3 = new HoverButtonWidget("I/O"             ,0,  40, 16,16,  75 ,0  ,130, HoverFunc);
-    var LegendHoverButton4 = new HoverButtonWidget("Network"         ,20, 0,  16,16,  265,155,0,  HoverFunc);
-    var LegendHoverButton5 = new HoverButtonWidget("Pattern TBD"     ,20, 20, 16,16,  255,0  ,0,      HoverFunc);
-    var LegendHoverButton6 = new HoverButtonWidget("AntiPattern TBD" ,20, 40, 16,16,  255,0  ,0,      HoverFunc);
+    var LegendHoverButton4 = new HoverButtonWidget("Network"         ,0,  60,  16,16,  265,155,0,  HoverFunc);
+    var LegendHoverButton5 = new HoverButtonWidget("Pattern 1 - Await-Return-In-Async"      ,20, 0, 16,16,   255,0  ,0,      HoverFunc);
+    var LegendHoverButton6 = new HoverButtonWidget("Pattern 2 - Promise-Resolve-Then"       ,20, 20, 16,16,  192,128  ,0,      HoverFunc);
+    var LegendHoverButton7 = new HoverButtonWidget("Pattern 3 - Awaited Value"              ,20, 40, 16,16,  255,128  ,255,      HoverFunc);
+    var LegendHoverButton8 = new HoverButtonWidget("Pattern 4 - In-House Promisification"   ,20, 60, 16,16,  255,255  ,0,      HoverFunc);
+    var LegendHoverButton9 = new HoverButtonWidget("Pattern 5 - Function Returns a Promise" ,40, 0, 16,16,  255,0  ,255,      HoverFunc);
+    var LegendHoverButton10 = new HoverButtonWidget("Pattern 6 - Async Executor"             ,40, 20, 16,16,  0,0  ,255,      HoverFunc);
+    var LegendHoverButton11 = new HoverButtonWidget("Pattern 7 - Await-in-a-Loop"            ,40, 40, 16,16,  0,128  ,255,      HoverFunc);
+    var LegendHoverButton12 = new HoverButtonWidget("Pattern 8 - Synchronous Resolve/Reject" ,40, 60, 16,16,  128,255  ,0,      HoverFunc);
+    var LegendHoverButton13 = new HoverButtonWidget("Pattern 9 - Explicit Constructor"       ,60, 0, 16,16,  128,255  ,128,      HoverFunc);
+    var LegendHoverButton14 = new HoverButtonWidget("Pattern 10 - Async Function w/o Await" ,60, 20, 16,16,  92,64  ,55,      HoverFunc);
+
     // For now add the widgets in reverse order so they do not overlap
+    g_LegendPanel.addWidget(LegendHoverButton14);
+    g_LegendPanel.addWidget(LegendHoverButton13);
+    g_LegendPanel.addWidget(LegendHoverButton12);
+    g_LegendPanel.addWidget(LegendHoverButton11);
+    g_LegendPanel.addWidget(LegendHoverButton10);
+    g_LegendPanel.addWidget(LegendHoverButton9);
+    g_LegendPanel.addWidget(LegendHoverButton8);
+    g_LegendPanel.addWidget(LegendHoverButton7);
     g_LegendPanel.addWidget(LegendHoverButton6);
     g_LegendPanel.addWidget(LegendHoverButton5);
     g_LegendPanel.addWidget(LegendHoverButton4);
