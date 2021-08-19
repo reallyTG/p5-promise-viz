@@ -30,8 +30,8 @@ class VisTextWidget{
     }
 
     Render(){
-        textSize(20);
-        textFont("monospace", 20);
+        textSize(18);
+        textFont("monospace", 18);
 
         fill(255,255,255,255);
         text(this.text, this.x+2, this.y+textSize());

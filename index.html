@@ -47,7 +47,7 @@
   </head>
   
   <body>
-    <table>
+    <table style="border: 10px; border-style:solid; border-color: black;">
         <tr>
             <td valign="top">
                 <!--  
@@ -62,9 +62,8 @@
                 <main>
                 </main>
             </td>
-            <td valign="top">
-                <p></p>
-                  <h3>Selected Promise contents:</h3>
+            <td valign="top" style="background-color: #8392a2; border: 10px; border-style:solid; border-color:  #454545;">
+                  <h3>Search Tools:</h3>
                   <div id="searchTools">
                     <button onclick="GotoSelectedText(true);">Find First Selected Text in Visualization</button>
                     <button onclick="NextSelected();">Find Next</button>
@@ -73,16 +72,17 @@
                     <button onclick="FindAllInstancesOfSelectedText();">Find & Select All Instances</button>
 
                     <div>
-                        <textarea id="searchedText" name="searchedText" rows="4" cols="500" style="width: 700px;" readonly>
+                        <textarea id="searchedText" name="searchedText" rows="4" cols="500" style="width: 900px;" readonly>
                         </textarea>
                     </div>
                   </div>
+                  <h3>Promise, Anti-Pattern and Source Browser:</h3>
                     <div class="tab" id="tabController">
                       <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">PromiseBrowser</button>
                       <button class="tablinks" onclick="viewFile(event, 'AntiPatternBrowser')">AntiPatternBrowser</button>
                     </div>
                     <div id="listOfOpenFiles">
-                      <div id="PromiseBrowser" class="tabcontent">
+                      <div id="PromiseBrowser" class="tabcontent" >
                         <pre id="promisePre" class="line-numbers" data-line="1-1">
 <!--                   --><code id="output" class="language-javascript">// .js code will show up here if a source file exists</code>
                         </pre>

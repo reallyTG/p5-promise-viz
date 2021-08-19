@@ -38,7 +38,6 @@ class Panel{
     // Function to print data about a 
     // promise in a string
     Render(){
-
         var lastX = pmouseX;
         var lastY = pmouseY;
 

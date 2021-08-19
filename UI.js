@@ -239,7 +239,7 @@ function setupPanels(){
     var settingsPanelButtonWidth = 250;
     var settingsPanelButtonHeight = 25;
 
-    g_SettingsPanel = new Panel("Settings",settingsPanelXPosition,settingsPanelYPosition,settingsPanelButtonWidth*2,50);
+    g_SettingsPanel = new Panel("Visualization Settings",settingsPanelXPosition,settingsPanelYPosition,settingsPanelButtonWidth*2,50);
 
     var resetViewButton = new ButtonWidget("Reset View",settingsPanelButtonWidth*0,settingsPanelButtonHeight*0,settingsPanelButtonWidth,settingsPanelButtonHeight,resetView);
     g_SettingsPanel.addWidget(resetViewButton);
@@ -261,7 +261,7 @@ function setupPanels(){
     // Setup the queries panel
     var g_QueriesPanelXPosition = 0;
     var g_QueriesPanelYPosition = 120;
-    g_QueriesPanel = new Panel("Queries",g_QueriesPanelXPosition,g_QueriesPanelYPosition,queryButtonWidth*2,180);
+    g_QueriesPanel = new Panel("Queries/Filters",g_QueriesPanelXPosition,g_QueriesPanelYPosition,queryButtonWidth*2,180);
     
     var callSelectAll = function (){g_bar.selectState(1)};
     var selectStateButton = new ButtonWidget("Select All",0,0+queryButtonHeight*0,queryButtonWidth,queryButtonHeight,callSelectAll);
@@ -292,20 +292,20 @@ function setupPanels(){
     g_QueriesPanel.addWidget(selectIOButton);
 
     var callSelectNetwork = function (){g_bar.selectNetwork(1)};
-    var selectNetworkButton = new ButtonWidget("Select All Network ("+g_bar.totalFunctionswithNetwork+")",queryButtonWidth,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectNetwork);
+    var selectNetworkButton = new ButtonWidget("Select Network ("+g_bar.totalFunctionswithNetwork+")",queryButtonWidth,0+queryButtonHeight*3,queryButtonWidth,queryButtonHeight,callSelectNetwork);
     g_QueriesPanel.addWidget(selectNetworkButton);
 
     var callSelectUserCode = function (){g_bar.selectUserCode(1)};
-    var selectUserCodeButton = new ButtonWidget("Select All User Code ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth+100,queryButtonHeight,callSelectUserCode);
+    var selectUserCodeButton = new ButtonWidget("Select User Code ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
 
-    g_searchLineWidget = new SearchBoxWidget("Search line (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
+    g_searchLineWidget = new SearchBoxWidget("Filter by text in source (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
     g_QueriesPanel.addWidget(g_searchLineWidget);
 
     // Setup the details Panel
     var detailsPanelXPosition = 500;
     var detailsPanelYPosition = 50;
-    g_DetailsPanel = new Panel("Details",detailsPanelXPosition,detailsPanelYPosition,600,250);
+    g_DetailsPanel = new Panel("Numeric Details on Demand",detailsPanelXPosition,detailsPanelYPosition,600,250);
     // Details panel widgets
     g_detailTextWidget = new VisTextWidget("Details Panel",0,0);
     g_DetailsPanel.addWidget(g_detailTextWidget);
@@ -323,23 +323,23 @@ function setupPanels(){
     g_AntiPatternsPanel.addWidget(g_antiPatternsTextWidget);
 
     // Setup the Legend Panel
-    g_LegendPanel = new Panel("Visualiation Legend",1100,250,500,80);
+    g_LegendPanel = new Panel("Visualiation Legend",1100,250,500,50);
 
     var HoverFunc = function (){doSomething()};
     var LegendHoverButton1 = new HoverButtonWidget("Unselected"      ,0,  0 , 16,16,  0  ,0  ,0,   HoverFunc);
     var LegendHoverButton2 = new HoverButtonWidget("Selected"        ,0,  20, 16,16,  255,255,255, HoverFunc);
-    var LegendHoverButton3 = new HoverButtonWidget("I/O"             ,0,  40, 16,16,  75 ,0  ,130, HoverFunc);
-    var LegendHoverButton4 = new HoverButtonWidget("Network"         ,0,  60,  16,16,  265,155,0,  HoverFunc);
-    var LegendHoverButton5 = new HoverButtonWidget("Pattern 1 - Await-Return-In-Async"      ,20, 0, 16,16,   255,0  ,0,      HoverFunc);
-    var LegendHoverButton6 = new HoverButtonWidget("Pattern 2 - Promise-Resolve-Then"       ,20, 20, 16,16,  192,128  ,0,      HoverFunc);
-    var LegendHoverButton7 = new HoverButtonWidget("Pattern 3 - Awaited Value"              ,20, 40, 16,16,  255,128  ,255,      HoverFunc);
-    var LegendHoverButton8 = new HoverButtonWidget("Pattern 4 - In-House Promisification"   ,20, 60, 16,16,  255,255  ,0,      HoverFunc);
-    var LegendHoverButton9 = new HoverButtonWidget("Pattern 5 - Function Returns a Promise" ,40, 0, 16,16,  255,0  ,255,      HoverFunc);
-    var LegendHoverButton10 = new HoverButtonWidget("Pattern 6 - Async Executor"             ,40, 20, 16,16,  0,0  ,255,      HoverFunc);
-    var LegendHoverButton11 = new HoverButtonWidget("Pattern 7 - Await-in-a-Loop"            ,40, 40, 16,16,  0,128  ,255,      HoverFunc);
-    var LegendHoverButton12 = new HoverButtonWidget("Pattern 8 - Synchronous Resolve/Reject" ,40, 60, 16,16,  128,255  ,0,      HoverFunc);
-    var LegendHoverButton13 = new HoverButtonWidget("Pattern 9 - Explicit Constructor"       ,60, 0, 16,16,  128,255  ,128,      HoverFunc);
-    var LegendHoverButton14 = new HoverButtonWidget("Pattern 10 - Async Function w/o Await" ,60, 20, 16,16,  92,64  ,55,      HoverFunc);
+    var LegendHoverButton3 = new HoverButtonWidget("I/O"             ,20,  0, 16,16,  75 ,0  ,130, HoverFunc);
+    var LegendHoverButton4 = new HoverButtonWidget("Network"         ,20,  20,  16,16,  265,155,0,  HoverFunc);
+    var LegendHoverButton5 = new HoverButtonWidget("Pattern 1 - Await-Return-In-Async"      ,40, 0, 16,16,   255,0  ,0,      HoverFunc);
+    var LegendHoverButton6 = new HoverButtonWidget("Pattern 2 - Promise-Resolve-Then"       ,40, 20, 16,16,  192,128  ,0,      HoverFunc);
+    var LegendHoverButton7 = new HoverButtonWidget("Pattern 3 - Awaited Value"              ,60, 0, 16,16,  255,128  ,255,      HoverFunc);
+    var LegendHoverButton8 = new HoverButtonWidget("Pattern 4 - In-House Promisification"   ,60, 20, 16,16,  255,255  ,0,      HoverFunc);
+    var LegendHoverButton9 = new HoverButtonWidget("Pattern 5 - Function Returns a Promise" ,80, 0, 16,16,  255,0  ,255,      HoverFunc);
+    var LegendHoverButton10 = new HoverButtonWidget("Pattern 6 - Async Executor"             ,80, 20, 16,16,  0,0  ,255,      HoverFunc);
+    var LegendHoverButton11 = new HoverButtonWidget("Pattern 7 - Await-in-a-Loop"            ,100, 0, 16,16,  0,128  ,255,      HoverFunc);
+    var LegendHoverButton12 = new HoverButtonWidget("Pattern 8 - Synchronous Resolve/Reject" ,100, 20, 16,16,  128,255  ,0,      HoverFunc);
+    var LegendHoverButton13 = new HoverButtonWidget("Pattern 9 - Explicit Constructor"       ,120, 0, 16,16,  128,255  ,128,      HoverFunc);
+    var LegendHoverButton14 = new HoverButtonWidget("Pattern 10 - Async Function w/o Await" ,120, 20, 16,16,  92,64  ,55,      HoverFunc);
 
     // For now add the widgets in reverse order so they do not overlap
     g_LegendPanel.addWidget(LegendHoverButton14);

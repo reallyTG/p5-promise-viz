@@ -364,6 +364,7 @@ function createPromiseBrowserSummary() {
 
   // New thing! Try to make it not a text list, but something better.
   let summaryHTMLElement = document.createElement('table');
+  summaryHTMLElement.style.fontSize = 24;
   let tableBody = document.createElement('tbody');
   let tableHeaderRow = document.createElement('tr');
 
@@ -372,7 +373,7 @@ function createPromiseBrowserSummary() {
   let tableHeader_count = document.createElement('th');
   tableHeader_count.innerHTML = 'Count';
   let tableHeader_go = document.createElement('th');
-  tableHeader_go.innerHTML = 'Go';
+  tableHeader_go.innerHTML = 'Jump to Source';
 
   tableHeaderRow.appendChild(tableHeader_file);
   tableHeaderRow.appendChild(tableHeader_count);
@@ -403,7 +404,7 @@ function createPromiseBrowserSummary() {
     endLine = splitName[3];
     go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; cry(true)`);
     /* TODO: We also want to highlight them in the vis. */
-    go_button.innerHTML = 'Go';
+    go_button.innerHTML = 'Jump to Source';
     td_go.appendChild(go_button);
     tr.appendChild(td_go);
 
@@ -427,6 +428,7 @@ function createAntiPatternBrowserSummary() {
   // TODO: Style the table.
   // New thing! Try to make it not a text list, but something better.
   let summaryHTMLElement = document.createElement('table');
+  summaryHTMLElement.style.fontSize = 24;
   let tableBody = document.createElement('tbody');
   let tableHeaderRow = document.createElement('tr');
 
@@ -435,7 +437,7 @@ function createAntiPatternBrowserSummary() {
   let tableHeader_count = document.createElement('th');
   tableHeader_count.innerHTML = 'Pattern';
   let tableHeader_go = document.createElement('th');
-  tableHeader_go.innerHTML = 'Go';
+  tableHeader_go.innerHTML = 'Jump to Source';
 
   tableHeaderRow.appendChild(tableHeader_file);
   tableHeaderRow.appendChild(tableHeader_count);
@@ -467,7 +469,7 @@ function createAntiPatternBrowserSummary() {
     endLine = g_AntiPatternData[i].endLine;
     go_button.setAttribute('onclick', `addFileToView('${fname}', g_rawPromiseData.files['${fname}'], ${startLine}, ${endLine}); g_sourceHovered = '${k}'; cry(true)`);
     /* TODO: We also want to highlight them in the vis. */
-    go_button.innerHTML = 'Go';
+    go_button.innerHTML = 'Jump to Source';
     td_go.appendChild(go_button);
     tr.appendChild(td_go);
 
