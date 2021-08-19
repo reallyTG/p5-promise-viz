@@ -77,14 +77,14 @@ class promiseData{
         return  [
                     ["uniqueid  : ",gray],      [this.id,           white],           
                     ["source    : ",gray],      [this.source,       white],       
-                    ["Start Time: ",gray],      [this.startTime,    white],    
-                    ["End Time  : ",gray],      [this.endTime,      white],      
+                    ["Start Time    : ",gray],      [this.startTime,    white],    
+                    ["End Time      : ",gray],      [this.endTime,      white],      
                     ["Elapsed Time  : ",gray],  [this.elapsedTime,  white],  
-                    ["AsyncId   : ",gray],      [this.asyncId,      white],      
+                    ["AsyncId       : ",gray],      [this.asyncId,      white],      
                     ["TriggerAsyncId: ",gray],  [this.triggerAsyncId,white],
-                    ["I/O Event : ",gray],      [this.io,           white],           
-                    ["Network   : ",gray],      [this.network,      white],      
-                    ["User Code : ",gray],      [this.userCode,     white],     
+                    ["I/O Event     : ",gray],      [this.io,           white],           
+                    ["Network       : ",gray],      [this.network,      white],      
+                    ["User Code     : ",gray],      [this.userCode,     white],     
                     ["Anti-patterns : ",gray],  [this.antiPatterns, white],
                 ];
 

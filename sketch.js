@@ -230,14 +230,25 @@ function setup() {
       //if (antiPatternElements[key].patternID === 'pattern3')
       //  continue;
 
-      console.log("I am the key:"+key);
-      console.log("I have pattern ID:"+antiPatternElements[key].patternID);
+      //console.log("I am the key:"+key);
+      //console.log("I have pattern ID:"+antiPatternElements[key].patternID);
+
       // Construct a 'string' for the anti-pattern so that we
       // can match it against a promise
       // Thus if we identify a 'anti-pattern' with this string against
       // a promise 'source' string that actually occurs, we can highlight this pattern.
-      stringID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol+":"+antiPatternElements[key].endLine+":"+antiPatternElements[key].endCol;  
 
+      // TODO: BUG FIX
+      // It looks like the start line and end line infromation in g_rawPromiseData.promises is always the same, whereas
+      // the data for the antipatterns is much more specific. 
+//      stringID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol+":"+antiPatternElements[key].endLine+":"+antiPatternElements[key].endCol;  
+      stringID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol;  
+      // For now, I'll just do a partial match to see if we can find antipatterns that match the starting line
+      // of any of the potential anti-patterns.
+      var partialID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine;
+
+
+      // Update the counts of the antipatterns found 
       if(g_AntiPatternCount.has(antiPatternElements[key].patternID)){
         // Update the anti-pattern count
         let value = g_AntiPatternCount.get(antiPatternElements[key].patternID);
@@ -249,8 +260,9 @@ function setup() {
         g_totalAntiPatterns++;
       }
        
+      //console.log(stringID);
 
-      console.log(stringID);
+      // Build our antipattern
       var temp = new AntiPattern(
         stringID,
         antiPatternElements[key].endCol,
@@ -294,22 +306,39 @@ function setup() {
         // check to see if any of those anti-patterns match the promises that 
         // actually occurred during run-time.
         let patternsArray = [];
+        // Check all of the anti-patterns(found at compile-time) against the promises that were created
+        // at run-time to see which ones actually show up.
         for(anti in g_AntiPatternData){
-          if (anti.stringID == elements[key].source){
-            patternsArray.push(anti.patternID);
-            console.log("Found one!");
+          let partialID ="";
+          for(var key in antiPatternElements){
+            partialID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine;
+          
+            //if (anti.stringID == temp.source){
+            //  patternsArray.push(anti.patternID);
+            //  console.log("Found one!!!!!!!!!!!!!!!!!!");
+            //}
+
+            // TODO: Need to fix this and see if there are exact matches?
+            //       For now just using the partial match
+            if (temp.source.indexOf(partialID)>=0){
+              patternsArray.push(anti.patternID);
+              console.log("Found one!!!!!!!!!!!!!!!!!!");
+            }
           }
         }
+        // Update the array of our 'promise' that we push the to barchart with any anti-pattern information.
         temp.antiPatterns = patternsArray;
 
+        // Push the promise into our data set finally
         g_dataset.push(temp);
 
-        let thisSource = elements[key].source;
+        let thisSource = temp.source;
         if (!sourceCounts.has(thisSource)) {
           sourceCounts.set(thisSource, 1);
         } else {
           sourceCounts.set(thisSource, sourceCounts.get(thisSource) + 1);
         }
+
     }
 
     // Update global variable so as to give other parts of the Vis access to it.

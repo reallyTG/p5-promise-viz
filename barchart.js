@@ -479,6 +479,30 @@ class BarChartWidget {
     g_querySummary = itemsSelected;
   }
 
+  // Helper function to select a specific anti-pattern that occurs
+  // within the promise
+  selectAntiPattern(pattern){
+    var itemsSelected=0;
+
+    for (var i = 0; i < this.entities.length; i++) {
+        if(this.entities[i].datum.antiPatterns.includes(pattern)){
+            this.entities[i].selected = 1;
+            itemsSelected++;
+        }else{
+          this.entities[i].selected = 0;
+        }
+    }
+
+    if(itemsSelected==0){
+      console.log("Nothing found for "+pattern);
+    }else{
+      console.log(pattern+" found!"+itemsSelected);
+    }
+        
+    g_querySummary = itemsSelected;
+  }
+
+
 
   // Helper function which toggles the mini-display on or off.
   ShowMiniDisplay(selectedState){
