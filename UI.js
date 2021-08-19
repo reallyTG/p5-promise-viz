@@ -77,6 +77,7 @@ function menubar(x,y){
     fill(0);
     // Text
     stroke(0);
+    noStroke();
     text("Pan Offset: (" + round(g_offsetX,1) + "," + round(g_offsetY,3) + ")", x+160, y+textSize());
     // Render framerate
     var rate = frameRate();
@@ -327,16 +328,25 @@ function setupPanels(){
     let patternsTotalString = "    ";
     let tempCounter =0;
     // Sort our keys first
-    //var mapAsc = new Map([...g_AntiPatternCount.entries()].sort());
-    //console.log(mapAsc);
-    for (var k in g_AntiPatternCount){
-        patternsTotalString += k+": "+g_AntiPatternCount[k]+" ";
+    //var mapAsc = new Map(g_AntiPatternCount.keys().sort());
+    // console.log("mapASC:"+mapAsc);
+    // console.log(mapAsc);
+    var mapAscendingSorted = Array.from(g_AntiPatternCount.keys()).sort();
+
+    // One corner case since we have more than 9 patterns.
+    // https://stackoverflow.com/questions/4340227/sort-mixed-alpha-numeric-array
+    const sortAlphaNum = (a, b) => a.localeCompare(b, 'en', { numeric: true })
+    mapAscendingSorted.sort(sortAlphaNum);
+
+    for (var i=0; i < mapAscendingSorted.length; i++){
+        patternsTotalString += mapAscendingSorted[i]+": "+g_AntiPatternCount.get(mapAscendingSorted[i])+" ";
         tempCounter++;
         if (tempCounter==3){
             patternsTotalString+="\n    ";
             tempCounter=0;
         }
-    } 
+    }
+
     g_antiPatternsTextWidget.SetText("Antipatterns found: "+g_totalAntiPatterns+"\n"+patternsTotalString);
     g_AntiPatternsPanel.addWidget(g_antiPatternsTextWidget);
 

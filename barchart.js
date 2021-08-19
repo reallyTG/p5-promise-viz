@@ -198,8 +198,13 @@ class BarChartWidget {
 
       // Background
       stroke(0,255);
-      fill(255,0,0,192);
-      rect(x,y,width,h);
+      fill(255,255,255,192);
+      rect(x,y-20,100,20);
+      noStroke();
+      fill(0,255);
+      text("mini display",x+2,y-6);
+
+      stroke(0,255);
       fill(0,0,0,255);
       rect(x,y,width,h);
       // Draw a green rectangle representing where a promise would be

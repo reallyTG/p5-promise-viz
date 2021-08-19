@@ -62,41 +62,32 @@ class promiseData{
                 "Start Time: "        + this.startTime        + "\n" +
                 "End Time  : "        + this.endTime          + "\n" +
                 "Elapsed Time: "      + this.elapsedTime      + "\n" +
-                "SsyncId    : "          + this.asyncId          + "\n" +
-                "TriggerAsyncId:"   + this.triggerAsyncId   + "\n"+
-                "I/O Event: "               + this.io               + "\n" +
-                "Network  : "          + this.network          + "\n" +
+                "AsyncId    : "       + this.asyncId          + "\n" +
+                "TriggerAsyncId:"     + this.triggerAsyncId   + "\n"+
+                "I/O Event: "         + this.io               + "\n" +
+                "Network  : "         + this.network          + "\n" +
                 "User Code: "         + this.userCode         + "\n" +
-                "anti-patterns:"    + this.antiPatterns     + "\n";
+                "Anti-patterns:"      + this.antiPatterns     + "\n";
     }
 
     printNumbericDataColorfied(){
+        var gray = (192,192,192);
+        var white = (255,255,255);
+
         return  [
-                    ["uniqueid  : "        + this.id               + "\n"]
-                    ["source    : "        + this.source           + "\n"]
-                    ["Start Time: "        + this.startTime        + "\n"]
-                    ["End Time  : "        + this.endTime          + "\n"]
-                    ["Elapsed Time: "      + this.elapsedTime      + "\n"]
-                    ["SsyncId    : "          + this.asyncId          + "\n"]
-                    ["TriggerAsyncId:"   + this.triggerAsyncId   + "\n"]
-                    ["I/O Event: "               + this.io               + "\n"]
-                    ["Network  : "          + this.network          + "\n"]
-                    ["User Code: "         + this.userCode         + "\n"]
-                    ["anti-patterns:"    + this.antiPatterns     + "\n"]
+                    ["uniqueid  : ",gray],      [this.id,           white],           
+                    ["source    : ",gray],      [this.source,       white],       
+                    ["Start Time: ",gray],      [this.startTime,    white],    
+                    ["End Time  : ",gray],      [this.endTime,      white],      
+                    ["Elapsed Time  : ",gray],  [this.elapsedTime,  white],  
+                    ["AsyncId   : ",gray],      [this.asyncId,      white],      
+                    ["TriggerAsyncId: ",gray],  [this.triggerAsyncId,white],
+                    ["I/O Event : ",gray],      [this.io,           white],           
+                    ["Network   : ",gray],      [this.network,      white],      
+                    ["User Code : ",gray],      [this.userCode,     white],     
+                    ["Anti-patterns : ",gray],  [this.antiPatterns, white],
                 ];
+
     }
 
-    drawtext( x, y, text_array ) {
-  
-        var pos_x = x;
-        for ( var i = 0; i < text_array.length; ++ i ) {
-            var part = text_array[i];
-            var t = part[0];
-            var c = part[1];
-            var w = textWidth( t );
-            fill( c );
-            text( t, pos_x, y);
-            pos_x += w;
-        }
-    }
 }

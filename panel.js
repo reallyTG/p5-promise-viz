@@ -75,6 +75,7 @@ class Panel{
             // Render the text of the panel
             fill(204,255);
             stroke(192,255);
+            textSize(22);
             rect(this.x, this.y-textSize(), this.w, textSize());
         }
 
@@ -95,6 +96,7 @@ class Panel{
         // Text/Titlebar of panel
         fill(0,0,0,255);
         stroke(192,255);
+        textSize(22);
         text(this.text, this.x+2, this.y-this.g_padding/2);
 
         // If the panel is not open, then immediately return.

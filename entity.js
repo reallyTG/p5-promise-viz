@@ -72,7 +72,10 @@ class entity {
               rect((this.x), this.y, this.w, this.h);
               // Set UI details to currently hovered node
               //g_details = this.datum.printAll();    // Uncomment to print all details
-              g_detailTextWidget.SetText(this.datum.printNumbericData());
+              // Special use case of Text widget for color data
+              g_detailTextWidget.colored = true;
+              
+              g_detailTextWidget.SetText(this.datum.printNumbericDataColorfied());
 
               // Currently hovered id
               g_hoveredID = this.entityid;

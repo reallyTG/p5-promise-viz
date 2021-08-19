@@ -42,9 +42,10 @@
     overflow: hidden;
     background-color: #26206adb;
     color: white;
-    padding: 20px 20px;
+    padding: 10px 10px;
     border-radius: 4px;
     margin-top: 10px;
+    font-size: 32px;
   }
 
   .BrowserButtonText{

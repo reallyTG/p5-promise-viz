@@ -238,14 +238,14 @@ function setup() {
       // a promise 'source' string that actually occurs, we can highlight this pattern.
       stringID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol+":"+antiPatternElements[key].endLine+":"+antiPatternElements[key].endCol;  
 
-      if(g_AntiPatternCount.hasOwnProperty(antiPatternElements[key].patternID)){
+      if(g_AntiPatternCount.has(antiPatternElements[key].patternID)){
         // Update the anti-pattern count
-        let value = g_AntiPatternCount[antiPatternElements[key].patternID];
-        g_AntiPatternCount[antiPatternElements[key].patternID] = value+1;
+        let value = g_AntiPatternCount.get(antiPatternElements[key].patternID);
+        g_AntiPatternCount.set(antiPatternElements[key].patternID,value+1);
         g_totalAntiPatterns++;
       }else{
         // Count the first instance
-        g_AntiPatternCount[antiPatternElements[key].patternID] = 1;
+        g_AntiPatternCount.set(antiPatternElements[key].patternID,1);
         g_totalAntiPatterns++;
       }
        

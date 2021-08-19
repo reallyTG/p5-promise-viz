@@ -52,7 +52,7 @@ class ButtonWidget{
 
     // Render a button
     Render(){
-        textSize(this.h-4);
+        textSize(18);
         fill(204,255);
         stroke(204,255);
         rect(this.x,this.y,this.w,this.h);
@@ -62,7 +62,7 @@ class ButtonWidget{
 
         stroke(255);
         fill(0);
-        text(this.text, this.x+3, this.y+textSize()-1);
+        text(this.text, this.x+4, this.y+textSize()-1);
     
         // Buttons
         if(mouseX > this.x && mouseX < this.x+this.w){
