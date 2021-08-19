@@ -23,6 +23,7 @@ class promiseData{
         this.endLine        = endLine;
         this.endCol         = endCol;
         this.file           = file;
+        this.antiPatterns   = [];       // Empty array for anti-pattern that this promise may convey
     }
 
     // Function to print data about a promise in a string
@@ -42,7 +43,8 @@ class promiseData{
                 "startCol:"         + this.startCol         + "\n" +
                 "endLine:"          + this.endLine          + "\n" +
                 "endCol:"           + this.endCol           + "\n" +
-                "file:"             + this.file;
+                "file:"             + this.file             + "\n" +
+                "file:"             + this.antiPatterns;
 
     }
 
@@ -64,6 +66,7 @@ class promiseData{
                 "triggerAsyncId:"   + this.triggerAsyncId   + "\n"+
                 "io:"               + this.io               + "\n" +
                 "network:"          + this.network          + "\n" +
-                "userCode:"         + this.userCode         + "\n";
+                "userCode:"         + this.userCode         + "\n" +
+                "anti-patterns:"    + this.antiPatterns     + "\n";
     }
 }

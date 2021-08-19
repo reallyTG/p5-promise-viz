@@ -5,7 +5,8 @@
 
 // The data that we want to hold
 class AntiPattern{
-    constructor(endCol,endLine,file,patternID,startCol,startLine) {
+    constructor(stringID,endCol,endLine,file,patternID,startCol,startLine) {
+        this.stringID = stringID;
         this.endCol = endCol;
         this.endLine = endLine;
         this.file = file;
@@ -14,13 +15,14 @@ class AntiPattern{
         this.startLine = startLine;
     }
 
-    // Function to print data about a promise in a string
+    // Function to print antipattern in a string
     printAll(){
-        return  "uniqueid :"        + this.endCol        + "\n" +
-                "source   :"        + this.endLine       + "\n" +
-                "startTime:"        + this.file          + "\n" +
-                "endTime  :"        + this.patternID     + "\n" +
-                "elapsedTime:"      + this.startCol      + "\n" +
-                "asyncId:"          + this.startLine     + "\n";
+        return  "stringID :"        + this.stringID     + "\n" +
+                "endCol   :"        + this.endCol       + "\n" +
+                "endLine:"          + this.endLine      + "\n" +
+                "file  :"           + this.file         + "\n" +
+                "patternID:"        + this.patternID    + "\n" +
+                "startCol:"         + this.startCol     + "\n" +
+                "startLine:"        + this.startLine    + "\n";
     }
 }

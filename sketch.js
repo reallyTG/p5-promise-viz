@@ -199,6 +199,16 @@ function paperParityPattern(patternID) {
       return 'p6';
     case 'pattern5':
       return 'pP';
+    case 'pattern6':
+      return 'TBD1'; // TODO: Identify these patterns and name them
+    case 'pattern7':
+      return 'TBD2';
+    case 'pattern8':
+      return 'TBD3';
+    case 'pattern9':
+      return 'TBD4';
+    case 'pattern10':
+      return 'TBD5';
   }
 }
 
@@ -210,11 +220,44 @@ function setup() {
     // The size of the canvas that will 
     createCanvas(1600, 1400);
 
+
+    // Populate an anti-patterns data structure
+    var antiPatternElements = g_rawPromiseData.antipatterns;
+    for(var key in antiPatternElements){
+      g_totalAntiPatterns++;
+
+      // TODO:FIXP3 Currently, we ignore pattern3, because it's way too broad.
+      if (antiPatternElements[key].patternID === 'pattern3')
+        continue;
+
+
+      // Construct a 'string' for the anti-pattern so that we
+      // can match it against a promise
+      // Thus if we identify a 'anti-pattern' with this string against
+      // a promise 'source' string that actually occurs, we can highlight this pattern.
+      stringID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol+":"+antiPatternElements[key].endLine+":"+antiPatternElements[key].endCol;  
+
+      console.log(stringID);
+      var temp = new AntiPattern(
+        stringID,
+        antiPatternElements[key].endCol,
+        antiPatternElements[key].endLine,
+        antiPatternElements[key].file,
+        paperParityPattern(antiPatternElements[key].patternID),
+        antiPatternElements[key].startCol,
+        antiPatternElements[key].startLine
+      );
+      
+      g_AntiPatternData.push(temp);
+    }
+
+    console.log("g_totalAntiPatterns: "+g_totalAntiPatterns);
+
     // Populate our data structure for the barchart
     // with JSON Data
     var elements = g_rawPromiseData.promises;
     var sourceCounts = new Map();
-    for(var key in elements){
+    for(var key in elements){     
         // Push the actual element into the data set
         var temp = new promiseData(
                                     elements[key].uniqueid,
@@ -234,6 +277,18 @@ function setup() {
                                     elements[key].endCol,
                                     elements[key].file
                                   );
+        // For each promise that we create--iterate through the anti-patterns and
+        // check to see if any of those anti-patterns match the promises that 
+        // actually occurred during run-time.
+        let patternsArray = [];
+        for(anti in g_AntiPatternData){
+          if (anti.stringID == elements[key].source){
+            patternsArray.push(anti.patternID);
+            console.log("Found one!");
+          }
+        }
+        temp.antiPatterns = patternsArray;
+
         g_dataset.push(temp);
 
         let thisSource = elements[key].source;
@@ -247,29 +302,7 @@ function setup() {
     // Update global variable so as to give other parts of the Vis access to it.
     g_sourceCounts = sourceCounts;
 
-
-    // Populate an anti-patterns data structure
-    var antiPatternElements = g_rawPromiseData.antipatterns;
-    for(var key in antiPatternElements){
-      g_totalAntiPatterns++;
-
-      // TODO:FIXP3 Currently, we ignore pattern3, because it's way too broad.
-      if (antiPatternElements[key].patternID === 'pattern3')
-        continue;
-
-      var temp = new AntiPattern(
-        antiPatternElements[key].endCol,
-        antiPatternElements[key].endLine,
-        antiPatternElements[key].file,
-        paperParityPattern(antiPatternElements[key].patternID),
-        antiPatternElements[key].startCol,
-        antiPatternElements[key].startLine
-      );
-      
-      g_AntiPatternData.push(temp);
-    }
-
-    console.log("g_totalAntiPatterns: "+g_totalAntiPatterns);
+   
 
 
     // Create
