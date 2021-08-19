@@ -34,6 +34,8 @@ P5 for promise visualization.
 	- Repo for processing results.
 7. [Promise Analysis](https://github.com/reallyTG/ProfilingPromisesAnalysis)
 	- Repo for analysis
+8. [Profiling Promises Benchmarks](https://github.com/ProfilingPromisesBenchmarks)
+	- Profiling Promises Benchmarks
 
 
 # E-mails of importance (By Subject)
