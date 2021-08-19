@@ -14,6 +14,8 @@ let g_rawPromiseData = {};
 // Used to track total antipatterns
 let g_totalAntiPatterns = 0;
 let g_AntiPatternData = [];
+let g_AntiPatternCount = new Map(); // Counts how many of each anti-pattern were found.
+                                    // The key is the pattern ID, the value is the count.
 
 // Retrieve the url parameters
 // This is to be useful for passing around projects

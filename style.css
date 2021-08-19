@@ -7,23 +7,27 @@
   
   /* Style the buttons that are used to open the tab content */
   .tab button {
-    background-color: inherit;
+    background-color: lightgray;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    font-size: 24;
+
   }
   
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: #ddd;
+    background-color: slategray;
   }
   
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: #ccc;
+    background-color: slateblue;
   }
   
   /* Style the tab content */
@@ -32,4 +36,65 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+  }
+
+  .header {
+    overflow: hidden;
+    background-color: #26206adb;
+    color: white;
+    padding: 20px 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .BrowserButtonText{
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    vertical-align: top;
+    border-top-left-radius: 16px;
+  }
+
+  .promiseTable{
+		width:100%; 
+		border-collapse:collapse; 
+    border: solid;
+    font-size: 24;
+    border-color: "#999";
+    background-color: "#9ca8b4";
+	}
+	.promiseTable td{ 
+    border:#999 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.promiseTable tr{
+		background: #9ca8b4;
+	}
+	/* Define the hover highlight color for the table row */
+  .promiseTable tr:hover {
+        background-color: #8b97a3;
+  }
+
+  .antiPatternTable{
+		width:100%; 
+		border-collapse:collapse; 
+    border: solid;
+    font-size: 24;
+    border-color: "#999";
+    background-color: "#ffa8b4";
+	}
+	.antiPatternTable td{ 
+    border:#999 1px solid;
+	}
+	/* Define the default color for all the table rows */
+	.antiPatternTable tr{
+		background: #ffa8b4;
+	}
+	/* Define the hover highlight color for the table row */
+  .antiPatternTable tr:hover {
+        background-color: #8b97a3;
   }

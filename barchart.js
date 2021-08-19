@@ -502,11 +502,18 @@ class BarChartWidget {
       if(g_hoveredID>=0 && g_hoveredID<this.entities.length){
         fill(255,192);
         stroke(255);
-        rect(mouseX, mouseY-textSize(), width/2, 400);
+        // Compute height of box
+        let displayText = this.entities[g_hoveredID].datum.printStringData();
+        let NumberOfEndlines = (displayText.match(new RegExp("\n", "g")) || []).length;
+
+        // The 'textSize()+3' is a heuristic that is 'good enough' for visualizing
+        // the text size.
+        rect(mouseX, mouseY-textSize(), width/2, (textSize()+3)*NumberOfEndlines);
         fill(0);
         stroke(0);
+        noStroke();
         //text(this.entities[g_hoveredID].datum.print(),mouseX,mouseY);
-        text(this.entities[g_hoveredID].datum.printStringData(),mouseX,mouseY);
+        text(displayText,mouseX,mouseY);
       }
     }
 

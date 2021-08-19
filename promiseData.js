@@ -57,16 +57,46 @@ class promiseData{
     }
 
     printNumbericData(){
-        return  "uniqueid :"        + this.id               + "\n" +
-                "source   :"        + this.source           + "\n" +
-                "startTime:"        + this.startTime        + "\n" +
-                "endTime  :"        + this.endTime          + "\n" +
-                "elapsedTime:"      + this.elapsedTime      + "\n" +
-                "asyncId:"          + this.asyncId          + "\n" +
-                "triggerAsyncId:"   + this.triggerAsyncId   + "\n"+
-                "io:"               + this.io               + "\n" +
-                "network:"          + this.network          + "\n" +
-                "userCode:"         + this.userCode         + "\n" +
+        return  "uniqueid  : "        + this.id               + "\n" +
+                "source    : "        + this.source           + "\n" +
+                "Start Time: "        + this.startTime        + "\n" +
+                "End Time  : "        + this.endTime          + "\n" +
+                "Elapsed Time: "      + this.elapsedTime      + "\n" +
+                "SsyncId    : "          + this.asyncId          + "\n" +
+                "TriggerAsyncId:"   + this.triggerAsyncId   + "\n"+
+                "I/O Event: "               + this.io               + "\n" +
+                "Network  : "          + this.network          + "\n" +
+                "User Code: "         + this.userCode         + "\n" +
                 "anti-patterns:"    + this.antiPatterns     + "\n";
+    }
+
+    printNumbericDataColorfied(){
+        return  [
+                    ["uniqueid  : "        + this.id               + "\n"]
+                    ["source    : "        + this.source           + "\n"]
+                    ["Start Time: "        + this.startTime        + "\n"]
+                    ["End Time  : "        + this.endTime          + "\n"]
+                    ["Elapsed Time: "      + this.elapsedTime      + "\n"]
+                    ["SsyncId    : "          + this.asyncId          + "\n"]
+                    ["TriggerAsyncId:"   + this.triggerAsyncId   + "\n"]
+                    ["I/O Event: "               + this.io               + "\n"]
+                    ["Network  : "          + this.network          + "\n"]
+                    ["User Code: "         + this.userCode         + "\n"]
+                    ["anti-patterns:"    + this.antiPatterns     + "\n"]
+                ];
+    }
+
+    drawtext( x, y, text_array ) {
+  
+        var pos_x = x;
+        for ( var i = 0; i < text_array.length; ++ i ) {
+            var part = text_array[i];
+            var t = part[0];
+            var c = part[1];
+            var w = textWidth( t );
+            fill( c );
+            text( t, pos_x, y);
+            pos_x += w;
+        }
     }
 }

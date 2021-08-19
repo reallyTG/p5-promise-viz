@@ -37,7 +37,7 @@ let g_searchLineWidget;
 // Helper function to draw a grid to help improve visualization
 function drawGrid() {
     fill(0, 0, 0, 64);
-    stroke(0, 0, 0,64);
+    stroke(0, 0, 255,64);
 
     //var segments = 8;
     //var horizontalSpace = (height/g_scale) / segments;
@@ -46,6 +46,8 @@ function drawGrid() {
     var segments = 40;
     var horizontalSpace = (height * g_scale) / segments;
     var verticalSpace = (width * g_scale) / segments;
+
+   // drawingContext.setLineDash([9, 10]);
 
     // Draw some horizontal segments
     for(var horizontal =0; horizontal < segments/g_scale; horizontal++){
@@ -57,6 +59,8 @@ function drawGrid() {
 
         //line(xhorizontal, this.h + horizontal*horizontalSpace, this.w, this.h + horizontal*horizontalSpace);
     }
+  //  drawingContext.setLineDash([]);
+
 }
 
 function setUIOffset(x, y){
@@ -299,7 +303,7 @@ function setupPanels(){
     var selectUserCodeButton = new ButtonWidget("Select User Code ("+g_bar.totalFunctionswithUserCode+")",0,0+queryButtonHeight*4,queryButtonWidth,queryButtonHeight,callSelectUserCode);
     g_QueriesPanel.addWidget(selectUserCodeButton);
 
-    g_searchLineWidget = new SearchBoxWidget("Filter by text in source (case-sensitive)",0,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
+    g_searchLineWidget = new SearchBoxWidget("Filter by text in source (case-sensitive)",10,0+queryButtonHeight*6,queryButtonWidth,queryButtonHeight,searchLine);
     g_QueriesPanel.addWidget(g_searchLineWidget);
 
     // Setup the details Panel
@@ -316,14 +320,28 @@ function setupPanels(){
     g_metricsTextWidget = new VisTextWidget("VisTextWidget",0,0);
     g_MetricsPanel.addWidget(g_metricsTextWidget);
 
-    g_AntiPatternsPanel = new Panel("AntiPatterns",1100,150,500,80);
+    g_AntiPatternsPanel = new Panel("AntiPatterns",1100,150,500,90);
     g_antiPatternsTextWidget = new VisTextWidget("VisTextWidget",0,0);
     // Update our antipatterns panel text
-    g_antiPatternsTextWidget.SetText("Antipatterns found: "+g_totalAntiPatterns);
+    // First Scan anti-patterns total
+    let patternsTotalString = "    ";
+    let tempCounter =0;
+    // Sort our keys first
+    //var mapAsc = new Map([...g_AntiPatternCount.entries()].sort());
+    //console.log(mapAsc);
+    for (var k in g_AntiPatternCount){
+        patternsTotalString += k+": "+g_AntiPatternCount[k]+" ";
+        tempCounter++;
+        if (tempCounter==3){
+            patternsTotalString+="\n    ";
+            tempCounter=0;
+        }
+    } 
+    g_antiPatternsTextWidget.SetText("Antipatterns found: "+g_totalAntiPatterns+"\n"+patternsTotalString);
     g_AntiPatternsPanel.addWidget(g_antiPatternsTextWidget);
 
     // Setup the Legend Panel
-    g_LegendPanel = new Panel("Visualiation Legend",1100,250,500,50);
+    g_LegendPanel = new Panel("Visualiation Legend",1100,260,500,40);
 
     var HoverFunc = function (){doSomething()};
     var LegendHoverButton1 = new HoverButtonWidget("Unselected"      ,0,  0 , 16,16,  0  ,0  ,0,   HoverFunc);

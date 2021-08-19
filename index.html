@@ -27,6 +27,10 @@
     <script type="text/javascript" src="http://getbootstrap.com/2.3.2/assets/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
 
+
+
+
+
 <script type="text/javascript">
   let g_SelectedTextInTextBox = "";
 
@@ -63,7 +67,7 @@
                 </main>
             </td>
             <td valign="top" style="background-color: #8392a2; border: 10px; border-style:solid; border-color:  #454545;">
-                  <h3>Search Tools:</h3>
+                  <h3 class="header">Search Tools:</h3>
                   <div id="searchTools">
                     <button onclick="GotoSelectedText(true);">Find First Selected Text in Visualization</button>
                     <button onclick="NextSelected();">Find Next</button>
@@ -76,10 +80,10 @@
                         </textarea>
                     </div>
                   </div>
-                  <h3>Promise, Anti-Pattern and Source Browser:</h3>
+                  <h3 class="header">Promise, Anti-Pattern and Source Browser:</h3>
                     <div class="tab" id="tabController">
-                      <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">PromiseBrowser</button>
-                      <button class="tablinks" onclick="viewFile(event, 'AntiPatternBrowser')">AntiPatternBrowser</button>
+                      <button class="tablinks" onclick="viewFile(event, 'PromiseBrowser')" id="defaultOpen">Promise Browser</button>
+                      <button class="tablinks" onclick="viewFile(event, 'AntiPatternBrowser')">AntiPattern Browser</button>
                     </div>
                     <div id="listOfOpenFiles">
                       <div id="PromiseBrowser" class="tabcontent" >

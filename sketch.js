@@ -224,18 +224,31 @@ function setup() {
     // Populate an anti-patterns data structure
     var antiPatternElements = g_rawPromiseData.antipatterns;
     for(var key in antiPatternElements){
-      g_totalAntiPatterns++;
 
       // TODO:FIXP3 Currently, we ignore pattern3, because it's way too broad.
-      if (antiPatternElements[key].patternID === 'pattern3')
-        continue;
+      // 
+      //if (antiPatternElements[key].patternID === 'pattern3')
+      //  continue;
 
-
+      console.log("I am the key:"+key);
+      console.log("I have pattern ID:"+antiPatternElements[key].patternID);
       // Construct a 'string' for the anti-pattern so that we
       // can match it against a promise
       // Thus if we identify a 'anti-pattern' with this string against
       // a promise 'source' string that actually occurs, we can highlight this pattern.
       stringID = antiPatternElements[key].file+":"+antiPatternElements[key].startLine+":"+antiPatternElements[key].startCol+":"+antiPatternElements[key].endLine+":"+antiPatternElements[key].endCol;  
+
+      if(g_AntiPatternCount.hasOwnProperty(antiPatternElements[key].patternID)){
+        // Update the anti-pattern count
+        let value = g_AntiPatternCount[antiPatternElements[key].patternID];
+        g_AntiPatternCount[antiPatternElements[key].patternID] = value+1;
+        g_totalAntiPatterns++;
+      }else{
+        // Count the first instance
+        g_AntiPatternCount[antiPatternElements[key].patternID] = 1;
+        g_totalAntiPatterns++;
+      }
+       
 
       console.log(stringID);
       var temp = new AntiPattern(
@@ -364,7 +377,8 @@ function createPromiseBrowserSummary() {
 
   // New thing! Try to make it not a text list, but something better.
   let summaryHTMLElement = document.createElement('table');
-  summaryHTMLElement.style.fontSize = 24;
+  summaryHTMLElement.classList.add("promiseTable");
+
   let tableBody = document.createElement('tbody');
   let tableHeaderRow = document.createElement('tr');
 
@@ -428,7 +442,8 @@ function createAntiPatternBrowserSummary() {
   // TODO: Style the table.
   // New thing! Try to make it not a text list, but something better.
   let summaryHTMLElement = document.createElement('table');
-  summaryHTMLElement.style.fontSize = 24;
+  summaryHTMLElement.classList.add("antiPatternTable");
+
   let tableBody = document.createElement('tbody');
   let tableHeaderRow = document.createElement('tr');
 
@@ -442,6 +457,13 @@ function createAntiPatternBrowserSummary() {
   tableHeaderRow.appendChild(tableHeader_file);
   tableHeaderRow.appendChild(tableHeader_count);
   tableHeaderRow.appendChild(tableHeader_go);
+
+  tableHeaderRow.style.border = "solid";
+  tableHeaderRow.style.borderColor = "#999";
+  tableHeader_count.style.border = "solid";
+  tableHeader_count.style.borderColor = "#999";
+  tableHeader_go.style.border = "solid";
+  tableHeader_go.style.borderColor = "#999";
 
   tableBody.appendChild(tableHeaderRow);
 
@@ -472,6 +494,13 @@ function createAntiPatternBrowserSummary() {
     go_button.innerHTML = 'Jump to Source';
     td_go.appendChild(go_button);
     tr.appendChild(td_go);
+
+    td_file.style.border = "solid";
+    td_file.style.borderColor = "#999";
+    td_pattern.style.border = "solid";
+    td_pattern.style.borderColor = "#999";
+    td_go.style.border = "solid";
+    td_go.style.borderColor = "#999";
 
     tableBody.appendChild(tr);
   }
