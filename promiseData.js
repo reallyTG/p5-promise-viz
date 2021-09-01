@@ -49,11 +49,11 @@ class promiseData{
     }
 
     printStringData(){
-        return  "uniqueid :"        + this.id               + "\n" +
+        return  "uniqueid :"        + this.id               + "\t" +
+                "asyncId:"          + this.asyncId          + "\t" +
+                "triggerAsyncId:"   + this.triggerAsyncId   + "\n" +
                 "source   :"        + this.source           + "\n" +
-                "line:"             + this.line             + "\n" +
-                "asyncId:"          + this.asyncId          + "\n" +
-                "triggerAsyncId:"   + this.triggerAsyncId   + "\n";
+                "line:"             + this.line             + "\n";
     }
 
     printNumbericData(){

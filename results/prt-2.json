@@ -1,0 +1,70 @@
+{
+  "promises": {
+    "0": {
+      "source": "prt.js:4:9:4:9",
+      "startTime": "160464277898678",
+      "endTime": "160464278362338",
+      "elapsedTime": "463660",
+      "asyncId": 2,
+      "triggerAsyncId": 1,
+      "io": false,
+      "createdIn": 1630443135891,
+      "functionName": " Object.<anonymous>",
+      "userCode": false,
+      "line": "\nconst fs = require('fs');\n\nlet p = new Promise((res, rej) => {res(2);});\n\nfs.readFileSync('/Users/Alexi/Downloads/HSTracker.app.zip', 'utf-8');",
+      "startLine": 4,
+      "startCol": 9,
+      "endLine": 4,
+      "endCol": 9,
+      "file": "prt.js",
+      "triggers": [],
+      "uniqueid": 0
+    },
+    "1": {
+      "source": "prt.js:8:17:8:17",
+      "startTime": "160465556325241",
+      "endTime": "160465556525044",
+      "elapsedTime": "199803",
+      "asyncId": 3,
+      "triggerAsyncId": 1,
+      "io": false,
+      "createdIn": 1630443135891,
+      "functionName": " Object.<anonymous>",
+      "userCode": false,
+      "line": "\nfs.readFileSync('/Users/Alexi/Downloads/HSTracker.app.zip', 'utf-8');\n\nlet w = Promise.resolve();\n\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8')",
+      "startLine": 8,
+      "startCol": 17,
+      "endLine": 8,
+      "endCol": 17,
+      "file": "prt.js",
+      "triggers": [
+        4
+      ],
+      "uniqueid": 1
+    },
+    "2": {
+      "source": "prt.js:23:11:23:11",
+      "startTime": "160465559655363",
+      "endTime": "160466807934258",
+      "elapsedTime": "1248278895",
+      "asyncId": 4,
+      "triggerAsyncId": 3,
+      "io": false,
+      "createdIn": 1630443135891,
+      "functionName": " Object.<anonymous>",
+      "userCode": false,
+      "line": "\nfs.readFileSync('prt.js', 'utf-8');\n\nlet q = w.then(v => {\n  return fs.readFileSync('/Users/Alexi/Downloads/HSTracker.app.zip', 'utf-8');\n});",
+      "startLine": 23,
+      "startCol": 11,
+      "endLine": 23,
+      "endCol": 11,
+      "file": "prt.js",
+      "triggers": [],
+      "uniqueid": 2
+    }
+  },
+  "antipatterns": {},
+  "files": {
+    "prt.js": "\nconst fs = require('fs');\n\nlet p = new Promise((res, rej) => {res(2);});\n\nfs.readFileSync('/Users/Alexi/Downloads/HSTracker.app.zip', 'utf-8');\n\nlet w = Promise.resolve();\n\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\nfs.readFileSync('prt.js', 'utf-8');\n\nlet q = w.then(v => {\n  return fs.readFileSync('/Users/Alexi/Downloads/HSTracker.app.zip', 'utf-8');\n});\n\n"
+  }
+}

@@ -311,10 +311,47 @@ class BarChartWidget {
     }
   }
 
+
+  pointToFirstPromiseInChain(currentNode){
+      if(currentNode >= 0 && currentNode < this.entities.length){
+          // Lookup the node in our promises
+          let currentPromise = g_rawPromiseData["promises"][currentNode];
+          // Find the currentPromises asyncID
+          var currentAsyncID = currentPromise.asyncId;
+          var currentAsyncTriggerID = currentPromise.triggerAsyncId;
+
+          // Iterate through all promises, and find the triggering
+          // proomise for the current promise, and then draw a link to it.
+          for (var i = 0; i < this.entities.length; i++) {
+              if(g_rawPromiseData["promises"][i].asyncId == currentAsyncTriggerID){
+                stroke(255,255,0,100);
+                fill(255,255,0,100);
+                console.log("Found it!");
+                line(this.entities[currentNode].x+this.entities[currentNode].w/2,
+                  this.entities[currentNode].y,
+                  this.entities[i].x+this.entities[i].w/2,
+                  this.entities[i].y);
+                // Draw an outline around the promise that was triggering
+                  stroke(255,255,0,100+g_glow);
+                  fill(255,255,0,100+g_glow);
+                  // Add a small glowing effect to make it more appartent
+                  g_glow++;
+                  if(g_glow>=155){
+                    g_glow=0;
+                  }
+                  rect(this.entities[i].x,this.entities[i].y,this.entities[i].w,this.entities[i].h);
+                break;
+              }
+          }
+      }
+  }
+
+
     // Points any selected node to its trigger id.
     pointToAllTriggers(node){
-      var itemsSelected=0;
+        var itemsSelected=0;
 
+        // Iterate through each of the nodes
         for (var i = 0; i < this.entities.length; i++) {
           pointToTrigger(i);
         }
@@ -330,7 +367,8 @@ class BarChartWidget {
         }
         
         // trigger ID
-        if(this.entities[nodeID].datum.triggerAsyncId>0 && this.entities[nodeID].datum.triggerAsyncId < this.entities.length){
+        if(this.entities[nodeID].datum.triggerAsyncId > 0 && this.entities[nodeID].datum.triggerAsyncId < this.entities.length){
+            // Retrieve the nodes trigger async ID
             var triggerIndex = this.entities[nodeID].datum.triggerAsyncId;
             stroke(255,255,0,100);
             fill(255,255,0,100);

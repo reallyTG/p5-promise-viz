@@ -673,7 +673,9 @@ function draw(force) {
     //  g_bar.highlightPromiseChain(g_hoveredID); 
     }
     // Points to the first promise triggered
-    g_bar.pointToTrigger(g_hoveredID);
+    //g_bar.pointToTrigger(g_hoveredID);
+
+    g_bar.pointToFirstPromiseInChain(g_hoveredID);
 
     // Handle user interaction
     // Resetting the matrix removes any further panning and

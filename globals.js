@@ -56,3 +56,7 @@ let g_zoomMouseY =0;
 // Button Widgets
 let g_shareURLButtonWidget;
 let g_loadProjectButtonWidget;
+
+// Glow for highlighted promise
+let g_glow = 255;
+
